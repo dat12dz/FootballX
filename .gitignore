@@ -4,8 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
-Temp/
-Temp\
+
 *.rsuser
 *.suo
 *.user
@@ -25,6 +24,8 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
+Temp/
+
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
@@ -363,3 +364,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+Temp/UnityLockfile
+Temp/StagingArea/WindowsPlayer.exe
+Temp/StagingArea/WindowsPlayer.exe
+Temp/StagingArea/WindowsPlayer.exe
+Temp/shader-stripping.json
