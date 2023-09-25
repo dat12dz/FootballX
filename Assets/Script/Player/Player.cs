@@ -4,6 +4,7 @@ using Assets.Utlis;
 using Mono.CSharp;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Jobs;
 using Unity.Netcode;
 using UnityEditor;
@@ -28,9 +29,10 @@ public partial class Player : NetworkBehaviour
     public float ThrowingForceSpeed = 4;
     float FiinalThrowForce ;
     [Header("ETC")]
-
     [SerializeField] GameObject Toggle;
     [SerializeField] NetworkVariable<bool> isInGame;
+    public NetworkVariable<FixedString32Bytes> PlayerName;
+
     public override void OnNetworkSpawn()
     {
         isInGame.OnValueChanged += (pev, new_) =>
@@ -43,7 +45,6 @@ public partial class Player : NetworkBehaviour
     {
         TogglePoolObj(false);
         Init();
-
     }
     void TogglePoolObj(bool o)
     {
@@ -51,6 +52,7 @@ public partial class Player : NetworkBehaviour
         GetComponent<Move>().enabled = o;
         GetComponent<CharacterController>().enabled = o;
         GetComponent<MeshRenderer>().enabled = o;
+        SendPlayerNameToServerRpc(StartGameInfo.instance.PlayerName);
     }
     void Init()
     {

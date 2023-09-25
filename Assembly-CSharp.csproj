@@ -61,9 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansBridgeLink.cs" />
+    <Compile Include="Assets\UI_RoomRenderPnl.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\Script\UI\UI_StartScreenHandler.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\IdleChanger.cs" />
+    <Compile Include="Assets\Ui_ShowPlayerInfoPnl.cs" />
     <Compile Include="Assets\Script\Player\Move.cs" />
     <Compile Include="Assets\Script\Player\ControlKey.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansImporterWindow.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Assets\Script\Utlis\MainThreadDispatcher.cs" />
     <Compile Include="Assets\Script\Utlis\TrackingDictonary.cs" />
     <Compile Include="Assets\Script\Player\PlayerFoot.cs" />
+    <Compile Include="Assets\StartGameInfo.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\InRoomPlayerDictionary.cs" />
     <Compile Include="Assets\Script\GameSystem\MatchPhase.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\IKCtrlRightHand.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="Assets\UI_SelectRoomUI.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\SpringBone.cs" />
     <Compile Include="Assets\YSA Toon\Scripts\MeshFilterNormalsFix.cs" />
+    <Compile Include="Assets\RoomRenderAble.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansDecalTools.cs" />
     <Compile Include="Assets\Script\Utlis\SocketHelper.cs" />

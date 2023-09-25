@@ -16,9 +16,10 @@ namespace Assets.Script.Utlis
         }
         public uint Add(V value)
         {
-            Add(lastElementCount, value);
+            var id = lastElementCount;
+            Add(id, value);
             lastElementCount++; 
-            return lastElementCount;
+            return id;
         }
     }
 }

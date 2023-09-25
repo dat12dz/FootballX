@@ -31,6 +31,7 @@ namespace Assets.Script.UI
             // The client identifier to be authenticated
             var clientId = request.ClientNetworkId;
             response.CreatePlayerObject = true;
+            
             // Additional connection data defined by user code
             var connectionData = request.Payload;
             var bufferToStrinng = Encoding.UTF8.GetString(connectionData);
