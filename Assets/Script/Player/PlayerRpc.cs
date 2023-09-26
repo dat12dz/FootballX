@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
@@ -48,5 +49,11 @@ public partial class Player
     public void SendShootForceServerRpc(float shootForce)
     {
         FinalShootForce = shootForce;
+    }
+    [ServerRpc] 
+    public void SendPlayerNameToServerRpc(FixedString32Bytes name_)
+    {
+        PlayerName.Value = name_;
+        Logging.Log("PlayerName Mới:" +  PlayerName.Value);
     }
 }

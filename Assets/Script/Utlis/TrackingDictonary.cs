@@ -53,6 +53,12 @@ namespace Assets.Script.Utlis
 
                 onRemove(a);
         }
+        public Tvalue RemoveOut(Tkey a)
+        {
+            Tvalue res;
+            base.Remove(a, out res);
+            return res;
+        }
         public new void Clear()
         {
             base.Clear();
