@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Toggle-element">
+        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="Toggle-lable" />
+        <ui:Toggle name="Toggle" label="Label" />
+    </ui:VisualElement>
+</ui:UXML>

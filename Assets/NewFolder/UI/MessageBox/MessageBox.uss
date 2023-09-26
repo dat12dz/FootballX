@@ -1,0 +1,61 @@
+#container {
+    display: none;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: 0.15s ease;
+    opacity: 0;
+}
+
+#message-box {
+    position: relative;
+    width: 100%;
+    height: 0;
+    align-items: center;
+    background-color: white;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+}
+
+#box-text {
+    margin: 12px auto;
+    font-size: 18px;
+    justify-content: center;
+    -unity-text-align: upper-center;
+    width: 68%;
+    color: white;
+    display: none;
+}
+
+#title {
+    font-size: 20px;
+    margin-bottom: 36px;
+}
+
+#description {
+    font-size: 14px;
+}
+
+#box-btn {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    top: 90%;
+    width: 68%;
+    display: none;
+}
+
+#confirm-btn {
+    width: 30%;
+}
+
+#message-box-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition-duration: 0.15s;
+    opacity: 0;
+    background-image: url(/Assets/NewFolder/Resources/UI/bg.png);
+}

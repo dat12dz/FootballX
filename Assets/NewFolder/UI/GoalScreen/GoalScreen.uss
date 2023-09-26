@@ -1,0 +1,87 @@
+#container {
+	display: none;
+	justify-content: center;
+}
+
+#goal-screen-close {
+	width: 60%;
+	overflow: hidden;
+	align-items: center;
+	align-self: center;
+	transition: 0.2s;
+}
+
+#goal-screen {
+	width: 100%;
+	height: 120px;
+	background-color: red;
+	overflow: hidden;
+	opacity: 0;
+}
+
+#goal-screen-box {
+	width: 100%;
+	height: 120px;
+	transition: 0.4s;
+}
+
+#animation-icon-and-text {
+	opacity: 0;
+	height: 120px;
+	align-items: center;
+	transition: 0.1s;
+}
+#ball-icon {
+	margin-top: 12px;
+	width: 60px;
+	height: 54px;
+	background-image: url('/Assets/Icons/ball.svg');
+}
+
+#goal-screen-text {
+	min-width: 20%;
+	height: 40px;
+	color: white;
+	font-size: 24px;
+	-unity-text-align: middle-center;
+	-unity-font-style: bold;
+}
+
+#red-hide {
+	position: absolute;
+	left: 0;
+	right:0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: red;
+	transition: 0.125s ease-out;
+	display: none;
+}
+
+#goal-screen-background {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	background-image: url('/Assets/Resources/UI/bg.png');
+	display: none;
+}
+
+#left-trail, #right-trail {
+	position: absolute;
+	width: 56%;
+	height: 120px;
+	background-color: white;
+	transition: 1s;
+}
+
+#left-trail {
+	
+} 
+
+#right-trail {
+
+}

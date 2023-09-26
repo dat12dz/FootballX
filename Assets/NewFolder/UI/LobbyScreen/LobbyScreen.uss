@@ -1,0 +1,52 @@
+#container {
+	background-color: #999;
+	justify-content: center;
+}
+
+#lobby-screen {
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.lobby-screen-box {
+	width: 40%;
+	flex-direction: column;
+}
+
+.player-info {
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	margin: 8px 0;
+}
+
+.player-avatar {
+	min-width: 40px;
+	min-height: 40px;
+	margin-right: 16px;
+	background-color: red;
+
+}
+
+.player-name {
+	margin: 8px 0;	
+}
+
+#lobby-btn {
+	width: 60%;
+	height: 40px;
+	margin: 24px 0;
+	align-self: center;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+#ready-btn {
+	width: 40%
+}
+
+#start-btn {
+	width: 40%;
+
+}

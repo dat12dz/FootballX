@@ -1,0 +1,160 @@
+* {
+    -unity-font: url(/Assets/NewFolder/Fonts/en_inpin.ttf);
+    -unity-font-definition: initial;
+}
+
+#unity-text-input {
+    padding: 8px 8px;
+    border-width: 4px;
+    border-radius: 20px;
+    border-color: rgb(100, 100, 100);
+}
+
+.unity-button {
+    padding: 8px 12px;
+    margin: 0;
+}
+
+.unity-label {
+    padding: 0;
+    margin: 0;
+    white-space: normal;
+}
+
+
+/* Button */
+.btn-handle {
+    color: white;
+    background-color: black;
+    border-color: rgb(100, 100, 100);
+    border-radius: 20px;
+    border-width: 4px;
+    transition: 0.4s;
+}
+
+.btn-handle:hover {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border-color: rgb(0, 0, 1);
+}
+
+.btn-handle:active {
+    background-color: black;
+    color: white;
+    opacity: 0.9;
+}
+
+.success-btn {
+    color: #000;
+    border-color: rgb(0, 0, 1);
+    background-color: #a0c200;
+}
+
+.warning-btn {
+    color: #000;
+    background-color: #ffcf27;
+}
+
+.error-btn {
+    color: #000;
+    background-color: #b20609;
+}
+
+/* Radio Button */
+RadioButton VisualElement VisualElement {
+    position: relative;
+    padding: 0;
+    border-width: 0;
+    transition: 0.25s;
+}
+
+RadioButton #unity-checkmark {
+    position: absolute;
+    translate: 50% -50%;
+    top: 50%;
+    scale: 0;
+    transition: 0.25s, ease;
+    align-self: stretch;
+}
+
+RadioButton:checked #unity-checkmark {
+    scale: 1;
+}
+
+RadioButton:hover VisualElement .unity-radio-button__checkmark-background {
+    background-color: #ccc;
+}
+
+/* Toggle */
+#Toggle-element {
+    flex-direction: row;
+    align-items: center;
+}
+
+#Toggle-element #Toggle-lable {
+    margin-right: 24px;
+}
+
+#Toggle-element #Toggle {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    background-color: white;
+    border-radius: 4px;
+} 
+
+#Toggle-element #Toggle Label {
+    display: none;
+}
+
+#Toggle-element #Toggle VisualElement {
+    border-width: 0;
+}
+
+ #Toggle-element #Toggle VisualElement #unity-checkmark {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0);
+    transition: 0.4s;
+    transition-timing-function: ease-in-bounce;
+    scale: 0;
+}
+#Toggle-element #Toggle VisualElement:checked #unity-checkmark {
+    scale: 1;
+}
+
+#Toggle-element #Toggle VisualElement:checked #unity-checkmark {
+    background-image: url(/Assets/NewFolder/Icons/Check.svg);
+}
+
+/* Slider */
+Slider Label {  
+    min-width: 80px;
+    color: black;
+    -unity-text-align: middle-left;
+}
+
+Slider:focus Label {
+    color: black;
+}
+
+Slider #unity-tracker {
+    margin: -3px 9px 0;
+    background-color: white;
+    border-width: 0;
+    background-color: #ccc;
+}
+
+Slider #unity-dragger {
+    margin-top: -10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border-width: 4px;
+    border-color: white;
+    background-color: black;
+ }
+
+#unity-dragger-container:focus #unity-dragger {
+    border-color: white;
+}
