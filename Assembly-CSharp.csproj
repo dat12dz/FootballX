@@ -61,11 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansBridgeLink.cs" />
-    <Compile Include="Assets\UI_RoomRenderPnl.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\Script\UI\UI_StartScreenHandler.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\IdleChanger.cs" />
-    <Compile Include="Assets\Ui_ShowPlayerInfoPnl.cs" />
     <Compile Include="Assets\Script\Player\Move.cs" />
     <Compile Include="Assets\Script\Player\ControlKey.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansImporterWindow.cs" />
@@ -98,6 +96,7 @@
     <Compile Include="Assets\Script\Utlis\ThreadHelper.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansPostProcess.cs" />
     <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
+    <Compile Include="Assets\PlayerRoomManagerRpc.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\PlayerEye.cs" />
     <Compile Include="Assets\Script\Utlis\MainThreadDispatcher.cs" />
@@ -121,7 +120,9 @@
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" />
     <Compile Include="Assets\Script\UI\UIHandler.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\Rotator.cs" />
-    <Compile Include="Assets\UI_SelectRoomUI.cs" />
+    <Compile Include="Assets\Script\UI\UI_SelectRoomUI.cs" />
+    <Compile Include="Assets\Script\UI\Ui_ShowPlayerInfoPnl.cs" />
+    <Compile Include="Assets\Script\Networking\NetworkRoom\Room.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\SpringBone.cs" />
     <Compile Include="Assets\YSA Toon\Scripts\MeshFilterNormalsFix.cs" />
     <Compile Include="Assets\RoomRenderAble.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Assets\Script\UI\UI_IngameInformer.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\RandomWind.cs" />
     <Compile Include="Assets\Script\Utlis\SceneHelper.cs" />
+    <Compile Include="Assets\Script\UI\UI_RoomRenderPnl.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansMatertialUtils.cs" />
     <Compile Include="Assets\Script\Player\Grabable.cs" />

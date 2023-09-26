@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 using Unity.Netcode;
 
 
-    internal struct RoomRenderAble : INetworkSerializeByMemcpy
+    public struct RoomRenderAble : INetworkSerializeByMemcpy
     {
-        public static RoomRenderAble ClientRoom;
-        string RoomName;
-        uint RoomId;
+        public RoomRenderAble(uint RoomID)
+        {
+            RoomId = RoomID;
+            RoomName = "";
+        }
+       public string RoomName;
+       public uint RoomId;
     }
 
