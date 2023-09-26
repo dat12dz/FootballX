@@ -60,21 +60,21 @@
     <Analyzer Include="E:\App\Unity\2022.3.3f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\Configuration\NetcodeSettingsProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\Configuration\NetworkPrefabsEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\Configuration\NetworkPrefabProcessor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\Configuration\NetcodeForGameObjectsProjectSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\Configuration\NetcodeForGameObjectsSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\NetworkObjectEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\NetworkManagerHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\HiddenScriptEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\NetworkManagerEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\NetworkBehaviourEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\NetworkTransformEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\Configuration\NetcodeSettingsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\Configuration\NetworkPrefabsEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\Configuration\NetworkPrefabProcessor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\Configuration\NetcodeForGameObjectsProjectSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\Configuration\NetcodeForGameObjectsSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\NetworkObjectEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\NetworkManagerHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\HiddenScriptEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\NetworkManagerEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\NetworkBehaviourEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\NetworkTransformEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.netcode.gameobjects@1.5.2\Editor\com.unity.netcode.editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.netcode.gameobjects@1.6.0\Editor\com.unity.netcode.editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
