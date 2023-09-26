@@ -52,7 +52,7 @@ public partial class Player : NetworkBehaviour
         GetComponent<Move>().enabled = o;
         GetComponent<CharacterController>().enabled = o;
         GetComponent<MeshRenderer>().enabled = o;
-        SendPlayerNameToServerRpc(StartGameInfo.instance.PlayerName);
+
     }
     void Init()
     {
@@ -61,6 +61,8 @@ public partial class Player : NetworkBehaviour
             localPlayer = this;
         }
         Playereyes = GetComponentInChildren<Camera>();
+        if (IsLocalPlayer)
+            SendPlayerNameToServerRpc(StartGameInfo.instance.PlayerName);
     }
     public virtual void SetBallHolder()
     {

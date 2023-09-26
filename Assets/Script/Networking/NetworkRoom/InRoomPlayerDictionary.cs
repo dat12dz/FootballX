@@ -36,8 +36,15 @@ namespace Assets.Script.Networking.NetworkRoom
         public byte? Add(PlayerRoomManager a)
         {
             var slot = FindEmpTyIndex();
+          
             if (slot != null)
             {
+                var kkey = (byte)slot;
+                if (ContainsKey(kkey))
+                {
+                    this[kkey] = a;
+                }
+                else
                 base.Add((byte)slot,a);
             }
             return slot;
@@ -46,7 +53,7 @@ namespace Assets.Script.Networking.NetworkRoom
         {
             for (byte i = 0; i < 10; i++)
             {
-                if (ContainsKey(i))
+                if (ContainsKey(i) && this[i] != null)
                 {
                     continue;
                 }

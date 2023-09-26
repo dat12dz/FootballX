@@ -83,6 +83,7 @@
     <Compile Include="Assets\Script\Networking\NetworkClient.cs" />
     <Compile Include="Assets\Script\Utlis\PostProcessingHelper.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansUtilities.cs" />
+    <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManager.cs" />
     <Compile Include="Assets\Script\Utlis\AutoFindNextDictionary.cs" />
     <Compile Include="Assets\Script\Utlis\MathHelper.cs" />
     <Compile Include="Assets\Script\UI\MessageBox.cs" />
@@ -95,8 +96,8 @@
     <Compile Include="Assets\Script\Player\PlayerRpc.cs" />
     <Compile Include="Assets\Script\Utlis\ThreadHelper.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansPostProcess.cs" />
+    <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManagerRpc.cs" />
     <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
-    <Compile Include="Assets\PlayerRoomManagerRpc.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\PlayerEye.cs" />
     <Compile Include="Assets\Script\Utlis\MainThreadDispatcher.cs" />
@@ -109,10 +110,10 @@
     <Compile Include="Assets\Script\Utlis\CheckNullProp\CheckNullPropoeritesGameObject.cs" />
     <Compile Include="Assets\Script\GameSystem\GameSystem.cs" />
     <Compile Include="Assets\Script\Utlis\SerializationHelper.cs" />
-    <Compile Include="Assets\PlayerRoomManager.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansTextureProcessor.cs" />
     <Compile Include="Assets\Script\GameSystem\MatchSystem.cs" />
     <Compile Include="Assets\Script\Networking\CustomMessage\CustomMessageHandler.cs" />
+    <Compile Include="Assets\Script\Networking\NetworkRoom\RoomRenderAble.cs" />
     <Compile Include="Assets\Script\Networking\PlayerNetworkTransform.cs" />
     <Compile Include="Assets\Script\Ball.cs" />
     <Compile Include="Assets\Script\Utlis\CheckNullProp\CheckNullPropertiesAttribute.cs" />
@@ -125,7 +126,6 @@
     <Compile Include="Assets\Script\Networking\NetworkRoom\Room.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\SpringBone.cs" />
     <Compile Include="Assets\YSA Toon\Scripts\MeshFilterNormalsFix.cs" />
-    <Compile Include="Assets\RoomRenderAble.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansDecalTools.cs" />
     <Compile Include="Assets\Script\Utlis\SocketHelper.cs" />
