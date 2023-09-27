@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class Room
@@ -15,6 +16,7 @@ public class Room
     /// Danh sách các phòng có mặt trong game
     /// </summary>
     public static AutoFindNextDictionary<Room> RoomDict = new AutoFindNextDictionary<Room>();
+  
     public static Room GetRoom(uint RoomID)
     {
       return RoomDict[RoomID];
@@ -24,7 +26,7 @@ public class Room
     // Room ID của room này
     public uint RoomID;
     Scene physicScene;
-    public Queue<PlayerRoomManager> OwnerQueue = new Queue<PlayerRoomManager>();
+    public SortedList<long, PlayerRoomManager> JoinedTimeList = new SortedList<long, PlayerRoomManager>();
     public Room(PlayerRoomManager RoomOwner)
     {
         // Thêm phòng
@@ -44,7 +46,10 @@ public class Room
         // Nếu có slot
         if (slot != null)
         {
-         
+            // Set thời gian người chơi tham gia
+            player.joinedTime = DateTime.Now;
+            JoinedTimeList.Add(DateTime.Now.Ticks, player);
+            // Set thông tin người chơi
             player.RoomID.Value = RoomID;
             player.SlotInRoom.Value = (byte)slot;
         }
@@ -59,17 +64,31 @@ public class Room
             Logging.LogError("Đã có người ngồi chỗ này");
             return;
         }
+        // Đặt người chơi vào vị trí mới
         var temp = playerDict.RemoveOut(oldslot);
         playerDict.Add(newslot, temp);
         temp.SlotInRoom.Value = newslot;
     }
     public PlayerRoomManager RemovePlayer(byte slot)
     {
-
+        // Xóa người chơi khỏi danh sách và lấy người chơi bị xóa
         var PlayerNeedRemove = playerDict.RemoveOut(slot);
+        // Xóa người chơi khỏi danh sách chờ làm trưởng phòng
+        JoinedTimeList.Remove(PlayerNeedRemove.joinedTime.Ticks);
+        // Nếu người chơi bị xóa là trưởng phòng nhường trưởng phòng cho người chơi khác
+        if (PlayerNeedRemove.isHeader.Value)
+        {
+            var newOwner = JoinedTimeList.First().Value;  
+            if (newOwner != null)
+            SetNewOwner(newOwner.SlotInRoom.Value);
+        }
+        // Set tất cả về giá trị mặc định
         PlayerNeedRemove.RoomID.Value = 0;
-        PlayerNeedRemove.SlotInRoom.Value = 0;
+        PlayerNeedRemove.SlotInRoom.Value = PlayerRoomManager.PLAYER_OUTSIDE_ROOM;
         PlayerNeedRemove.isHeader.Value = false;
+        PlayerNeedRemove.joinedTime = default;
+
+        // Nếu trong phòng kkhoong còn ai -> Xóa phòng
         if (playerDict.Count == 0)
         {
             DeleteRoom();
@@ -83,6 +102,7 @@ public class Room
     }
     public void SetNewOwner(byte slot)
     {
+
         if (playerDict.ContainsKey(slot))
         {
             var newOwner = playerDict[slot];

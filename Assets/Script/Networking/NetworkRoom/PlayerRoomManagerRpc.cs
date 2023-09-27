@@ -7,6 +7,7 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void CreateRoomServerRpc(ServerRpcParams @params = default)
     {
+
         // Lấy client id của người gửi
         ulong clientid = NetworkkHelper.GetClientIdFrom(@params);
         // tạo phòng
@@ -32,7 +33,6 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void JoinRoomServerRpc(uint roomID)
     {
-
         Room roomNeedAdd;
         var res = Room.RoomDict.TryGetValue(roomID, out roomNeedAdd);
         if (res)
@@ -51,6 +51,7 @@ public partial class PlayerRoomManager
     {
         UI_RoomRenderPnl.instance.init(renderable);
         Logging.Log("Đã join thành công");
+        onSlotChange(0, 0);
     }
     [ServerRpc]
     public void LeaveRoomServerRpc()
