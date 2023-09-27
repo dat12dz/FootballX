@@ -28,21 +28,18 @@ public class LobbyScreen : MonoBehaviour
     }
 
     static void CreateEmptyPlayer()
-    { 
+    {
+
     }
 
     static void CreatePlayer()
     {
-        playerAvatar.AddToClassList("player-avatar");
-        playerName.AddToClassList("player-name");
-        player.Add(playerAvatar);
-        player.Add(playerName);
-        player.AddToClassList("player-info");
+        
     }
 
     static void CreateOwnerPlayer()
     {
-
+        
     }
 
     public static void Show()
