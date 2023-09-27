@@ -204,6 +204,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\NewFolder\UI\Common.uss" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\NewFolder\UI\LobbyScreen\PlayerCard.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\OccaSoftware\Crosshairs\Readme.txt" />
     <None Include="Assets\NewFolder\UI\GoalScreen\GoalScreen.uxml" />

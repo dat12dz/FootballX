@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="PlayerCard" src="project://database/Assets/NewFolder/UI/LobbyScreen/PlayerCard.uxml?fileID=9197481963319205126&amp;guid=7c94420817823f54b976d9c88fe60bfa&amp;type=3#PlayerCard" />
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
     <Style src="project://database/Assets/NewFolder/UI/LobbyScreen/LobbyScreen.uss?fileID=7433441132597879392&amp;guid=97d8ed0c8e569e6479b75d649a70800b&amp;type=3#LobbyScreen" />
     <ui:VisualElement name="container" style="flex-grow: 1;">
@@ -15,28 +16,10 @@
         </ui:VisualElement>
         <ui:VisualElement name="middle-screen">
             <ui:VisualElement name="red-team" class="lobby-screen-box">
-                <ui:VisualElement class="player-info red-team">
-                    <ui:VisualElement name="player-avatar-6" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player6" display-tooltip-when-elided="true" name="player-name-6" class="player-name" />
-                </ui:VisualElement>
-                <ui:VisualElement class="player-info red-team">
-                    <ui:VisualElement name="player-avatar-7" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player7" display-tooltip-when-elided="true" name="player-name-7" class="player-name" />
-                </ui:VisualElement>
-                <ui:VisualElement class="player-info red-team">
-                    <ui:VisualElement name="player-avatar-8" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player8" display-tooltip-when-elided="true" name="player-name-8" class="player-name" />
-                </ui:VisualElement>
-                <ui:VisualElement class="player-info red-team">
-                    <ui:VisualElement name="player-avatar-9" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player9" display-tooltip-when-elided="true" name="player-name-9" class="player-name" />
-                    <ui:VisualElement class="swap-btn" />
-                </ui:VisualElement>
-                <ui:VisualElement class="player-empty">
-                    <ui:VisualElement class="player-empty-bg" style="-unity-background-image-tint-color: rgb(255, 0, 0);" />
-                </ui:VisualElement>
+                <ui:Instance template="PlayerCard" name="PlayerCard" class="red-team player-info" />
+                <ui:Instance template="PlayerCard" name="PlayerCard" class="red-team player-info" />
             </ui:VisualElement>
-            <ui:Label tabindex="-1" text="VS" display-tooltip-when-elided="true" name="vs" style="margin-top: 24px; margin-bottom: 24px; font-size: 24px; -unity-font-style: bold-and-italic;" />
+            <ui:Label tabindex="-1" text="VS" display-tooltip-when-elided="true" name="vs" style="margin-top: 24px; margin-bottom: 24px; font-size: 24px; -unity-font-style: italic;" />
             <ui:VisualElement name="blue-team" class="lobby-screen-box">
                 <ui:VisualElement class="player-info blue-team">
                     <ui:VisualElement name="player-avatar-6" class="player-avatar" />
