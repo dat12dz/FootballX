@@ -1,52 +1,134 @@
 #container {
-	background-color: #999;
-	justify-content: center;
+    background-color: rgb(153, 153, 153);
+    justify-content: center;
+    background-color: white;
 }
 
-#lobby-screen {
-	width: 100%;
-	flex-direction: row;
-	justify-content: space-around;
+#top-lobby {
+    position: absolute;
+    top: 2%;
+    width: 90%;
+    align-self: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.lobby-screen-box {
-	width: 40%;
-	flex-direction: column;
+#top-left-lobby {
 }
 
-.player-info {
-	flex-direction: row;
-	align-items: center;
-	width: 100%;
-	margin: 8px 0;
+#room-name {
 }
 
-.player-avatar {
-	min-width: 40px;
-	min-height: 40px;
-	margin-right: 16px;
-	background-color: red;
-
+#top-right-lobby {
+    flex-direction: row-reverse;
+    align-items: center;
 }
 
-.player-name {
-	margin: 8px 0;	
+#room-id {
+    margin-right: 36px;
 }
 
-#lobby-btn {
-	width: 60%;
-	height: 40px;
-	margin: 24px 0;
-	align-self: center;
-	justify-content: space-between;
-	flex-direction: row;
+#exit-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
+    border-width: 2px;
+    border-color: black;
+    padding: 4px;
 }
 
-#ready-btn {
-	width: 40%
+#exit-bg {
+    background-image: url(/Assets/NewFolder/Icons/redXMark.svg);
+}
+
+#middle-screen {
+    width: 100%;
+    align-items: center;
+}
+
+#bottom-lobby {
+    position: absolute;
+    bottom: 2%;
+    width: 90%;
+    align-self: center;
+    align-items: center;
 }
 
 #start-btn {
-	width: 40%;
+    width: 30%;
+    padding: 12px 0;
+    font-size: 20px;
+}
 
+.lobby-screen-box {
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.player-info {
+    align-items: center;
+    width: 16%;
+    border-radius: 6%;
+    padding: 36px 0;
+}
+    /* Player Empty */
+    .player-empty {
+        align-items: center;
+        width: 16%;
+        border-width: 4px;
+        border-color: red;
+        border-radius: 6%;
+        padding: 36px 0;
+    }
+
+    .player-empty-bg {
+        padding: 12px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        scale: 0.6;
+        background-image: url(/Assets/NewFolder/Icons/plus.svg)
+    }
+
+    /* Player */
+    .player-avatar {
+        width: 60px;
+        height: 60px;
+        border-width: 4px;
+        border-color: white;
+        border-radius: 50%;
+    }
+
+    .player-name {
+        margin-top: 16px;
+        color: white;
+    }
+
+    /* Swap btn */
+    .swap-btn {
+        position: absolute;
+        bottom: 2%;
+        width: 30px;
+        height: 30px;
+        -unity-background-image-tint-color: white;
+        background-image: url(/Assets/NewFolder/Icons/swap.svg);
+    }
+
+
+.red-team {
+    background-color: red;
+}
+
+.blue-team {
+    background-color: rgb(0, 162, 232);
+}
+
+.owner {
+    position: absolute;
+    bottom: 4%;
+    width: 20px;
+    height: 20px;
+    background-image: none;
 }

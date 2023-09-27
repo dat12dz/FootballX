@@ -1,56 +1,67 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
     <Style src="project://database/Assets/NewFolder/UI/LobbyScreen/LobbyScreen.uss?fileID=7433441132597879392&amp;guid=97d8ed0c8e569e6479b75d649a70800b&amp;type=3#LobbyScreen" />
-    <ui:VisualElement name="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-        <ui:VisualElement name="lobby-screen">
-            <ui:VisualElement class="lobby-screen-box">
-                <ui:VisualElement class="player-info">
-                    <ui:VisualElement name="player-avatar-1" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player1" display-tooltip-when-elided="true" name="player-name-1" class="player-name" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:VisualElement name="top-lobby">
+            <ui:VisualElement name="top-left-lobby">
+                <ui:Label tabindex="-1" text="Tên phòng: " display-tooltip-when-elided="true" name="room-name" />
+            </ui:VisualElement>
+            <ui:VisualElement name="top-right-lobby">
+                <ui:VisualElement name="exit-btn">
+                    <ui:VisualElement name="exit-bg" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
                 </ui:VisualElement>
-                <ui:VisualElement name="VisualElement" class="player-info">
-                    <ui:VisualElement name="player-avatar-2" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player2" display-tooltip-when-elided="true" name="player-name-2" class="player-name" />
+                <ui:Label tabindex="-1" text="Id: " display-tooltip-when-elided="true" name="room-id" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="middle-screen">
+            <ui:VisualElement name="red-team" class="lobby-screen-box">
+                <ui:VisualElement class="player-info red-team">
+                    <ui:VisualElement name="player-avatar-6" class="player-avatar" />
+                    <ui:Label tabindex="-1" text="Player6" display-tooltip-when-elided="true" name="player-name-6" class="player-name" />
                 </ui:VisualElement>
-                <ui:VisualElement class="player-info">
-                    <ui:VisualElement name="player-avatar-3" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player3" display-tooltip-when-elided="true" name="player-name-3" class="player-name" />
+                <ui:VisualElement class="player-info red-team">
+                    <ui:VisualElement name="player-avatar-7" class="player-avatar" />
+                    <ui:Label tabindex="-1" text="Player7" display-tooltip-when-elided="true" name="player-name-7" class="player-name" />
                 </ui:VisualElement>
-                <ui:VisualElement class="player-info">
-                    <ui:VisualElement name="player-avatar-4" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player4" display-tooltip-when-elided="true" name="player-name-4" class="player-name" />
+                <ui:VisualElement class="player-info red-team">
+                    <ui:VisualElement name="player-avatar-8" class="player-avatar" />
+                    <ui:Label tabindex="-1" text="Player8" display-tooltip-when-elided="true" name="player-name-8" class="player-name" />
                 </ui:VisualElement>
-                <ui:VisualElement class="player-info">
-                    <ui:VisualElement name="player-avatar-5" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player5" display-tooltip-when-elided="true" name="player-name-5" class="player-name" />
+                <ui:VisualElement class="player-info red-team">
+                    <ui:VisualElement name="player-avatar-9" class="player-avatar" />
+                    <ui:Label tabindex="-1" text="Player9" display-tooltip-when-elided="true" name="player-name-9" class="player-name" />
+                    <ui:VisualElement class="swap-btn" />
+                </ui:VisualElement>
+                <ui:VisualElement class="player-empty">
+                    <ui:VisualElement class="player-empty-bg" style="-unity-background-image-tint-color: rgb(255, 0, 0);" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement class="lobby-screen-box">
-                <ui:VisualElement class="player-info">
+            <ui:Label tabindex="-1" text="VS" display-tooltip-when-elided="true" name="vs" style="margin-top: 24px; margin-bottom: 24px; font-size: 24px; -unity-font-style: bold-and-italic;" />
+            <ui:VisualElement name="blue-team" class="lobby-screen-box">
+                <ui:VisualElement class="player-info blue-team">
                     <ui:VisualElement name="player-avatar-6" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player1" display-tooltip-when-elided="true" name="player-name-6" class="player-name" />
+                    <ui:Label tabindex="-1" text="Player6" display-tooltip-when-elided="true" name="player-name-6" class="player-name" />
                 </ui:VisualElement>
-                <ui:VisualElement name="VisualElement" class="player-info">
+                <ui:VisualElement class="player-info blue-team">
                     <ui:VisualElement name="player-avatar-7" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player2" display-tooltip-when-elided="true" name="player-name-7" class="player-name" />
+                    <ui:Label tabindex="-1" text="Player7" display-tooltip-when-elided="true" name="player-name-7" class="player-name" />
                 </ui:VisualElement>
-                <ui:VisualElement name="VisualElement" class="player-info">
+                <ui:VisualElement class="player-info blue-team">
                     <ui:VisualElement name="player-avatar-8" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player3" display-tooltip-when-elided="true" name="player-name-8" class="player-name" />
+                    <ui:Label tabindex="-1" text="Player8" display-tooltip-when-elided="true" name="player-name-8" class="player-name" />
                 </ui:VisualElement>
-                <ui:VisualElement class="player-info">
+                <ui:VisualElement class="player-info blue-team">
                     <ui:VisualElement name="player-avatar-9" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player4" display-tooltip-when-elided="true" name="player-name-9" class="player-name" />
+                    <ui:Label tabindex="-1" text="Player9" display-tooltip-when-elided="true" name="player-name-9" class="player-name" />
                 </ui:VisualElement>
-                <ui:VisualElement class="player-info">
+                <ui:VisualElement class="player-info blue-team">
                     <ui:VisualElement name="player-avatar-10" class="player-avatar" />
-                    <ui:Label tabindex="-1" text="Player5" display-tooltip-when-elided="true" name="player-name-10" class="player-name" />
+                    <ui:Label tabindex="-1" text="Player10" display-tooltip-when-elided="true" name="player-name-10" class="player-name" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="lobby-btn">
-            <ui:Button text="Ready" display-tooltip-when-elided="true" name="ready-btn" class="btn-handle" />
-            <ui:Button text="Start" display-tooltip-when-elided="true" name="start-btn" class="btn-handle" />
+        <ui:VisualElement name="bottom-lobby">
+            <ui:Button text="START" display-tooltip-when-elided="true" name="start-btn" class="btn-handle" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -2040,7 +2040,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1832872783}
-  - component: {fileID: 1832872784}
   m_Layer: 0
   m_Name: StartGameInfo
   m_TagString: Untagged

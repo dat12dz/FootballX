@@ -95,7 +95,9 @@
     <Compile Include="Assets\Script\Networking\NetworkClient.cs" />
     <Compile Include="Assets\Script\Utlis\PostProcessingHelper.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansUtilities.cs" />
+    <Compile Include="Assets\NewFolder\Scripts\UI\LobbyScreen.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManager.cs" />
+    <Compile Include="Assets\NewFolder\Scripts\UI\UIManage.cs" />
     <Compile Include="Assets\Script\Utlis\AutoFindNextDictionary.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Script\Utlis\MathHelper.cs" />
@@ -118,7 +120,12 @@
     <Compile Include="Assets\Script\Utlis\MainThreadDispatcher.cs" />
     <Compile Include="Assets\Script\Utlis\TrackingDictonary.cs" />
     <Compile Include="Assets\Script\Player\PlayerFoot.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\StartGameInfo.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\InRoomPlayerDictionary.cs" />
     <Compile Include="Assets\Script\GameSystem\MatchPhase.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\IKCtrlRightHand.cs" />
@@ -130,6 +137,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Script\Networking\CustomMessage\CustomMessageHandler.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\RoomRenderAble.cs" />
     <Compile Include="Assets\Script\Networking\PlayerNetworkTransform.cs" />
     <Compile Include="Assets\Script\Ball.cs" />
@@ -145,6 +153,7 @@
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\Rotator.cs" />
     <Compile Include="Assets\Script\UI\UI_SelectRoomUI.cs" />
     <Compile Include="Assets\Script\UI\Ui_ShowPlayerInfoPnl.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\Room.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\SpringBone.cs" />
     <Compile Include="Assets\YSA Toon\Scripts\MeshFilterNormalsFix.cs" />
