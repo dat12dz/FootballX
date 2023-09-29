@@ -214,6 +214,7 @@
     <None Include="Assets\NewFolder\UITemplate\Button-element.uxml" />
     <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Script\HLSL\Blur.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\YSA Toon\Shaders\Outline Shader\CameraFixMultiplier.hlsl" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uss" />
