@@ -83,6 +83,7 @@
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansImporter.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\SpringCollider.cs" />
     <Compile Include="Assets\Script\Networking\test.cs" />
+    <Compile Include="Assets\Script\Networking\NetworkRoom\SlotSwapRequest.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Script\GameSystem\BasicPhase.cs" />

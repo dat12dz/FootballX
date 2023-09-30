@@ -1,6 +1,10 @@
 ﻿using Assets.Script.Utlis.CheckNullProp;
 using Assets.Utlis;
 using JetBrains.Annotations;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Unity.Collections;
 using Unity.Netcode;
 public partial class PlayerRoomManager
 {
@@ -134,6 +138,37 @@ public partial class PlayerRoomManager
     {
         if (!isHeader.Value)
         isReady.Value = !isReady.Value;
+    }
+    CancellationTokenSource[] SwapSlotRequests = new CancellationTokenSource[10];
+    [ServerRpc] public void SendSwapRequestServerRpc(byte slot)
+    {
+        var RoomPlayerIn = Room.GetRoom(RoomID.Value);
+        try
+        {
+            var SwapClient = RoomPlayerIn.playerDict[slot];
+            var SwapClientID = SwapClient.OwnerClientId;
+            var ClientnetRpc =  NetworkkHelper.CreateRpcTo(SwapClientID);
+           /* SwapClient.SwapSlotRequests[]
+            Task.Delay(SwapRequestTimeout).ContinueWith((t) => { 
+                if (t.IsCanceled)
+                {
+                    // đổi chỗ thành công;
+                }
+            });
+            SendSwapRequestToClientRpc(fromWho: SlotInRoom.Value,to: ClientnetRpc);*/
+        }
+        catch (KeyNotFoundException)
+        {
+            Logging.Log("Không tìm thấy người chơi");
+        }
+    }
+    [ClientRpc] void SendSwapRequestToClientRpc(byte fromWho,uint cancelID,ClientRpcParams to)
+    {
+        
+    }
+    [ServerRpc] public void SendAcceptSwapRequestServerRpc()
+    {
+        
     }
 }
 

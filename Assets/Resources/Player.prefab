@@ -417,6 +417,42 @@ MonoBehaviour:
   Toggle: {fileID: 1318876011583078747}
   isInGame:
     m_InternalValue: 0
+  PlayerName:
+    m_InternalValue:
+      utf8LengthInBytes: 0
+      bytes:
+        offset0000:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        byte0016: 0
+        byte0017: 0
+        byte0018: 0
+        byte0019: 0
+        byte0020: 0
+        byte0021: 0
+        byte0022: 0
+        byte0023: 0
+        byte0024: 0
+        byte0025: 0
+        byte0026: 0
+        byte0027: 0
+        byte0028: 0
+        byte0029: 0
+  SpawnPoint: {fileID: 0}
   lookatMask:
     serializedVersion: 2
     m_Bits: 64
@@ -448,11 +484,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3038bc99a258294f872599f6e3e9adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisPlayer: {fileID: 0}
+  pnl_PlayerInfoPanel: {fileID: 0}
   RoomID:
     m_InternalValue: 0
   SlotInRoom:
     m_InternalValue: 0
   isHeader:
+    m_InternalValue: 0
+  isReady:
     m_InternalValue: 0
 --- !u!1 &4943987335277220363
 GameObject:
@@ -551,6 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbf74fa61bcc5a46a382ff6e9014d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisPlayer: {fileID: -7314348274738732783}
 --- !u!1 &6735907644299804350
 GameObject:
   m_ObjectHideFlags: 0

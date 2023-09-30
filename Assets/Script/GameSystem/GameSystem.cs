@@ -30,7 +30,7 @@ public class GameSystem : NetworkBehaviour
     int Time_;
     public AutoFindNextDictionary<GameSystem> GameSystemList = new AutoFindNextDictionary<GameSystem>();
     public uint GameID;
-    Room room;
+    public Room room;
     static int MatchTimeSpeed;
     int time { 
         get { return Time_; }
@@ -42,7 +42,8 @@ public class GameSystem : NetworkBehaviour
     }
     //input: Redteam, BlueTeam , Team;
     public Action<int,int, Team> OnScoreChange;
-
+    PhysicsScene ps;
+    DrawSpawnPoint[] spawnPoint;
    public int ScoreBlueTeam
     {
         get { return ScoreBlueTeam_; }
@@ -71,11 +72,16 @@ public class GameSystem : NetworkBehaviour
     }    int ScoreRedTeam_;
     public void Init(Room room_)
     {
+        ps = gameObject.scene.GetPhysicsScene();
+        spawnPoint = GetComponentsInChildren<DrawSpawnPoint>();
         room = room_;
+        byte counter = 0;
         foreach (var player in room.playerDict.Values)
         {
             SceneManager.MoveGameObjectToScene(player.gameObject, gameObject.scene);
             player.thisPlayer.isInGame.Value = true;
+            player.transform.position = spawnPoint[counter].transform.position;
+            counter++;
         }
     }
     void Start()
@@ -176,5 +182,9 @@ public class GameSystem : NetworkBehaviour
     {
        
     }
-    
+    private void FixedUpdate()
+    {
+        ps.Simulate(Time.fixedDeltaTime);
+    }
+
 }

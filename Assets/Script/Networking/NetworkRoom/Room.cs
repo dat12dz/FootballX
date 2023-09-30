@@ -118,7 +118,27 @@ public class Room
     public void StartGame()
     {
         var LoadGame = SceneManager.LoadScene(2, new LoadSceneParameters(LoadSceneMode.Additive, LocalPhysicsMode.Physics3D));
+        SceneManager.sceneLoaded += (scene, loadmoded) =>
+        {
+            if (scene == LoadGame)
+            {
+                var RootGameObj =  LoadGame.GetRootGameObjects();
+                try
+                {
+                    GameSystem loadedGameSystem = RootGameObj[0].GetComponent<GameSystem>();
+                    loadedGameSystem.Init(this);
+                }
+                catch (Exception e) 
+                {
+                    Logging.LogError("Không thể tìm thấy Game system của scene,hãy chắc chắn là game system đang ở vị trí đầu tiên của GameScene");
+                }
+            }
+        };
 
+    }
+    public void OnGameStartedCallback()
+    {
+       
     }
 
 }

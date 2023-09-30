@@ -25,9 +25,9 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
       //  CheckNullOrNot();
-        if (NetworkManager.Singleton.IsServer || !NetworkManager.Singleton.IsHost)
+        if (NetworkManager.Singleton.IsServer && !NetworkManager.Singleton.IsHost)
         {
-          Destroy(gameObject);  
+            Destroy(gameObject);  
         }
         Instance = this;    
         GameSystem game = GameSystem.instance;
