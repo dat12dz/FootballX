@@ -1302,8 +1302,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1709602190}
-  - component: {fileID: 1709602192}
   - component: {fileID: 1709602191}
+  - component: {fileID: 1709602192}
   m_Layer: 0
   m_Name: NETWORKSYSTEM
   m_TagString: Untagged
@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_HeartbeatTimeoutMS: 500
   m_ConnectTimeoutMS: 1000
   m_MaxConnectAttempts: 60
-  m_DisconnectTimeoutMS: 30000
+  m_DisconnectTimeoutMS: 60000
   ConnectionData:
     Address: 127.0.0.1
     Port: 7777
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709602189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
+  m_Script: {fileID: 11500000, guid: f68bd4bf004622347852254c133e109d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkConfig:
@@ -1375,8 +1375,8 @@ MonoBehaviour:
     Prefabs:
       NetworkPrefabsLists: []
     TickRate: 60
-    ClientConnectionBufferTimeout: 60
-    ConnectionApproval: 1
+    ClientConnectionBufferTimeout: 10
+    ConnectionApproval: 0
     ConnectionData: 
     EnableTimeResync: 0
     TimeResyncInterval: 30
@@ -1391,7 +1391,7 @@ MonoBehaviour:
     EnableNetworkLogs: 1
     OldPrefabList: []
   RunInBackground: 1
-  LogLevel: 1
+  LogLevel: 0
 --- !u!1 &1724610640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,6 +2027,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1832872783}
+  - component: {fileID: 1832872784}
   m_Layer: 0
   m_Name: StartGameInfo
   m_TagString: Untagged

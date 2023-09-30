@@ -14,15 +14,16 @@ namespace Assets.Script.UI
 {
     static class NetworkServer
     {
-
+        
         public static void StartServer()
         {
             NetworkManager netmang = NetworkManager.Singleton;
             //netmang.SceneManager.LoadScene("GameScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
             if (netmang.ConnectionApprovalCallback == null )
             netmang.ConnectionApprovalCallback += ApprovalCheck;
-            SceneManager.LoadScene(1);
-            SceneManager.LoadScene(2, LoadSceneMode.Additive);
+            netmang.SceneManager.LoadScene("RoomScene",LoadSceneMode.Single);
+            netmang.SceneManager.ActiveSceneSynchronizationEnabled = false;
+
         }
  
 

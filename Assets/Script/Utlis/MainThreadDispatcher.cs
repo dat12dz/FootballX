@@ -7,6 +7,7 @@ using Assets.Utlis;
 using Assets.Script.Utlis;
 using System.Collections.Concurrent;
 using Unity.VisualScripting;
+using Unity.Netcode;
 
 public class MainThreadDispatcher : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class MainThreadDispatcher : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
+        
     }
 
     private void Update()

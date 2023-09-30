@@ -36,7 +36,6 @@ public class UI_StartScreenHandler : MonoBehaviour
 
                   
                        if (netmang.StartServer())
-              
                   NetworkServer.StartServer();
             } 
                 

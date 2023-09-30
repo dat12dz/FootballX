@@ -7,16 +7,22 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void CreateRoomServerRpc(ServerRpcParams @params = default)
     {
-
-        // Lấy client id của người gửi
-        ulong clientid = NetworkkHelper.GetClientIdFrom(@params);
-        // tạo phòng
-        Room r = new Room(this);
-        // lấy người gửi
-        var netParam = NetworkkHelper.CreateRpcTo(clientid);
-        // trả lại cho người gửi
-        var renderable = new RoomRenderAble(r.RoomID);
-        OnCreateRoomCompleteClientRpc(renderable,netParam);
+        if (RoomID.Value == 0)
+        {
+            // Lấy client id của người gửi
+            ulong clientid = NetworkkHelper.GetClientIdFrom(@params);
+            // tạo phòng
+            Room r = new Room(this);
+            // lấy người gửi
+            var netParam = NetworkkHelper.CreateRpcTo(clientid);
+            // trả lại cho người gửi
+            var renderable = new RoomRenderAble(r.RoomID);
+            OnCreateRoomCompleteClientRpc(renderable, netParam);
+        }
+        else
+        {
+            Logging.Log(thisPlayer.PlayerName + ":Đang ở trong phòng không thể tạo thêm phòng");
+        }
     }
     [ClientRpc]
     public void OnCreateRoomCompleteClientRpc(RoomRenderAble renderable, ClientRpcParams @params = default)
@@ -114,6 +120,20 @@ public partial class PlayerRoomManager
         {
             Logging.LogError("Không phải trưởng phòng ko thể thực hiện lệnh nhường trưởng phòng");
         }
+    }
+    [ServerRpc] public void StartGameServerRpc()
+    {
+        // Nếu là trưởng phòng thì mới có quyền chạy tiếp
+        if (isHeader.Value)
+        {
+            var RoomPlayerIn = Room.GetRoom(RoomID.Value);
+            RoomPlayerIn.StartGame();
+        }
+    }
+    [ServerRpc] public void ToggleReadyServerRpc()
+    {
+        if (!isHeader.Value)
+        isReady.Value = !isReady.Value;
     }
 }
 

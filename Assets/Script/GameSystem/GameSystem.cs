@@ -5,18 +5,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [CheckNullProperties]
-public class GameSystem : MonoBehaviour
+public class GameSystem : NetworkBehaviour
 {
-
+    
     [SerializeField] Volume PostProcessing;
-    public static Action OnStartGameSystem;
+    public static Action<uint> OnStartGameSystem;
   public enum Team
     {
         NULL,
@@ -27,6 +28,9 @@ public class GameSystem : MonoBehaviour
     public static GameSystem instance;
     public Action<int> OnTimeChange;
     int Time_;
+    public AutoFindNextDictionary<GameSystem> GameSystemList = new AutoFindNextDictionary<GameSystem>();
+    public uint GameID;
+    Room room;
     static int MatchTimeSpeed;
     int time { 
         get { return Time_; }
@@ -65,13 +69,21 @@ public class GameSystem : MonoBehaviour
             ScoreRedTeam_ = value;
         }
     }    int ScoreRedTeam_;
-
+    public void Init(Room room_)
+    {
+        room = room_;
+        foreach (var player in room.playerDict.Values)
+        {
+            SceneManager.MoveGameObjectToScene(player.gameObject, gameObject.scene);
+            player.thisPlayer.isInGame.Value = true;
+        }
+    }
     void Start()
     {
-        if (OnStartGameSystem != null) OnStartGameSystem();
+        GameID = GameSystemList.Add(this);
+        if (OnStartGameSystem != null) OnStartGameSystem(GameID);
         InitPhasetest();
         instance = this;
-
         ThreadHelper.SafeThreadCall(() =>
         {
             while (true)
@@ -81,7 +93,6 @@ public class GameSystem : MonoBehaviour
             }
         });
         
-       
         // Start game phase thread
       ThreadHelper.SafeThreadCall(() =>
         {
@@ -125,6 +136,15 @@ public class GameSystem : MonoBehaviour
         });
 
         OnScoreChange += PauseWhenGoal;
+    }
+    private void OnDisable()
+    {
+        GameSystemList.Remove(GameID);
+
+    }
+    private void OnDestroy()
+    {
+        GameSystemList.Remove(GameID);
     }
     void PauseWhenGoal(int red, int blue, Team t)
     {

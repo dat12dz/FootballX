@@ -30,9 +30,9 @@ public partial class Player : NetworkBehaviour
     float FiinalThrowForce ;
     [Header("ETC")]
     [SerializeField] GameObject Toggle;
-    [SerializeField] NetworkVariable<bool> isInGame;
+    [SerializeField] public NetworkVariable<bool> isInGame;
     public NetworkVariable<FixedString32Bytes> PlayerName;
-
+    public Transform SpawnPoint;
     public override void OnNetworkSpawn()
     {
         isInGame.OnValueChanged += (pev, new_) =>
@@ -43,6 +43,7 @@ public partial class Player : NetworkBehaviour
     }
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         TogglePoolObj(false);
         Init();
     }
