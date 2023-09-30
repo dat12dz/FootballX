@@ -1,7 +1,27 @@
 #container {
     background-color: rgb(153, 153, 153);
     justify-content: center;
+}
+
+#background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: 1s;
     background-color: white;
+    background-image: url('project://database/Assets/NewFolder/Resources/UI/background/lobby.png?fileID=2800000&guid=a696a985ea393c043a53dbc6c07e053f&type=3#lobby');
+    -unity-background-image-tint-color: rgba(255,255,255,0.12);
+}
+
+#lobby-screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
 }
 
 #top-lobby {
@@ -36,11 +56,12 @@
     border-radius: 20%;
     border-width: 2px;
     border-color: black;
-    padding: 4px;
+    padding: 8px;
 }
 
 #exit-bg {
-    background-image: url(/Assets/NewFolder/Icons/redXMark.svg);
+    -unity-background-image-tint-color: red;
+    background-image: url('project://database/Assets/NewFolder/Icons/xMark.svg?fileID=7388822144124034973&guid=56863b2bd0363e74cb1aff79b757d76c&type=3#xMark');
 }
 
 #middle-screen {
@@ -52,71 +73,41 @@
     position: absolute;
     bottom: 2%;
     width: 90%;
+    flex-direction: row;
     align-self: center;
-    align-items: center;
+    justify-content: center;
 }
 
-#start-btn {
-    width: 30%;
+#start-btn, #ready-btn {
+    min-width: 200px;
     padding: 12px 0;
+    margin: 0 36px;
     font-size: 20px;
 }
 
 .lobby-screen-box {
     width: 90%;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-.player-info {
+.player-red-border, .player-blue-border {
+    justify-content: center;
     align-items: center;
-    width: 16%;
+    min-width: 160px;
+    border-width: 4px;
     border-radius: 6%;
     padding: 36px 0;
+    margin: 0 36px;
 }
-    /* Player Empty */
-    .player-empty {
-        align-items: center;
-        width: 16%;
-        border-width: 4px;
-        border-color: red;
-        border-radius: 6%;
-        padding: 36px 0;
-    }
 
-    .player-empty-bg {
-        padding: 12px;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        scale: 0.6;
-        background-image: url(/Assets/NewFolder/Icons/plus.svg)
-    }
+.player-red-border {
+    border-color: red;
+}
 
-    /* Player */
-    .player-avatar {
-        width: 60px;
-        height: 60px;
-        border-width: 4px;
-        border-color: white;
-        border-radius: 50%;
-    }
-
-    .player-name {
-        margin-top: 16px;
-        color: white;
-    }
-
-    /* Swap btn */
-    .swap-btn {
-        position: absolute;
-        bottom: 2%;
-        width: 30px;
-        height: 30px;
-        -unity-background-image-tint-color: white;
-        background-image: url(/Assets/NewFolder/Icons/swap.svg);
-    }
-
+.player-blue-border {
+    border-color: rgb(0, 162, 232);
+}
 
 .red-team {
     background-color: red;
@@ -126,10 +117,111 @@
     background-color: rgb(0, 162, 232);
 }
 
-.owner {
+.red-team #change-leader-bg {
+    -unity-background-image-tint-color: red;
+}
+
+.blue-team #change-leader-bg {
+    -unity-background-image-tint-color: rgb(0, 162, 232);
+}
+
+.red-team #kick-bg {
+    -unity-background-image-tint-color: red;
+}
+
+.blue-team #kick-bg {
+    -unity-background-image-tint-color: rgb(0, 162, 232);
+}
+
+.player-empty {
+    display: none;
+    padding: 12px;
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    scale: 0.6;
+    border-radius: 50%;
+    background-image: url('project://database/Assets/NewFolder/Icons/plus.svg?fileID=7388822144124034973&guid=80865f328287cb045994ec582a548bce&type=3#plus');
+}
+
+.player-avatar {
+    width: 60px;
+    height: 60px;
+    align-self: center;
+    border-radius: 50%;
+    background-image: url(/Assets/NewFolder/Icons/ball.svg);
+    -unity-background-image-tint-color: rgba(0,0,0,1);
+    background-color: white;
+}
+
+.player-name {
+    margin-top: 16px;
+    color: white;
+    -unity-text-align: middle-center;
+}
+
+#player-description {
+}
+
+#interact-leader {
     position: absolute;
-    bottom: 4%;
+    align-self: center;
+    width: 100%;
+    top: -38%;
+}
+
+#change-leader-btn, #kick-btn {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    padding: 2px;
+    border-width: 2px;
+    border-radius: 50%;
+    border-color: white;
+    background-color: white;
+}
+
+#change-leader-btn {
+    left: -76%;
+}
+
+#change-leader-bg {
+    background-image: url('project://database/Assets/NewFolder/Icons/crown.svg?fileID=7388822144124034973&guid=0439821646d0a914098946a8ff235104&type=3#crown');
+}
+
+#kick-btn {
+    right: -76%;
+}
+
+#kick-bg {
+    scale: 0.8;
+    background-image: url('project://database/Assets/NewFolder/Icons/xMark.svg?fileID=7388822144124034973&guid=56863b2bd0363e74cb1aff79b757d76c&type=3#xMark');
+}
+
+#leader {
+    position: absolute;
+    top: 106%;
+    align-self: center;
     width: 20px;
     height: 20px;
-    background-image: none;
+    background-image: url('project://database/Assets/NewFolder/Icons/crown.svg?fileID=7388822144124034973&guid=0439821646d0a914098946a8ff235104&type=3#crown');
+}
+
+#ready {
+    position: absolute;
+    top: 106%;
+    align-self: center;
+    width: 20px;
+    height: 20px;
+    background-image: url('project://database/Assets/NewFolder/Icons/check.svg?fileID=7388822144124034973&guid=f7d0ceaef1f335547aad594be7aa95d0&type=3#check');
+}
+
+#swap-btn {
+    position: absolute;
+    bottom: -80%;
+    align-self: center;
+    width: 26px;
+    height: 26px;
+    -unity-background-image-tint-color: black;
+    background-image: url('project://database/Assets/NewFolder/Icons/swap.svg?fileID=7388822144124034973&guid=3b55253dc1f89cc4ca43b0b6a9ba077c&type=3#swap');
 }

@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewFolder/UI/LobbyScreen/LobbyScreen.uss?fileID=7433441132597879392&amp;guid=97d8ed0c8e569e6479b75d649a70800b&amp;type=3#LobbyScreen" />
+    <ui:VisualElement>
+        <ui:VisualElement name="player-description" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:VisualElement name="interact-leader" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement name="change-leader-btn">
+                    <ui:VisualElement name="change-leader-bg" style="flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="kick-btn">
+                    <ui:VisualElement name="kick-bg" style="flex-grow: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="avatar" class="player-avatar" />
+            <ui:Label tabindex="-1" text="Player" display-tooltip-when-elided="true" name="name" class="player-name" />
+            <ui:VisualElement name="leader" />
+            <ui:VisualElement name="ready" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="swap-btn" />
+        <ui:VisualElement name="player-empty" class="player-empty" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+    </ui:VisualElement>
+</ui:UXML>

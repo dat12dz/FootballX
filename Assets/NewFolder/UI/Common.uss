@@ -124,7 +124,8 @@ RadioButton:hover VisualElement .unity-radio-button__checkmark-background {
 }
 
 #Toggle-element #Toggle VisualElement:checked #unity-checkmark {
-    background-image: url(/Assets/NewFolder/Icons/Check.svg);
+    background-image: url(/Assets/NewFolder/Icons/check.svg);
+    -unity-background-image-tint-color: black;
 }
 
 /* Slider */

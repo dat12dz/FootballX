@@ -96,6 +96,7 @@
     <Compile Include="Assets\Script\Utlis\PostProcessingHelper.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansUtilities.cs" />
     <Compile Include="Assets\NewFolder\Scripts\UI\LobbyScreen.cs" />
+    <Compile Include="Assets\NewFolder\Test.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManager.cs" />
     <Compile Include="Assets\NewFolder\Scripts\UI\UIManage.cs" />
     <Compile Include="Assets\Script\Utlis\AutoFindNextDictionary.cs" />
@@ -204,7 +205,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\NewFolder\UI\Common.uss" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\NewFolder\UI\LobbyScreen\PlayerCard.uxml" />
+    <None Include="Assets\NewFolder\UI\LobbyScreen\player-card.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\OccaSoftware\Crosshairs\Readme.txt" />
     <None Include="Assets\NewFolder\UI\GoalScreen\GoalScreen.uxml" />

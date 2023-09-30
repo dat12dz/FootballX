@@ -1,7 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/NewFolder/UI/LobbyScreen/LobbyScreen.uss?fileID=7433441132597879392&amp;guid=97d8ed0c8e569e6479b75d649a70800b&amp;type=3#LobbyScreen" />
-    <ui:VisualElement>
-        <ui:VisualElement name="player-avatar-7" class="player-avatar" />
-        <ui:Label tabindex="-1" text="Nguyễn Đức Đạt" display-tooltip-when-elided="true" name="player-name-7" class="player-name" />
-    </ui:VisualElement>
-</ui:UXML>
