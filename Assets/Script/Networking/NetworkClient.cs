@@ -26,11 +26,16 @@ static class NetworkClient_
                 ip_ = ip;
             }
             netmang.GetComponent<UnityTransport>().ConnectionData.Address = ip_;
-            netmang.StartClient();
+           if (netmang.StartClient())
+            netmang.OnClientStarted += Netmang_OnClientStarted;
             SceneManager.LoadScene(1);
-
+       
         }
 
+    private static void Netmang_OnClientStarted()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
 public class ClientApproveData
 {

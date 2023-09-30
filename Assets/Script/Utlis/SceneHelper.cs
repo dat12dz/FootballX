@@ -29,6 +29,11 @@ namespace Assets.Script.NetCode
            SceneManager.sceneLoaded += WhenLoaded;
             ThreadHelper.WaitForSecond(c, null, 60000);
         }
-
+        public static GameSystem GetGameSystem(Scene scene)
+        {
+            var allSceneObj = scene.GetRootGameObjects();
+            GameSystem res = allSceneObj[0].GetComponent<GameSystem>();
+            return res;
+        }
     }
 }

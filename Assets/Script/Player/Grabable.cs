@@ -4,11 +4,12 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Assets.Script
 {
-    public class Grabable : MonoBehaviour
+    public class Grabable : NetworkBehaviour
     {
 
 

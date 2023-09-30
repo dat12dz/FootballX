@@ -10,6 +10,7 @@ using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.LookDev;
+using UnityEngine.SceneManagement;
 
 public partial class Player : NetworkBehaviour
 {
@@ -30,21 +31,35 @@ public partial class Player : NetworkBehaviour
     float FiinalThrowForce ;
     [Header("ETC")]
     [SerializeField] GameObject Toggle;
-    [SerializeField] NetworkVariable<bool> isInGame;
+    [SerializeField] public NetworkVariable<bool> isInGame;
     public NetworkVariable<FixedString32Bytes> PlayerName;
-
+    public Transform SpawnPoint;
     public override void OnNetworkSpawn()
     {
         isInGame.OnValueChanged += (pev, new_) =>
         {
+            if (IsLocalPlayer)
+            {
+                
+                UI_SelectRoomUI.instance.ToggleVisible(new_);
+                if (new_)
+                SceneManager.LoadScene(2,LoadSceneMode.Additive);
+            }
             TogglePoolObj(new_);
         };
         base.OnNetworkSpawn();
     }
+    private void Awake()
+    {
+    
+    }
+    
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         TogglePoolObj(false);
         Init();
+
     }
     void TogglePoolObj(bool o)
     {
@@ -60,7 +75,7 @@ public partial class Player : NetworkBehaviour
         {
             localPlayer = this;
         }
-        Playereyes = GetComponentInChildren<Camera>();
+        Playereyes = GetComponentInChildren<Camera>(includeInactive: true);
         if (IsLocalPlayer)
             SendPlayerNameToServerRpc(StartGameInfo.instance.PlayerName);
     }

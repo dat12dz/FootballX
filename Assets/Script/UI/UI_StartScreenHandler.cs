@@ -4,9 +4,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Jobs;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public struct StartSceneInfo
 {
@@ -15,7 +17,8 @@ public struct StartSceneInfo
 public class UI_StartScreenHandler : MonoBehaviour
 {
     [SerializeField] TMP_InputField inp_PlayerName, inp_ServerIP;
-    [SerializeField] Button btn_Connect,btn_autoLocalhost;
+    [SerializeField] Button btn_Connect,btn_autoLocalhost,btn_HostBtn;
+
    public static StartSceneInfo StartSceneInfoSync;
     NetworkManager netmang;
     void Start()
@@ -32,20 +35,20 @@ public class UI_StartScreenHandler : MonoBehaviour
                 return;
             }
             if (inp_ServerIP.text == string.Empty)
-            {
-
-                  
+            { 
                        if (netmang.StartServer())
-              
                   NetworkServer.StartServer();
             } 
-                
-
             else
             {
                     NetworkClient_.StartClient(inp_ServerIP.text,inp_PlayerName.text);
                     StartGameInfo.instance.PlayerName = inp_PlayerName.text;
             }
+        });
+        btn_HostBtn.onClick.AddListener(() =>
+        {
+             if (netmang.StartHost())
+                SceneManager.LoadScene(1);
         });
         btn_autoLocalhost.onClick.AddListener(() =>
         {

@@ -11,33 +11,47 @@ public class UI_RoomRenderPnl : MonoBehaviour
     [SerializeField] TextMeshProUGUI lb_RoomID;
     public Ui_ShowPlayerInfoPnl[] ShowPlayerInfoPnl;
     [SerializeField] Button btn_leaveRoom;
+    [SerializeField] Button btn_StartGame;
+    [Header("ReadyBtn")]
+    [SerializeField] Button btn_ReadyBtn;
+    [SerializeField] Color OnReadyBtnColor,DefaultReadyBtnColor = Color.white;
     public Ui_ShowPlayerInfoPnl GetPlayerInfoRender(int slot)
     {
         return ShowPlayerInfoPnl[slot];
     }
     public void init(PlayerRoomManager localPlayyer)
     {
-        localPlayyer.RoomID.OnValueChanged += OnRoomIDChange;
-    }
-    public void OnRoomIDChange(uint old,uint curr)
-    {
-    }
-    void ChangeRoomID()
-    {
     }
     public void init(RoomRenderAble RoomInfo)
     {
-
         gameObject.active = true;
+                OnHeaderChange(false,PlayerRoomManager.localPlayerRoomManager.isHeader.Value);
+
         lb_RoomID.text = RoomInfo.RoomId.ToString();
     }
     public void de_init()
     {
         gameObject.SetActive(false);
     }
-
-    void GetLocalClientManager()
+    public void OnHeaderChange(bool old,bool curr)
     {
+        btn_ReadyBtn.gameObject.SetActive(!curr);
+        btn_StartGame.gameObject.SetActive(curr);
+    }
+    public void OnReadyChange(bool old,bool curr)
+    {
+        if (curr)
+        {
+            ColorBlock ButtonColor = btn_ReadyBtn.colors;
+            ButtonColor.selectedColor = OnReadyBtnColor;
+            btn_ReadyBtn.colors = ButtonColor;
+        }
+        else
+        {
+            ColorBlock ButtonColor = btn_ReadyBtn.colors;
+            ButtonColor.selectedColor = DefaultReadyBtnColor;
+            btn_ReadyBtn.colors = ButtonColor;
+        }
 
     }
     void Btn_LeaveRoomFunc()
@@ -46,15 +60,26 @@ public class UI_RoomRenderPnl : MonoBehaviour
         ClearAllRenderer();
         de_init();
     }
+    void Btn_ReadyAction()
+    {
+        PlayerRoomManager.localPlayerRoomManager.ToggleReadyServerRpc();
+
+    }
     void Start()
     {
+        btn_StartGame.onClick.AddListener(btn_StartGameAction);
+
         // Get all
         ShowPlayerInfoPnl = GetComponentsInChildren<Ui_ShowPlayerInfoPnl>();
         ClearAllRenderer();
         instance = this;
         gameObject.active = false;
-
+        btn_ReadyBtn.onClick.AddListener(Btn_ReadyAction);
         btn_leaveRoom.onClick.AddListener(Btn_LeaveRoomFunc);
+    }
+    void btn_StartGameAction()
+    {
+        PlayerRoomManager.localPlayerRoomManager.StartGameServerRpc();
     }
     void ClearAllRenderer()
     {

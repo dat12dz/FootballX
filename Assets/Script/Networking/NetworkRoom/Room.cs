@@ -22,7 +22,7 @@ public class Room
       return RoomDict[RoomID];
     }
     // Danh sách người chơi có mặt trong phòng
-    InRoomPlayerDictionary playerDict = new InRoomPlayerDictionary();
+    public InRoomPlayerDictionary playerDict = new InRoomPlayerDictionary();
     // Room ID của room này
     public uint RoomID;
     Scene physicScene;
@@ -78,16 +78,19 @@ public class Room
         // Nếu người chơi bị xóa là trưởng phòng nhường trưởng phòng cho người chơi khác
         if (PlayerNeedRemove.isHeader.Value)
         {
-            var newOwner = JoinedTimeList.First().Value;  
-            if (newOwner != null)
-            SetNewOwner(newOwner.SlotInRoom.Value);
+            if (JoinedTimeList.Count > 0)
+            {
+                var newOwner = JoinedTimeList.First().Value;
+                if (newOwner != null)
+                    SetNewOwner(newOwner.SlotInRoom.Value);
+            }
         }
         // Set tất cả về giá trị mặc định
         PlayerNeedRemove.RoomID.Value = 0;
         PlayerNeedRemove.SlotInRoom.Value = PlayerRoomManager.PLAYER_OUTSIDE_ROOM;
         PlayerNeedRemove.isHeader.Value = false;
         PlayerNeedRemove.joinedTime = default;
-
+        PlayerNeedRemove.isReady.Value = false;
         // Nếu trong phòng kkhoong còn ai -> Xóa phòng
         if (playerDict.Count == 0)
         {
@@ -114,7 +117,29 @@ public class Room
     }
     public void StartGame()
     {
+        var LoadGame = SceneManager.LoadScene(2, new LoadSceneParameters(LoadSceneMode.Additive, LocalPhysicsMode.Physics3D));
+        SceneManager.sceneLoaded += (scene, loadmoded) =>
+        {
+            if (scene == LoadGame)
+            {
+                var RootGameObj =  LoadGame.GetRootGameObjects();
+                try
+                {
+                    GameSystem loadedGameSystem = RootGameObj[0].GetComponent<GameSystem>();
+                    loadedGameSystem.Init(this);
+                }
+                catch (Exception e) 
+                {
+                    Logging.LogError("Không thể tìm thấy Game system của scene,hãy chắc chắn là game system đang ở vị trí đầu tiên của GameScene");
+                }
+            }
+        };
 
     }
+    public void OnGameStartedCallback()
+    {
+       
+    }
+
 }
 

@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerFoot : MonoBehaviour
 {
     LayerMask ballMask;
-    Player thisPlayer;
+  [SerializeField]  Player thisPlayer;
     Ball ball = Ball.instance;
     void Start()
     {
