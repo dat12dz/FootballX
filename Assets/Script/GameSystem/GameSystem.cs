@@ -107,6 +107,7 @@ public class GameSystem : NetworkBehaviour
             {
                 time += MatchSystem.MatchTimeSpeed;
                 Thread.Sleep(1000);
+                
             }
         });
         
