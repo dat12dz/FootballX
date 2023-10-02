@@ -84,12 +84,8 @@ public class UIHandler : MonoBehaviour
     }
     public void ShowInformation(string Title,string Infomation,int sec)
     {
-        if (!pnl_ingameInformer.IsDestroyed())
-        {
-
-
             MainThreadDispatcher.ExecuteInMainThread(() => { pnl_ingameInformer.Show(Title, Infomation, sec); });
-        }
+        
     }
      bool isCursorLocked = true;
 
