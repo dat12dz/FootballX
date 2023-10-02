@@ -2,7 +2,7 @@
     background-color: rgb(153, 153, 153);
     justify-content: center;
 }
-
+/* background */
 #background {
     position: absolute;
     top: 0;
@@ -14,7 +14,7 @@
     background-image: url('project://database/Assets/NewFolder/Resources/UI/background/lobby.png?fileID=2800000&guid=a696a985ea393c043a53dbc6c07e053f&type=3#lobby');
     -unity-background-image-tint-color: rgba(255,255,255,0.12);
 }
-
+/* lobby-screen */
 #lobby-screen {
     position: absolute;
     top: 0;
@@ -23,7 +23,7 @@
     left: 0;
     justify-content: center;
 }
-
+/* top-lobby */
 #top-lobby {
     position: absolute;
     top: 2%;
@@ -63,26 +63,10 @@
     -unity-background-image-tint-color: red;
     background-image: url('project://database/Assets/NewFolder/Icons/xMark.svg?fileID=7388822144124034973&guid=56863b2bd0363e74cb1aff79b757d76c&type=3#xMark');
 }
-
-#middle-screen {
+/* middle-lobby */
+#middle-lobby {
     width: 100%;
     align-items: center;
-}
-
-#bottom-lobby {
-    position: absolute;
-    bottom: 2%;
-    width: 90%;
-    flex-direction: row;
-    align-self: center;
-    justify-content: center;
-}
-
-#start-btn, #ready-btn {
-    min-width: 200px;
-    padding: 12px 0;
-    margin: 0 36px;
-    font-size: 20px;
 }
 
 .lobby-screen-box {
@@ -145,8 +129,8 @@
 }
 
 .player-avatar {
-    width: 60px;
-    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
     align-self: center;
     border-radius: 50%;
     background-image: url(/Assets/NewFolder/Icons/ball.svg);
@@ -159,6 +143,7 @@
     color: white;
     -unity-text-align: middle-center;
 }
+
 
 #player-description {
 }
@@ -224,4 +209,51 @@
     height: 26px;
     -unity-background-image-tint-color: black;
     background-image: url('project://database/Assets/NewFolder/Icons/swap.svg?fileID=7388822144124034973&guid=3b55253dc1f89cc4ca43b0b6a9ba077c&type=3#swap');
+}
+
+/* bottom-lobby */
+#bottom-lobby {
+    position: absolute;
+    bottom: 2%;
+    width: 90%;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+}
+
+#start-btn, #ready-btn {
+    min-width: 200px;
+    padding: 12px 0;
+    margin: 0 36px;
+    font-size: 20px;
+}
+
+/* notify */
+#notify {
+    width: 40%;
+    height: 200px;
+    background-color: rgba(0,0,0,0.5);
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#notify-description {
+    font-size: 18px;
+    padding: 0 64px;
+    color: white;
+    -unity-text-align: middle-center;
+}
+
+#notify-btn {
+    position: absolute;
+    bottom: -10%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#notify-btn > Button {
+    min-width: 100px;
+    margin: 0 36px;
 }

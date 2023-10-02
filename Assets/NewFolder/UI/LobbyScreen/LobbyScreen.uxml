@@ -17,7 +17,7 @@
                     <ui:Label tabindex="-1" text="Id: " display-tooltip-when-elided="true" name="room-id" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="middle-screen">
+            <ui:VisualElement name="middle-lobby">
                 <ui:VisualElement name="red-team" class="lobby-screen-box">
                     <ui:Instance template="PlayerCard" name="player-card" class="red-team player-red-border" />
                     <ui:Instance template="PlayerCard" name="player-card" class="red-team player-red-border" />
@@ -37,6 +37,13 @@
             <ui:VisualElement name="bottom-lobby">
                 <ui:Button text="READY" display-tooltip-when-elided="true" name="ready-btn" class="btn-handle" />
                 <ui:Button text="START" display-tooltip-when-elided="true" name="start-btn" class="btn-handle" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="notify">
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="notify-description" />
+            <ui:VisualElement name="notify-btn" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Button text="Yes" display-tooltip-when-elided="true" name="notify-yes-btn" class="unity-button btn-handle" />
+                <ui:Button text="No" display-tooltip-when-elided="true" name="notify-no-btn" class="btn-handle unity-button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
