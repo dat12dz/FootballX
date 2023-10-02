@@ -21,6 +21,7 @@ public class UI_RoomRenderPnl : MonoBehaviour
     }
     public void init(PlayerRoomManager localPlayyer)
     {
+
     }
     public void init(RoomRenderAble RoomInfo)
     {
@@ -65,6 +66,10 @@ public class UI_RoomRenderPnl : MonoBehaviour
         PlayerRoomManager.localPlayerRoomManager.ToggleReadyServerRpc();
 
     }
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         btn_StartGame.onClick.AddListener(btn_StartGameAction);
@@ -72,7 +77,6 @@ public class UI_RoomRenderPnl : MonoBehaviour
         // Get all
         ShowPlayerInfoPnl = GetComponentsInChildren<Ui_ShowPlayerInfoPnl>();
         ClearAllRenderer();
-        instance = this;
         gameObject.active = false;
         btn_ReadyBtn.onClick.AddListener(Btn_ReadyAction);
         btn_leaveRoom.onClick.AddListener(Btn_LeaveRoomFunc);

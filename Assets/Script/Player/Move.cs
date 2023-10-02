@@ -23,7 +23,7 @@ public partial class Move : NetworkBehaviour
     public float SafeDistanceCheck = 2f;
     PlayerNetworkTransform nettrans;
     public Transform head;
-
+    Player player;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -32,6 +32,7 @@ public partial class Move : NetworkBehaviour
         playereye = GetComponentInChildren<Camera>();
         playereye.enabled = false;
        nettrans = GetComponent<PlayerNetworkTransform>();
+        player = GetComponent<Player>();    
     }
     public void Teleport(Vector3 v)
     {

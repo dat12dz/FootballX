@@ -10,7 +10,7 @@
                     <ui:VisualElement name="kick-bg" style="flex-grow: 1;" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="avatar" class="player-avatar" />
+            <ui:VisualElement name="avatar" class="player-avatar" style="-unity-background-scale-mode: scale-and-crop;" />
             <ui:Label tabindex="-1" text="Player" display-tooltip-when-elided="true" name="name" class="player-name" />
             <ui:VisualElement name="leader" />
             <ui:VisualElement name="ready" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />

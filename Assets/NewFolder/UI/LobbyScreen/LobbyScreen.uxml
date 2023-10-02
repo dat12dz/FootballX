@@ -4,7 +4,7 @@
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
     <Style src="project://database/Assets/NewFolder/UI/LobbyScreen/LobbyScreen.uss?fileID=7433441132597879392&amp;guid=97d8ed0c8e569e6479b75d649a70800b&amp;type=3#LobbyScreen" />
     <ui:VisualElement name="container" style="flex-grow: 1; -unity-background-image-tint-color: rgba(255, 255, 255, 0.16); scale: 1 1;">
-        <ui:VisualElement name="background" />
+        <ui:VisualElement name="background" style="transition-timing-function: ease-out-cubic; transition-duration: 0.5s;" />
         <ui:VisualElement name="lobby-screen">
             <ui:VisualElement name="top-lobby">
                 <ui:VisualElement name="top-left-lobby">
@@ -30,7 +30,7 @@
                     <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" />
                     <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" />
                     <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" />
-                    <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" />
+                    <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" style="transition-timing-function: ease-in-sine;" />
                     <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" />
                 </ui:VisualElement>
             </ui:VisualElement>

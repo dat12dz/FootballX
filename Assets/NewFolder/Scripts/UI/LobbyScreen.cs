@@ -31,7 +31,7 @@ public class LobbyScreen : MonoBehaviour
     {
         container.style.display = DisplayStyle.None;
         lobbyScreen.style.display = DisplayStyle.None;
-        background.style.scale = new Scale(new Vector2(1.6f, 1.6f));
+        background.style.scale = new Scale(new Vector2(12f, 12f));
     }
 
     public static async void Show()

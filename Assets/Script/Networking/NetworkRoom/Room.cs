@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Room
@@ -19,7 +20,15 @@ public class Room
   
     public static Room GetRoom(uint RoomID)
     {
-      return RoomDict[RoomID];
+        try
+        {
+            return RoomDict[RoomID];
+        }
+        catch
+        {
+            Logging.LogError("Không thể tìm thấy phòng ID" + RoomID);
+            return null; 
+        }
     }
     // Danh sách người chơi có mặt trong phòng
     public InRoomPlayerDictionary playerDict = new InRoomPlayerDictionary();
@@ -51,7 +60,9 @@ public class Room
             JoinedTimeList.Add(DateTime.Now.Ticks, player);
             // Set thông tin người chơi
             player.RoomID.Value = RoomID;
+            player.GetComponent<PlayerNetworkTransform>().TeleportImidiateClientRpc(player.transform.position);
             player.SlotInRoom.Value = (byte)slot;
+            player.ShowToAllClientInTheRoom(this);
         }
 
         return slot != null;
@@ -91,6 +102,7 @@ public class Room
         PlayerNeedRemove.isHeader.Value = false;
         PlayerNeedRemove.joinedTime = default;
         PlayerNeedRemove.isReady.Value = false;
+        PlayerNeedRemove.HideToAllClientInTheRoom(this);
         // Nếu trong phòng kkhoong còn ai -> Xóa phòng
         if (playerDict.Count == 0)
         {
@@ -136,9 +148,18 @@ public class Room
         };
 
     }
-    public void OnGameStartedCallback()
+    public void SwapPlayerSlot(byte a,byte b)
     {
-       
+        PlayerRoomManager PlayerA = null,PlayerB =null;
+        playerDict.TryGetValue(a, out PlayerA);
+        playerDict.TryGetValue(b, out PlayerB);
+        if (PlayerA != null && PlayerB != null)
+        {
+            playerDict[a] = PlayerB;
+            playerDict[b] = PlayerA;
+            PlayerA.SlotInRoom.Value = b;
+            PlayerB.SlotInRoom.Value = a;
+        }
     }
 
 }

@@ -1,4 +1,5 @@
 using Assets;
+
 using Assets.Script.Utlis;
 using Assets.Utlis;
 using System;
@@ -44,6 +45,9 @@ public class GameSystem : NetworkBehaviour
     public Action<int,int, Team> OnScoreChange;
     PhysicsScene ps;
     DrawSpawnPoint[] spawnPoint;
+    [Header("Reference")]
+    [SerializeField]
+    public GameSystemSceneReference sceneReference;
    public int ScoreBlueTeam
     {
         get { return ScoreBlueTeam_; }
@@ -72,6 +76,7 @@ public class GameSystem : NetworkBehaviour
     }    int ScoreRedTeam_;
     public void Init(Room room_)
     {
+        // On Server code
         ps = gameObject.scene.GetPhysicsScene();
         spawnPoint = GetComponentsInChildren<DrawSpawnPoint>();
         room = room_;
@@ -81,8 +86,14 @@ public class GameSystem : NetworkBehaviour
             SceneManager.MoveGameObjectToScene(player.gameObject, gameObject.scene);
             player.thisPlayer.isInGame.Value = true;
             player.transform.position = spawnPoint[counter].transform.position;
+        
             counter++;
+            sceneReference.Init();
         }
+        ThreadHelper.SafeThreadCall(() =>
+        {
+            ps.Simulate(Time.fixedDeltaTime);
+        });
     }
     void Start()
     {
@@ -184,7 +195,10 @@ public class GameSystem : NetworkBehaviour
     }
     private void FixedUpdate()
     {
-        ps.Simulate(Time.fixedDeltaTime);
+/*        ThreadHelper.SafeThreadCall(() =>
+        {
+            ps.Simulate(Time.fixedDeltaTime);
+        });*/
     }
 
 }
