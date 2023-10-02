@@ -21,9 +21,7 @@ namespace Assets.Script.UI
             //netmang.SceneManager.LoadScene("GameScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
             if (netmang.ConnectionApprovalCallback == null )
             netmang.ConnectionApprovalCallback += ApprovalCheck;
-            netmang.SceneManager.LoadScene("RoomScene",LoadSceneMode.Single);
-            netmang.SceneManager.ActiveSceneSynchronizationEnabled = false;
-
+           SceneManager.LoadScene("RoomScene",LoadSceneMode.Single);
         }
  
 

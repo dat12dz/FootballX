@@ -391,7 +391,7 @@ MonoBehaviour:
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
+  SpawnWithObservers: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
 --- !u!114 &-7314348274738732783
@@ -411,6 +411,7 @@ MonoBehaviour:
   MinUltraShootForce: 4
   MaxUltraShootForce: 10
   UltraShootForceSpeed: 1
+  head_: {fileID: 1692322850984172057}
   MinThrowingForce: 10
   MaxThrowingForce: 60
   ThrowingForceSpeed: 4

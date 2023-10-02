@@ -15,16 +15,18 @@ using UnityEngine;
         [SerializeField] LayerMask GroundMask;
        [SerializeField] float GravityInit = 9.81f;
         float GravityRuntime;
-        // Create a sphere chheck physic
+    // Create a sphere chheck physic
+    Collider[] c = new Collider[1];
        bool CheckisGrounded()
        {
             if (!GroundCheck)
             {
                 Logging.LogObjectNull(nameof(GroundCheck));
             }
-            var res = Physics.CheckSphere(GroundCheck.position, GroundCheckRadius, GroundMask);
-            if (res) GravityRuntime = -2;
-           return res;
+            
+            var res = player.thisPhysicScene.OverlapSphere(GroundCheck.position, GroundCheckRadius,c, GroundMask ,QueryTriggerInteraction.UseGlobal);
+            if (res > 0) GravityRuntime = -2;
+           return res > 0;
        }
       
     }

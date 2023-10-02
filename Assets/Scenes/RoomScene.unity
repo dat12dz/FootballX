@@ -1731,7 +1731,7 @@ GameObject:
   - component: {fileID: 940875107}
   - component: {fileID: 940875106}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: tb_InputRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1752,9 +1752,9 @@ RectTransform:
   - {fileID: 1135343070}
   m_Father: {fileID: 289793743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -440, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 92, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &940875106

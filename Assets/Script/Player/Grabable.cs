@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Script.Networking.NetworkRoom;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -9,10 +10,11 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class Grabable : NetworkBehaviour
+    /// <summary>
+    /// Người chơi có thể nhặt hoặc ném vật thể với lớp này+
+    /// </summary>
+    public class Grabable : SceneNetworkBehavior
     {
-
-
         protected Transform Graber { get; set; }
 
         public bool isGrab()

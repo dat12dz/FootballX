@@ -12,7 +12,7 @@ public class PlayerFoot : MonoBehaviour
     void Start()
     {
         ballMask = LayerMask.NameToLayer("Ball");
-        thisPlayer = transform.parent.GetComponent<Player>(); 
+        thisPlayer = transform.root.GetComponent<Player>(); 
         if (thisPlayer == null )
         {
             Logging.LogError("Không thể tìm thấy người chơi");

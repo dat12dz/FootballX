@@ -3,6 +3,7 @@ using Assets.Script.NetCode;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using Unity.Jobs;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,23 +15,26 @@ public class Ball : Grabable
     public static Ball instance;
     NetworkObject thisNetobj;
     GameSystem thisSceneGameSystem;
-    void Start()
-    {
 
+    private new void Awake()
+    {
+        base.Awake();
+    }
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if (IsClient && !IsHost)
+        gameObject.SetActive(true);
+        Debug.Log(gameObject.name);
+    }
+    new void Start()
+    {
+        base.Start();
+        if (!IsSpawned) gameObject.SetActive(false);
         instance = this;
+
         rb = GetComponent<Rigidbody>();
         thisNetobj = NetworkObject;
-        if (NetworkManager.Singleton.IsServer)
-        {
-            thisNetobj.SpawnWithObservers = false;
-            thisNetobj.Spawn();
-            thisSceneGameSystem = SceneHelper.GetGameSystem(gameObject.scene);
-
-            foreach (var player in thisSceneGameSystem.room.playerDict.Values)
-            {
-                thisNetobj.NetworkShow(player.OwnerClientId);
-            }
-        }
     }
    
     public void Shoot(Vector3 force)

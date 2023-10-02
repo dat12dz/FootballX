@@ -92,6 +92,7 @@
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansMeshUtils.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Script\Networking\NetworkRoom\SceneNetworkBehavior.cs" />
     <Compile Include="Assets\Script\Player\Rotate.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Script\Networking\NetworkClient.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansDecalTools.cs" />
+    <Compile Include="Assets\Script\GameSystem\GameSystemSceneReference.cs" />
     <Compile Include="Assets\Script\Utlis\SocketHelper.cs" />
     <Compile Include="Assets\Script\UI\UI_IngameInformer.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\RandomWind.cs" />
