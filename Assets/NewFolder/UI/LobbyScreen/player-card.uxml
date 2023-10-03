@@ -1,6 +1,15 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/NewFolder/UI/LobbyScreen/LobbyScreen.uss?fileID=7433441132597879392&amp;guid=97d8ed0c8e569e6479b75d649a70800b&amp;type=3#LobbyScreen" />
     <ui:VisualElement>
+        <ui:VisualElement name="notify">
+            <ui:Label tabindex="-1" text="Nguyen Van A muon doi cho voi ban" display-tooltip-when-elided="true" name="notify-description" />
+            <ui:VisualElement name="notify-btn">
+                <ui:VisualElement name="notify-yes-btn" />
+                <ui:VisualElement name="notify-no-btn" />
+            </ui:VisualElement>
+            <ui:ProgressBar value="50" name="ProgressBar" />
+            <ui:VisualElement name="notify-triangle" />
+        </ui:VisualElement>
         <ui:VisualElement name="player-description" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
             <ui:VisualElement name="interact-leader" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:VisualElement name="change-leader-btn">

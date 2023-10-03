@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,43 +10,40 @@ public class LobbyScreen : MonoBehaviour
 {
     private VisualElement root;
     private static VisualElement container;
-
     private static VisualElement background;
-
     private static VisualElement lobbyScreen;
-    private static VisualElement redTeam;
-    private static VisualElement blueTeam;
     private static VisualElement exitBtn;
-    private static VisualElement swapBtn;
-
-    private static VisualElement notify;
-    private static Button notifyYesBtn;
-    private static Button notifyNoBtn;
+    private static List<VisualElement> playerCard;
+    private static VisualElement leaderIcon;
+    private static VisualElement readyIcon;
     void Start()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         container = root.Q<VisualElement>("container");
-
         background = root.Q<VisualElement>("background");
-
         lobbyScreen = root.Q<VisualElement>("lobby-screen");
-        redTeam = root.Q<VisualElement>("red-team");
-        blueTeam = root.Q<VisualElement>("blue-team");
-        swapBtn = root.Q<VisualElement>("swap-btn");
         exitBtn = root.Q<VisualElement>("exit-btn");
-
-        notify = root.Q<VisualElement>("notify");
-        notifyYesBtn = root.Q<Button>("notify-yes-btn");
-        notifyNoBtn = root.Q<Button>("notify-no-btn");
-
+        leaderIcon = root.Q<VisualElement>("leader");
+        readyIcon = root.Q<VisualElement>("ready");
         InitStyle();
     }
 
     private static void InitStyle()
     {
+        playerCard = lobbyScreen.Query("player-card").ToList();
+        foreach(var p in playerCard)
+        {
+            p.Q<VisualElement>("player-empty").style.display = DisplayStyle.Flex;
+            p.Q<VisualElement>("player-description").style.display = DisplayStyle.None;
+            p.Q<VisualElement>("notify").style.display = DisplayStyle.None;
+            p.Q<VisualElement>("swap-btn").style.display = DisplayStyle.None;
+        }
+
         container.style.display = DisplayStyle.None;
         lobbyScreen.style.display = DisplayStyle.None;
         background.style.scale = new Scale(new Vector2(12f, 12f));
+        leaderIcon.style.display = DisplayStyle.None;
+        readyIcon.style.display = DisplayStyle.None;
     }
 
     public static async void Show()
@@ -54,34 +52,15 @@ public class LobbyScreen : MonoBehaviour
         background.style.scale = new Scale(new Vector2(1f, 1f));
         await Task.Delay(1000);
         lobbyScreen.style.display = DisplayStyle.Flex;
-
-
         ClickHandle();
     }
-
-    private static void ClickHandle()
+    static void ClickHandle()
     {
         // Exit LobbyScreen
         exitBtn.RegisterCallback<PointerDownEvent>(callback =>
         {
+            
             InitStyle();
         });
-
-        swapBtn.RegisterCallback<PointerDownEvent>(callback =>
-        {
-            notify.style.display = DisplayStyle.Flex;
-
-        });
-
-        notifyYesBtn.clickable.clicked += () =>
-        {
-            notify.style.display = DisplayStyle.None;
-        };
-
-        notifyNoBtn.clickable.clicked += () =>
-        {
-            notify.style.display = DisplayStyle.None;
-        };
-
     }
 }

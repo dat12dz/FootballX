@@ -230,30 +230,81 @@
 
 /* notify */
 #notify {
-    width: 40%;
-    height: 200px;
-    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 162%;
+    left: 60%;
+    width: 180px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,1);
     align-self: center;
     justify-content: center;
     align-items: center;
 }
 
 #notify-description {
-    font-size: 18px;
-    padding: 0 64px;
+    width: 100%;
+    font-size: 12px;
+    padding: 8px 12px 0 12px;
     color: white;
+    white-space: normal;
     -unity-text-align: middle-center;
 }
 
 #notify-btn {
-    position: absolute;
-    bottom: -10%;
+    width: 100%;
+    padding: 8px;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
 }
 
-#notify-btn > Button {
-    min-width: 100px;
-    margin: 0 36px;
+/* ProgressBar */
+#notify ProgressBar {
+    width: 100%;
+    margin: 0;
+    padding: 0 12px;
+}
+
+#notify ProgressBar #unity-progress-bar .unity-progress-bar__background {
+    height: 8px;
+    border-width: 2px;
+    flex-grow: 0;
+}
+
+#notify ProgressBar #unity-progress-bar .unity-progress-bar__progress {
+    
+    margin: 0;
+    height: 3px;
+}
+
+#notify ProgressBar #unity-progress-bar .unity-progress-bar__title-container {
+    height: 0;
+    flex-grow: 0;
+}
+
+#notify-yes-btn, #notify-no-btn {
+    width: 12px;
+    height: 12px;
+    margin: 0 12px;
+}
+
+#notify-yes-btn {
+    background-image: url(/Assets/NewFolder/Icons/check.svg);
+}
+#notify-no-btn {
+    background-image: url(/Assets/NewFolder/Icons/xMark.svg);
+}
+
+#notify-triangle {
+    position: absolute;
+    left: 20%;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-left-width: 20px;
+    border-right-width: 20px;
+    border-top-width: 40px;
+    border-left-color: rgba(0,0,0,0);
+    border-right-color: rgba(0,0,0,0);
+    border-top-color: rgba(0,0,0,1);
 }
