@@ -51,7 +51,7 @@
     <UnityProjectGeneratorVersion>2.0.21</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
-    <UnityVersion>2022.3.8f1</UnityVersion>
+    <UnityVersion>2023.1.15f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
@@ -60,127 +60,27 @@
     <Analyzer Include="E:\App\Unity\2023.1.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
-    <Compile Include="Assets\Script\UI\UI_StartScreenHandler.cs" />
-    <Compile Include="Assets\Script\Player\Move.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-    <Compile Include="Assets\NewFolder\Scripts\UI\LobbyScreenRoomRender.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansImporterWindow.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\SpringManager.cs" />
-    <Compile Include="Assets\Script\Utlis\NetworkkHelper.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansImporter.cs" />
-    <Compile Include="Assets\Script\Networking\test.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\CameraController.cs" />
-    <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
-    <Compile Include="Assets\Script\Player\Rotate.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
-    <Compile Include="Assets\Script\Networking\NetworkClient.cs" />
-    <Compile Include="Assets\Script\Utlis\PostProcessingHelper.cs" />
-    <Compile Include="Assets\NewFolder\Test.cs" />
-    <Compile Include="Assets\Script\GameSystem\GoalDetect.cs" />
-    <Compile Include="Assets\Script\Player\GroundCheck.cs" />
-    <Compile Include="Assets\Script\Player\PlayerRpc.cs" />
-    <Compile Include="Assets\NewFolder\Scripts\UI\LobbyScreenShowPlayer.cs" />
-    <Compile Include="Assets\NewFolder\Scripts\UI\GoalScreen.cs" />
-    <Compile Include="Assets\Script\Utlis\MainThreadDispatcher.cs" />
-    <Compile Include="Assets\Script\Utlis\TrackingDictonary.cs" />
-    <Compile Include="Assets\Script\Player\PlayerFoot.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-    <Compile Include="Assets\DrawSpawnPoint.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-    <Compile Include="Assets\StartGameInfo.cs" />
-    <Compile Include="Assets\Script\Utlis\CheckNullProp\CheckNullPropoeritesGameObject.cs" />
-    <Compile Include="Assets\Script\GameSystem\GameSystem.cs" />
-    <Compile Include="Assets\Script\GameSystem\MatchSystem.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
-    <Compile Include="Assets\Script\Networking\PlayerNetworkTransform.cs" />
-    <Compile Include="Assets\Script\Ball.cs" />
-    <Compile Include="Assets\Script\Utlis\CheckNullProp\CheckNullPropertiesAttribute.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansTerrainTools.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\Rotator.cs" />
-    <Compile Include="Assets\Script\UI\Ui_ShowPlayerInfoPnl.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-    <Compile Include="Assets\Script\Networking\NetworkRoom\Room.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\SpringBone.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\FaceUpdate.cs" />
-    <Compile Include="Assets\Script\GameSystem\GameSystemSceneReference.cs" />
-    <Compile Include="Assets\Script\Utlis\SocketHelper.cs" />
-    <Compile Include="Assets\Script\UI\UI_IngameInformer.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\RandomWind.cs" />
-    <Compile Include="Assets\Script\Utlis\SceneHelper.cs" />
-    <Compile Include="Assets\Script\UI\UI_RoomRenderPnl.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\AutoBlink.cs" />
-    <Compile Include="Assets\NewFolder\Scripts\UI\MessageBox.cs" />
-    <Compile Include="Assets\Script\Player\Grabable.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansBridgeLink.cs" />
-    <Compile Include="Assets\Script\Networking\CustomNetworkManager.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\IdleChanger.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-    <Compile Include="Assets\Script\Player\ControlKey.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\YSA Toon\Scripts\SkinnedMeshNormalsFix.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
-    <Compile Include="Assets\Script\UI\pnl_JionRoom.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\SpringCollider.cs" />
-    <Compile Include="Assets\Script\Networking\NetworkRoom\SlotSwapRequest.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-    <Compile Include="Assets\Script\GameSystem\BasicPhase.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansMeshUtils.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
-    <Compile Include="Assets\Script\Networking\NetworkRoom\SceneNetworkBehavior.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansUtilities.cs" />
-    <Compile Include="Assets\NewFolder\Scripts\UI\LobbyScreen.cs" />
-    <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManager.cs" />
-    <Compile Include="Assets\NewFolder\Scripts\UI\UIManage.cs" />
-    <Compile Include="Assets\Script\Utlis\AutoFindNextDictionary.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-    <Compile Include="Assets\Script\Utlis\ThreadHelper.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansPostProcess.cs" />
-    <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManagerRpc.cs" />
     <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
-    <Compile Include="Assets\Script\Player\Player.cs" />
-    <Compile Include="Assets\Script\Player\PlayerEye.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\IKCtrlRightHand.cs" />
-    <Compile Include="Assets\Script\Utlis\SerializationHelper.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansTextureProcessor.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-    <Compile Include="Assets\Script\Networking\CustomMessage\CustomMessageHandler.cs" />
-    <Compile Include="Assets\Script\Networking\NetworkRoom\RoomRenderAble.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\YSA Toon\Examples\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" />
-    <Compile Include="Assets\Script\UI\UIHandler.cs" />
-    <Compile Include="Assets\Script\UI\UI_SelectRoomUI.cs" />
     <Compile Include="Assets\YSA Toon\Scripts\MeshFilterNormalsFix.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansDecalTools.cs" />
-    <Compile Include="Assets\Quixel\Scripts\BridgeImporter\MegascansMatertialUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
     <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Fantasy Skybox FREE\ReleaseNotes.txt" />
@@ -204,7 +104,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\YSA Toon\Shaders\Outline Shader\CameraFixMultiplier.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1038,6 +937,10 @@
       <Project>{9E68532F-37B5-616D-4DA2-C3B3CDE6BF52}</Project>
       <Name>PPv2URPConverters</Name>
     </ProjectReference>
+    <ProjectReference Include="QuickOutline.csproj">
+      <Project>{F440AC1C-88C1-6D7F-6E1E-2C59FB7E2AFD}</Project>
+      <Name>QuickOutline</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Multiplayer.Tools.NetworkSimulator.Runtime.csproj">
       <Project>{520E7B44-05A6-FA8D-67CB-ECC7A6AAE728}</Project>
       <Name>Unity.Multiplayer.Tools.NetworkSimulator.Runtime</Name>
@@ -1085,10 +988,6 @@
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
       <Project>{A517791D-2F17-72A3-90F9-65E0CAD42404}</Project>
       <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="QuixelAss.csproj">
-      <Project>{AA619425-7B00-407C-91AE-8701059299DD}</Project>
-      <Name>QuixelAss</Name>
     </ProjectReference>
     <ProjectReference Include="OccaSoftware.Crosshairs.Editor.csproj">
       <Project>{ACD73C05-BE88-600B-DBF6-89AF769656E5}</Project>
@@ -1146,9 +1045,9 @@
       <Project>{1F6552BA-B3F2-19AC-3C98-77285C460736}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
-      <Project>{201395BB-05B3-A419-0D06-211C5D7D54C1}</Project>
-      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
+    <ProjectReference Include="NguyenDatScript.csproj">
+      <Project>{AD5438DA-A460-BE3C-521F-6B4513AF976E}</Project>
+      <Name>NguyenDatScript</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Multiplayer.Tools.Adapters.csproj">
       <Project>{7728EF0E-92D3-D8BD-4183-570E061283B0}</Project>
@@ -1174,9 +1073,17 @@
       <Project>{64A92A8C-1516-7DDA-40FC-B92A2B823AC2}</Project>
       <Name>Unity.RenderPipelines.Core.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
+      <Project>{201395BB-05B3-A419-0D06-211C5D7D54C1}</Project>
+      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj">
       <Project>{E68DA8BE-ECE1-6B79-A8AB-1A64918FAD17}</Project>
       <Name>Unity.RenderPipelines.Universal.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="TextMeshProExample.csproj">
+      <Project>{2606C73D-64B8-6280-AFD1-6E924D9A852E}</Project>
+      <Name>TextMeshProExample</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.InternalAPIEngineBridge.003.csproj">
       <Project>{509DC099-CF82-B7C9-F268-4FA5509F50A3}</Project>
@@ -1193,6 +1100,10 @@
     <ProjectReference Include="Unity.AdaptivePerformance.UI.Editor.csproj">
       <Project>{9F8B4A94-F80A-8230-E95A-98EEB9595AEC}</Project>
       <Name>Unity.AdaptivePerformance.UI.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="QuixelAss.csproj">
+      <Project>{2A9EAA0D-0AA4-C1CB-845C-59E38B7E7658}</Project>
+      <Name>QuixelAss</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Multiplayer.Tools.NetStatsReporting.csproj">
       <Project>{88E74C09-615C-B1F4-F29E-4BE442A74B17}</Project>
@@ -1245,6 +1156,10 @@
     <ProjectReference Include="Unity.Netcode.Components.csproj">
       <Project>{75226921-57E7-756D-5FF7-0767DE7E876E}</Project>
       <Name>Unity.Netcode.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="UIAssemblyDef.csproj">
+      <Project>{C6D8D4ED-0C37-4D93-EBE8-B86B88804FE3}</Project>
+      <Name>UIAssemblyDef</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Notifications.iOS.csproj">
       <Project>{CF7F749C-0F12-4D4F-8CBD-D78860B3B90C}</Project>
