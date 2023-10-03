@@ -60,17 +60,13 @@
     <Analyzer Include="G:\ProgramFile\Unity\2023.1.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Script\UI\UI_StartScreenHandler.cs" />
     <Compile Include="Assets\Script\Player\Move.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Script\Utlis\NetworkkHelper.cs" />
     <Compile Include="Assets\Script\DrawSpawnPoint.cs" />
     <Compile Include="Assets\Script\UI_Test\GoalScreen.cs" />
     <Compile Include="Assets\Script\Networking\test.cs" />
     <Compile Include="Assets\Script\Player\Rotate.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Script\Networking\NetworkClient.cs" />
     <Compile Include="Assets\Script\Utlis\PostProcessingHelper.cs" />
     <Compile Include="Assets\NewFolder\Test.cs" />
@@ -81,126 +77,71 @@
     <Compile Include="Assets\Script\Utlis\TrackingDictonary.cs" />
     <Compile Include="Assets\Script\Player\NameTagAutoAdjust.cs" />
     <Compile Include="Assets\Script\Player\PlayerFoot.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Script\Utlis\CheckNullProp\CheckNullPropoeritesGameObject.cs" />
     <Compile Include="Assets\Script\GameSystem\GameSystem.cs" />
     <Compile Include="Assets\Script\GameSystem\MatchSystem.cs" />
     <Compile Include="Assets\Script\UI_Test\LobbyScreen.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Script\Networking\PlayerNetworkTransform.cs" />
     <Compile Include="Assets\Script\Ball.cs" />
     <Compile Include="Assets\Script\Utlis\CheckNullProp\CheckNullPropertiesAttribute.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Script\UI\Ui_ShowPlayerInfoPnl.cs" />
     <Compile Include="Assets\Script\UI_Test\LobbyScreenRoomRender.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\Room.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Script\GameSystem\GameSystemSceneReference.cs" />
     <Compile Include="Assets\Script\Utlis\SocketHelper.cs" />
     <Compile Include="Assets\Script\UI\UI_IngameInformer.cs" />
     <Compile Include="Assets\Script\Utlis\SceneHelper.cs" />
     <Compile Include="Assets\Script\UI\UI_RoomRenderPnl.cs" />
     <Compile Include="Assets\Script\Player\Grabable.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Script\Networking\CustomNetworkManager.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Script\UI_Test\LobbyScreenShowPlayer.cs" />
     <Compile Include="Assets\Script\Player\ControlKey.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Script\UI\pnl_JionRoom.cs" />
     <Compile Include="Assets\Script\StartGameInfo.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\SlotSwapRequest.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Script\GameSystem\BasicPhase.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\SceneNetworkBehavior.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManager.cs" />
     <Compile Include="Assets\Script\Utlis\AutoFindNextDictionary.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Script\Utlis\MathHelper.cs" />
     <Compile Include="Assets\Script\Networking\NetworkServer.cs" />
     <Compile Include="Assets\Script\GameSystem\IMatchPhase.cs" />
     <Compile Include="Assets\Script\Utlis\Logging.cs" />
     <Compile Include="Assets\Script\Utlis\TypeHelper.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Script\Utlis\ThreadHelper.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManagerRpc.cs" />
     <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\PlayerEye.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\InRoomPlayerDictionary.cs" />
     <Compile Include="Assets\Script\GameSystem\MatchPhase.cs" />
     <Compile Include="Assets\Script\Utlis\SerializationHelper.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Script\Networking\CustomMessage\CustomMessageHandler.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\RoomRenderAble.cs" />
     <Compile Include="Assets\Script\UI_Test\MessageBox.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Script\UI\UIHandler.cs" />
     <Compile Include="Assets\Script\UI\UI_SelectRoomUI.cs" />
     <Compile Include="Assets\Script\UI_Test\UIManage.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Script\Utlis\WaitForInstaceNotNull.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\NewFolder\UI\LobbyScreen\LobbyScreen.uxml" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\NewFolder\UI\GoalScreen\GoalScreen.uss" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\Script\NguyenDatScript.asmdef" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
     <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uxml" />
     <None Include="Assets\Fantasy Skybox FREE\ReleaseNotes.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\NewFolder\UITemplate\Slider-element.uxml" />
     <None Include="Assets\NewFolder\UITemplate\Toggle-element.uxml" />
     <None Include="Assets\UnityPackages\JsonNet\Newtonsoft.Json.dll" />
     <None Include="Assets\NewFolder\UI\LobbyScreen\LobbyScreen.uss" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\NewFolder\UI\Common.uss" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\NewFolder\UI\LobbyScreen\player-card.uxml" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\OccaSoftware\Crosshairs\Readme.txt" />
     <None Include="Assets\NewFolder\UI\GoalScreen\GoalScreen.uxml" />
     <None Include="Assets\NewFolder\UITemplate\RadioButton-element.uxml" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\NewFolder\UITemplate\Button-element.uxml" />
-    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Script\HLSL\Blur.hlsl" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uss" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1025,6 +966,9 @@
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.Adapters">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.Adapters.dll</HintPath>
     </Reference>
@@ -1042,9 +986,6 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
@@ -1164,6 +1105,10 @@
     <ProjectReference Include="QFSW.QC.Editor.csproj">
       <Project>{D030816F-21EC-E7AC-23AA-4AD9B7053AF2}</Project>
       <Name>QFSW.QC.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TextMeshProExample.csproj">
+      <Project>{E2FFB85D-8C3D-61FE-0978-73E04800A0E3}</Project>
+      <Name>TextMeshProExample</Name>
     </ProjectReference>
     <ProjectReference Include="QFSW.QC.Suggestors.csproj">
       <Project>{5A1C77DC-9F9F-0EDA-D632-CF0999EFAEE8}</Project>
