@@ -14,24 +14,23 @@ namespace Assets.Script.Networking.NetworkRoom
     /// </summary>
     public class SceneNetworkBehavior : NetworkBehaviour
     {
-
+        NetworkManager netmang;
         GameSystem system;
-        public virtual void Awake()
-        {
-      
-        }
         public override void OnNetworkSpawn()
         {
+            netmang = NetworkManager.Singleton;
+           
             base.OnNetworkSpawn();
             if (IsServer)
             {
                 system = SceneHelper.GetGameSystem(gameObject.scene);
+                ShowObjecttoScenePlayer();
+                netmang.OnClientConnectedCallback += OnNewPlayerConnect;
             }
-            ShowObjecttoScenePlayer();
         }
-        public virtual void Start()
+        void OnNewPlayerConnect(ulong id)
         {
-            
+            NetworkObject.NetworkHide(id);
         }
         void ShowObjecttoScenePlayer()
         {
@@ -44,6 +43,12 @@ namespace Assets.Script.Networking.NetworkRoom
                     NetworkObject.NetworkShow(player.OwnerClientId);
                 }
             }
+        }
+        private new void OnDestroy()
+        {
+            if (IsServer)
+            netmang.OnClientConnectedCallback -= OnNewPlayerConnect;
+            base.OnDestroy();
         }
     }
 }

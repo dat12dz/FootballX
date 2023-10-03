@@ -12,14 +12,16 @@ public class Ball : Grabable
 {
     [HideInInspector]
    public Rigidbody rb;
+    // Client instance
     public static Ball instance;
     NetworkObject thisNetobj;
     GameSystem thisSceneGameSystem;
-
-    private new void Awake()
+    
+    private void Awake()
     {
-        base.Awake();
+      //  base.Awake();
     }
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -27,16 +29,16 @@ public class Ball : Grabable
         gameObject.SetActive(true);
         Debug.Log(gameObject.name);
     }
-    new void Start()
+    void Start()
     {
-        base.Start();
+        //base.Start();
         if (!IsSpawned) gameObject.SetActive(false);
+        if (IsClient)
         instance = this;
-
         rb = GetComponent<Rigidbody>();
         thisNetobj = NetworkObject;
     }
-   
+    
     public void Shoot(Vector3 force)
     {
         rb.AddForce(force,ForceMode.VelocityChange);

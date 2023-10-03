@@ -1,4 +1,4 @@
-using Assets.Utlis;
+﻿using Assets.Utlis;
 using JetBrains.Annotations;
 using System;
 using System.Collections;
@@ -91,6 +91,7 @@ public class UIHandler : MonoBehaviour
 
     void LockCursor()
     {
+      
         if (isCursorLocked)
         {
             Cursor.lockState = CursorLockMode.Locked;

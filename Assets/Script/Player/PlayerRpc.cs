@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEditor;
@@ -12,6 +13,7 @@ using UnityEngine;
 public partial class Player
 {
     NetworkVariable<bool> isGrabed= new NetworkVariable<bool>();
+    [SerializeField] TextMeshPro NameTag_;
     [ServerRpc]
     public void GrabItemOrThrowServerRpc(float ThrowForce = 0)
     {
@@ -56,5 +58,8 @@ public partial class Player
     {
         PlayerName.Value = name_;
         Logging.Log("PlayerName Mới:" +  PlayerName.Value);
+        
     }
+    
+    
 }
