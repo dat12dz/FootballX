@@ -203,11 +203,12 @@
 
 #swap-btn {
     position: absolute;
-    bottom: -80%;
+    top: 106%;
+    right: -70%;
     align-self: center;
     width: 26px;
     height: 26px;
-    -unity-background-image-tint-color: black;
+    -unity-background-image-tint-color: white;
     background-image: url('project://database/Assets/NewFolder/Icons/swap.svg?fileID=7388822144124034973&guid=3b55253dc1f89cc4ca43b0b6a9ba077c&type=3#swap');
 }
 
@@ -230,6 +231,7 @@
 
 /* notify */
 #notify {
+    display: none;
     position: absolute;
     bottom: 162%;
     left: 60%;
@@ -308,3 +310,5 @@
     border-right-color: rgba(0,0,0,0);
     border-top-color: rgba(0,0,0,1);
 }
+
+/* hover */
