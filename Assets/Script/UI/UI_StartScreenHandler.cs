@@ -1,5 +1,6 @@
 using Assets.Script.UI;
 using Assets.Utlis;
+using log4net.Appender;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using TMPro;
 using Unity.Jobs;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -47,28 +49,27 @@ public class UI_StartScreenHandler : MonoBehaviour
         });
         btn_HostBtn.onClick.AddListener(() =>
         {
-             if (netmang.StartHost())
+            StartGameInfo.instance.PlayerName = inp_PlayerName.text;
+            if (netmang.StartHost())
                 SceneManager.LoadScene(1);
+
         });
         btn_autoLocalhost.onClick.AddListener(() =>
         {
             inp_ServerIP.text = "127.0.0.1";
         });
-      /*  netins.OnConnecting += () =>
-        {
-            try
-            {
-                btn_Connect.GetComponentInChildren<TextMeshProUGUI>().text = "Connecting...";
-                btn_Connect.enabled = false;
+        netmang.OnServerStopped += Netmang_OnServerStopped;
+        netmang.OnClientStopped += Netmang_OnClientStopped;
+    }
 
-            }
-            catch { }
-        };
-        netins.OnConnectFail += () =>
-        {
-            btn_Connect.GetComponentInChildren<TextMeshProUGUI>().text = "Connect";
-            btn_Connect.enabled = true;
-        };*/
+    private void Netmang_OnClientStopped(bool obj)
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void Netmang_OnServerStopped(bool obj)
+    {
+        SceneManager.LoadScene(0);
     }
 
     // Update is called once per frame

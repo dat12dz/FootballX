@@ -26,7 +26,7 @@ public class Room
         }
         catch
         {
-            Logging.LogError("Không thể tìm thấy phòng ID" + RoomID);
+            Logging.LogError("Không thể tìm thấy phòng ID:" + RoomID);
             return null; 
         }
     }
@@ -34,10 +34,12 @@ public class Room
     public InRoomPlayerDictionary playerDict = new InRoomPlayerDictionary();
     // Room ID của room này
     public uint RoomID;
+    public string RoomName;
     Scene physicScene;
     public SortedList<long, PlayerRoomManager> JoinedTimeList = new SortedList<long, PlayerRoomManager>();
-    public Room(PlayerRoomManager RoomOwner)
+    public Room(PlayerRoomManager RoomOwner,string name)
     {
+        RoomName = name;
         // Thêm phòng
         RoomID = RoomDict.Add(this);
         Logging.Log("Tạo phòng thành công ID:" + RoomID);
@@ -129,6 +131,7 @@ public class Room
     }
     public void StartGame()
     {
+
         var LoadGame = SceneManager.LoadScene(2, new LoadSceneParameters(LoadSceneMode.Additive, LocalPhysicsMode.Physics3D));
         SceneManager.sceneLoaded += (scene, loadmoded) =>
         {

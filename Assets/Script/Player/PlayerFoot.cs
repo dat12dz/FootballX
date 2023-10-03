@@ -9,6 +9,7 @@ public class PlayerFoot : MonoBehaviour
     LayerMask ballMask;
   [SerializeField]  Player thisPlayer;
     Ball ball = Ball.instance;
+    
     void Start()
     {
         ballMask = LayerMask.NameToLayer("Ball");
@@ -20,11 +21,13 @@ public class PlayerFoot : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        var ball = thisPlayer.System.sceneReference.ball;
         if (NetworkManager.Singleton.IsServer)
         if (collision.gameObject.layer == ballMask)
         {
-            thisPlayer.Shootball(Ball.instance);
+            thisPlayer.Shootball(ball);
         }
+     ;
     }
     // Update is called once per frame
     void Update()

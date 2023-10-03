@@ -1,4 +1,4 @@
-using Assets;
+﻿using Assets;
 
 using Assets.Script.Utlis;
 using Assets.Utlis;
@@ -82,19 +82,23 @@ public class GameSystem : NetworkBehaviour
         room = room_;
         byte counter = 0;
         foreach (var player in room.playerDict.Values)
-        {
+        {   
+
+            // Dịch chuy
+            player.transform.position = spawnPoint[player.SlotInRoom.Value].transform.position;
+            player.GetComponent<PlayerNetworkTransform>().TeleportImidiateClientRpc(player.transform.position);
             SceneManager.MoveGameObjectToScene(player.gameObject, gameObject.scene);
             player.thisPlayer.isInGame.Value = true;
-            player.transform.position = spawnPoint[counter].transform.position;
-        
+
+            player.thisPlayer.System = this;
             counter++;
-            sceneReference.Init();
+            
         }
-        ThreadHelper.SafeThreadCall(() =>
-        {
-            ps.Simulate(Time.fixedDeltaTime);
-        });
+        sceneReference.Init();
+
+
     }
+
     void Start()
     {
         GameID = GameSystemList.Add(this);
@@ -158,7 +162,6 @@ public class GameSystem : NetworkBehaviour
     private void OnDisable()
     {
         GameSystemList.Remove(GameID);
-
     }
     private void OnDestroy()
     {
@@ -196,10 +199,7 @@ public class GameSystem : NetworkBehaviour
     }
     private void FixedUpdate()
     {
-/*        ThreadHelper.SafeThreadCall(() =>
-        {
-            ps.Simulate(Time.fixedDeltaTime);
-        });*/
+          ps.Simulate(Time.fixedDeltaTime);
     }
 
 }

@@ -18,11 +18,11 @@ public partial class PlayerRoomManager
             // Lấy client id của người gửi
             ulong clientid = NetworkkHelper.GetClientIdFrom(@params);
             // tạo phòng
-            Room r = new Room(this);
+            Room r = new Room(this, thisPlayer.PlayerName.Value + " Room's");
             // lấy người gửi
             var netParam = NetworkkHelper.CreateRpcTo(clientid);
             // trả lại cho người gửi
-            var renderable = new RoomRenderAble(r.RoomID);
+            var renderable = new RoomRenderAble(r.RoomID,r.RoomName);
             OnCreateRoomCompleteClientRpc(renderable, netParam);
         }
         else
@@ -35,7 +35,7 @@ public partial class PlayerRoomManager
     {
         if (IsLocalPlayer)
         {
-            UI_RoomRenderPnl.instance.init(renderable);
+            UI_RoomRenderPnl.WaitForInstace (() => UI_RoomRenderPnl.instance.init(renderable));
             onSlotChange(0, 0);
 
         }
@@ -52,7 +52,7 @@ public partial class PlayerRoomManager
         {
             roomNeedAdd.AddPlayer(this);
             Logging.Log("Join phòng thành công" + roomID);
-            JoinRoomCompleteClientRpc(new RoomRenderAble(roomNeedAdd.RoomID), NetworkkHelper.CreateRpcTo(OwnerClientId));
+            JoinRoomCompleteClientRpc(new RoomRenderAble(roomNeedAdd.RoomID,roomNeedAdd.RoomName), NetworkkHelper.CreateRpcTo(OwnerClientId));
         }
         else
         {
@@ -138,8 +138,11 @@ public partial class PlayerRoomManager
         // Nếu là trưởng phòng thì mới có quyền chạy tiếp
         if (isHeader.Value)
         {
-            var RoomPlayerIn = Room.GetRoom(RoomID.Value);
-            RoomPlayerIn.StartGame();
+            if (!thisPlayer.isInGame.Value)
+            {
+                var RoomPlayerIn = Room.GetRoom(RoomID.Value);
+                RoomPlayerIn.StartGame();
+            }    
         }
     }
     [ServerRpc] public void ToggleReadyServerRpc()
