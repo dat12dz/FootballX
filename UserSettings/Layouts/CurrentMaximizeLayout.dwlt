@@ -227,6 +227,7 @@ MonoBehaviour:
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
+  - {fileID: 2}
   - {fileID: 8}
   - {fileID: 9}
   - {fileID: 2}
