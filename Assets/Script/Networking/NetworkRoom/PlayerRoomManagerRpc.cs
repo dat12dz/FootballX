@@ -13,16 +13,24 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void CreateRoomServerRpc(ServerRpcParams @params = default)
     {
+        // Lấy client id của người gửi
+        ulong clientid = NetworkkHelper.GetClientIdFrom(@params);
+        // Nếu game là game host chỉ được tạo duy nhất 1 phòng host
+        if (NetworkManager.Singleton.IsHost && clientid != 0) return;
         if (RoomID.Value == 0)
         {
-            // Lấy client id của người gửi
-            ulong clientid = NetworkkHelper.GetClientIdFrom(@params);
+
             // tạo phòng
             Room r = new Room(this, thisPlayer.PlayerName.Value + " Room's");
             // lấy người gửi
             var netParam = NetworkkHelper.CreateRpcTo(clientid);
+ 
+            if (IsHost)
+            {
+                Room.hostRoom = r;
+            }
             // trả lại cho người gửi
-            var renderable = new RoomRenderAble(r.RoomID,r.RoomName);
+            var renderable = new RoomRenderAble(r.RoomID, r.RoomName, IsHost);
             OnCreateRoomCompleteClientRpc(renderable, netParam);
         }
         else
@@ -35,7 +43,7 @@ public partial class PlayerRoomManager
     {
         if (IsLocalPlayer)
         {
-            UI_RoomRenderPnl.WaitForInstace (() => UI_RoomRenderPnl.instance.init(renderable));
+            UI_RoomRenderPnl.WaitForInstace(() => UI_RoomRenderPnl.instance.init(renderable));
             onSlotChange(0, 0);
 
         }
@@ -45,9 +53,14 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void JoinRoomServerRpc(uint roomID)
     {
-        
+
         Room roomNeedAdd;
         var res = Room.RoomDict.TryGetValue(roomID, out roomNeedAdd);
+        if (roomID == 0)
+        {
+            roomNeedAdd = Room.hostRoom;
+            res = roomNeedAdd != null;
+        }
         if (res)
         {
             roomNeedAdd.AddPlayer(this);
@@ -69,8 +82,6 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void LeaveRoomServerRpc()
     {
-
-
         // Khi người chơi ngắt kết nối hoặc bấm dấu X rời phòng
         var slotInRoom = SlotInRoom.Value;
         var RoomPlayerIn = Room.GetRoom(RoomID.Value);
