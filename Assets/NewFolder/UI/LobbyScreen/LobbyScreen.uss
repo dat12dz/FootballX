@@ -91,28 +91,61 @@
     align-items: center;
     min-width: 140px;
     height: 160px;
-    border-width: 4px;
-    border-radius: 6%;
     padding: 24px 0;
 }
 
+/* player-card */
+#player-card{
+    
+    background-color: black;
+}
+#player-card-bg {
+    position: absolute;
+    top: -6%;
+    left: -6%;
+    width: 140px;
+    height: 160px;
+    transition: 0.2s;
+    background-color: white;
+    justify-content: center;
+}
+
 .player-red-border {
-    border-color: red;
+    
 }
 
 .player-blue-border {
-    border-color: rgb(0, 162, 232);
+    
 }
 
 .red-team {
-    background-color: red;
+    background-color: white;
 }
 
 .blue-team {
-    background-color: rgb(0, 162, 232);
+    background-color: white;
 }
 
-.red-team #change-leader-bg {
+.red-team #player-card-bg {
+    border-width: 1px;
+    border-color: red;
+}
+
+.blue-team #player-card-bg {
+    border-width: 1px;
+    border-color: rgb(0, 162, 232);
+}
+
+.red-team .player-name {
+    color: black;
+
+}
+
+.blue-team .player-name {
+    color: black;
+}
+
+/* .red-team #change-leader-bg {
     -unity-background-image-tint-color: red;
 }
 
@@ -126,17 +159,50 @@
 
 .blue-team #kick-bg {
     -unity-background-image-tint-color: rgb(0, 162, 232);
+} */
+
+#player-description {
+    /* display: none; */
 }
 
-.player-empty {
-    display: none;
-    padding: 12px;
-    width: 100px;
-    height: 100px;
-    align-self: center;
-    scale: 0.6;
+#top-player-description {
+    margin: 4px 4px 0 4px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#change-leader-btn, #kick-btn {
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    border-width: 1px;
     border-radius: 50%;
-    background-image: url(/Assets/NewFolder/Icons/plus.svg);
+}
+#change-leader-btn {
+    border-color: black;
+}
+
+#kick-btn {
+    border-color: black;
+}
+
+#change-leader-bg {
+    transition: 0.4s;
+    -unity-background-image-tint-color: black;
+    background-image: url(/Assets/NewFolder/Icons/crown.svg);
+}
+
+#kick-bg {
+    scale: 0.8;
+    transition: 0.4s;
+    -unity-background-image-tint-color: black;
+    background-image: url(/Assets/NewFolder/Icons/xMark.svg);
+}
+
+#middle-player-description {
+    
+    height: 120px;
+    justify-content: space-around;
 }
 
 .player-avatar {
@@ -152,86 +218,56 @@
 .player-name {
     width: 100%;
     align-self: center;
-    padding: 0 8px;
+    padding: 0 12px;
     white-space: normal;
     font-size: 10px;
-    color: white;
     -unity-text-align: middle-center;
 }
 
-
-#player-description {
-    height: 120px;
-    justify-content: space-around;
+#bottom-player-description {
+    flex-direction: row-reverse;
+    margin:0 4px 4px 4px;
 }
 
-#interact-leader {
+#leader, #ready {
     position: absolute;
-    align-self: center;
-    width: 100%;
-    top: -22%;
-}
-
-#change-leader-btn, #kick-btn {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    padding: 2px;
-    border-width: 2px;
-    border-radius: 50%;
-    border-color: white;
-    background-color: white;
-}
-
-#change-leader-btn {
-    left: -70%;
-}
-
-#change-leader-bg {
-    transition: 0.4s;
-    background-image: url(/Assets/NewFolder/Icons/crown.svg);
-}
-
-#kick-btn {
-    right: -70%;
-}
-
-#kick-bg {
-    scale: 0.8;
-    transition: 0.4s;
-    background-image: url(/Assets/NewFolder/Icons/xMark.svg);
+    bottom: 0;
+    left: 50%;
+    translate: -50% 0;
 }
 
 #leader {
-    position: absolute;
-    top: 100%;
-    align-self: center;
     width: 20px;
     height: 20px;
+    -unity-background-image-tint-color: black;
     background-image: url(/Assets/NewFolder/Icons/crown.svg);
 }
 
 #ready {
-    position: absolute;
-    top: 100%;
-    align-self: center;
     width: 20px;
-    height: 20px;
+    height: 16px;
+    -unity-background-image-tint-color: black;
     background-image: url(/Assets/NewFolder/Icons/check.svg);
 }
 
 #swap-btn {
-    position: absolute;
-    top: 100%;
-    right: -68%;
     align-self: center;
     width: 20px;
     height: 20px;
     transition: 0.4s;
-    -unity-background-image-tint-color: white;
+    -unity-background-image-tint-color: black;
     background-image: url(/Assets/NewFolder/Icons/swap.svg);
 }
 
+/* player-empty */
+.player-empty {
+    display: none;
+    width: 60px;
+    height: 60px;
+    align-self: center;
+    -unity-background-image-tint-color: black;
+    background-image: url(/Assets/NewFolder/Icons/plus.svg);
+}
 
 /* bottom-lobby */
 #bottom-lobby {
@@ -372,4 +408,9 @@
 
 .blue-team #kick-btn:hover #kick-bg {
     -unity-background-image-tint-color: #99daf6;
+}
+
+#player-card:hover #player-card-bg {
+    left: -10%;
+    top: -10%;
 }
