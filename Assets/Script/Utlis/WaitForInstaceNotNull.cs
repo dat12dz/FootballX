@@ -10,8 +10,8 @@ using UnityEngine;
     {
      public static void WaitForInstace(Action then)
     { 
-        if (instance != null)
-        {
+        if (instace_ != null)
+        { 
             then();
         }
         else
@@ -31,10 +31,14 @@ using UnityEngine;
         }
     }
 
-
+    private void OnDestroy()
+    {
+  
+        instance = default(T);
+    }
     static Action WhenInstaceNotNull;
         static T instace_;
-        public static T instance
+        public static T instance 
       { 
             get 
             {
@@ -49,7 +53,6 @@ using UnityEngine;
                 }
             }
         }
-        
-        
-    }
+
+}
 

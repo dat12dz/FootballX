@@ -8,7 +8,6 @@ using TMPro;
 using Unity.Jobs;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,9 +22,11 @@ public class UI_StartScreenHandler : MonoBehaviour
 
    public static StartSceneInfo StartSceneInfoSync;
     NetworkManager netmang;
+    int maxHostPlayer = 10;
     void Start()
     {
             netmang = NetworkManager.Singleton;
+            maxHostPlayer = 10;
             Logging.CheckNLogObjectNull(inp_PlayerName,nameof(inp_PlayerName));
             Logging.CheckNLogObjectNull(inp_ServerIP, nameof(inp_ServerIP));
             Logging.CheckNLogObjectNull(btn_Connect, nameof(btn_Connect));
@@ -50,6 +51,17 @@ public class UI_StartScreenHandler : MonoBehaviour
         btn_HostBtn.onClick.AddListener(() =>
         {
             StartGameInfo.instance.PlayerName = inp_PlayerName.text;
+            netmang.ConnectionApprovalCallback = (req, res) =>
+            {
+                if (netmang.ConnectedClients.Count > maxHostPlayer)
+                {
+                    res.Approved = false;
+                    res.Reason = "Server is full";
+
+                }
+                res.Approved = true;
+                res.CreatePlayerObject = true;
+            };
             if (netmang.StartHost())
                 SceneManager.LoadScene(1);
 
@@ -60,13 +72,27 @@ public class UI_StartScreenHandler : MonoBehaviour
         });
         netmang.OnServerStopped += Netmang_OnServerStopped;
         netmang.OnClientStopped += Netmang_OnClientStopped;
+        netmang.OnTransportFailure += Netmang_OnTransportFailure;
+        netmang.OnClientDisconnectCallback += Netmang_OnClientDisconnectCallback;
+        
     }
 
-    private void Netmang_OnClientStopped(bool obj)
+    private void Netmang_OnClientDisconnectCallback(ulong obj)
+    {
+        if (!netmang.IsServer)
+            MessageBox.Show("Disconnect from server",$"{netmang.DisconnectReason}");
+    }
+
+    private void Netmang_OnTransportFailure()
     {
         SceneManager.LoadScene(0);
     }
 
+    private void Netmang_OnClientStopped(bool obj)
+    {
+        SceneManager.LoadScene(0);            
+    }
+   
     private void Netmang_OnServerStopped(bool obj)
     {
         SceneManager.LoadScene(0);

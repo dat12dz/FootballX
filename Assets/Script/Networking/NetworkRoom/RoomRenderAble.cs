@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Collections;
 using Unity.Netcode;
 
 
@@ -14,7 +15,7 @@ using Unity.Netcode;
             RoomName = name;
              isHostGame = hostGame;
         }
-       public string RoomName;
+       public FixedString32Bytes RoomName;
        public uint RoomId;
         public bool isHostGame;
     }

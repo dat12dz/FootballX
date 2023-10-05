@@ -10,6 +10,16 @@ namespace Assets.Script.Networking
 {
     internal class CustomNetworkManager : NetworkManager
     {
-        
+        private void Awake()
+        {
+            if (Singleton != null)
+            {
+                Destroy(gameObject);
+            }
+        }
+        private void Start()
+        {
+  
+        }
     }
 }

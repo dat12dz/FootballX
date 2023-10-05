@@ -54,7 +54,6 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void JoinRoomServerRpc(uint roomID)
     {
-
         Room roomNeedAdd;
         var res = Room.RoomDict.TryGetValue(roomID, out roomNeedAdd);
         if (roomID == 0)
@@ -66,7 +65,7 @@ public partial class PlayerRoomManager
         {
             roomNeedAdd.AddPlayer(this);
             Logging.Log("Join phòng thành công" + roomID);
-            JoinRoomCompleteClientRpc(new RoomRenderAble(roomNeedAdd.RoomID,roomNeedAdd.RoomName), NetworkkHelper.CreateRpcTo(OwnerClientId));
+            JoinRoomCompleteClientRpc(new RoomRenderAble(roomNeedAdd.RoomID,roomNeedAdd.RoomName,NetworkManager.IsHost), NetworkkHelper.CreateRpcTo(OwnerClientId));
         }
         else
         {
