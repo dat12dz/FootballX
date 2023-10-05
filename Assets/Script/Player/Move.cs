@@ -50,12 +50,13 @@ public partial class Move : NetworkBehaviour
         }
         else
         {
-            Logging.Log("Người chơi chạy quá nhanh");
+            Logging.LogError("Người chơi chạy quá nhanh");
         }
     }
     [ServerRpc]
     public void MovePlayerXZServerRpc(float x, float z)
     {
+        if (!player.isSuppress.Value)
         if (MathHelper.DistanceNoSqrt(new Vector2(x, z), new Vector2(transform.position.x, transform.position.z)) > MathHelper.Power2(SafeDistanceCheck))
         {
             nettrans.TeleportImidiateClientRpc(transform.position);
@@ -127,8 +128,11 @@ public partial class Move : NetworkBehaviour
                 var newX = MoveDirectionn.x;
                 var newZ = MoveDirectionn.z;
              
-                 MovePlayer(MoveDirectionn * RuntimeSpeed * Time.deltaTime);
-                MovePlayerXZServerRpc(transform.position.x, transform.position.z);
+                if (!player.isSuppress.Value)
+                {
+                    MovePlayer(MoveDirectionn * RuntimeSpeed * Time.deltaTime);
+                    MovePlayerXZServerRpc(transform.position.x, transform.position.z);
+                }
 
             }
 

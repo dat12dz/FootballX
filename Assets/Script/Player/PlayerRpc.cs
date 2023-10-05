@@ -26,7 +26,7 @@ public partial class Player
             if (r.collider != null)
             {
                 Grabable GrabAbleItem = r.collider.GetComponent<Grabable>();
-                if (GrabAbleItem != null)
+                if (GrabAbleItem != null && !GrabAbleItem.isGrab())
                     GrabAbleItem.Grab(Graber);
                 grabitem = GrabAbleItem;
                 
@@ -46,7 +46,6 @@ public partial class Player
             grabitem = null;
         }
         isGrabed.Value = grabitem != null;
-
     }
     [ServerRpc]
     public void SendShootForceServerRpc(float shootForce)

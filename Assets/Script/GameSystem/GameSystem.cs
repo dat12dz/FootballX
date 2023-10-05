@@ -16,7 +16,6 @@ using UnityEngine.UIElements;
 [CheckNullProperties]
 public class GameSystem : NetworkBehaviour
 {
-    
     [SerializeField] Volume PostProcessing;
     public static Action<uint> OnStartGameSystem;
   public enum Team
@@ -48,8 +47,8 @@ public class GameSystem : NetworkBehaviour
     [Header("Reference")]
     [SerializeField]
     public GameSystemSceneReference sceneReference;
-   public int ScoreBlueTeam
-    {
+    public NetworkVariable<int> ScoreBlueTeam;
+/*    {
         get { return ScoreBlueTeam_; }
         set
         {
@@ -62,9 +61,9 @@ public class GameSystem : NetworkBehaviour
           
             ScoreBlueTeam_ = value;
         }
-    }   int ScoreBlueTeam_;
-   public int ScoreRedTeam
-    {
+    }  */
+   public NetworkVariable<int> ScoreRedTeam;
+/*    {
         get { return ScoreRedTeam_; }
         set
         {
@@ -73,7 +72,7 @@ public class GameSystem : NetworkBehaviour
             if (OnScoreChange != null) OnScoreChange(value,ScoreBlueTeam, Goaler);
             ScoreRedTeam_ = value;
         }
-    }    int ScoreRedTeam_;
+    }   */
     public void Init(Room room_)
     {
         // On Server code
