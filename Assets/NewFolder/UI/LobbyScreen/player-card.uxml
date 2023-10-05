@@ -10,15 +10,15 @@
             <ui:ProgressBar value="50" name="ProgressBar" />
             <ui:VisualElement name="notify-triangle" />
         </ui:VisualElement>
-        <ui:VisualElement name="player-description" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-            <ui:VisualElement name="interact-leader" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                <ui:VisualElement name="change-leader-btn">
-                    <ui:VisualElement name="change-leader-bg" style="flex-grow: 1;" />
-                </ui:VisualElement>
-                <ui:VisualElement name="kick-btn">
-                    <ui:VisualElement name="kick-bg" style="flex-grow: 1;" />
-                </ui:VisualElement>
+        <ui:VisualElement name="interact-leader" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:VisualElement name="change-leader-btn">
+                <ui:VisualElement name="change-leader-bg" style="flex-grow: 1;" />
             </ui:VisualElement>
+            <ui:VisualElement name="kick-btn">
+                <ui:VisualElement name="kick-bg" style="flex-grow: 1;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="player-description" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
             <ui:VisualElement name="avatar" class="player-avatar" style="-unity-background-scale-mode: scale-and-crop;" />
             <ui:Label tabindex="-1" text="Player" display-tooltip-when-elided="true" name="name" class="player-name" />
             <ui:VisualElement name="leader" />

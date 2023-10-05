@@ -2,6 +2,7 @@
     background-color: rgb(153, 153, 153);
     justify-content: center;
 }
+
 /* background */
 #background {
     position: absolute;
@@ -11,9 +12,10 @@
     left: 0;
     transition: 1s;
     background-color: white;
-    background-image: url('project://database/Assets/NewFolder/Resources/UI/background/lobby.png?fileID=2800000&guid=a696a985ea393c043a53dbc6c07e053f&type=3#lobby');
+    background-image: url(/Assets/NewFolder/Resources/UI/background/lobby.png);
     -unity-background-image-tint-color: rgba(255,255,255,0.12);
 }
+
 /* lobby-screen */
 #lobby-screen {
     position: absolute;
@@ -22,7 +24,9 @@
     bottom: 0;
     left: 0;
     justify-content: center;
+    transition: 0.4s;
 }
+
 /* top-lobby */
 #top-lobby {
     position: absolute;
@@ -32,13 +36,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 #top-left-lobby {
+
 }
 
 #room-name {
+
 }
 
 #top-right-lobby {
@@ -51,8 +57,8 @@
 }
 
 #exit-btn {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     border-radius: 20%;
     border-width: 2px;
     border-color: black;
@@ -61,28 +67,33 @@
 
 #exit-bg {
     -unity-background-image-tint-color: red;
-    background-image: url('project://database/Assets/NewFolder/Icons/xMark.svg?fileID=7388822144124034973&guid=56863b2bd0363e74cb1aff79b757d76c&type=3#xMark');
+    background-image: url(/Assets/NewFolder/Icons/xMark.svg);
 }
 /* middle-lobby */
 #middle-lobby {
     width: 100%;
+    min-height: 380px;
+    height: 30%;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
 .lobby-screen-box {
-    width: 90%;
+    min-width: 900px;
+    width: 50%;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .player-red-border, .player-blue-border {
     justify-content: center;
     align-items: center;
-    min-width: 160px;
+    min-width: 140px;
+    height: 160px;
     border-width: 4px;
     border-radius: 6%;
-    padding: 36px 0;
-    margin: 0 36px;
+    padding: 24px 0;
 }
 
 .player-red-border {
@@ -125,12 +136,12 @@
     align-self: center;
     scale: 0.6;
     border-radius: 50%;
-    background-image: url('project://database/Assets/NewFolder/Icons/plus.svg?fileID=7388822144124034973&guid=80865f328287cb045994ec582a548bce&type=3#plus');
+    background-image: url(/Assets/NewFolder/Icons/plus.svg);
 }
 
 .player-avatar {
-    min-width: 60px;
-    min-height: 60px;
+    min-width: 50px;
+    min-height: 50px;
     align-self: center;
     border-radius: 50%;
     background-image: url(/Assets/NewFolder/Icons/ball.svg);
@@ -139,26 +150,32 @@
 }
 
 .player-name {
-    margin-top: 16px;
+    width: 100%;
+    align-self: center;
+    padding: 0 8px;
+    white-space: normal;
+    font-size: 10px;
     color: white;
     -unity-text-align: middle-center;
 }
 
 
 #player-description {
+    height: 120px;
+    justify-content: space-around;
 }
 
 #interact-leader {
     position: absolute;
     align-self: center;
     width: 100%;
-    top: -38%;
+    top: -22%;
 }
 
 #change-leader-btn, #kick-btn {
     position: absolute;
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
     padding: 2px;
     border-width: 2px;
     border-radius: 50%;
@@ -167,50 +184,54 @@
 }
 
 #change-leader-btn {
-    left: -76%;
+    left: -70%;
 }
 
 #change-leader-bg {
-    background-image: url('project://database/Assets/NewFolder/Icons/crown.svg?fileID=7388822144124034973&guid=0439821646d0a914098946a8ff235104&type=3#crown');
+    transition: 0.4s;
+    background-image: url(/Assets/NewFolder/Icons/crown.svg);
 }
 
 #kick-btn {
-    right: -76%;
+    right: -70%;
 }
 
 #kick-bg {
     scale: 0.8;
-    background-image: url('project://database/Assets/NewFolder/Icons/xMark.svg?fileID=7388822144124034973&guid=56863b2bd0363e74cb1aff79b757d76c&type=3#xMark');
+    transition: 0.4s;
+    background-image: url(/Assets/NewFolder/Icons/xMark.svg);
 }
 
 #leader {
     position: absolute;
-    top: 106%;
+    top: 100%;
     align-self: center;
     width: 20px;
     height: 20px;
-    background-image: url('project://database/Assets/NewFolder/Icons/crown.svg?fileID=7388822144124034973&guid=0439821646d0a914098946a8ff235104&type=3#crown');
+    background-image: url(/Assets/NewFolder/Icons/crown.svg);
 }
 
 #ready {
     position: absolute;
-    top: 106%;
+    top: 100%;
     align-self: center;
     width: 20px;
     height: 20px;
-    background-image: url('project://database/Assets/NewFolder/Icons/check.svg?fileID=7388822144124034973&guid=f7d0ceaef1f335547aad594be7aa95d0&type=3#check');
+    background-image: url(/Assets/NewFolder/Icons/check.svg);
 }
 
 #swap-btn {
     position: absolute;
-    top: 106%;
-    right: -70%;
+    top: 100%;
+    right: -68%;
     align-self: center;
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
+    transition: 0.4s;
     -unity-background-image-tint-color: white;
-    background-image: url('project://database/Assets/NewFolder/Icons/swap.svg?fileID=7388822144124034973&guid=3b55253dc1f89cc4ca43b0b6a9ba077c&type=3#swap');
+    background-image: url(/Assets/NewFolder/Icons/swap.svg);
 }
+
 
 /* bottom-lobby */
 #bottom-lobby {
@@ -223,10 +244,11 @@
 }
 
 #start-btn, #ready-btn {
-    min-width: 200px;
+    width: 140px;
+    height: 40px;
     padding: 12px 0;
     margin: 0 36px;
-    font-size: 20px;
+    font-size: 14px;
 }
 
 /* notify */
@@ -312,3 +334,42 @@
 }
 
 /* hover */
+.red-team #swap-btn:hover {
+    -unity-background-image-tint-color: #ffcccc;
+}
+
+.red-team #change-leader-btn:hover {
+    
+}
+
+.red-team #change-leader-btn:hover #change-leader-bg {
+    -unity-background-image-tint-color: #ffcccc;
+}
+
+.red-team #kick-btn:hover {
+
+}
+
+.red-team #kick-btn:hover #kick-bg {
+    -unity-background-image-tint-color: #ffcccc;
+}
+
+.blue-team #swap-btn:hover {
+    -unity-background-image-tint-color: #99daf6;
+}
+
+.blue-team #change-leader-btn:hover {
+    
+}
+
+.blue-team #change-leader-btn:hover #change-leader-bg {
+    -unity-background-image-tint-color: #99daf6;
+}
+
+.blue-team #kick-btn:hover {
+    
+}
+
+.blue-team #kick-btn:hover #kick-bg {
+    -unity-background-image-tint-color: #99daf6;
+}
