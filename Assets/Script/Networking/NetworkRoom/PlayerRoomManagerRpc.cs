@@ -1,4 +1,5 @@
 ﻿using Assets.Script.Networking.NetworkRoom;
+using Assets.Script.UI;
 using Assets.Script.Utlis.CheckNullProp;
 using Assets.Utlis;
 using JetBrains.Annotations;
@@ -13,16 +14,24 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void CreateRoomServerRpc(ServerRpcParams @params = default)
     {
+        // Lấy client id của người gửi
+        ulong clientid = NetworkkHelper.GetClientIdFrom(@params);
+        // Nếu game là game host chỉ được tạo duy nhất 1 phòng host
+        if (NetworkManager.Singleton.IsHost && clientid != 0) return;
         if (RoomID.Value == 0)
         {
-            // Lấy client id của người gửi
-            ulong clientid = NetworkkHelper.GetClientIdFrom(@params);
+
             // tạo phòng
             Room r = new Room(this, thisPlayer.PlayerName.Value + " Room's");
             // lấy người gửi
             var netParam = NetworkkHelper.CreateRpcTo(clientid);
+ 
+            if (IsHost)
+            {
+                Room.hostRoom = r;
+            }
             // trả lại cho người gửi
-            var renderable = new RoomRenderAble(r.RoomID,r.RoomName);
+            var renderable = new RoomRenderAble(r.RoomID, r.RoomName, IsHost);
             OnCreateRoomCompleteClientRpc(renderable, netParam);
         }
         else
@@ -35,7 +44,7 @@ public partial class PlayerRoomManager
     {
         if (IsLocalPlayer)
         {
-            UI_RoomRenderPnl.WaitForInstace (() => UI_RoomRenderPnl.instance.init(renderable));
+            RoomRendererBase.WaitForInstace(() => RoomRendererBase.instance.init(renderable));
             onSlotChange(0, 0);
 
         }
@@ -45,9 +54,14 @@ public partial class PlayerRoomManager
     [ServerRpc]
     public void JoinRoomServerRpc(uint roomID)
     {
-        
+
         Room roomNeedAdd;
         var res = Room.RoomDict.TryGetValue(roomID, out roomNeedAdd);
+        if (roomID == 0)
+        {
+            roomNeedAdd = Room.hostRoom;
+            res = roomNeedAdd != null;
+        }
         if (res)
         {
             roomNeedAdd.AddPlayer(this);
@@ -62,15 +76,13 @@ public partial class PlayerRoomManager
     [ClientRpc]
     public void JoinRoomCompleteClientRpc(RoomRenderAble renderable,ClientRpcParams @params = default)
     {
-        UI_RoomRenderPnl.instance.init(renderable);
+        RoomRendererBase.instance.init(renderable);
         Logging.Log("Đã join thành công");
         onSlotChange(0, 0);
     }
     [ServerRpc]
     public void LeaveRoomServerRpc()
     {
-
-
         // Khi người chơi ngắt kết nối hoặc bấm dấu X rời phòng
         var slotInRoom = SlotInRoom.Value;
         var RoomPlayerIn = Room.GetRoom(RoomID.Value);
@@ -222,20 +234,20 @@ public partial class PlayerRoomManager
     }
     [ClientRpc] public void SwapSlot_ClientNeedSwapClientRpc(byte newslot,ClientRpcParams to)
     {
-        UI_RoomRenderPnl.instance.ShowPlayerInfoPnl[newslot].ToggleStopReqest(true);
+        RoomRendererBase.instance.ShowPlayerInfoPnl[newslot].ToggleStopReqest(true);
     }
     [ClientRpc] public void SwapSlot_ClientBeingRequestClientRpc(byte fromWho,ClientRpcParams to)
     {
-        UI_RoomRenderPnl.instance.ShowPlayerInfoPnl[fromWho].ShowPlayerSwapRequest();
+        RoomRendererBase.instance.ShowPlayerInfoPnl[fromWho].ShowPlayerSwapRequest();
     }
     [ClientRpc] public void SwapSlotEnd_ClientNeedSwapClientRpc(byte newslot,ClientRpcParams to)
     {
-        UI_RoomRenderPnl.instance.ShowPlayerInfoPnl[newslot].ToggleStopReqest(false);
+        RoomRendererBase.instance.ShowPlayerInfoPnl[newslot].ToggleStopReqest(false);
     }
     [ClientRpc]
     public void SwapSlotEnd_ClientBeingRequestClientRpc(byte from,ClientRpcParams to)
     {
-        UI_RoomRenderPnl.instance.ShowPlayerInfoPnl[from].HidePlayerSwapRequest();
+        RoomRendererBase.instance.ShowPlayerInfoPnl[from].HidePlayerSwapRequest();
     }
     [ServerRpc] public void SendAcceptSwapRequestServerRpc(byte acceptWho,bool accept_)
     {

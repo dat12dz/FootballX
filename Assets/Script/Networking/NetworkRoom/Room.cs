@@ -16,8 +16,9 @@ public class Room
     /// <summary>
     /// Danh sách các phòng có mặt trong game
     /// </summary>
+   
     public static AutoFindNextDictionary<Room> RoomDict = new AutoFindNextDictionary<Room>();
-  
+    public static Room hostRoom; 
     public static Room GetRoom(uint RoomID)
     {
         try

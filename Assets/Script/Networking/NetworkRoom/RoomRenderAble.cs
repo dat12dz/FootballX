@@ -8,12 +8,14 @@ using Unity.Netcode;
 
     public struct RoomRenderAble : INetworkSerializeByMemcpy
     {
-        public RoomRenderAble(uint RoomID,string name)
+        public RoomRenderAble(uint RoomID,string name,bool hostGame = false)
         {
             RoomId = RoomID;
             RoomName = name;
+             isHostGame = hostGame;
         }
        public string RoomName;
        public uint RoomId;
+        public bool isHostGame;
     }
 
