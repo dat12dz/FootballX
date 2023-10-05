@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[DefaultExecutionOrder(0)]
 public class LobbyScreen : MonoBehaviour
 {
     private VisualElement root;

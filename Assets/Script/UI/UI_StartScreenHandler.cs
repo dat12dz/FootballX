@@ -8,7 +8,6 @@ using TMPro;
 using Unity.Jobs;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
