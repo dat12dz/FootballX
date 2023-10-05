@@ -1042,9 +1042,9 @@
       <Project>{4E3A5C4F-0B0F-A57F-9F9A-21E42C097BB0}</Project>
       <Name>Unity.AdaptivePerformance.Profiler.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="QFSW.QC.Suggestors.csproj">
-      <Project>{636121E5-98E6-B087-24D3-7BB28588E3DD}</Project>
-      <Name>QFSW.QC.Suggestors</Name>
+    <ProjectReference Include="TextMeshProExample.csproj">
+      <Project>{2606C73D-64B8-6280-AFD1-6E924D9A852E}</Project>
+      <Name>TextMeshProExample</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AdaptivePerformance.UI.Editor.csproj">
       <Project>{9F8B4A94-F80A-8230-E95A-98EEB9595AEC}</Project>
@@ -1058,17 +1058,17 @@
       <Project>{DCEC4931-BE43-EC4F-000E-E19D5A4B2CFA}</Project>
       <Name>Unity.InternalAPIEditorBridge.003</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
-      <Project>{5A9C4D12-B186-A809-F188-377C295A1C76}</Project>
-      <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
+    <ProjectReference Include="QFSW.QC.Suggestors.csproj">
+      <Project>{636121E5-98E6-B087-24D3-7BB28588E3DD}</Project>
+      <Name>QFSW.QC.Suggestors</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{7E743FF7-353C-2875-39A0-E98C0B8A8E36}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="TextMeshProExample.csproj">
-      <Project>{2606C73D-64B8-6280-AFD1-6E924D9A852E}</Project>
-      <Name>TextMeshProExample</Name>
+    <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
+      <Project>{5A9C4D12-B186-A809-F188-377C295A1C76}</Project>
+      <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.csproj">
       <Project>{C6D73384-7B66-2654-25B6-7E803164C446}</Project>

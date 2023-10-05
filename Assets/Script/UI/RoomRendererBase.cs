@@ -9,7 +9,7 @@ namespace Assets.Script.UI
 {
     public abstract class RoomRendererBase : WaitForInstaceNotNull<RoomRendererBase>
     {
-        [SerializeField]  public IUI_PlayerCardBase[] ShowPlayerInfoPnl;
+        [SerializeField] public IUI_PlayerCardBase[] ShowPlayerInfoPnl = new IUI_PlayerCardBase[10];
         public abstract void init(RoomRenderAble RoomInfo);
         public abstract void de_init();
         public abstract void OnHeaderChange(bool old, bool curr);
