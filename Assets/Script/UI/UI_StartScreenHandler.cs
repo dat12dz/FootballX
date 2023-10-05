@@ -1,6 +1,5 @@
 using Assets.Script.UI;
 using Assets.Utlis;
-using log4net.Appender;
 using System;
 using System.Collections;
 using System.Collections.Generic;

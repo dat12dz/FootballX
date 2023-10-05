@@ -37,6 +37,7 @@ public class LobbyScreen : MonoBehaviour
             p.Q<VisualElement>("player-description").style.display = DisplayStyle.None;
             p.Q<VisualElement>("notify").style.display = DisplayStyle.None;
             p.Q<VisualElement>("swap-btn").style.display = DisplayStyle.None;
+            p.Q<VisualElement>("interact-leader").style.display = DisplayStyle.None;
         }
 
         container.style.display = DisplayStyle.None;
@@ -59,7 +60,6 @@ public class LobbyScreen : MonoBehaviour
         // Exit LobbyScreen
         exitBtn.RegisterCallback<PointerDownEvent>(callback =>
         {
-            
             InitStyle();
         });
     }

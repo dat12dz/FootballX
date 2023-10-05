@@ -41,7 +41,6 @@
 .btn-handle:active {
     background-color: black;
     color: white;
-    opacity: 0.9;
 }
 
 .success-btn {
