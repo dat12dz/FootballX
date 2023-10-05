@@ -1,4 +1,5 @@
 ﻿using Assets.Script.Networking.NetworkRoom;
+using Assets.Script.UI;
 using Assets.Script.Utlis.CheckNullProp;
 using Assets.Utlis;
 using JetBrains.Annotations;
@@ -43,7 +44,7 @@ public partial class PlayerRoomManager
     {
         if (IsLocalPlayer)
         {
-            UI_RoomRenderPnl.WaitForInstace(() => UI_RoomRenderPnl.instance.init(renderable));
+            RoomRendererBase.WaitForInstace(() => RoomRendererBase.instance.init(renderable));
             onSlotChange(0, 0);
 
         }
@@ -75,7 +76,7 @@ public partial class PlayerRoomManager
     [ClientRpc]
     public void JoinRoomCompleteClientRpc(RoomRenderAble renderable,ClientRpcParams @params = default)
     {
-        UI_RoomRenderPnl.instance.init(renderable);
+        RoomRendererBase.instance.init(renderable);
         Logging.Log("Đã join thành công");
         onSlotChange(0, 0);
     }
@@ -233,20 +234,20 @@ public partial class PlayerRoomManager
     }
     [ClientRpc] public void SwapSlot_ClientNeedSwapClientRpc(byte newslot,ClientRpcParams to)
     {
-        UI_RoomRenderPnl.instance.ShowPlayerInfoPnl[newslot].ToggleStopReqest(true);
+        RoomRendererBase.instance.ShowPlayerInfoPnl[newslot].ToggleStopReqest(true);
     }
     [ClientRpc] public void SwapSlot_ClientBeingRequestClientRpc(byte fromWho,ClientRpcParams to)
     {
-        UI_RoomRenderPnl.instance.ShowPlayerInfoPnl[fromWho].ShowPlayerSwapRequest();
+        RoomRendererBase.instance.ShowPlayerInfoPnl[fromWho].ShowPlayerSwapRequest();
     }
     [ClientRpc] public void SwapSlotEnd_ClientNeedSwapClientRpc(byte newslot,ClientRpcParams to)
     {
-        UI_RoomRenderPnl.instance.ShowPlayerInfoPnl[newslot].ToggleStopReqest(false);
+        RoomRendererBase.instance.ShowPlayerInfoPnl[newslot].ToggleStopReqest(false);
     }
     [ClientRpc]
     public void SwapSlotEnd_ClientBeingRequestClientRpc(byte from,ClientRpcParams to)
     {
-        UI_RoomRenderPnl.instance.ShowPlayerInfoPnl[from].HidePlayerSwapRequest();
+        RoomRendererBase.instance.ShowPlayerInfoPnl[from].HidePlayerSwapRequest();
     }
     [ServerRpc] public void SendAcceptSwapRequestServerRpc(byte acceptWho,bool accept_)
     {

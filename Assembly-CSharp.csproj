@@ -79,6 +79,7 @@
     <Compile Include="Assets\Script\Utlis\PostProcessingHelper.cs" />
     <Compile Include="Assets\NewFolder\Test.cs" />
     <Compile Include="Assets\Script\Networking\NetworkRoom\PlayerRoomManager.cs" />
+    <Compile Include="Assets\Script\UI\RoomRendererBase.cs" />
     <Compile Include="Assets\Script\Utlis\AutoFindNextDictionary.cs" />
     <Compile Include="Assets\Script\Utlis\MathHelper.cs" />
     <Compile Include="Assets\Script\Networking\NetworkServer.cs" />
@@ -100,8 +101,9 @@
     <Compile Include="Assets\Script\Networking\NetworkRoom\InRoomPlayerDictionary.cs" />
     <Compile Include="Assets\Script\GameSystem\MatchPhase.cs" />
     <Compile Include="Assets\Script\Utlis\CheckNullProp\CheckNullPropoeritesGameObject.cs" />
-    <Compile Include="Assets\Script\Utlis\SerializationHelper.cs" />
     <Compile Include="Assets\Script\GameSystem\GameSystem.cs" />
+    <Compile Include="Assets\Script\Utlis\SerializationHelper.cs" />
+    <Compile Include="Assets\Script\Networking\NetworkRoom\IUI_PlayerCardBase.cs" />
     <Compile Include="Assets\Script\GameSystem\MatchSystem.cs" />
     <Compile Include="Assets\Script\UI_Test\LobbyScreen.cs" />
     <Compile Include="Assets\Script\Networking\CustomMessage\CustomMessageHandler.cs" />
