@@ -3,6 +3,7 @@ using Assets.Script.UI;
 using Assets.Script.Utlis.CheckNullProp;
 using Assets.Utlis;
 using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
@@ -199,27 +200,35 @@ public partial class PlayerRoomManager
             // Tạo hàng đợi
             Task.Delay(SwapTimeout * 1000, request.CancelToken.Token).ContinueWith((t) =>
             {
-                MainThreadDispatcher.ExecuteInMainThread(() =>
+                try
                 {
-                    SwapSlotEnd_ClientNeedSwapClientRpc(slot, thisClientnetRpc);
-                    SwapClient.SwapSlotEnd_ClientBeingRequestClientRpc((byte)slotNeedChange, ClientnetRpc);
-                });
-                if (t.IsCanceled)
-                {
-                    // Người chơi tương tác;
-                    if (request.accept)
+                    MainThreadDispatcher.ExecuteInMainThread(() =>
                     {
-                        // Đổi vị trí người chơi
-                        RoomPlayerIn.SwapPlayerSlot(SlotInRoom.Value, slot);
+                        SwapSlotEnd_ClientNeedSwapClientRpc(slot, thisClientnetRpc);
+                        SwapClient.SwapSlotEnd_ClientBeingRequestClientRpc((byte)slotNeedChange, ClientnetRpc);
+                    });
+                    if (t.IsCanceled)
+                    {
+                        // Người chơi tương tác;
+                        if (request.accept)
+                        {
+                            // Đổi vị trí người chơi
+                            MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
+                            RoomPlayerIn.SwapPlayerSlot(SlotInRoom.Value, slot));
+                        }
                     }
+                    else
+                    {
+                        Logging.LogError("Request swap room time out timeout");
+                    }
+                    // Giải phóng cũ
+                    SwapClient.requestList[slotNeedChange] = null;
                 }
-                else
-                {
-                    Logging.LogError("Request swap room time out timeout");
-                }
-                // Giải phóng cũ
-                SwapClient.requestList[slotNeedChange] = null;
+                catch (Exception e)
 
+                {
+                    Logging.Log(e);
+                }
             });
             // Xin phép chỗ người chơi
             SwapClient.SwapSlot_ClientBeingRequestClientRpc(fromWho: SlotInRoom.Value, to: ClientnetRpc);
