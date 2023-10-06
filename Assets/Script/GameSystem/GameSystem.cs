@@ -1,11 +1,12 @@
 ﻿using Assets;
-
+using Assets.Script.Networking.NetworkRoom;
 using Assets.Script.Utlis;
 using Assets.Utlis;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -14,7 +15,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [CheckNullProperties]
-public class GameSystem : NetworkBehaviour
+public class GameSystem : SceneNetworkBehavior
 {
     [SerializeField] Volume PostProcessing;
     public static Action<uint> OnStartGameSystem;
@@ -27,19 +28,19 @@ public class GameSystem : NetworkBehaviour
     // Start is called before the first frame update
     public static GameSystem instance;
     public Action<int> OnTimeChange;
-    int Time_;
+    public MatchAction MatchAction;
     public AutoFindNextDictionary<GameSystem> GameSystemList = new AutoFindNextDictionary<GameSystem>();
     public uint GameID;
     public Room room;
     static int MatchTimeSpeed;
-    int time { 
-        get { return Time_; }
+    public NetworkVariable<int> time = new NetworkVariable<int>(-1);
+/*        get { return Time_; }
         set 
         { 
             if (OnTimeChange != null) OnTimeChange(value);
             Time_ = value; 
-        }  
-    }
+        }  */
+    
     //input: Redteam, BlueTeam , Team;
     public Action<int,int, Team> OnScoreChange;
     PhysicsScene ps;
@@ -48,31 +49,7 @@ public class GameSystem : NetworkBehaviour
     [SerializeField]
     public GameSystemSceneReference sceneReference;
     public NetworkVariable<int> ScoreBlueTeam;
-/*    {
-        get { return ScoreBlueTeam_; }
-        set
-        {
-            Team Goaler = Team.NULL;
-            if (value > ScoreBlueTeam_)
-            
-                Goaler = Team.blue;
-            
-            if (OnScoreChange != null) OnScoreChange(ScoreRedTeam,value, Goaler);
-          
-            ScoreBlueTeam_ = value;
-        }
-    }  */
-   public NetworkVariable<int> ScoreRedTeam;
-/*    {
-        get { return ScoreRedTeam_; }
-        set
-        {
-            Team Goaler = Team.NULL;
-            if (value > ScoreBlueTeam_) Goaler = Team.red;
-            if (OnScoreChange != null) OnScoreChange(value,ScoreBlueTeam, Goaler);
-            ScoreRedTeam_ = value;
-        }
-    }   */
+    public NetworkVariable<int> ScoreRedTeam;
     public void Init(Room room_)
     {
         // On Server code
@@ -81,82 +58,60 @@ public class GameSystem : NetworkBehaviour
         room = room_;
         byte counter = 0;
         foreach (var player in room.playerDict.Values)
-        {   
-
-            // Dịch chuy
-            player.transform.position = spawnPoint[player.SlotInRoom.Value].transform.position;
-            player.GetComponent<PlayerNetworkTransform>().TeleportImidiateClientRpc(player.transform.position);
+        {
+            Player thisPlayerInfo = player.thisPlayer; 
+            thisPlayerInfo.SpawnPoint = spawnPoint[player.SlotInRoom.Value].transform;
+            thisPlayerInfo.TelebackToSpawnPoint();
             SceneManager.MoveGameObjectToScene(player.gameObject, gameObject.scene);
-            player.thisPlayer.isInGame.Value = true;
-
-            player.thisPlayer.System = this;
+            thisPlayerInfo.isInGame.Value = true;
+            thisPlayerInfo.System = this;
             counter++;
             
         }
-        sceneReference.Init();
-
+        
 
     }
+    public override void OnNetworkSpawn()
+    {
 
+        base.OnNetworkSpawn();
+        sceneReference.Init(this);
+        MatchAction = new MatchAction(this);
+        MatchAction.OnStartMatch();
+    }
     void Start()
     {
+        if (!NetworkObject.IsSpawned)
+        {
+            Destroy(gameObject);
+            return;
+        }
         GameID = GameSystemList.Add(this);
         if (OnStartGameSystem != null) OnStartGameSystem(GameID);
-        InitPhasetest();
+
+        ScoreRedTeam.OnValueChanged += (old, curr) =>
+        {
+            // Người ghi bànn
+            Team Goaler = Team.NULL;
+            // Tăng điểm
+            if (curr > old) Goaler = Team.red;
+            
+            if (OnScoreChange != null) OnScoreChange(curr, ScoreBlueTeam.Value, Goaler);
+            
+        };
+        ScoreBlueTeam.OnValueChanged += (old, curr) =>
+        {
+            Team Goaler = Team.NULL;
+            if (curr > old)
+                Goaler = Team.blue;
+            if (OnScoreChange != null) OnScoreChange(ScoreRedTeam.Value, curr, Goaler);
+        };
         instance = this;
-        ThreadHelper.SafeThreadCall(() =>
+        time.OnValueChanged += (old, curr) =>
         {
-            while (true)
-            {
-                time += MatchSystem.MatchTimeSpeed;
-                Thread.Sleep(1000);
-                
-            }
-        });
-        
-        // Start game phase thread
-      ThreadHelper.SafeThreadCall(() =>
-        {
-            // loop
-           
-            var QueuePhase = MatchSystem.QueuePhase;
-            if (QueuePhase != null)
-            for (int  i = 0;i < QueuePhase.Count;i++)
-            {
-                // Get other phase
-                var Phase = QueuePhase.Dequeue();
-                MatchSystem.currentMachPhase = Phase;
-
-                // Start phase
-                Phase.Begin();
-                
-
-                // if the time of the phase not end
-                while (time < Phase.Length)
-                {
-
-                    if (!Phase.isContinue)
-                    {
-
-                        PostProcessingHelper.ToggleNoSaturation(PostProcessing, true);
-                        MatchSystem.MatchTimeSpeed = 0;
-                    }
-                    else
-                    {
-                       
-                        PostProcessingHelper.ToggleNoSaturation(PostProcessing, false);
-                    }
-                    Thread.Sleep(100);
-                        
-                       // NetworkSystem.instance.OnDisconect += (s) => { Phase.End(); };
-                }
-                // Phase end
-                ResetTimer();
-                Phase.End();
-            }
-        });
-
-        OnScoreChange += PauseWhenGoal;
+            OnTimeChange(curr);
+        };
+ 
     }
     private void OnDisable()
     {
@@ -166,38 +121,28 @@ public class GameSystem : NetworkBehaviour
     {
         GameSystemList.Remove(GameID);
     }
-    void PauseWhenGoal(int red, int blue, Team t)
-    {
-        if (t != Team.NULL)
-        {
-            PauseCurrentPhase(5);
-        }
-    }
-    void InitPhasetest()
-    {
-        var phase1 = new WarmUpPhase();
 
-        MatchSystem.QueuePhase.Enqueue(phase1);
-    }
-    public void PauseCurrentPhase(int sec)
-    {
-        MatchSystem.currentMachPhase.Pause(sec);
-    }
-    public void ResumeCurrentPhase()
-    {
-        MatchSystem.currentMachPhase.Resume();
-    }
     public void ResetTimer()
     {
-        time = 0;
+        time.Value = 0;
     }
     // Update is called once per frame
     void Update()
     {
        
     }
+    [ClientRpc] public void DisplayerInformerClientRpc(FixedString128Bytes name, FixedString128Bytes des, int time)
+    { 
+        UIHandler.WaitForInstace(() => UIHandler.instance.ShowInformation("Start phase", "Prepare for your match", 5));
+    }
+    [ClientRpc] public void ChangeClientSaturationClientRpc(int s)
+    {
+        MatchAction.ChangeScreenStaturation(s);
+    }
+    /*public bool Pause;*/
     private void FixedUpdate()
     {
+        /*if (!Pause)*/
           ps.Simulate(Time.fixedDeltaTime);
     }
 

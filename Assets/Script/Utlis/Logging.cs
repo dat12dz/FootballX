@@ -24,8 +24,6 @@ namespace Assets.Utlis
                 {
                     Debug.Log($"{owner.name}:{a}");
                 });*/
-
- 
         }
 
         public static void LogError(string a)

@@ -3,8 +3,8 @@
     <ui:Template name="player-card" src="project://database/Assets/NewFolder/UI/LobbyScreen/player-card.uxml?fileID=9197481963319205126&amp;guid=7c94420817823f54b976d9c88fe60bfa&amp;type=3#player-card" />
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
     <Style src="project://database/Assets/NewFolder/UI/LobbyScreen/LobbyScreen.uss?fileID=7433441132597879392&amp;guid=97d8ed0c8e569e6479b75d649a70800b&amp;type=3#LobbyScreen" />
-    <ui:VisualElement name="container" style="flex-grow: 1; -unity-background-image-tint-color: rgba(255, 255, 255, 0.16); scale: 1 1;">
-        <ui:VisualElement name="background" style="transition-timing-function: ease-out-cubic; transition-duration: 0.5s;" />
+    <ui:VisualElement name="container" style="flex-grow: 1; -unity-background-image-tint-color: rgb(255, 255, 255); scale: 1 1; background-color: rgba(255, 255, 255, 0);">
+        <ui:VisualElement name="background" focusable="false" style="transition-timing-function: ease-out-cubic; transition-duration: 0.5s; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgba(255, 255, 255, 0);" />
         <ui:VisualElement name="lobby-screen" style="top: 3px; right: -10px; left: 12px; bottom: -2px;">
             <ui:VisualElement name="top-lobby">
                 <ui:VisualElement name="top-left-lobby">

@@ -1,4 +1,5 @@
 ﻿using Assets.Script.Utlis;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -29,11 +30,17 @@ namespace Assets.Script.NetCode
            SceneManager.sceneLoaded += WhenLoaded;
             ThreadHelper.WaitForSecond(c, null, 60000);
         }
+        /// <summary>
+        /// Only run on server
+        /// </summary>
+        /// <param name="scene"></param>
+        /// <returns></returns>
         public static GameSystem GetGameSystem(Scene scene)
         {
             var allSceneObj = scene.GetRootGameObjects();
-            GameSystem res = allSceneObj[0].GetComponent<GameSystem>();
-            return res;
+            GameSceneSpawn res = allSceneObj[0].GetComponent<GameSceneSpawn>();
+            
+            return res.currGameSystem;
         }
     }
 }

@@ -83,6 +83,7 @@ public class Room
         playerDict.Add(newslot, temp);
         temp.SlotInRoom.Value = newslot;
     }
+    
     public PlayerRoomManager RemovePlayer(byte slot)
     {
         // Xóa người chơi khỏi danh sách và lấy người chơi bị xóa
@@ -141,12 +142,13 @@ public class Room
                 var RootGameObj =  LoadGame.GetRootGameObjects();
                 try
                 {
-                    GameSystem loadedGameSystem = RootGameObj[0].GetComponent<GameSystem>();
-                    loadedGameSystem.Init(this);
+                    GameSceneSpawn loadedGameSystem = RootGameObj[0].GetComponent<GameSceneSpawn>();
+                    loadedGameSystem.StartSpawn(this);
                 }
                 catch (Exception e) 
                 {
                     Logging.LogError("Không thể tìm thấy Game system của scene,hãy chắc chắn là game system đang ở vị trí đầu tiên của GameScene");
+                    Logging.Log(e);
                 }
             }
         };

@@ -5,22 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity.Netcode;
 using UnityEngine;
- 
-    [Serializable]
+using UnityEngine.Rendering;
+
+[Serializable]
     public class GameSystemSceneReference
     {
         [Header("Prefab")]
         [SerializeField]
         public Ball ballPrefab;
-        [Header("InScene Reference")]
+        [Header("In Scene Reference")]
         public Ball ball;
         public Transform ballSpawnPos;
         public Transform GameSystem;
-
-        public void Init() 
+    public Volume PostProcessingVolume;
+        public void Init(GameSystem g) 
         { 
-            ball = GameObject.Instantiate(ballPrefab, ballSpawnPos.position,Quaternion.identity,GameSystem);
+            ball = GameObject.Instantiate(ballPrefab, ballSpawnPos.position,Quaternion.identity, GameSystem);
             ball.NetworkObject.Spawn();
-                
+            ball.init(g, ballSpawnPos);
         }
     }

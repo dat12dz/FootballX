@@ -13,10 +13,10 @@ using UnityEngine.UI;
 
 [CheckNullProperties]
 
-public class UIHandler : MonoBehaviour
+public class UIHandler : WaitForInstaceNotNull<UIHandler>
 {
 
-    public static UIHandler Instance { get; set; }
+   
     [SerializeField] TextMeshProUGUI txtblk_Time;
     [SerializeField] TextMeshProUGUI txtblk_RedTeamScore;
     [SerializeField] TextMeshProUGUI txtblk_BlueTeamScore;
@@ -29,13 +29,13 @@ public class UIHandler : MonoBehaviour
         {
             Destroy(gameObject);  
         }
-        Instance = this;    
         GameSystem game = GameSystem.instance;
         game.OnTimeChange += ShowTime;
         game.OnScoreChange += ShowScore;
         Btn_Disconnect.onClick.AddListener(Btn_disCOnnect);
         Cursor.lockState = CursorLockMode.Locked;
-       
+        instance = this;
+
     }
     void Btn_disCOnnect()
     {

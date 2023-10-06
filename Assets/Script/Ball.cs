@@ -10,18 +10,22 @@ using UnityEngine;
 
 public class Ball : Grabable
 {
-    [HideInInspector]
+ 
    public Rigidbody rb;
     // Client instance
     public static Ball instance;
     NetworkObject thisNetobj;
-    GameSystem thisSceneGameSystem;
-    
+    public GameSystem thisSceneGameSystem;
+    Transform ballSpawnPoint;
     private void Awake()
     {
       //  base.Awake();
     }
-
+    public void init(GameSystem g,Transform spawnPoint)
+    {
+        thisSceneGameSystem = g;
+        ballSpawnPoint = spawnPoint;
+    }
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -56,5 +60,13 @@ public class Ball : Grabable
     public override void Grab(Transform graber_)
     {
         base.Grab(graber_);
+    }
+    public void Suppress(bool t)
+    {
+        rb.isKinematic = t;  
+    }
+    public void BackToSpawnPos()
+    {
+        transform.position = ballSpawnPoint.position;
     }
 }
