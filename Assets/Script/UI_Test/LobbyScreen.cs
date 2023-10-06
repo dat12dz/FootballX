@@ -26,10 +26,10 @@ public class LobbyScreen : MonoBehaviour
         exitBtn = root.Q<VisualElement>("exit-btn");
         leaderIcon = root.Q<VisualElement>("leader");
         readyIcon = root.Q<VisualElement>("ready");
-        InitStyle();
+        ResetStyle();
     }
 
-    private static void InitStyle()
+    public static void ResetStyle()
     {
         playerCard = lobbyScreen.Query("player-card").ToList();
         foreach(var p in playerCard)
@@ -61,7 +61,7 @@ public class LobbyScreen : MonoBehaviour
         // Exit LobbyScreen
         exitBtn.RegisterCallback<PointerDownEvent>(callback =>
         {
-            InitStyle();
+            ResetStyle();
         });
     }
 }
