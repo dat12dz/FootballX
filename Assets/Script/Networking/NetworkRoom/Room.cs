@@ -70,18 +70,19 @@ public class Room
 
         return slot != null;
     }
-    public void ChangePlayerSlot(byte oldslot,byte newslot)
+    public bool ChangePlayerSlot(byte oldslot,byte newslot)
     {
         // Nếu đã có người chơi ngồi chỗ
         if (playerDict.ContainsKey(newslot)) 
         {
             Logging.LogError("Đã có người ngồi chỗ này");
-            return;
+            return false;
         }
         // Đặt người chơi vào vị trí mới
         var temp = playerDict.RemoveOut(oldslot);
         playerDict.Add(newslot, temp);
         temp.SlotInRoom.Value = newslot;
+        return true;
     }
     
     public PlayerRoomManager RemovePlayer(byte slot)

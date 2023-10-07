@@ -80,6 +80,7 @@ public partial class PlayerRoomManager
         Logging.Log("Đã join thành công");
         onSlotChange(0, 0);
     }
+    Action OnLeaveRoom;
     [ServerRpc]
     public void LeaveRoomServerRpc()
     {
@@ -89,14 +90,19 @@ public partial class PlayerRoomManager
         RoomPlayerIn.RemovePlayer(slotInRoom);
         ClientRpcParams c = NetworkkHelper.CreateRpcTo(OwnerClientId);
         LeaveRoomCompleteClientRpc(c);
+        if (OnLeaveRoom != null)
+        {
+            OnLeaveRoom();
+        }
 
     }
+  
     [ClientRpc]
     public void LeaveRoomCompleteClientRpc(ClientRpcParams pa)
     {
         Logging.Log("Xóa người chơi thành công");
     }
-
+    Action OnChangeSlot;
     /// <summary>
     /// Chuyển tới chỗ trống
     /// </summary>
@@ -104,10 +110,15 @@ public partial class PlayerRoomManager
     [ServerRpc] 
     public void ChangePlayerSlotServerRpc(byte newSlot)
     {
-        Room.GetRoom(RoomID.Value).ChangePlayerSlot(SlotInRoom.Value, newSlot);
+      var result =  Room.GetRoom(RoomID.Value).ChangePlayerSlot(SlotInRoom.Value, newSlot);
+        if (result && OnChangeSlot != null)
+        {
+            OnChangeSlot();
+        }
     }
     [ServerRpc] public void KickPlayerServerRpc(byte slot)
     {
+       
        if (isHeader.Value)
         {
             var RoomPlayerIn = Room.GetRoom(RoomID.Value);
@@ -119,14 +130,18 @@ public partial class PlayerRoomManager
            var KKickkedPlayer = RoomPlayerIn.RemovePlayer(slot);
 
             var pa = NetworkkHelper.CreateRpcTo(KKickkedPlayer.OwnerClientId);
+            if (NetworkManager.IsHost)
+            {
+                NetworkManager.DisconnectClient(KKickkedPlayer.OwnerClientId);
+            }
             OnKickPlayerCompleteClientRpc(pa);
         }
        else
         {
             Logging.LogError("Không phải trưởng phòng ko thể kick thành viên");
         }
-        
-    }
+  
+     }
 
     [ClientRpc] public void OnKickPlayerCompleteClientRpc(ClientRpcParams pa)
     {
@@ -198,6 +213,12 @@ public partial class PlayerRoomManager
             SwapClient.requestList[slotNeedChange] = new SlotSwapRequest(cancellationToken);
             SlotSwapRequest request = SwapClient.requestList[slotNeedChange];
             // Tạo hàng đợi
+            Action cancelWhenChangeSlot = () =>
+            {
+                request.CancelToken.Cancel();
+            };
+            OnChangeSlot += cancelWhenChangeSlot;
+            SwapClient.OnChangeSlot += cancelWhenChangeSlot;
             Task.Delay(SwapTimeout * 1000, request.CancelToken.Token).ContinueWith((t) =>
             {
                 try
@@ -223,6 +244,8 @@ public partial class PlayerRoomManager
                     }
                     // Giải phóng cũ
                     SwapClient.requestList[slotNeedChange] = null;
+                    OnChangeSlot -= cancelWhenChangeSlot;
+                    SwapClient.OnChangeSlot -= cancelWhenChangeSlot;
                 }
                 catch (Exception e)
 
