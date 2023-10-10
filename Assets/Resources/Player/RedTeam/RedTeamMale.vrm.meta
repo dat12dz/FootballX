@@ -1,0 +1,82 @@
+fileFormatVersion: 2
+guid: 35c6a4e303a0aa544bec0444ccaa3f1f
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: N00_000_00_Body_00_SKIN (Instance)
+    second: {fileID: 2100000, guid: 8bf48ed8b665f68428bce52b4644bf33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: N00_000_00_FaceMouth_00_FACE (Instance)
+    second: {fileID: 2100000, guid: 7fdd71e3a990cd146bb168e42adc248f, type: 2}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: MatcapWarp
+    second: {fileID: 2800000, guid: 3af95aa9c0431134eb2bdb1073d99b78, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_0
+    second: {fileID: 2800000, guid: 53c3bc46352193e42b90a3fc3f0c4336, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_1
+    second: {fileID: 2800000, guid: 55fa9f06ce5237e48934d0efa1ff4c13, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_10
+    second: {fileID: 2800000, guid: fc01afaace1964e45948da4ff3d831a3, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_11.linear
+    second: {fileID: 2800000, guid: 9cef993b2bcd67a48bb6855ecc8fb460, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_2.normal
+    second: {fileID: 2800000, guid: cf76182c60dd91442b45a7e8a78edade, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_3
+    second: {fileID: 2800000, guid: 64c8b1900d1009742b48157bf7ed7bbe, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_4
+    second: {fileID: 2800000, guid: e3c8dc21aad98e14b82bccc795e95bd3, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_5.normal
+    second: {fileID: 2800000, guid: 4760019572f5c254fa84ad6ec35c3776, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_7
+    second: {fileID: 2800000, guid: 8a48c77327a38d4458559f20360845ef, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: texture_9.linear
+    second: {fileID: 2800000, guid: 53b29ade32fef0a44ab4b3f02a57d412, type: 3}
+  - first:
+      type: UnityEngine:Texture
+      assembly: UnityEngine.CoreModule
+      name: thumbnail__VRM10
+    second: {fileID: 2800000, guid: cfc5a2c0c0b8b8d4587cfb9425465f10, type: 3}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: f66ead3390398f443aa127b741826ad9, type: 3}
+  MigrateToVrm1: 0
+  RenderPipeline: 1

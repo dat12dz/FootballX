@@ -101,8 +101,8 @@ Material:
     - _ADDITIONAL_LIGHTS: 1
     - _ADDITIONAL_LIGHT_SHADOWS: 1
     - _AdditionalLightShadows: 0
-    - _AdditionalLightsEnabled: 1
-    - _AdditionalLightsMidPoint: 0
+    - _AdditionalLightsEnabled: 0
+    - _AdditionalLightsMidPoint: 0.21
     - _AdditionalLightsSmothness: 1
     - _AdditionalLightsSpecular: 0
     - _AdditionalShadowsPower: 1

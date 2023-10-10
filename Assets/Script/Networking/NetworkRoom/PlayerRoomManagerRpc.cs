@@ -210,53 +210,60 @@ public partial class PlayerRoomManager
             int newSlot = slot;
             // tao request
             CancellationTokenSource cancellationToken = new CancellationTokenSource();
-            SwapClient.requestList[slotNeedChange] = new SlotSwapRequest(cancellationToken);
-            SlotSwapRequest request = SwapClient.requestList[slotNeedChange];
-            // Tạo hàng đợi
-            Action cancelWhenChangeSlot = () =>
+            if (SwapClient.requestList[slotNeedChange] == null)
             {
-                request.CancelToken.Cancel();
-            };
-            OnChangeSlot += cancelWhenChangeSlot;
-            SwapClient.OnChangeSlot += cancelWhenChangeSlot;
-            Task.Delay(SwapTimeout * 1000, request.CancelToken.Token).ContinueWith((t) =>
-            {
-                try
+                SwapClient.requestList[slotNeedChange] = new SlotSwapRequest(cancellationToken);
+                SlotSwapRequest request = SwapClient.requestList[slotNeedChange];
+                // Tạo hàng đợi
+                Action cancelWhenChangeSlot = () =>
                 {
-                    MainThreadDispatcher.ExecuteInMainThread(() =>
+                    request.CancelToken.Cancel();
+                };
+                OnChangeSlot += cancelWhenChangeSlot;
+                SwapClient.OnChangeSlot += cancelWhenChangeSlot;
+                Task.Delay(SwapTimeout * 1000, request.CancelToken.Token).ContinueWith((t) =>
+                {
+                    try
                     {
-                        SwapSlotEnd_ClientNeedSwapClientRpc(slot, thisClientnetRpc);
-                        SwapClient.SwapSlotEnd_ClientBeingRequestClientRpc((byte)slotNeedChange, ClientnetRpc);
-                    });
-                    if (t.IsCanceled)
-                    {
-                        // Người chơi tương tác;
-                        if (request.accept)
+                        MainThreadDispatcher.ExecuteInMainThread(() =>
                         {
-                            // Đổi vị trí người chơi
-                            MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
-                            RoomPlayerIn.SwapPlayerSlot(SlotInRoom.Value, slot));
+                            SwapSlotEnd_ClientNeedSwapClientRpc(slot, thisClientnetRpc);
+                            SwapClient.SwapSlotEnd_ClientBeingRequestClientRpc((byte)slotNeedChange, ClientnetRpc);
+                        });
+                        if (t.IsCanceled)
+                        {
+                            // Người chơi tương tác;
+                            if (request.accept)
+                            {
+                                // Đổi vị trí người chơi
+                                MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
+                                RoomPlayerIn.SwapPlayerSlot(SlotInRoom.Value, slot));
+                            }
                         }
+                        else
+                        {
+                            Logging.LogError("Request swap room time out timeout");
+                        }
+                        // Giải phóng cũ
+                        SwapClient.requestList[slotNeedChange] = null;
+                        OnChangeSlot -= cancelWhenChangeSlot;
+                        SwapClient.OnChangeSlot -= cancelWhenChangeSlot;
                     }
-                    else
+                    catch (Exception e)
                     {
-                        Logging.LogError("Request swap room time out timeout");
+                        Logging.Log(e);
                     }
-                    // Giải phóng cũ
-                    SwapClient.requestList[slotNeedChange] = null;
-                    OnChangeSlot -= cancelWhenChangeSlot;
-                    SwapClient.OnChangeSlot -= cancelWhenChangeSlot;
-                }
-                catch (Exception e)
+                });
+                // Xin phép chỗ người chơi
+                SwapClient.SwapSlot_ClientBeingRequestClientRpc(fromWho: SlotInRoom.Value, to: ClientnetRpc);
+                SwapSlot_ClientNeedSwapClientRpc(slot, thisClientnetRpc);
 
-                {
-                    Logging.Log(e);
-                }
-            });
-            // Xin phép chỗ người chơi
-            SwapClient.SwapSlot_ClientBeingRequestClientRpc(fromWho: SlotInRoom.Value, to: ClientnetRpc);
-            SwapSlot_ClientNeedSwapClientRpc(slot,thisClientnetRpc);
-            // Gửi call back lại client sau khi hoàn thành gửi request 
+                // Gửi call back lại client sau khi hoàn thành gửi request 
+            }
+            else
+            {
+                Logging.LogError("Hiện tại đang có request đến người chơi này không thể tạo thêm request");
+            }    
         }
         catch (KeyNotFoundException)
         {

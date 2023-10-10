@@ -62,45 +62,71 @@
   <ItemGroup>
     <Compile Include="Assets\NewFolder\Test.cs" />
     <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
+    <Compile Include="Assets\Unity-URP-Outlines-main\Outlines\Scripts\RendererFeatures\ScreenSpaceOutlines.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\NewFolder\UI\LobbyScreen\LobbyScreen.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon.shader" />
     <None Include="Assets\NewFolder\UI\GoalScreen\GoalScreen.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_attribute.hlsl" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_vertex.hlsl" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_uv.hlsl" />
+    <None Include="Assets\VRMShaders\GLTF\IO\Resources\UniGLTF\NormalMapExporter.shader" />
     <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_depthnormals_fragment.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_lighting_mtoon.hlsl" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uxml" />
     <None Include="Assets\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_shadowcaster_vertex.hlsl" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_forward_vertex.hlsl" />
+    <None Include="Assets\VRMShaders\GLTF\IO\Resources\UniGLTF\StandardMapExporter.shader" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_depthnormals_vertex.hlsl" />
     <None Include="Assets\NewFolder\UITemplate\Slider-element.uxml" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_urp.shader" />
     <None Include="Assets\NewFolder\UITemplate\Toggle-element.uxml" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_forward_fragment.hlsl" />
     <None Include="Assets\UnityPackages\JsonNet\Newtonsoft.Json.dll" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_alpha.hlsl" />
     <None Include="Assets\NewFolder\UI\LobbyScreen\LobbyScreen.uss" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_input.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_lighting_unity.hlsl" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_depthonly_fragment.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_depthonly_vertex.hlsl" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_utility.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\NewFolder\UI\Common.uss" />
+    <None Include="Assets\VRMShaders\GLTF\IO\Resources\UniGLTF\StandardMapImporter.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_render_pipeline.hlsl" />
     <None Include="Assets\NewFolder\UI\LobbyScreen\player-card.uxml" />
+    <None Include="Assets\VRMShaders\GLTF\UniUnlit\Resources\UniGLTF\UniUnlit.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\OccaSoftware\Crosshairs\Readme.txt" />
     <None Include="Assets\NewFolder\UI\GoalScreen\GoalScreen.uxml" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_normal.hlsl" />
     <None Include="Assets\NewFolder\UITemplate\RadioButton-element.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\NewFolder\UITemplate\Button-element.uxml" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_shadowcaster_fragment.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_define.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -742,14 +768,8 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>G:\ProgramFile\Unity\2022.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.MetricEvents">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.MetricEvents.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Notifications">
       <HintPath>Library\ScriptAssemblies\Unity.Notifications.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
@@ -760,32 +780,119 @@
     <Reference Include="Unity.Burst.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.AdaptivePerformance.Simulator.Extension">
-      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Networking.Transport">
       <HintPath>Library\ScriptAssemblies\Unity.Networking.Transport.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.NetworkSolutionInterface">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkSolutionInterface.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AdaptivePerformance.Simulator.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetworkSimulator.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkSimulator.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VectorGraphics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VectorGraphics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="PPv2URPConverters">
+      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.NetworkProfiler.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkProfiler.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.MemoryProfiler">
+      <HintPath>Library\ScriptAssemblies\Unity.MemoryProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStatsMonitor.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AdaptivePerformance.UI.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.003">
+      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.003.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Implementation">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStatsMonitor.Implementation.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.MemoryProfiler.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.MemoryProfiler.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.Initialization">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.Initialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.003">
+      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.003.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Subsystem.Registration">
+      <HintPath>Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.MetricTypes">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.MetricTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.State">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.NetworkSimulator.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkSimulator.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Component">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStatsMonitor.Component.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Simulator.Extension">
+      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Extension.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Tools.NetworkSolutionInterface">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkSolutionInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Simulator.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
@@ -805,12 +912,6 @@
     <Reference Include="Unity.Multiplayer.Tools.NetStats">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStats.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Netcode.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.Netcode.Runtime.dll</HintPath>
     </Reference>
@@ -820,32 +921,14 @@
     <Reference Include="Unity.Collections.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="PPv2URPConverters">
-      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.MetricTestData">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.MetricTestData.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.NetworkProfiler.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkProfiler.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.Common">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Profiling.Core">
       <HintPath>Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.MemoryProfiler">
-      <HintPath>Library\ScriptAssemblies\Unity.MemoryProfiler.dll</HintPath>
+    <Reference Include="Unity.Multiplayer.Tools.Common">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
@@ -856,14 +939,8 @@
     <Reference Include="Unity.MemoryProfiler.Editor.MemoryProfilerModule">
       <HintPath>Library\ScriptAssemblies\Unity.MemoryProfiler.Editor.MemoryProfilerModule.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -877,14 +954,8 @@
     <Reference Include="Unity.AdaptivePerformance">
       <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Notifications.iOS">
       <HintPath>Library\ScriptAssemblies\Unity.Notifications.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
@@ -892,26 +963,11 @@
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.NetworkProfiler.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkProfiler.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStatsMonitor.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.AdaptivePerformance.UI.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.UI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.003">
-      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.003.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    <Reference Include="Unity.Multiplayer.Tools.NetworkProfiler.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkProfiler.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -919,26 +975,11 @@
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Implementation">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStatsMonitor.Implementation.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.Initialization">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.Initialization.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InternalAPIEngineBridge.003">
-      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.003.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Multiplayer.Tools.Adapters">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.Adapters.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.MemoryProfiler.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.MemoryProfiler.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Subsystem.Registration">
-      <HintPath>Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
@@ -949,9 +990,6 @@
     <Reference Include="Unity.Mathematics">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Networking.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Networking.Editor.dll</HintPath>
     </Reference>
@@ -960,15 +998,6 @@
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.MetricTypes">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.MetricTypes.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
       <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
@@ -979,30 +1008,11 @@
     <Reference Include="Unity.Notifications.Android">
       <HintPath>Library\ScriptAssemblies\Unity.Notifications.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.NetworkSimulator.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkSimulator.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Component">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetStatsMonitor.Component.dll</HintPath>
+    <Reference Include="Unity.Multiplayer.Tools.MetricEvents">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Tools.MetricEvents.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DatScript.csproj">
-      <Project>{8D3874E3-2E95-07DE-7DCC-B9B9028F154A}</Project>
-      <Name>DatScript</Name>
-    </ProjectReference>
-    <ProjectReference Include="YSAToon.csproj">
-      <Project>{4E131E6C-E86C-E707-0F0B-6043A22BA8A9}</Project>
-      <Name>YSAToon</Name>
-    </ProjectReference>
-    <ProjectReference Include="QFSW.QC.Serializers.csproj">
-      <Project>{7E6095D3-91C5-4453-98C4-0757AD95A99A}</Project>
-      <Name>QFSW.QC.Serializers</Name>
-    </ProjectReference>
-    <ProjectReference Include="QFSW.QC.Grammar.csproj">
-      <Project>{7E01580F-0183-2925-E359-5E5ECA34CCE4}</Project>
-      <Name>QFSW.QC.Grammar</Name>
-    </ProjectReference>
     <ProjectReference Include="QFSW.QC.QGUI.csproj">
       <Project>{774571F3-E7AB-6FFD-7D15-D81D922CD332}</Project>
       <Name>QFSW.QC.QGUI</Name>
@@ -1015,6 +1025,50 @@
       <Project>{4A46D764-45D8-8A63-3B43-AFA6A8464094}</Project>
       <Name>QuickOutline</Name>
     </ProjectReference>
+    <ProjectReference Include="QuixelAss.csproj">
+      <Project>{EBB70BD6-48CF-E067-9478-429C8DD4D6E1}</Project>
+      <Name>QuixelAss</Name>
+    </ProjectReference>
+    <ProjectReference Include="QFSW.QC.UI.csproj">
+      <Project>{A8426AA8-8D7E-5A00-F2BE-DC53A273FC03}</Project>
+      <Name>QFSW.QC.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="DatScript.csproj">
+      <Project>{8D3874E3-2E95-07DE-7DCC-B9B9028F154A}</Project>
+      <Name>DatScript</Name>
+    </ProjectReference>
+    <ProjectReference Include="QFSW.QC.ScanRules.csproj">
+      <Project>{4A346BE9-B6C1-A677-E213-7718E7C4C6A0}</Project>
+      <Name>QFSW.QC.ScanRules</Name>
+    </ProjectReference>
+    <ProjectReference Include="VRM10.csproj">
+      <Project>{DC772ED3-5452-0F2A-4160-B12706B44D88}</Project>
+      <Name>VRM10</Name>
+    </ProjectReference>
+    <ProjectReference Include="YSAToon.csproj">
+      <Project>{4E131E6C-E86C-E707-0F0B-6043A22BA8A9}</Project>
+      <Name>YSAToon</Name>
+    </ProjectReference>
+    <ProjectReference Include="QFSW.QC.Serializers.csproj">
+      <Project>{7E6095D3-91C5-4453-98C4-0757AD95A99A}</Project>
+      <Name>QFSW.QC.Serializers</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniGLTF.csproj">
+      <Project>{7C3358EC-1D92-ED13-BF1F-C6830EDEA16C}</Project>
+      <Name>UniGLTF</Name>
+    </ProjectReference>
+    <ProjectReference Include="QFSW.QC.Grammar.csproj">
+      <Project>{7E01580F-0183-2925-E359-5E5ECA34CCE4}</Project>
+      <Name>QFSW.QC.Grammar</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniHumanoid.csproj">
+      <Project>{9D3C3764-7D89-2A78-88DD-02B0C2ECA1B4}</Project>
+      <Name>UniHumanoid</Name>
+    </ProjectReference>
+    <ProjectReference Include="VRMShaders.GLTF.IO.Runtime.csproj">
+      <Project>{62591D63-C2D4-8562-605E-EA120961981E}</Project>
+      <Name>VRMShaders.GLTF.IO.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="QFSW.QC.Parsers.csproj">
       <Project>{405D2E17-2220-10EB-6E8D-BAA2A15B2C6F}</Project>
       <Name>QFSW.QC.Parsers</Name>
@@ -1023,10 +1077,6 @@
       <Project>{DC75CBCC-DB87-159A-A41B-8D3E1B60821C}</Project>
       <Name>QFSW.QC.Suggestors</Name>
     </ProjectReference>
-    <ProjectReference Include="QuixelAss.csproj">
-      <Project>{EBB70BD6-48CF-E067-9478-429C8DD4D6E1}</Project>
-      <Name>QuixelAss</Name>
-    </ProjectReference>
     <ProjectReference Include="OccaSoftware.Crosshairs.Editor.csproj">
       <Project>{157289ED-CB99-4C55-F630-412D0597345F}</Project>
       <Name>OccaSoftware.Crosshairs.Editor</Name>
@@ -1034,10 +1084,6 @@
     <ProjectReference Include="QFSW.QC.Extras.csproj">
       <Project>{52B02D6E-97D8-D16C-77EB-F00442638D17}</Project>
       <Name>QFSW.QC.Extras</Name>
-    </ProjectReference>
-    <ProjectReference Include="QFSW.QC.UI.csproj">
-      <Project>{A8426AA8-8D7E-5A00-F2BE-DC53A273FC03}</Project>
-      <Name>QFSW.QC.UI</Name>
     </ProjectReference>
     <ProjectReference Include="QFSW.QC.csproj">
       <Project>{C0AD9FEB-B22E-175E-D023-538058AF9DDE}</Project>
@@ -1050,10 +1096,6 @@
     <ProjectReference Include="QFSW.QC.Editor.Tools.csproj">
       <Project>{47969D95-1D94-966C-7EB0-F63B3940531C}</Project>
       <Name>QFSW.QC.Editor.Tools</Name>
-    </ProjectReference>
-    <ProjectReference Include="QFSW.QC.ScanRules.csproj">
-      <Project>{4A346BE9-B6C1-A677-E213-7718E7C4C6A0}</Project>
-      <Name>QFSW.QC.ScanRules</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

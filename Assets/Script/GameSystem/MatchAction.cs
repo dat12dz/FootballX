@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity.Netcode;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -19,16 +20,19 @@ public class MatchAction
         gameSystem = g;
         Volume volume = g.sceneReference.PostProcessingVolume;
         volume.profile.TryGet(out color);
-        gameSystem.OnScoreChange +=(scorered,scoreblue,team) => { OnGoal(); } ;
+        gameSystem.OnScoreChange += (scorered,scoreblue,team) => { OnGoal(); } ;
     }
+
     public async void OnStartMatch()
     {
+        if (NetworkManager.Singleton.IsServer) return;
         gameSystem.DisplayerInformerClientRpc("Start match","Ready to play??",5);
          await PauseMatch(5);
         StartTimer();
     }
     public async Task PauseTimer(int sec)
     {
+        if (NetworkManager.Singleton.IsServer) return;
         MatchPause = true;
         incTimeSpeed = 0;
         await Task.Delay(sec * 1000);
@@ -36,6 +40,7 @@ public class MatchAction
     }
     public void ResumeTimer()
     {
+        if (NetworkManager.Singleton.IsServer) return;
         MatchPause = false;
 
         incTimeSpeed = 1;
@@ -43,6 +48,7 @@ public class MatchAction
     int incTimeSpeed = 1;
     void StartTimer()
     {
+        if (NetworkManager.Singleton.IsServer) return;
         ThreadHelper.SafeThreadCall(() =>
         {
             while (true)
@@ -54,6 +60,7 @@ public class MatchAction
     }
     public async void OnGoal()
     {
+        if (NetworkManager.Singleton.IsServer) return;
         await PauseMatch(10,true,false);
         var allPlayerInTheGame = gameSystem.room.playerDict;
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
@@ -66,6 +73,7 @@ public class MatchAction
     }
     void NewGame()
     {
+        if (NetworkManager.Singleton.IsServer) return;
         var allPlayerInTheGame = gameSystem.room.playerDict;
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
         {
@@ -74,6 +82,7 @@ public class MatchAction
     }
     public async Task PauseMatch(int sec,bool changeSat = true,bool BallSuppress = true)
     {
+        if (NetworkManager.Singleton.IsServer) return;
         PauseTimer(sec);
         var allPlayerInTheGame = gameSystem.room.playerDict;
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
@@ -92,6 +101,7 @@ public class MatchAction
     }
     public void ResumeMatch()
     {
+        if (NetworkManager.Singleton.IsServer) return;
         var allPlayerInTheGame = gameSystem.room.playerDict;
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
         {

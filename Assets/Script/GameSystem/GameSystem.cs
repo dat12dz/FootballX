@@ -65,15 +65,11 @@ public class GameSystem : SceneNetworkBehavior
             SceneManager.MoveGameObjectToScene(player.gameObject, gameObject.scene);
             thisPlayerInfo.isInGame.Value = true;
             thisPlayerInfo.System = this;
-            counter++;
-            
+            counter++;     
         }
-        
-
     }
     public override void OnNetworkSpawn()
     {
-
         base.OnNetworkSpawn();
         sceneReference.Init(this);
         MatchAction = new MatchAction(this);
@@ -129,7 +125,7 @@ public class GameSystem : SceneNetworkBehavior
     // Update is called once per frame
     void Update()
     {
-       
+      
     }
     [ClientRpc] public void DisplayerInformerClientRpc(FixedString128Bytes name, FixedString128Bytes des, int time)
     { 
@@ -139,6 +135,7 @@ public class GameSystem : SceneNetworkBehavior
     {
         MatchAction.ChangeScreenStaturation(s);
     }
+    
     /*public bool Pause;*/
     private void FixedUpdate()
     {
