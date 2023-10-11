@@ -18,8 +18,8 @@ public struct StartSceneInfo
 public class UI_StartScreenHandler : MonoBehaviour
 {
     [SerializeField] TMP_InputField inp_PlayerName, inp_ServerIP;
-    [SerializeField] Button btn_Connect,btn_autoLocalhost,btn_HostBtn;
-
+    [SerializeField] Button btn_Connect,btn_autoLocalhost,btn_HostBtn,btn_ShowCharSelectionUI;
+    [SerializeField] UI_CharacterSelection charSelectionUI;
    public static StartSceneInfo StartSceneInfoSync;
     NetworkManager netmang;
     int maxHostPlayer = 10;
@@ -74,7 +74,11 @@ public class UI_StartScreenHandler : MonoBehaviour
         netmang.OnClientStopped += Netmang_OnClientStopped;
         netmang.OnTransportFailure += Netmang_OnTransportFailure;
         netmang.OnClientDisconnectCallback += Netmang_OnClientDisconnectCallback;
-        
+        btn_ShowCharSelectionUI.onClick.AddListener(() =>
+        {
+            charSelectionUI.Display(true);
+            gameObject.SetActive(false);
+        });
     }
 
     private void Netmang_OnClientDisconnectCallback(ulong obj)

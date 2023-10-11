@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d319d9a27eef044393900ef1045d104, type: 3}
   m_Name: Player Charector array
   m_EditorClassIdentifier: 
-  CharArray: []
+  CharArray:
+  - {fileID: 3854506088431110305, guid: ab38efef649634e40b202c7942518004, type: 3}
