@@ -356,7 +356,7 @@
     flex-grow: 0;
 }
 
-#notify-yes-btn, #notify-no-btn {
+#notify-yes-btn, #notify-no-btn, #notify-stop-request-btn {
     width: 10px;
     height: 10px;
     margin: 0 12px;
@@ -367,6 +367,10 @@
     background-image: url(/Assets/NewFolder/Icons/check.svg);
 }
 #notify-no-btn {
+    background-image: url(/Assets/NewFolder/Icons/xMark.svg);
+}
+
+#notify-stop-request-btn {
     background-image: url(/Assets/NewFolder/Icons/xMark.svg);
 }
 
@@ -434,6 +438,10 @@
     -unity-background-image-tint-color: #00cc36;
 }
 #notify-no-btn:hover {
+    -unity-background-image-tint-color: #cc0000;
+}
+
+#notify-stop-request-btn:hover {
     -unity-background-image-tint-color: #cc0000;
 }
 

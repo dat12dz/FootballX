@@ -8,6 +8,7 @@
                     <ui:VisualElement name="notify-btn">
                         <ui:VisualElement name="notify-yes-btn" />
                         <ui:VisualElement name="notify-no-btn" />
+                        <ui:VisualElement name="notify-stop-request-btn" />
                     </ui:VisualElement>
                     <ui:ProgressBar value="50" name="ProgressBar" />
                     <ui:VisualElement name="notify-triangle" />
