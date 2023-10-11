@@ -177,7 +177,7 @@ public partial class PlayerRoomManager
         if (!isHeader.Value)
         isReady.Value = !isReady.Value;
     }
-   public static int SwapTimeout = 120;
+   public static int SwapTimeout = 5;
    public SlotSwapRequest[] requestList = new SlotSwapRequest[10];
     [ServerRpc] public void StopRequestServerRpc(byte slot)
     {

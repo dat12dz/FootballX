@@ -57,5 +57,5 @@
     left: 0;
     transition-duration: 0.15s;
     opacity: 0;
-    background-image: url(/Assets/NewFolder/Resources/UI/bg.png);
+    background-image: url(/Assets/NewFolder/Resources/UI/messageBoxBackground.svg);
 }

@@ -4,7 +4,7 @@
         <ui:VisualElement>
             <ui:VisualElement name="player-description">
                 <ui:VisualElement name="notify">
-                    <ui:Label tabindex="-1" text="Nguyen Van A muon doi cho voi ban" display-tooltip-when-elided="true" name="notify-description" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="notify-description" />
                     <ui:VisualElement name="notify-btn">
                         <ui:VisualElement name="notify-yes-btn" />
                         <ui:VisualElement name="notify-no-btn" />
@@ -26,11 +26,13 @@
                 </ui:VisualElement>
                 <ui:VisualElement name="bottom-player-description" style="flex-grow: 1;">
                     <ui:VisualElement name="leader" />
-                    <ui:VisualElement name="ready" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+                    <ui:VisualElement name="ready" />
                     <ui:VisualElement name="swap-btn" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="player-empty" class="player-empty" />
+            <ui:VisualElement name="player-empty" class="player-empty">
+                <ui:VisualElement name="player-empty-bg" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
