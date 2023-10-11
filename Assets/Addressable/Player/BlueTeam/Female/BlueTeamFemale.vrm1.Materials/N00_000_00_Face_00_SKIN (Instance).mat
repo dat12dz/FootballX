@@ -124,7 +124,7 @@ Material:
     - _DynamicRemap: 0.5
     - _Emission: 0
     - _GRADIENT_DIRECTION: 0
-    - _GiEqualization: 0.9
+    - _GiEqualization: 0.974
     - _Gradient_Enabled: 0
     - _Gradient_Multiplier: 1
     - _Gradient_Offset: 0

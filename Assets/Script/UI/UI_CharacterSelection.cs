@@ -13,7 +13,7 @@ public class UI_CharacterSelection : MonoBehaviour
     [SerializeField] Transform SpawnPosition;
     [SerializeField] Transform CharShowCase;
     [SerializeField] CinemachineVirtualCamera camera;
-    int CharIndex_ = -1;
+    int CharIndex_;
     int CharIndex
     {
         get { return CharIndex_; }
@@ -27,7 +27,7 @@ public class UI_CharacterSelection : MonoBehaviour
     int SelectedChar;
     void Start()
     {
-       
+        
         SpawnAllButton();
         CharIndex = 0;
     
@@ -38,21 +38,21 @@ public class UI_CharacterSelection : MonoBehaviour
         transform.parent.gameObject.SetActive(a);
         
     }
-   List<PlayerModel> models = new List<PlayerModel>();
-    PlayerModel oldModel;
+   List<IPlayerModel> models = new List<IPlayerModel>();
+    IPlayerModel oldModel;
     void SpawnAllButton()
     {
        var SpawnInitialLocaltion = btn_ChangeCharBase.GetComponent<RectTransform>();
         for (int i = 0; i < AllChar.CharArray.Length; i++)
         {
-         
-            PlayerModel modelinfo = AllChar.CharArray[i];
+
+            IPlayerModel modelinfo = AllChar.CharArray[i];
             if (modelinfo == null) continue;
             var newButton =  Instantiate(btn_ChangeCharBase,transform);
             RectTransform buttonTransform = newButton.GetComponent<RectTransform>();    
             newButton.gameObject.SetActive(true);
 
-            PlayerModel newModelInfo = Instantiate(modelinfo, SpawnPosition.position,SpawnPosition.rotation, CharShowCase)  ;
+            IPlayerModel newModelInfo = Instantiate(modelinfo, SpawnPosition.position,SpawnPosition.rotation, CharShowCase)  ;
              var AfterLoadThumbnail = newModelInfo.Thumbnail.LoadAssetAsync();
             AfterLoadThumbnail.Completed += (sprite) => {
                 newButton.GetComponent<Image>().sprite = sprite.Result;
@@ -60,9 +60,10 @@ public class UI_CharacterSelection : MonoBehaviour
             
             float newPositionX = SpawnInitialLocaltion.position.x + i * (Spacing + buttonTransform.localScale.x);
             buttonTransform.position = new Vector3(newPositionX, buttonTransform.position.y);
+            var index = i;
             newButton.onClick.AddListener(() =>
             {
-                CharIndex = i;
+                CharIndex = index;
             });
             models.Add(newModelInfo);
             newModelInfo.gameObject.SetActive(false);
@@ -70,11 +71,11 @@ public class UI_CharacterSelection : MonoBehaviour
     }
     void ShowChar(int index)
     {
-        if (CharIndex_ == index) return;
-       PlayerModel  selectedPlayerModel = models[index];
-        selectedPlayerModel.gameObject.SetActive(true);
+        // if (CharIndex == index) return;
+        IPlayerModel selectedPlayerModel = models[index];
         if (oldModel)
         oldModel.gameObject.SetActive(false);
+        selectedPlayerModel.gameObject.SetActive(true);
         oldModel = selectedPlayerModel;
 
         if (SelectedChar == index)
@@ -88,16 +89,17 @@ public class UI_CharacterSelection : MonoBehaviour
         SelectedChar = CharIndex;
     }
     
-    public void PlaySelectedAnimation(PlayerModel model)
+    public void PlaySelectedAnimation(IPlayerModel model)
     {
         model.SelectedAnim();
-        DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, 2.4f, 2).SetEase(Ease.InOutQuart);
+        DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(2.1f, 1), 1).SetEase(Ease.InOutQuart);
+        btn_SelectChar.interactable = false;
     }
-    public void PlayUnSelectedAnimation(PlayerModel player)
+    public void PlayUnSelectedAnimation(IPlayerModel player)
     {
-        player.SelectedAnim();
-        DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, 1.8f, 2).SetEase(Ease.InOutQuart);
-
+        player.IdleAnim();
+        DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(1.6f,1) , 1).SetEase(Ease.InOutQuart);
+        btn_SelectChar.interactable = true;
     }
 
     void Update()

@@ -8,5 +8,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player Charector array",menuName = "DatDauTechonologies/Charector array",order = 0)]
 internal class AllCharectorAssetReference : ScriptableObject
 {
-    public PlayerModel[] CharArray;
+    public IPlayerModel[] CharArray;
 }

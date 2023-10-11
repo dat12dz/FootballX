@@ -33,14 +33,14 @@ public class PlayerNetworkTransform : NetworkBehaviour
             ServerPositon = newPos;
         }
     }
-    [ClientRpc] public void ChangeCameraRotationClientRpc(float CameraX, float HeadY)
+    [ClientRpc(Delivery = RpcDelivery.Unreliable)] public void ChangeCameraRotationClientRpc(float CameraX, float HeadY)
     {
         if (IsLocalPlayer) return;
         moveHelper.playereye.transform.localRotation = Quaternion.Euler(CameraX, 0, 0);
         moveHelper.head.transform.localRotation = Quaternion.Euler(0, HeadY, 0);
 
     }
-    [ClientRpc] public void TeleportImidiateClientRpc(Vector3 v)
+    [ClientRpc(Delivery = RpcDelivery.Unreliable)] public void TeleportImidiateClientRpc(Vector3 v)
     {
         transform.position = v;
     }

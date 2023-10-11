@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharArray:
   - {fileID: 3854506088431110305, guid: ab38efef649634e40b202c7942518004, type: 3}
+  - {fileID: 8064512305645108866, guid: 273d8bf09bf8ded448810ad3f42d1d7a, type: 3}

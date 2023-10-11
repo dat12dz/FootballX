@@ -69,7 +69,7 @@ Material:
     m_Floats:
     - _AlphaMode: 1
     - _BumpScale: 1
-    - _Cutoff: 0.5
+    - _Cutoff: 0.415
     - _DoubleSided: 1
     - _GiEqualization: 0.9
     - _M_AlphaToMask: 1
@@ -80,7 +80,7 @@ Material:
     - _M_SrcBlend: 1
     - _M_ZWrite: 1
     - _OutlineLightingMix: 0
-    - _OutlineWidth: 0.0024
+    - _OutlineWidth: 0.0026
     - _OutlineWidthMode: 1
     - _RenderQueueOffset: 0
     - _RimFresnelPower: 100
@@ -94,10 +94,10 @@ Material:
     - _UvAnimScrollXSpeed: 0
     - _UvAnimScrollYSpeed: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9150943, g: 0.75538445, b: 0.75538445, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _MatcapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadeColor: {r: 0.7921569, g: 0.5803922, b: 0.5803922, a: 1}
   m_BuildTextureStacks: []
