@@ -36,6 +36,7 @@ namespace UniVRM10
             None,
             Update,
             LateUpdate,
+            FixedUpdate
         }
 
         [SerializeField, Header("Runtime")]
@@ -135,7 +136,13 @@ namespace UniVRM10
                 Runtime.Process();
             }
         }
-
+        private void FixedUpdate()
+        {
+            if (UpdateType == UpdateTypes.FixedUpdate)
+            {
+                Runtime.Process();
+            }
+        }
         private void OnDestroy()
         {
             Runtime.Dispose();
