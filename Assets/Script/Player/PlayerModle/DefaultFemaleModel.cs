@@ -1,3 +1,4 @@
+
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,25 +6,28 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class PlayerModel : MonoBehaviour
+public class DefaultFemaleModel : IPlayerModel
 {
-    public PlayerThumbnailReference Thumbnail;
-    Animator animator;
+
+    [SerializeField] Animator animator;
     const string SELECT_ANIM_CLIP = "Selected";
     const string IDLE_ANIM_CLIP = "idle";
+    const int LAYER_SELECT_ANIM = 1;
     void Start()
     {
         animator = GetComponent<Animator>();
     }
     [ContextMenu("PlayIdle")]
-    public void IdleAnim()
+    public override void IdleAnim()
     {
+        animator.SetLayerWeight(LAYER_SELECT_ANIM, 0);
         animator.PlayInFixedTime(IDLE_ANIM_CLIP);
     }
     [ContextMenu("Play Selection animation")]
-    public void SelectedAnim()
+    public override void SelectedAnim()
     {
-        animator.PlayInFixedTime(SELECT_ANIM_CLIP);
+        animator.SetLayerWeight(LAYER_SELECT_ANIM, 0.84f);
+        animator.PlayInFixedTime(SELECT_ANIM_CLIP,1);
     }
     void CloseEye()
     {

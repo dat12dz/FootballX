@@ -172,6 +172,7 @@ public partial class PlayerRoomManager
             }    
         }
     }
+   
     [ServerRpc] public void ToggleReadyServerRpc()
     {
         if (!isHeader.Value)

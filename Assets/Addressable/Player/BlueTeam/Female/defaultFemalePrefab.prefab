@@ -531,3 +531,10 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  animator: {fileID: 8065893004144946573}
+--- !u!95 &8065893004144946573 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4870552773557632513, guid: 05e84c9182f41e848b758c093e8ada2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3204419999341745036}
+  m_PrefabAsset: {fileID: 0}
