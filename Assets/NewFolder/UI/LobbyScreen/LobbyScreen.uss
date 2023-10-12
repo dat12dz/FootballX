@@ -12,7 +12,7 @@
     left: 0;
     transition: 1s;
     background-color: white;
-    background-image: url(/Assets/NewFolder/Resources/UI/background/lobby.png);
+    background-image: url(/Assets/NewFolder/Resources/UI/lobbyBackground.svg);
     -unity-background-image-tint-color: rgba(255,255,255,0.12);
 }
 
@@ -66,6 +66,8 @@
 }
 
 #exit-bg {
+    scale: 0.8;
+    transition: 0.2s;
     -unity-background-image-tint-color: red;
     background-image: url(/Assets/NewFolder/Icons/xMark.svg);
 }
@@ -162,7 +164,7 @@
 } */
 
 #player-description {
-    /* display: none; */
+    display: none;
 }
 
 #top-player-description {
@@ -225,18 +227,18 @@
 }
 
 #bottom-player-description {
-    flex-direction: row-reverse;
+    height: 20px;
+    flex-direction: row;
+    justify-content: center;
     margin:0 4px 4px 4px;
 }
 
 #leader, #ready {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    translate: -50% 0;
+
 }
 
 #leader {
+    /* display: none; */
     width: 20px;
     height: 20px;
     -unity-background-image-tint-color: black;
@@ -244,6 +246,7 @@
 }
 
 #ready {
+    /* display: none; */
     width: 20px;
     height: 16px;
     -unity-background-image-tint-color: black;
@@ -251,7 +254,8 @@
 }
 
 #swap-btn {
-    align-self: center;
+    position: absolute;
+    right: 0;
     width: 20px;
     height: 20px;
     transition: 0.4s;
@@ -260,11 +264,16 @@
 }
 
 /* player-empty */
-.player-empty {
-    display: none;
+#player-empty {
+    /* display: none; */
+    height: 160px;
+    justify-content: center;
+    align-items: center;
+}
+
+#player-empty-bg {
     width: 60px;
     height: 60px;
-    align-self: center;
     -unity-background-image-tint-color: black;
     background-image: url(/Assets/NewFolder/Icons/plus.svg);
 }
@@ -291,21 +300,23 @@
 #notify {
     display: none;
     position: absolute;
-    bottom: 162%;
+    bottom: 110%;
     left: 60%;
-    width: 180px;
-    height: 100px;
+    width: 120px;
+    height: 60px;
     border-radius: 10px;
     background-color: rgba(0,0,0,1);
     align-self: center;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
 #notify-description {
     width: 100%;
-    font-size: 12px;
-    padding: 8px 12px 0 12px;
+    font-size: 10px;
+    -unity-font-style: bold;
+    padding: 4px 0 0 0;
+    margin: 0;
     color: white;
     white-space: normal;
     -unity-text-align: middle-center;
@@ -313,7 +324,6 @@
 
 #notify-btn {
     width: 100%;
-    padding: 8px;
     flex-direction: row;
     justify-content: center;
 }
@@ -323,6 +333,10 @@
     width: 100%;
     margin: 0;
     padding: 0 12px;
+}
+
+#notify ProgressBar #unity-progress-bar {
+    min-height: 0;
 }
 
 #notify ProgressBar #unity-progress-bar .unity-progress-bar__background {
@@ -342,10 +356,11 @@
     flex-grow: 0;
 }
 
-#notify-yes-btn, #notify-no-btn {
-    width: 12px;
-    height: 12px;
+#notify-yes-btn, #notify-no-btn, #notify-stop-request-btn {
+    width: 10px;
+    height: 10px;
     margin: 0 12px;
+    transition: 0.2s;
 }
 
 #notify-yes-btn {
@@ -355,15 +370,19 @@
     background-image: url(/Assets/NewFolder/Icons/xMark.svg);
 }
 
+#notify-stop-request-btn {
+    background-image: url(/Assets/NewFolder/Icons/xMark.svg);
+}
+
 #notify-triangle {
     position: absolute;
     left: 20%;
     top: 100%;
     width: 0;
     height: 0;
-    border-left-width: 20px;
-    border-right-width: 20px;
-    border-top-width: 40px;
+    border-left-width: 14px;
+    border-right-width: 14px;
+    border-top-width: 28px;
     border-left-color: rgba(0,0,0,0);
     border-right-color: rgba(0,0,0,0);
     border-top-color: rgba(0,0,0,1);
@@ -413,4 +432,19 @@
 #player-card:hover #player-card-bg {
     left: -10%;
     top: -10%;
+}
+
+#notify-yes-btn:hover {
+    -unity-background-image-tint-color: #00cc36;
+}
+#notify-no-btn:hover {
+    -unity-background-image-tint-color: #cc0000;
+}
+
+#notify-stop-request-btn:hover {
+    -unity-background-image-tint-color: #cc0000;
+}
+
+#exit-btn:hover #exit-bg {
+    scale: 1.1;
 }
