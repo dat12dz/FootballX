@@ -5,14 +5,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+
+
 public class UI_CharacterSelection : MonoBehaviour
 {
-   [SerializeField] AllCharectorAssetReference AllChar;
-    [SerializeField] Button btn_ChangeCharBase,btn_SelectChar;
+    [SerializeField] AllCharectorAssetReference AllChar;
+    [SerializeField] Button btn_ChangeCharBase, btn_SelectChar;
+    [SerializeField] Button btn_ChangeTeamBlue, btn_ChangeTeamRed;
     [SerializeField] float Spacing = 10;
     [SerializeField] Transform SpawnPosition;
     [SerializeField] Transform CharShowCase;
     [SerializeField] CinemachineVirtualCamera camera;
+
+    public enum TeamColorEnum
+    {
+        red,blue
+    }
+    public TeamColorEnum team;
     int CharIndex_;
     int CharIndex
     {
@@ -21,44 +30,46 @@ public class UI_CharacterSelection : MonoBehaviour
         {
             ShowChar(value);
             CharIndex_ = value;
-            
+
         }
     }
     int SelectedChar;
     void Start()
     {
-        
+
         SpawnAllButton();
         CharIndex = 0;
-    
+
         btn_SelectChar.onClick.AddListener(Btn_SelectCharAction);
+        btn_ChangeTeamBlue.onClick.AddListener(Btn_ChangeColorBlue);
+        btn_ChangeTeamRed.onClick.AddListener(Btn_ChangeColorRed);
     }
     public void Display(bool a)
     {
         transform.parent.gameObject.SetActive(a);
-        
+
     }
-   List<IPlayerModel> models = new List<IPlayerModel>();
+    List<IPlayerModel> models = new List<IPlayerModel>();
     IPlayerModel oldModel;
     void SpawnAllButton()
     {
-       var SpawnInitialLocaltion = btn_ChangeCharBase.GetComponent<RectTransform>();
+        var SpawnInitialLocaltion = btn_ChangeCharBase.GetComponent<RectTransform>();
         for (int i = 0; i < AllChar.CharArray.Length; i++)
         {
 
             IPlayerModel modelinfo = AllChar.CharArray[i];
             if (modelinfo == null) continue;
-            var newButton =  Instantiate(btn_ChangeCharBase,transform);
-            RectTransform buttonTransform = newButton.GetComponent<RectTransform>();    
+            var newButton = Instantiate(btn_ChangeCharBase, transform);
+            RectTransform buttonTransform = newButton.GetComponent<RectTransform>();
             newButton.gameObject.SetActive(true);
 
-            IPlayerModel newModelInfo = Instantiate(modelinfo, SpawnPosition.position,SpawnPosition.rotation, CharShowCase)  ;
-             var AfterLoadThumbnail = newModelInfo.Thumbnail.LoadAssetAsync();
-            AfterLoadThumbnail.Completed += (sprite) => {
-                newButton.GetComponent<Image>().sprite = sprite.Result;
-            };
-            
-            float newPositionX = SpawnInitialLocaltion.position.x + i * (Spacing + buttonTransform.localScale.x);
+            IPlayerModel newModelInfo = Instantiate(modelinfo, SpawnPosition.position, SpawnPosition.rotation, CharShowCase);
+
+            Texture2D thumb = newModelInfo.Thumbnail;
+            newButton.GetComponent<Image>().sprite = Sprite.Create(thumb ,new Rect(0,0, thumb.width,thumb.height),Vector2.zero);
+        
+
+            float newPositionX = SpawnInitialLocaltion.position.x + i * (Spacing + buttonTransform.rect.width);
             buttonTransform.position = new Vector3(newPositionX, buttonTransform.position.y);
             var index = i;
             newButton.onClick.AddListener(() =>
@@ -74,7 +85,7 @@ public class UI_CharacterSelection : MonoBehaviour
         // if (CharIndex == index) return;
         IPlayerModel selectedPlayerModel = models[index];
         if (oldModel)
-        oldModel.gameObject.SetActive(false);
+            oldModel.gameObject.SetActive(false);
         selectedPlayerModel.gameObject.SetActive(true);
         oldModel = selectedPlayerModel;
 
@@ -82,13 +93,37 @@ public class UI_CharacterSelection : MonoBehaviour
         {
             PlaySelectedAnimation(selectedPlayerModel);
         }
+        else
+        {
+            PlayUnSelectedAnimation(selectedPlayerModel);
+        }
         oldModel = selectedPlayerModel;
+        if (team == TeamColorEnum.blue)
+        {
+            selectedPlayerModel.BlueTeamInit();
+           
+        }    
+        else
+        {
+            selectedPlayerModel.RedTeamInit();
+        }
+        camera.LookAt = selectedPlayerModel.head;
     }
     public void Btn_SelectCharAction()
     {
         SelectedChar = CharIndex;
+        ShowChar(CharIndex);
     }
-    
+    public void Btn_ChangeColorBlue()
+    {
+        team = TeamColorEnum.blue;
+        ShowChar(CharIndex);
+    }
+    public void Btn_ChangeColorRed()
+    {
+        team = TeamColorEnum.red;
+        ShowChar(CharIndex);
+    }
     public void PlaySelectedAnimation(IPlayerModel model)
     {
         model.SelectedAnim();
@@ -104,6 +139,6 @@ public class UI_CharacterSelection : MonoBehaviour
 
     void Update()
     {
-    
+        
     }
 }
