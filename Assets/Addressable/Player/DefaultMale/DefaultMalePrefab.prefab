@@ -50,6 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4870552773557632513, guid: a44a7188c710d444882b7e0cee52857a,
         type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 1f64e3b6761f0c147927bb246213e7b8, type: 2}
+    - target: {fileID: 4870552773557632513, guid: a44a7188c710d444882b7e0cee52857a,
+        type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6474e92674b66dd43af32a78c4f3c204, type: 2}
@@ -168,6 +173,12 @@ PrefabInstance:
       addedObject: {fileID: 8797284088321285965}
   m_SourcePrefab: {fileID: -3956505258223990651, guid: a44a7188c710d444882b7e0cee52857a,
     type: 3}
+--- !u!95 &137519811422601685 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4870552773557632513, guid: a44a7188c710d444882b7e0cee52857a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4791615027572277204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &2407090858818499357 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7140606858727328969, guid: a44a7188c710d444882b7e0cee52857a,
@@ -203,6 +214,7 @@ MonoBehaviour:
   BlueTeamRef:
     body: {fileID: 2100000, guid: 5fef9a05c86db494e971eae3ec0dd2b4, type: 2}
     face: {fileID: 2100000, guid: cb75e6cc959dbe8418375328d1f2deb1, type: 2}
+  animator: {fileID: 137519811422601685}
 --- !u!4 &4623946254378211986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -9055416251393219258, guid: a44a7188c710d444882b7e0cee52857a,

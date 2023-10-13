@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.20509876
       objectReference: {fileID: 0}
+    - target: {fileID: -5694092435888646316, guid: 05e84c9182f41e848b758c093e8ada2b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ef5f703724f59e04884319eab840c6e8, type: 2}
     - target: {fileID: -4297446187249348513, guid: 05e84c9182f41e848b758c093e8ada2b,
         type: 3}
       propertyPath: UpdateType

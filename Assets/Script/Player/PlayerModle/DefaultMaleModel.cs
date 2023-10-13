@@ -16,7 +16,10 @@ public class DefaultMaleModel : IPlayerModel
 
     [SerializeField]
     TeamReference redTeamRef, BlueTeamRef;
-
+    [SerializeField] Animator animator;
+    const string IDLE_ANIM_CLIP = "idlle";
+    const string SELECT_ANIM_CLIP = "Root_Selected";
+    const int SELECLAYER_LAYER = 1;
     public override void RedTeamInit()
     {
         faceRender.material = redTeamRef.face;
@@ -30,13 +33,15 @@ public class DefaultMaleModel : IPlayerModel
     }
     public override void IdleAnim()
     {
-       
+        animator.SetLayerWeight(SELECLAYER_LAYER, 0F);
+        animator.Play(IDLE_ANIM_CLIP);
     }
 
 
     public override void SelectedAnim()
     {
-       
+        animator.SetLayerWeight(SELECLAYER_LAYER, 0.86F);
+        animator.Play(SELECT_ANIM_CLIP, SELECLAYER_LAYER);
     }
 
     // Start is called before the first frame update
