@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
+    <Style src="project://database/Assets/NewFolder/UI/OptionsScreen/OptionsScreen.uss?fileID=7433441132597879392&amp;guid=04dc6f7df05000e46a717d1a5994b42d&amp;type=3#OptionsScreen" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:VisualElement name="options-screen">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="graphics-box">
+                <ui:Label tabindex="-1" text="Graphic" parse-escape-sequences="true" display-tooltip-when-elided="true" name="graphics-title" class="text-right width-48" />
+                <ui:Label tabindex="-1" text="Low" parse-escape-sequences="true" display-tooltip-when-elided="true" name="graphics-type" class="width-48 text-left" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="music-box">
+                <ui:Label tabindex="-1" text="Mucsic Volume" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text-right width-48" />
+                <ui:VisualElement name="music-slider" class="width-48">
+                    <ui:Label tabindex="-1" text="0%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="music-value" />
+                    <ui:Slider picking-mode="Ignore" label="Slider" value="0" high-value="100" />
+                    <ui:Label tabindex="-1" text="100%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="music-high-value" />
+                </ui:VisualElement>
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="sfx-box">
+                <ui:Label tabindex="-1" text="SFX Volume" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text-right width-48" />
+                <ui:VisualElement name="sfx-slider" class="width-48">
+                    <ui:Label tabindex="-1" text="0%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="sfx-value" />
+                    <ui:Slider picking-mode="Ignore" label="Slider" value="0" high-value="100" />
+                    <ui:Label tabindex="-1" text="100%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="sfx-high-value" />
+                </ui:VisualElement>
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="control-box">
+                <ui:Label tabindex="-1" text="Control" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text-right width-48" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="restore-default-setting-box">
+                <ui:Label tabindex="-1" text="Restore Default Setting" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text-right width-48" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="confirm-box">
+                <ui:Label tabindex="-1" text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="back" class="text-right width-48" />
+                <ui:Label tabindex="-1" text="Ok" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ok" class="text-left width-48" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

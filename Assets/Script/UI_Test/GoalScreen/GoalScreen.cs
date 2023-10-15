@@ -12,6 +12,7 @@ public class GoalScreen : MonoBehaviour
     static GoalScreen instance;
     static VisualElement root;
     static VisualElement container;
+    static VisualElement goalScreenScale;
     static VisualElement goalScreen;
     static VisualElement goalScreenClose;
     static VisualElement goalScreenBackground;
@@ -35,15 +36,16 @@ public class GoalScreen : MonoBehaviour
 
         root = GetComponent<UIDocument>().rootVisualElement;
         container = root.Q<VisualElement>("container");
+        goalScreenScale = root.Q<VisualElement>("goal-screen-scale");
         goalScreen = root.Q<VisualElement>("goal-screen");
         goalScreenClose = root.Q<VisualElement>("goal-screen-close");
         goalScreenBox = root.Q<VisualElement>("goal-screen-box");
-
         goalScreenBackground = root.Q<VisualElement>("goal-screen-background");
         animationIconAndText = root.Q<VisualElement>("animation-icon-and-text");
         redHide = root.Q<VisualElement>("red-hide");
-
         goalScreenTrail = root.Q<VisualElement>("goal-screen-trail");
+
+        InitStyle();
     }
 
     public static async void EnableGoalScreen()
@@ -69,7 +71,7 @@ public class GoalScreen : MonoBehaviour
             new TimeValue(100, TimeUnit.Millisecond)
         };
 
-        goalScreenClose.style.width = new Length(50, LengthUnit.Percent);
+        goalScreenScale.style.width = new Length(560, LengthUnit.Pixel);
         await Task.Delay(130);
 
         animationIconAndText.style.translate = new Translate(0, 0);
@@ -90,9 +92,9 @@ public class GoalScreen : MonoBehaviour
     static void ResetGoalScreen()
     {
         container.style.display = DisplayStyle.None;
-
+        goalScreenScale.style.width = new Length(600, LengthUnit.Pixel);
         goalScreenClose.style.width = new Length(100, LengthUnit.Percent);
-        goalScreenClose.style.width = new Length(60, LengthUnit.Percent);
+        //goalScreenClose.style.width = new Length(60, LengthUnit.Percent);
 
         goalScreen.style.opacity = 0;
         goalScreen.style.transitionDuration = null;
@@ -106,23 +108,10 @@ public class GoalScreen : MonoBehaviour
         redHide.style.display = DisplayStyle.None;
     }
 
-    static void AlignElementToCenter(VisualElement element)
+    void InitStyle()
     {
-        // Check if the element has a parent and its width is greater than zero.
-        if (element.parent != null && element.resolvedStyle.width > 0)
-        {
-            // Calculate the center position in pixels.
-            float centerX = (element.parent.resolvedStyle.width - element.resolvedStyle.width) / 2f;
-            float centerY = (element.parent.resolvedStyle.height - element.resolvedStyle.height) / 2f;
-
-            // Set the position of the UI element to the calculated pixel values.
-            element.style.position = Position.Absolute;
-            element.style.left = new Length(centerX);
-            element.style.top = new Length(centerY);
-        }
-        else
-        {
-            Debug.LogWarning("Element has no parent or width is zero. Alignment not possible.");
-        }
+        container.style.display = DisplayStyle.None;
+        goalScreen.style.opacity = 0;
+        animationIconAndText.style.opacity = 0;
     }
 }

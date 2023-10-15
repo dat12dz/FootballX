@@ -55,7 +55,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="C:\Users\haqua\Desktop\Football\FootballX2\Library\PackageCache\com.unity.transport@2.0.2\Analyzers\Unity.Transport.Analyzers.dll" />
+    <Analyzer Include="E:\Project\Unity\FootballX2\Library\PackageCache\com.unity.transport@2.0.2\Analyzers\Unity.Transport.Analyzers.dll" />
     <Analyzer Include="E:\App\Unity\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="E:\App\Unity\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -70,6 +70,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon.shader" />
     <None Include="Assets\NewFolder\UI\GoalScreen\GoalScreen.uss" />
+    <None Include="Assets\NewFolder\UI\MultiplePlayerScreen\MultiplePlayerScreen.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_attribute.hlsl" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_vertex.hlsl" />
@@ -78,8 +79,12 @@
     <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_depthnormals_fragment.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\NewFolder\UI\TitleScreen\TitleScreen.uxml" />
+    <None Include="Assets\NewFolder\UI\OptionsScreen\OptionsScreen.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\NewFolder\UI\OptionsScreen\OptionsScreen.uxml" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_lighting_mtoon.hlsl" />
+    <None Include="Assets\NewFolder\UI\TitleScreen\TitleScreen.uss" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uxml" />
     <None Include="Assets\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -101,6 +106,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_depthonly_fragment.hlsl" />
+    <None Include="Assets\NewFolder\UI\InGameScreen\InGameScreen.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
@@ -108,6 +114,7 @@
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_utility.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\NewFolder\UI\Common.uss" />
+    <None Include="Assets\NewFolder\UI\InGameScreen\InGameScreen.uss" />
     <None Include="Assets\VRMShaders\GLTF\IO\Resources\UniGLTF\StandardMapImporter.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_render_pipeline.hlsl" />
@@ -122,6 +129,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\NewFolder\UITemplate\Button-element.uxml" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\NewFolder\UI\MultiplePlayerScreen\MultiplePlayerScreen.uss" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_shadowcaster_fragment.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uss" />
@@ -393,6 +401,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -401,9 +412,6 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>E:\App\Unity\2022.3.10f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -936,13 +944,13 @@
       <Project>{F61F9C4D-6634-BFF8-CCE6-4064563641E0}</Project>
       <Name>Unity.Subsystem.Registration</Name>
     </ProjectReference>
-    <ProjectReference Include="QFSW.QC.UI.csproj">
-      <Project>{1EF351FB-7BA6-03D0-8536-A6EBF8FD4DE8}</Project>
-      <Name>QFSW.QC.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="Autodesk.Fbx.Editor.csproj">
       <Project>{6B3D5643-9349-34CE-9E27-5826D529A350}</Project>
       <Name>Autodesk.Fbx.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="QFSW.QC.UI.csproj">
+      <Project>{1EF351FB-7BA6-03D0-8536-A6EBF8FD4DE8}</Project>
+      <Name>QFSW.QC.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Shaders.csproj">
       <Project>{6F735DCA-897F-5BC2-D070-D1CCF6D2E800}</Project>
@@ -1036,10 +1044,6 @@
       <Project>{F8CA470B-BD55-8846-E157-446F62ACFF05}</Project>
       <Name>Unity.VisualScripting.Flow</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Netcode.Components.csproj">
-      <Project>{75226921-57E7-756D-5FF7-0767DE7E876E}</Project>
-      <Name>Unity.Netcode.Components</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
       <Project>{4E88FFB6-A089-8DF7-F845-C2FE593D97CF}</Project>
       <Name>Unity.Mathematics.Editor</Name>
@@ -1051,6 +1055,10 @@
     <ProjectReference Include="Unity.Netcode.Editor.csproj">
       <Project>{32DBD492-A5A3-E9FC-A963-7BFA782A11CB}</Project>
       <Name>Unity.Netcode.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Netcode.Components.csproj">
+      <Project>{75226921-57E7-756D-5FF7-0767DE7E876E}</Project>
+      <Name>Unity.Netcode.Components</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Multiplayer.Tools.NetStats.csproj">
       <Project>{BE18500F-3C87-E26C-1D18-28BF4C210E3D}</Project>
