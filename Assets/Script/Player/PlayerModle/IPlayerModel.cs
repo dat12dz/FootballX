@@ -7,9 +7,14 @@ using UnityEngine;
 
 public abstract class IPlayerModel : MonoBehaviour
 {
-   
-   public PlayerThumbnailReference Thumbnail;
+    [SerializeField]
+   public SkinnedMeshRenderer faceRender, bodyRender;
+    [SerializeField]
+    public Transform head;
+    public Texture2D Thumbnail;
    public abstract void IdleAnim();
-    public abstract void SelectedAnim(); 
+    public abstract void SelectedAnim();
+    public abstract void RedTeamInit();
+    public abstract void BlueTeamInit();
 }
 
