@@ -2,7 +2,17 @@ fileFormatVersion: 2
 guid: 8a6b4c1c79ad90844a067faad43b6087
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: N00_000_00_Body_00_SKIN (Instance)
+    second: {fileID: 2100000, guid: 7f5fe7215d71eae46b61e4af55d6d2bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: N00_000_00_FaceMouth_00_FACE (Instance)
+    second: {fileID: 2100000, guid: af71e0bac25aeae4c82e7189e22677f1, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 

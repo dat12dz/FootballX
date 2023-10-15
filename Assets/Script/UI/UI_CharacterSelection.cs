@@ -12,6 +12,8 @@ public class UI_CharacterSelection : MonoBehaviour
     [SerializeField] AllCharectorAssetReference AllChar;
     [SerializeField] Button btn_ChangeCharBase, btn_SelectChar;
     [SerializeField] Button btn_ChangeTeamBlue, btn_ChangeTeamRed;
+    [SerializeField] Button btn_exit;
+    [SerializeField] UI_StartScreenHandler startScreenHandler;
     [SerializeField] float Spacing = 10;
     [SerializeField] Transform SpawnPosition;
     [SerializeField] Transform CharShowCase;
@@ -30,11 +32,10 @@ public class UI_CharacterSelection : MonoBehaviour
         {
             ShowChar(value);
             CharIndex_ = value;
-
         }
     }
     int SelectedChar;
-    void Start()
+     void Start()
     {
 
         SpawnAllButton();
@@ -43,6 +44,16 @@ public class UI_CharacterSelection : MonoBehaviour
         btn_SelectChar.onClick.AddListener(Btn_SelectCharAction);
         btn_ChangeTeamBlue.onClick.AddListener(Btn_ChangeColorBlue);
         btn_ChangeTeamRed.onClick.AddListener(Btn_ChangeColorRed);
+        btn_exit.onClick.AddListener(btn_ExitAction);
+        
+    }
+    private void OnEnable()
+    {
+        Application.targetFrameRate = 60;
+    }
+    private void OnDisable()
+    {
+        Application.targetFrameRate = 0;
     }
     public void Display(bool a)
     {
@@ -89,6 +100,16 @@ public class UI_CharacterSelection : MonoBehaviour
         selectedPlayerModel.gameObject.SetActive(true);
         oldModel = selectedPlayerModel;
 
+        if (team == TeamColorEnum.blue)
+        {
+            selectedPlayerModel.WaitForStart_(() => selectedPlayerModel.BlueTeamInit());
+
+        }
+        else
+        {
+            selectedPlayerModel.WaitForStart_(() => selectedPlayerModel.RedTeamInit());
+        }
+
         if (SelectedChar == index)
         {
             PlaySelectedAnimation(selectedPlayerModel);
@@ -98,16 +119,8 @@ public class UI_CharacterSelection : MonoBehaviour
             PlayUnSelectedAnimation(selectedPlayerModel);
         }
         oldModel = selectedPlayerModel;
-        if (team == TeamColorEnum.blue)
-        {
-            selectedPlayerModel.BlueTeamInit();
-           
-        }    
-        else
-        {
-            selectedPlayerModel.RedTeamInit();
-        }
-        camera.LookAt = selectedPlayerModel.head;
+
+        camera.LookAt = selectedPlayerModel.CameraLookAt;
     }
     public void Btn_SelectCharAction()
     {
@@ -124,15 +137,21 @@ public class UI_CharacterSelection : MonoBehaviour
         team = TeamColorEnum.red;
         ShowChar(CharIndex);
     }
+    public void btn_ExitAction()
+    {
+        startScreenHandler.gameObject.SetActive(true);
+        Display(false);
+        StartGameInfo.instance.playerData.playerChar = SelectedChar;
+    }
     public void PlaySelectedAnimation(IPlayerModel model)
     {
-        model.SelectedAnim();
+        model.WaitForStart_(() =>  model.SelectedAnim());
         DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(2.1f, 1), 1).SetEase(Ease.InOutQuart);
         btn_SelectChar.interactable = false;
     }
     public void PlayUnSelectedAnimation(IPlayerModel player)
     {
-        player.IdleAnim();
+      player.WaitForStart_(() =>   player.IdleAnim());
         DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(1.6f,1) , 1).SetEase(Ease.InOutQuart);
         btn_SelectChar.interactable = true;
     }

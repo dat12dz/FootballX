@@ -45,12 +45,12 @@ public class UI_StartScreenHandler : MonoBehaviour
             else
             {
                     NetworkClient_.StartClient(inp_ServerIP.text,inp_PlayerName.text);
-                    StartGameInfo.instance.PlayerName = inp_PlayerName.text;
+                    StartGameInfo.instance.playerData.playerName = inp_PlayerName.text;
             }
         });
         btn_HostBtn.onClick.AddListener(() =>
         {
-            StartGameInfo.instance.PlayerName = inp_PlayerName.text;
+            StartGameInfo.instance.playerData.playerName = inp_PlayerName.text;
             netmang.ConnectionApprovalCallback = (req, res) =>
             {
                 if (netmang.ConnectedClients.Count > maxHostPlayer)

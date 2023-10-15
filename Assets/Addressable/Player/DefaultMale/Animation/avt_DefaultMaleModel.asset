@@ -6,7 +6,7 @@ Avatar:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: avt
+  m_Name: avt_DefaultMaleModel
   m_AvatarSize: 28112
   m_Avatar:
     serializedVersion: 3

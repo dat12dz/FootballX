@@ -14,13 +14,16 @@ public class DefaultFemaleModel : IPlayerModel
     const string SELECT_ANIM_CLIP = "Selected";
     const string IDLE_ANIM_CLIP = "idle";
     const int LAYER_SELECT_ANIM = 1;
-    [SerializeField]
-    SkinnedMeshRenderer faceRender,bodyRender;
+
     [SerializeField]
     TeamReference redTeamRef, BlueTeamRef;
-    void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+    protected override void Start()
+    {
+        base.Start();
     }
     [ContextMenu("PlayIdle")]
     public override void IdleAnim()
@@ -36,14 +39,19 @@ public class DefaultFemaleModel : IPlayerModel
     }
     public override void RedTeamInit()
     {
-        faceRender.material = redTeamRef.face;
-        bodyRender.material = redTeamRef.body;
+        redTeamRef.model.SetActive(true);
+        animator = redTeamRef.model.GetComponent<Animator>();
+        BlueTeamRef.model.SetActive(false);
     }
+    void init(GameObject model)
+    {
 
+    }
     public override void BlueTeamInit()
     {
-        faceRender.material = BlueTeamRef.face;
-        bodyRender.material = BlueTeamRef.body;
+        redTeamRef.model.SetActive(false);
+        animator = BlueTeamRef.model.GetComponent<Animator>();
+        BlueTeamRef.model.SetActive(true);
     }
     void CloseEye()
     {
@@ -59,10 +67,7 @@ public class DefaultFemaleModel : IPlayerModel
     [Serializable]
     class TeamReference
     {
-        [SerializeField]
-       public Material body;
-        [SerializeField]
-        public Material face;
+        public GameObject model;
     }
 
 }

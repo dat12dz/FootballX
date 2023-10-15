@@ -22,6 +22,7 @@ namespace Assets.Utlis
             if (!PlayerCam) Logging.LogObjectNull(nameof(PlayerCam));
             if (!HeadObj) Logging.LogObjectNull(nameof(HeadObj));
             player = transform.root.GetComponent<Player>(); 
+            
         }
         private void Update()
         {
@@ -38,7 +39,7 @@ namespace Assets.Utlis
         void RotateCam(float xMouse, float yMouse)
         {
             // clamp X
-          
+            
             YRotate -= yMouse * MouseSen * Time.deltaTime;
 
             YRotate = Math.Clamp(YRotate, -90, 90);
