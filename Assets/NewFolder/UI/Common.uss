@@ -3,6 +3,11 @@
     -unity-font-definition: initial;
 }
 
+:root {
+    --primary-text-color: #fff;
+    --second-text-color:#ccc;
+}
+
 #unity-text-input {
     padding: 8px 8px;
     border-width: 4px;
@@ -128,7 +133,7 @@ RadioButton:hover VisualElement .unity-radio-button__checkmark-background {
 }
 
 /* Slider */
-Slider Label {  
+/* Slider Label {  
     min-width: 80px;
     color: black;
     -unity-text-align: middle-left;
@@ -157,4 +162,4 @@ Slider #unity-dragger {
 
 #unity-dragger-container:focus #unity-dragger {
     border-color: white;
-}
+} */

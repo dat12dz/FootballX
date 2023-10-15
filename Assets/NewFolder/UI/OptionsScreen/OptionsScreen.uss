@@ -1,0 +1,65 @@
+#container {
+    justify-content: center;
+}
+
+#options-screen {
+    width: 100%;
+}
+
+Label {
+    font-size: 24px;
+    color: var(--primary-text-color);
+    -unity-font: url(/Assets/NewFolder/Fonts/KaushanScript.ttf);
+}
+
+Button {
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#music-slider {
+    flex-direction: row;
+}
+
+#sfx-slider {
+    flex-direction: row;
+}
+
+#music-slider Slider {
+    width: 20%;
+}
+
+#sfx-slider Slider {
+    width: 20%;
+}
+
+#music-value, #music-high-value, #sfx-value, #sfx-high-value {
+    font-size: 16px;
+}
+
+Slider {
+    margin: 0 12px;
+}
+
+Slider Label {
+    display: none;
+}
+
+.text-right {
+    -unity-text-align: middle-right;
+}
+
+.text-left {
+    -unity-text-align: middle-left;
+}
+
+.width-48 {
+    width: 48%;
+}
+
+Button:focus is-focus {
+
+}

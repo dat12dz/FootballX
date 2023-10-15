@@ -1,15 +1,23 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/GoalScreen/GoalScreen.uss?fileID=7433441132597879392&amp;guid=bf9469de05762af469a36277be2eb99f&amp;type=3#GoalScreen" />
+    <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
+    <Style src="project://database/Assets/NewFolder/UI/GoalScreen/GoalScreen.uss?fileID=7433441132597879392&amp;guid=a12d69b25695c8b4ab596e3bb2c2bb30&amp;type=3#GoalScreen" />
     <ui:VisualElement name="container" style="flex-grow: 1;">
-        <ui:VisualElement name="goal-screen-close">
-            <ui:VisualElement name="goal-screen" style="width: 564px;">
-                <ui:VisualElement name="goal-screen-background" />
-                <ui:VisualElement name="goal-screen-box">
-                    <ui:VisualElement name="animation-icon-and-text">
-                        <ui:VisualElement name="ball-icon" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
-                        <ui:Label tabindex="-1" text="VÀO" display-tooltip-when-elided="true" name="goal-screen-text">
-                            <ui:VisualElement name="red-hide" />
-                        </ui:Label>
+        <ui:VisualElement name="goal-screen-scale">
+            <ui:VisualElement style="width: 600px; height: 160px; align-self: center;">
+                <ui:VisualElement name="goal-screen-close">
+                    <ui:VisualElement name="goal-screen">
+                        <ui:VisualElement name="goal-screen-background" />
+                        <ui:VisualElement name="goal-screen-box">
+                            <ui:VisualElement name="animation-icon-and-text">
+                                <ui:VisualElement name="ball-icon" />
+                                <ui:VisualElement name="goal-screen-text-info" style="flex-grow: 1;">
+                                    <ui:Label tabindex="-1" text="VÀO" display-tooltip-when-elided="true" name="goal-screen-text" />
+                                    <ui:Label tabindex="-1" text="Title" parse-escape-sequences="true" display-tooltip-when-elided="true" name="goal-screen-title" />
+                                    <ui:Label tabindex="-1" text="Description" parse-escape-sequences="true" display-tooltip-when-elided="true" name="goal-screen-description" />
+                                    <ui:VisualElement name="red-hide" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

@@ -1,0 +1,54 @@
+#container {
+	align-items: center;
+}
+
+#title-screen {
+	width: 60%;
+	align-items: center;
+	margin-top: 128px;
+}
+
+#game-name-box {
+	margin-bottom: 84px;
+}
+
+#play-btn, #options-btn, #exit-btn {
+	width: 400px;
+	margin: 12px 0;
+	background-color: rgba(0,0,0,0);
+	border-width: 0;
+}
+
+#play, #options, #exit, #game-name, #play-hover, #options-hover, #exit-hover {
+	color: var(--primary-text-color);
+	-unity-font: url(/Assets/NewFolder/Fonts/KaushanScript.ttf);
+	font-size: 48px;
+	-unity-text-align: middle-center;
+}
+
+#game-name {
+	font-size: 84px;
+	-unity-font-style: bold-and-italic;
+}
+
+#play-hover, #options-hover, #exit-hover {
+	position: absolute;
+	width: 100%;
+	opacity: 0;
+	color: rgba(0,0,0,0.6);
+	transition: 0.4s;
+	translate: -10px 10px;
+}
+
+#play-btn:hover #play-hover, #options-btn:hover #options-hover, #exit-btn:hover #exit-hover {
+	opacity: 1;
+	letter-spacing: 12px;
+}
+
+Button:active #play, Button:active #exit, Button:active #options {
+	color: #ccc;
+}
+
+#play-btn:active #play-hover, #options-btn:active #options-hover, #exit-btn:active #exit-hover {
+	rotate: 4deg;
+}

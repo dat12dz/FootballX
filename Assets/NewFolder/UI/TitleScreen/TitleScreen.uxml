@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
+    <Style src="project://database/Assets/NewFolder/UI/TitleScreen/TitleScreen.uss?fileID=7433441132597879392&amp;guid=64f1e48613db45c44af09b4fe806ccb1&amp;type=3#TitleScreen" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:VisualElement name="title-screen">
+            <ui:VisualElement name="game-name-box">
+                <ui:Label tabindex="-1" text="FOOTBALLX2" parse-escape-sequences="true" display-tooltip-when-elided="true" name="game-name" />
+            </ui:VisualElement>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="play-btn">
+                <ui:Label tabindex="-1" text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" name="play-hover" />
+                <ui:Label tabindex="-1" text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" name="play" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="options-btn">
+                <ui:Label tabindex="-1" text="OPTIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="options-hover" />
+                <ui:Label tabindex="-1" text="OPTIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="options" />
+            </ui:Button>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit-btn">
+                <ui:Label tabindex="-1" text="EXIT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit-hover" />
+                <ui:Label tabindex="-1" text="EXIT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

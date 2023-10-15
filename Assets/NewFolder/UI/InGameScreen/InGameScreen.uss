@@ -1,0 +1,87 @@
+#container {
+}
+
+#score-board {
+    flex-direction: row;
+    align-self: center;
+    justify-content: space-between;
+    width: 120px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.4);
+    transition: 0.4s;
+    transition-timing-function: ease-in-out-bounce;
+}
+
+#red-team-score {
+    width: 48%;
+    font-size: 20px;
+    -unity-text-align: middle-center;
+}
+
+#blue-team-score {
+    width: 48%;
+    font-size: 20px;
+    -unity-text-align: middle-center;
+}
+
+#red-team-score {
+    color: rgb(230, 0, 0);
+}
+
+#blue-team-score {
+    color: rgb(0, 162, 232);
+}
+
+#match-time {
+    position: absolute;
+    bottom: -26%;
+    right: 50%;
+    translate: 50%;
+    -unity-text-align: middle-center;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4px;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.4);
+    transition: 0.4s;
+    transition-timing-function: ease-in-out-bounce;
+}
+
+#bottom-in-game-screen {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#kick-bar {
+    align-self: flex-end;
+    width: 180px;
+    height: 40px;
+    margin: 0 12px 12px 0;
+}
+
+#kick-bar-border {
+    height: 40px;
+    background-image: url(/Assets/NewFolder/Resources/UI/kickBar.svg);
+    overflow: hidden;
+}
+
+#kick-bar-progress {
+    position: absolute;
+    height: 40px;
+    overflow: hidden;
+}
+
+#kick-bar-override-border {
+    height: 40px;
+    background-image: url(/Assets/NewFolder/Resources/UI/kickBar.svg);
+}
+
+#kick-bar-override-background {
+    position: absolute;
+    width: 180px;
+    height: 40px;
+    background-image: url(/Assets/NewFolder/Resources/UI/kickBarBackground.svg);
+    overflow: hidden;
+}

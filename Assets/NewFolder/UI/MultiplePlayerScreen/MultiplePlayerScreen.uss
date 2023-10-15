@@ -1,0 +1,57 @@
+#container {
+	justify-content: center;
+	align-items: center;
+}
+
+#multiple-player-screen {
+	width: 460px;
+	align-items: center;
+}
+
+#title {
+	-unity-text-align: middle-center;
+	font-size: 32px;
+	color: var(--primary-text-color);
+}
+
+#input-name-and-ip {
+	width: 100%;
+	margin: 32px 0;
+}
+
+TextField {
+	width: 100%;
+}
+
+TextField Label {
+	min-width: 120px;
+	color: var(--primary-text-color);
+	font-size: 24px;
+	-unity-text-align: middle-left;
+}
+
+TextField #unity-text-input {
+	
+}
+
+#local-ip-btn {
+	position: absolute;
+	left: 100%;
+	bottom: 0;
+	padding: 0;
+	margin: 1px 4px;
+	width: 80px;
+	height: 40px;
+	overflow: visible;
+}
+
+#button-handle {
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+#button-handle Button {
+	width: 30%;
+}
