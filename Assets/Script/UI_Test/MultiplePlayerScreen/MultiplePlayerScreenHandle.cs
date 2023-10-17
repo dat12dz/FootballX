@@ -79,7 +79,8 @@ public class MultiplePlayerHandle : MonoBehaviour
                 res.CreatePlayerObject = true;
             };
             if (netmang.StartHost())
-                SceneManager.LoadScene(1);
+                //SceneManager.LoadScene(1);
+                ChangeSceneEffect.ChangeScene(1);
         };
 
         characterBtn.clickable.clicked += () =>
@@ -110,16 +111,19 @@ public class MultiplePlayerHandle : MonoBehaviour
 
     private void Netmang_OnTransportFailure()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        ChangeSceneEffect.ChangeScene(0);
     }
 
     private void Netmang_OnClientStopped(bool obj)
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        ChangeSceneEffect.ChangeScene(0);
     }
 
     private void Netmang_OnServerStopped(bool obj)
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        ChangeSceneEffect.ChangeScene(0);
     }
 }

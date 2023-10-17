@@ -38,7 +38,7 @@ public class MessageBox : MonoBehaviour
 
     }
 
-    public static async Task Show(string title, string text)
+    public static async void Show(string title, string text)
     {
         root.Q<Label>("title").text = title;
         root.Q<Label>("description").text = text;

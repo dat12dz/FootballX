@@ -898,7 +898,7 @@ GameObject:
   - component: {fileID: 261221194}
   - component: {fileID: 261221193}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ClickRightArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 831a41db5993b984aa086d7b63c9897c,
     type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!114 &1262813267
 MonoBehaviour:
   m_ObjectHideFlags: 0
