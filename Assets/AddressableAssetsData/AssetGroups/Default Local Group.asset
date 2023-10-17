@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 6b8af6a564f1adb498123ce2a31519cd
-  m_SerializeEntries:
-  - m_GUID: 0439821646d0a914098946a8ff235104
-    m_Address: Assets/NewFolder/Icons/crown.svg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a0b6fba3217efd2479fd13d671492476, type: 2}
   m_SchemaSet:
