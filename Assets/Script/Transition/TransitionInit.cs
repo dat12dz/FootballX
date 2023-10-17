@@ -12,10 +12,18 @@ public class TransitionInit : MonoBehaviour
     Vector3 camDefaultPos;
     void Start()
     {
+        
+        if (instance != null)
+        {
+            Destroy(gameObject);
+         
+            return;
+        }
+        instance = this;
         camDefaultPos = cam.transform.position;
         texture.width = Screen.currentResolution.width;
         texture.height = Screen.currentResolution.height;
-        instance = this;
+        
         DontDestroyOnLoad(gameObject);
         gameObject.SetActive(false);
     }
@@ -23,7 +31,7 @@ public class TransitionInit : MonoBehaviour
     public void StartRendering()
     {
         gameObject.SetActive(true);
-        cam.transform.DOMove(new Vector3(camDefaultPos.x, camDefaultPos.y, camDefaultPos.z - 2), 1f).SetEase(Ease.OutCubic);
+        cam.transform.DOMove(new Vector3(camDefaultPos.x, camDefaultPos.y, camDefaultPos.z - 5), 1f).SetEase(Ease.OutCubic);
 
     }
     public void StopRendering()
