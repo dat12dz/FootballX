@@ -7,7 +7,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class DefaultFemaleModel : IPlayerModel
+public class DefaultFemaleModel : PlayerModelBase
 {
 
     [SerializeField] Animator animator;
@@ -40,6 +40,7 @@ public class DefaultFemaleModel : IPlayerModel
     public override void RedTeamInit()
     {
         redTeamRef.model.SetActive(true);
+        ActiveModel = redTeamRef.model;
         animator = redTeamRef.model.GetComponent<Animator>();
         BlueTeamRef.model.SetActive(false);
     }
@@ -51,6 +52,7 @@ public class DefaultFemaleModel : IPlayerModel
     {
         redTeamRef.model.SetActive(false);
         animator = BlueTeamRef.model.GetComponent<Animator>();
+        ActiveModel = redTeamRef.model;
         BlueTeamRef.model.SetActive(true);
     }
     void CloseEye()
@@ -59,9 +61,9 @@ public class DefaultFemaleModel : IPlayerModel
        
       //  DOTween.To(() => x,)
     }
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 
     [Serializable]

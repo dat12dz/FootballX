@@ -60,13 +60,13 @@ public class MultiplePlayerHandle : MonoBehaviour
             else
             {
                 NetworkClient_.StartClient(inputIp.text, inputName.text);
-                StartGameInfo.instance.PlayerName = inputName.text;
+                StartGameInfo.instance.playerData.playerName = inputName.text;
             }
         };
 
         hostBtn.clickable.clicked += () =>
         {
-            StartGameInfo.instance.PlayerName = inputName.text;
+            StartGameInfo.instance.playerData.playerName = inputName.text;
             netmang.ConnectionApprovalCallback = (req, res) =>
             {
                 if (netmang.ConnectedClients.Count > maxHostPlayer)

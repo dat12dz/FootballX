@@ -26,7 +26,7 @@ public class Ball : Grabable
         thisSceneGameSystem = g;
         ballSpawnPoint = spawnPoint;
     }
-    public override void OnNetworkSpawn()
+    public override void OnNetworkSpawn()//
     {
         base.OnNetworkSpawn();
         if (IsClient && !IsHost)

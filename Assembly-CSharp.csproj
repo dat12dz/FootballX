@@ -55,10 +55,10 @@
     <UnityVersion>2022.3.10f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="E:\Project\Unity\FootballX2\Library\PackageCache\com.unity.transport@2.0.2\Analyzers\Unity.Transport.Analyzers.dll" />
-    <Analyzer Include="E:\App\Unity\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
-    <Analyzer Include="E:\App\Unity\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
+    <Analyzer Include="G:\visualStudio\VSMain\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="D:\FootBall Test\FootBallXClone\Library\PackageCache\com.unity.transport@2.0.2\Analyzers\Unity.Transport.Analyzers.dll" />
+    <Analyzer Include="G:\ProgramFile\Unity\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
+    <Analyzer Include="G:\ProgramFile\Unity\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\NewFolder\Test.cs" />
@@ -504,21 +504,6 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>E:\App\Unity\2022.3.10f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>E:\App\Unity\2022.3.10f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Android.Types">
-      <HintPath>E:\App\Unity\2022.3.10f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Android.Gradle">
-      <HintPath>E:\App\Unity\2022.3.10f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Android.GradleProject">
-      <HintPath>E:\App\Unity\2022.3.10f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.GradleProject.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>G:\ProgramFile\Unity\2022.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -1394,61 +1379,9 @@
       <Project>{EBB70BD6-48CF-E067-9478-429C8DD4D6E1}</Project>
       <Name>QuixelAss</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.MemoryProfiler.Editor.csproj">
-      <Project>{11341C4B-A9F9-6190-2897-AF26D89E1FF6}</Project>
-      <Name>Unity.MemoryProfiler.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Multiplayer.Tools.Initialization.csproj">
-      <Project>{658E63C4-3430-4360-CF39-3E6F3E7F6CD3}</Project>
-      <Name>Unity.Multiplayer.Tools.Initialization</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEngineBridge.003.csproj">
-      <Project>{509DC099-CF82-B7C9-F268-4FA5509F50A3}</Project>
-      <Name>Unity.InternalAPIEngineBridge.003</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Addressables.Editor.csproj">
-      <Project>{61F4E512-55AE-2D07-CC0A-2706D61F32FC}</Project>
-      <Name>Unity.Addressables.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Subsystem.Registration.csproj">
-      <Project>{F61F9C4D-6634-BFF8-CCE6-4064563641E0}</Project>
-      <Name>Unity.Subsystem.Registration</Name>
-    </ProjectReference>
-    <ProjectReference Include="Autodesk.Fbx.Editor.csproj">
-      <Project>{6B3D5643-9349-34CE-9E27-5826D529A350}</Project>
-      <Name>Autodesk.Fbx.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="QFSW.QC.UI.csproj">
       <Project>{A8426AA8-8D7E-5A00-F2BE-DC53A273FC03}</Project>
       <Name>QFSW.QC.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipelines.Universal.Shaders.csproj">
-      <Project>{6F735DCA-897F-5BC2-D070-D1CCF6D2E800}</Project>
-      <Name>Unity.RenderPipelines.Universal.Shaders</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Searcher.Editor.csproj">
-      <Project>{FD0AA9D7-E7E7-43A1-120B-163DA50224F0}</Project>
-      <Name>Unity.Searcher.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Multiplayer.Tools.MetricTypes.csproj">
-      <Project>{F71B2D91-A81B-95AB-0656-E22F6590AB4B}</Project>
-      <Name>Unity.Multiplayer.Tools.MetricTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.csproj">
-      <Project>{B4363DFD-F45A-0F5F-8C6D-3C7E5659B6F2}</Project>
-      <Name>Unity.VisualScripting.State</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.ScriptableBuildPipeline.Editor.csproj">
-      <Project>{87381EFE-BF86-59DE-0C7E-F858418F1D65}</Project>
-      <Name>Unity.ScriptableBuildPipeline.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Multiplayer.Tools.NetworkSimulator.Runtime.csproj">
-      <Project>{520E7B44-05A6-FA8D-67CB-ECC7A6AAE728}</Project>
-      <Name>Unity.Multiplayer.Tools.NetworkSimulator.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Addressables.csproj">
-      <Project>{B23E1516-83A7-BF16-BA9D-E684F34F7B53}</Project>
-      <Name>Unity.Addressables</Name>
     </ProjectReference>
     <ProjectReference Include="DatScript.csproj">
       <Project>{8D3874E3-2E95-07DE-7DCC-B9B9028F154A}</Project>
@@ -1473,46 +1406,6 @@
     <ProjectReference Include="UniGLTF.csproj">
       <Project>{7C3358EC-1D92-ED13-BF1F-C6830EDEA16C}</Project>
       <Name>UniGLTF</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{9365231F-D1C9-20FB-D0CB-BB750F154BF6}</Project>
-      <Name>Unity.Rider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AdaptivePerformance.Simulator.Editor.csproj">
-      <Project>{DDCA36F0-4061-D79C-40B0-3F07E641F74F}</Project>
-      <Name>Unity.AdaptivePerformance.Simulator.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{33508A88-C190-7BC8-C5EF-017587F1A775}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Formats.Fbx.Runtime.csproj">
-      <Project>{C40F212C-CDB5-CB2B-6A94-B44AFFD50803}</Project>
-      <Name>Unity.Formats.Fbx.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
-      <Project>{F8CA470B-BD55-8846-E157-446F62ACFF05}</Project>
-      <Name>Unity.VisualScripting.Flow</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{4E88FFB6-A089-8DF7-F845-C2FE593D97CF}</Project>
-      <Name>Unity.Mathematics.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Configuration.csproj">
-      <Project>{F10190EF-D184-4A46-3F15-452735F06DDE}</Project>
-      <Name>Unity.Multiplayer.Tools.NetStatsMonitor.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Netcode.Editor.csproj">
-      <Project>{32DBD492-A5A3-E9FC-A963-7BFA782A11CB}</Project>
-      <Name>Unity.Netcode.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Netcode.Components.csproj">
-      <Project>{75226921-57E7-756D-5FF7-0767DE7E876E}</Project>
-      <Name>Unity.Netcode.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Multiplayer.Tools.NetStats.csproj">
-      <Project>{BE18500F-3C87-E26C-1D18-28BF4C210E3D}</Project>
-      <Name>Unity.Multiplayer.Tools.NetStats</Name>
     </ProjectReference>
     <ProjectReference Include="QFSW.QC.Grammar.csproj">
       <Project>{7E01580F-0183-2925-E359-5E5ECA34CCE4}</Project>

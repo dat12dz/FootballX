@@ -60,21 +60,21 @@ public class UI_CharacterSelection : MonoBehaviour
         transform.parent.gameObject.SetActive(a);
 
     }
-    List<IPlayerModel> models = new List<IPlayerModel>();
-    IPlayerModel oldModel;
+    List<PlayerModelBase> models = new List<PlayerModelBase>();
+    PlayerModelBase oldModel;
     void SpawnAllButton()
     {
         var SpawnInitialLocaltion = btn_ChangeCharBase.GetComponent<RectTransform>();
         for (int i = 0; i < AllChar.CharArray.Length; i++)
         {
 
-            IPlayerModel modelinfo = AllChar.CharArray[i];
+            PlayerModelBase modelinfo = AllChar.CharArray[i];
             if (modelinfo == null) continue;
             var newButton = Instantiate(btn_ChangeCharBase, transform);
             RectTransform buttonTransform = newButton.GetComponent<RectTransform>();
             newButton.gameObject.SetActive(true);
 
-            IPlayerModel newModelInfo = Instantiate(modelinfo, SpawnPosition.position, SpawnPosition.rotation, CharShowCase);
+            PlayerModelBase newModelInfo = Instantiate(modelinfo, SpawnPosition.position, SpawnPosition.rotation, CharShowCase);
 
             Texture2D thumb = newModelInfo.Thumbnail;
             newButton.GetComponent<Image>().sprite = Sprite.Create(thumb ,new Rect(0,0, thumb.width,thumb.height),Vector2.zero);
@@ -94,7 +94,7 @@ public class UI_CharacterSelection : MonoBehaviour
     void ShowChar(int index)
     {
         // if (CharIndex == index) return;
-        IPlayerModel selectedPlayerModel = models[index];
+        PlayerModelBase selectedPlayerModel = models[index];
         if (oldModel)
             oldModel.gameObject.SetActive(false);
         selectedPlayerModel.gameObject.SetActive(true);
@@ -143,13 +143,13 @@ public class UI_CharacterSelection : MonoBehaviour
         Display(false);
         StartGameInfo.instance.playerData.playerChar = SelectedChar;
     }
-    public void PlaySelectedAnimation(IPlayerModel model)
+    public void PlaySelectedAnimation(PlayerModelBase model)
     {
         model.WaitForStart_(() =>  model.SelectedAnim());
         DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(2.1f, 1), 1).SetEase(Ease.InOutQuart);
         btn_SelectChar.interactable = false;
     }
-    public void PlayUnSelectedAnimation(IPlayerModel player)
+    public void PlayUnSelectedAnimation(PlayerModelBase player)
     {
       player.WaitForStart_(() =>   player.IdleAnim());
         DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(1.6f,1) , 1).SetEase(Ease.InOutQuart);

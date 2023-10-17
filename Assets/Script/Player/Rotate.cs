@@ -15,7 +15,7 @@ namespace Assets.Utlis
         Camera PlayerCam;
         [SerializeField] float MouseSen = 3f;
 
-        [SerializeField] Transform HeadObj;
+        [SerializeField] public Transform HeadObj;
         private void Start()
         {
             PlayerCam = GetComponent<Camera>();
