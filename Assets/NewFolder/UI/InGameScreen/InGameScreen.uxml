@@ -9,9 +9,9 @@
             <ui:Label tabindex="-1" text="00:00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="match-time" />
         </ui:VisualElement>
         <ui:VisualElement name="bottom-in-game-screen">
-            <ui:VisualElement name="kick-bar" style="flex-grow: 1;">
+            <ui:VisualElement name="kick-bar">
                 <ui:VisualElement name="kick-bar-border">
-                    <ui:VisualElement name="kick-bar-progress" style="width: 0;">
+                    <ui:VisualElement name="kick-bar-progress">
                         <ui:VisualElement name="kick-bar-override-background" />
                     </ui:VisualElement>
                     <ui:VisualElement name="kick-bar-override-border" />

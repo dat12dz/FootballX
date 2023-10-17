@@ -24,6 +24,8 @@ public class LobbyScreen : MonoBehaviour
         lobbyScreen = root.Q<VisualElement>("lobby-screen");
         leaderIcon = root.Q<VisualElement>("leader");
         readyIcon = root.Q<VisualElement>("ready");
+
+
         ResetStyle();
     }
 

@@ -1,0 +1,22 @@
+#container {
+	
+}
+
+#change-scene-effect {
+	background-color: rgba(0,0,0,0);
+	transition-delay: 0.15s;
+}
+
+#show-and-hide-bg {
+	position: absolute;
+	left: -118%;
+	bottom: -218%;
+	/* background-color: rgba(0,0,0,0); */
+	background-image: url(/Assets/NewFolder/Resources/UI/showAndHideScene.png);
+	width: 140%;
+	height: 220%;
+	rotate: 45deg;
+	transition: 0.3s;
+	transition-timing-function: linear;
+	/* translate: 134% -134%; */
+}

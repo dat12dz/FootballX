@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 567.8 81.5">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550.1 81.9">
   <defs>
     <style>
       .cls-1 {
-        fill: none;
-        stroke: #000;
-        stroke-miterlimit: 10;
-        stroke-width: 4px;
-      }
-
-      .cls-2 {
         fill: #fff;
         opacity: 0;
       }
+
+      .cls-2 {
+        fill: none;
+        stroke: #000;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
     </style>
   </defs>
-  <path id="background" class="cls-2" d="m4,45.3l25.1,35.1h534.9L511.4,3.2s-92.7,26.8-233.6,38.1C165.4,50.3,4,45.3,4,45.3Z"/>
-  <path id="border" class="cls-1" d="m4,44.4l25.1,35.1h534.9L511.4,2.3s-92.7,26.8-233.6,38.1C165.4,49.4,4,44.4,4,44.4Z"/>
+  <path id="background" class="cls-1" d="m4.2,57.5l12.6,17.7c1.6,2.2,4.2,3.6,6.9,3.6h514.5c6.8,0,10.9-7.6,7-13.3l-40.2-58.9c-2-3-5.7-4.4-9.2-3.4-22.3,5.9-107.5,26.8-227.9,36.5-90.3,7.3-212.4,5.4-256.7,4.4-7-.2-11.2,7.7-7.1,13.4Z"/>
+  <path id="border" class="cls-2" d="m4.6,57.7l12.6,17.7c1.6,2.2,4.2,3.6,6.9,3.6h514.5c6.8,0,10.9-7.6,7-13.3l-40.2-58.9c-2-3-5.7-4.4-9.2-3.4-22.3,5.9-107.5,26.8-227.9,36.5-90.3,7.3-212.4,5.4-256.7,4.4-7-.2-11.2,7.7-7.1,13.4Z"/>
 </svg>
