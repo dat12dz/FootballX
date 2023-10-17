@@ -3,15 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultMaleModel : IPlayerModel
+public class DefaultMaleModel : PlayerModelBase
 {
     [Serializable]
     class TeamReference
     {
-        [SerializeField]
-        public Material body;
-        [SerializeField]
-        public Material face;
+        public GameObject model;
     }
 
     [SerializeField]
@@ -22,14 +19,18 @@ public class DefaultMaleModel : IPlayerModel
     const int SELECLAYER_LAYER = 1;
     public override void RedTeamInit()
     {
-        faceRender.material = redTeamRef.face;
-        bodyRender.material = redTeamRef.body;
+        redTeamRef.model.SetActive(true);
+        animator = redTeamRef.model.GetComponent<Animator>();
+        ActiveModel = redTeamRef.model;
+        BlueTeamRef.model.SetActive(false);
     }
-
+    
     public override void BlueTeamInit()
     {
-        faceRender.material = BlueTeamRef.face;
-        bodyRender.material = BlueTeamRef.body;
+        redTeamRef.model.SetActive(false);
+        animator = BlueTeamRef.model.GetComponent<Animator>();
+        ActiveModel = BlueTeamRef.model;
+        BlueTeamRef.model.SetActive(true);
     }
     public override void IdleAnim()
     {
@@ -43,7 +44,10 @@ public class DefaultMaleModel : IPlayerModel
         animator.SetLayerWeight(SELECLAYER_LAYER, 0.86F);
         animator.Play(SELECT_ANIM_CLIP, SELECLAYER_LAYER);
     }
-
+    protected override void Start()
+    {
+        base.Start();
+    }
     // Start is called before the first frame update
-   
+
 }

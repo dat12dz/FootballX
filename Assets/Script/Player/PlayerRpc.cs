@@ -53,10 +53,10 @@ public partial class Player
         FinalShootForce = shootForce;
     }
     [ServerRpc] 
-    public void SendPlayerNameToServerRpc(FixedString32Bytes name_)
+    public void SendPlayerNameToServerRpc(InitialPlayerData playeData)
     {
-        PlayerName.Value = name_;
-        Logging.Log("PlayerName Mới:" +  PlayerName.Value);
+        initialPlayerData.Value = playeData;
+     
         
     }
     

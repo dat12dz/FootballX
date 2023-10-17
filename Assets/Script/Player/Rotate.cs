@@ -15,13 +15,14 @@ namespace Assets.Utlis
         Camera PlayerCam;
         [SerializeField] float MouseSen = 3f;
 
-        [SerializeField] Transform HeadObj;
+        [SerializeField] public Transform HeadObj;
         private void Start()
         {
             PlayerCam = GetComponent<Camera>();
             if (!PlayerCam) Logging.LogObjectNull(nameof(PlayerCam));
             if (!HeadObj) Logging.LogObjectNull(nameof(HeadObj));
             player = transform.root.GetComponent<Player>(); 
+            
         }
         private void Update()
         {
@@ -38,7 +39,7 @@ namespace Assets.Utlis
         void RotateCam(float xMouse, float yMouse)
         {
             // clamp X
-          
+            
             YRotate -= yMouse * MouseSen * Time.deltaTime;
 
             YRotate = Math.Clamp(YRotate, -90, 90);

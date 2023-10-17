@@ -23,7 +23,7 @@ public partial class PlayerRoomManager
         {
 
             // tạo phòng
-            Room r = new Room(this, thisPlayer.PlayerName.Value + " Room's");
+            Room r = new Room(this, thisPlayer.initialPlayerData.Value.playerName + " Room's");
             // lấy người gửi
             var netParam = NetworkkHelper.CreateRpcTo(clientid);
  
@@ -37,7 +37,7 @@ public partial class PlayerRoomManager
         }
         else
         {
-            Logging.Log(thisPlayer.PlayerName + ":Đang ở trong phòng không thể tạo thêm phòng");
+            Logging.Log(thisPlayer.initialPlayerData.Value.playerName + ":Đang ở trong phòng không thể tạo thêm phòng");
         }
     }
     [ClientRpc]
