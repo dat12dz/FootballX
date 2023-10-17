@@ -82,6 +82,5 @@
     position: absolute;
     width: 180px;
     height: 40px;
-    background-image: url(/Assets/NewFolder/Resources/UI/kickBarBackground.svg);
     overflow: hidden;
 }

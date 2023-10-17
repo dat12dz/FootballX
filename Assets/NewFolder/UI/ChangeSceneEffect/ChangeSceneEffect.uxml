@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
+    <Style src="project://database/Assets/NewFolder/UI/ChangeSceneEffect/ChangeSceneEffect.uss?fileID=7433441132597879392&amp;guid=e6469beb7c454864bb4e30f97104f1de&amp;type=3#ChangeSceneEffect" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:VisualElement name="change-scene-effect" style="flex-grow: 1;" />
+        <ui:VisualElement name="show-and-hide-bg" />
+    </ui:VisualElement>
+</ui:UXML>

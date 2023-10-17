@@ -14,7 +14,9 @@ public class InGameScreen : MonoBehaviour
     static private Label matchTime;
     static private VisualElement kickBar;
     static private VisualElement kickBarProgress;
+    static private VisualElement kickBarOverrideBackground;
 
+    [SerializeField] byte value;
     void Start()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -25,20 +27,22 @@ public class InGameScreen : MonoBehaviour
         matchTime = root.Q<Label>("match-time");
         kickBar = root.Q<VisualElement>("kick-bar");
         kickBarProgress = root.Q<VisualElement>("kick-bar-progress");
-
+        kickBarOverrideBackground = root.Q<VisualElement>("kick-bar-override-background");
         InitStyle();
 
     }
 
     private void Update()
     {
-
+        ProgressBar(value);
+        
     }
 
-    public static void ProgressBar(int value, int highValue = 100)
+    public static void ProgressBar(byte value)
     {
-            Debug.Log("Is Execute");
-            kickBarProgress.style.width = new StyleLength(new Length(value, LengthUnit.Percent));
+        float c = 1 - ((255/100) * (float)value / 255);
+        kickBarOverrideBackground.style.backgroundColor = new Color(1, c, c);
+        kickBarProgress.style.width = new StyleLength(new Length(value, LengthUnit.Percent));
     }
 
     public static async void EnableInGameScreen()
@@ -51,7 +55,7 @@ public class InGameScreen : MonoBehaviour
         await Task.Delay(200);
     }
 
-    public static async void DisableInGameScreen()
+    public static void DisableInGameScreen()
     {
         scoreBoard.style.translate = new StyleTranslate(new Translate(0, -120));
         matchTime.style.opacity = 0;

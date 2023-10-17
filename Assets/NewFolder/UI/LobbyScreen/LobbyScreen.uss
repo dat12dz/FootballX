@@ -164,7 +164,7 @@
 } */
 
 #player-description {
-    display: none;
+    /* display: none; */
 }
 
 #top-player-description {
@@ -265,7 +265,7 @@
 
 /* player-empty */
 #player-empty {
-    /* display: none; */
+    display: none;
     height: 160px;
     justify-content: center;
     align-items: center;

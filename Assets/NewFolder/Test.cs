@@ -34,19 +34,9 @@ public class Test : MonoBehaviour
             InGameScreen.DisableInGameScreen();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            value--;
-            Debug.Log($"is press left {value}");
-            InGameScreen.ProgressBar(value);
-        }
-
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log($"is press right {value}");
-            value++;
-            InGameScreen.ProgressBar(value);
+            ChangeSceneEffect.Show();            
         }
-
     }
 }
