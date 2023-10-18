@@ -19,6 +19,8 @@ public class GameSystem : SceneNetworkBehavior
 {
     [SerializeField] Volume PostProcessing;
     public static Action<uint> OnStartGameSystem;
+    public uint EndGameTime = 900;
+    public uint MatchHalf = 1;
   public enum Team
     {
         NULL,

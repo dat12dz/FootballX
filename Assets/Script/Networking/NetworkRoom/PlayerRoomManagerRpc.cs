@@ -5,11 +5,13 @@ using Assets.Utlis;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Unity.Collections;
 using Unity.Netcode;
+
 public partial class PlayerRoomManager
 {
     [ServerRpc]
@@ -130,7 +132,7 @@ public partial class PlayerRoomManager
            var KKickkedPlayer = RoomPlayerIn.RemovePlayer(slot);
 
             var pa = NetworkkHelper.CreateRpcTo(KKickkedPlayer.OwnerClientId);
-            if (NetworkManager.IsHost)
+            if (NetworkManager.Singleton.IsHost)
             {
                 NetworkManager.DisconnectClient(KKickkedPlayer.OwnerClientId);
             }

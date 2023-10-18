@@ -16,11 +16,13 @@ public class GoalDetect : MonoBehaviour
     {
         if (other.tag == "Ball")
         {
+            var ball = other.GetComponent<Ball>();
             if (!thisGamesystem.MatchAction.MatchPause)
             switch (ownerTeam)
             {
                 case GameSystem.Team.blue:
                     thisGamesystem.ScoreRedTeam.Value++;
+                       
                     break;
                 case GameSystem.Team.red:
                     thisGamesystem.ScoreBlueTeam.Value++;
@@ -28,7 +30,9 @@ public class GoalDetect : MonoBehaviour
                 default:
                     Debug.Log("Please assign team for the goal");
                     break;
+
             }
+            ball.lastToucher.Score++;
         }    
     }
     

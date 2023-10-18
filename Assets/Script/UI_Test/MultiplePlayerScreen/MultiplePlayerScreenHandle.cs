@@ -88,16 +88,17 @@ public class MultiplePlayerHandle : MonoBehaviour
             charSelectionUI.Display(true);
             root.style.display = DisplayStyle.None;
         };
-
-
-        netmang.OnServerStopped += Netmang_OnServerStopped;
-        netmang.OnClientStopped += Netmang_OnClientStopped;
-        netmang.OnTransportFailure += Netmang_OnTransportFailure;
-        netmang.OnClientDisconnectCallback += Netmang_OnClientDisconnectCallback;
-
+        if (FirstTimeInit)
+        {
+            netmang.OnServerStopped += Netmang_OnServerStopped;
+            netmang.OnClientStopped += Netmang_OnClientStopped;
+            netmang.OnTransportFailure += Netmang_OnTransportFailure;
+            netmang.OnClientDisconnectCallback += Netmang_OnClientDisconnectCallback;
+            FirstTimeInit = false;  
+        }
         
     }
-
+    public static bool FirstTimeInit = true;
     private void Clickable_clicked()
     {
         throw new System.NotImplementedException();

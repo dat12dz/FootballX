@@ -44,6 +44,7 @@ public class UI_StartScreenHandler : MonoBehaviour
             } 
             else
             {
+                   
                     NetworkClient_.StartClient(inp_ServerIP.text,inp_PlayerName.text);
                     StartGameInfo.instance.playerData.playerName = inp_PlayerName.text;
             }
@@ -62,6 +63,7 @@ public class UI_StartScreenHandler : MonoBehaviour
                 res.Approved = true;
                 res.CreatePlayerObject = true;
             };
+    
             if (netmang.StartHost())
                 SceneManager.LoadScene(1);
 

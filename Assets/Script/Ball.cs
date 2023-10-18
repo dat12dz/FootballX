@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class Ball : Grabable
 {
- 
+   public Player lastToucher;
    public Rigidbody rb;
     // Client instance
     public static Ball instance;
@@ -20,6 +20,7 @@ public class Ball : Grabable
     private void Awake()
     {
       //  base.Awake();
+     
     }
     public void init(GameSystem g,Transform spawnPoint)
     {

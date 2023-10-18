@@ -30,7 +30,15 @@ public abstract class PlayerModelBase : WaitForStart
     {
        player = transform.root.GetComponent<Player>();
         base.Start();
-        if (player == null) return;
+        if (player == null)
+        {
+          var rigs =  GetComponentsInChildren<Rig>();
+            foreach (var rig in rigs)
+            {
+                rig.weight = 0;
+            }
+            return;
+        }
 
         player.Playereyes.transform.position = InGameCameraPosition.position;
         if (player != null)
