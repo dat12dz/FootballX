@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
+    <Style src="project://database/Assets/NewFolder/UI/CharacterScreen/CharacterScreen.uss?fileID=7433441132597879392&amp;guid=0240c02d709ce324d889bd8eb83ac137&amp;type=3#CharacterScreen" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:VisualElement name="character-screen">
+            <ui:VisualElement name="select-character">
+                <ui:ScrollView mode="Horizontal" vertical-scroller-visibility="Hidden" />
+            </ui:VisualElement>
+            <ui:Button text="Select" parse-escape-sequences="true" display-tooltip-when-elided="true" name="select-btn" class="unity-button btn-handle" />
+            <ui:VisualElement name="clothes-color">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="red-clothes" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="blue-clothes" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

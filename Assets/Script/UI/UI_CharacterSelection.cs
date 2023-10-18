@@ -37,7 +37,6 @@ public class UI_CharacterSelection : MonoBehaviour
     int SelectedChar;
      void Start()
     {
-
         SpawnAllButton();
         CharIndex = 0;
 
