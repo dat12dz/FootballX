@@ -36,31 +36,33 @@ public class ChangeSceneEffect : MonoBehaviour
     public static async void Open()
     {
         container.style.display = DisplayStyle.Flex;
-
         showAndHideBg.style.translate = new Translate(new Length(134, LengthUnit.Percent), new Length(-134, LengthUnit.Percent));
 
         TransitionInit.instance.StartRendering();
         changeSceneEffect.style.display = DisplayStyle.Flex;
         await Task.Delay(300);
-    }
 
-    public static async void Close()
-    {
-        await Task.Delay(1000);
         showAndHideBg.style.transitionDuration = new List<TimeValue>()
         {
             new TimeValue(0, TimeUnit.Millisecond)
         };
         showAndHideBg.style.translate = new Translate(new Length(0, LengthUnit.Percent), new Length(0, LengthUnit.Percent));
+    }
+
+    public static async void Close()
+    {
+        await Task.Delay(1000);
 
         showAndHideBg.style.transitionDuration = new List<TimeValue>()
         {
             new TimeValue(300, TimeUnit.Millisecond)
         };
+
         showAndHideBg.style.translate = new Translate(new Length(134, LengthUnit.Percent), new Length(-134, LengthUnit.Percent));
 
         TransitionInit.instance.StopRendering();
         changeSceneEffect.style.display = DisplayStyle.None;
+
         await Task.Delay(300);
         ResetStyle();
     }
@@ -75,14 +77,12 @@ public class ChangeSceneEffect : MonoBehaviour
     public static async void ChangeScene(int sceneIndex)
     {
         Open();
-        await Task.Delay(1000);
+        await Task.Delay(300);
         SceneManager.sceneLoaded += (a, b) =>
         {
             Close();
-
         };
         SceneManager.LoadScene(sceneIndex);
-
     }
   
 }

@@ -40,12 +40,12 @@ public class MultiplePlayerHandle : MonoBehaviour
         Logging.CheckNLogObjectNull(localIpBtn, nameof(localIpBtn));
 
 
-        localIpBtn.clickable.clicked += () =>
+        localIpBtn.clicked += () =>
         {
             inputIp.value = "127.0.0.1";
         };
 
-        connectBtn.clickable.clicked += () =>
+        connectBtn.clicked += () =>
         {
             if (inputName.text == string.Empty)
             {
@@ -64,7 +64,7 @@ public class MultiplePlayerHandle : MonoBehaviour
             }
         };
 
-        hostBtn.clickable.clicked += () =>
+        hostBtn.clicked += () =>
         {
             StartGameInfo.instance.playerData.playerName = inputName.text;
             netmang.ConnectionApprovalCallback = (req, res) =>
@@ -83,9 +83,10 @@ public class MultiplePlayerHandle : MonoBehaviour
                 ChangeSceneEffect.ChangeScene(1);
         };
 
-        characterBtn.clickable.clicked += () =>
+        characterBtn.clicked += () =>
         {
             charSelectionUI.Display(true);
+            //gameObject.SetActive(false);
             root.style.display = DisplayStyle.None;
         };
         if (FirstTimeInit)

@@ -2,6 +2,9 @@
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
     <Style src="project://database/Assets/NewFolder/UI/CharacterScreen/CharacterScreen.uss?fileID=7433441132597879392&amp;guid=0240c02d709ce324d889bd8eb83ac137&amp;type=3#CharacterScreen" />
     <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit-btn">
+            <ui:VisualElement name="exit-bg" style="flex-grow: 1;" />
+        </ui:Button>
         <ui:VisualElement name="character-screen">
             <ui:VisualElement name="select-character">
                 <ui:ScrollView mode="Horizontal" vertical-scroller-visibility="Hidden" />
