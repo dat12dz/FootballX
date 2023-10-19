@@ -1,0 +1,106 @@
+#container {
+
+}
+
+#character-screen {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Scroll View */
+
+#select-character {
+	justify-content: center;
+	width: 80%;
+	margin-top: 12px;
+}
+
+#select-character ScrollView {
+	height: 80px;
+}
+
+#select-character #unity-content-and-vertical-scroll-container {
+
+}
+
+#select-character #unity-content-viewport {
+	
+}
+
+#select-character #unity-content-container {	
+	justify-content: center;
+
+}
+
+#select-character  #unity-drag-container {
+	background-color: white;
+}
+
+#select-character #unity-slider > VisualElement {
+	height: 14px;
+}
+
+#select-character  #unity-tracker {
+	background-color: white;
+}
+
+#select-character  #unity-dragger {
+	background-color: black;
+	height: 8px;
+}
+
+#select-character #unity-low-button, #select-character #unity-high-button {
+	display: none;
+}
+
+#select-character #unity-slider {
+	margin: 0;
+}
+/* End Scroll View */
+
+.character {
+	width: 50px;
+	height: 50px;
+	background-color: rgba(0,0,0,0);
+	border-radius: 10px;
+	margin: 0 2px;
+}
+
+#select-btn {
+	position: absolute;
+	left: 50%;
+	translate: -50% 0;
+	bottom: 100%;
+	width: 30%;
+	max-width: 100px;
+	height: 36px;
+}
+
+#clothes-color {
+	position: absolute;
+	right: 0;
+	bottom: 100%;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 30%;
+	height: 50px;
+}
+
+#red-clothes, #blue-clothes {
+	width: 50px;
+	height: 50px;
+	margin: 0 12px;
+}
+
+#red-clothes {
+	background-color: red;
+}
+
+#blue-clothes {
+	background-color: blue;
+}
