@@ -24,7 +24,7 @@ public class CharacterScreen : MonoBehaviour
     Button redClothes;
     Button blueClothes;
     Button[] charBtns;
-
+    CharacterSelection characterSelection;
     // Nhân vật đang hiển thị
     int CharIndex_;
     int CharIndex
@@ -58,7 +58,7 @@ public class CharacterScreen : MonoBehaviour
         selectBtn = root.Q<Button>("select-btn");
         redClothes = root.Q<Button>("red-clothes");
         blueClothes = root.Q<Button>("blue-clothes");
-
+        characterSelection = GetComponent<CharacterSelection>();
         SpawnAllButton();
         CharIndex = 0;
 
@@ -93,7 +93,8 @@ public class CharacterScreen : MonoBehaviour
     }
     public void Display(bool a)
     {
-        transform.parent.gameObject.SetActive(a);
+        //characterSelection.gameObject.SetActive(a);
+        CharacterSelection.SetActive(a);
     }
 
     void SpawnAllButton()
