@@ -40,9 +40,7 @@ public class ChangeSceneEffect : MonoBehaviour
 
         TransitionInit.instance.StartRendering();
         changeSceneEffect.style.display = DisplayStyle.Flex;
-        await Task.Delay(3000);
-    }
-
+        await Task.Delay(300);
         showAndHideBg.style.transitionDuration = new List<TimeValue>()
         {
             new TimeValue(0, TimeUnit.Millisecond)

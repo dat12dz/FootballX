@@ -16,7 +16,7 @@ public class MultiplePlayerHandle : MonoBehaviour
     private Button connectBtn;
     private Button hostBtn;
     private Button characterBtn;
-    [SerializeField] UI_CharacterSelection charSelectionUI;
+    [SerializeField] CharacterScreen charSelectionUI;
     //[SerializeField] TMP_InputField inp_PlayerName, inp_ServerIP;
     //[SerializeField] Button btn_Connect, btn_autoLocalhost, btn_HostBtn, btn_ShowCharSelectionUI;
     public static StartSceneInfo StartSceneInfoSync;
