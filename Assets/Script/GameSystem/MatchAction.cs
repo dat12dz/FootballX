@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Unity.Netcode;
+using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -25,10 +26,34 @@ public class MatchAction
 
     public async void OnStartMatch()
     {
-        if (NetworkManager.Singleton.IsServer) return;
+        if (!NetworkManager.Singleton.IsClient) return;
         gameSystem.DisplayerInformerClientRpc("Start match","Ready to play??",5);
          await PauseMatch(5);
         StartTimer();
+        gameSystem.OnTimeChange += (time) => {
+            if (gameSystem.EndGameTime % 2 == 0)
+            EndHalf();
+        };
+    }
+    public async void EndHalf()
+    {
+       await PauseMatch(10);
+        gameSystem.DisplayerInformerClientRpc("End Half","",6);
+        ResetGameScene();
+        await PauseMatch(5);
+        if (gameSystem.MatchHalf == 1)
+        {
+            EndGame();
+        }
+        else
+        {
+            gameSystem.DisplayerInformerClientRpc("Start new match half", "", 4);
+            gameSystem.MatchHalf++;
+        }
+    }
+    void EndGame()
+    {
+        Debug.Log("endGame");
     }
     public async Task PauseTimer(int sec)
     {
@@ -48,7 +73,7 @@ public class MatchAction
     int incTimeSpeed = 1;
     void StartTimer()
     {
-        if (NetworkManager.Singleton.IsServer) return;
+        if (!NetworkManager.Singleton.IsClient) return;
         ThreadHelper.SafeThreadCall(() =>
         {
             while (true)
@@ -62,14 +87,19 @@ public class MatchAction
     {
         if (NetworkManager.Singleton.IsServer) return;
         await PauseMatch(10,true,false);
+        
+        ResetGameScene();
+        await PauseMatch(5);
+        NewGame();
+    }
+    public void ResetGameScene()
+    {
         var allPlayerInTheGame = gameSystem.room.playerDict;
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
         {
             Roomanager.thisPlayer.TelebackToSpawnPoint();
             gameSystem.sceneReference.ball.BackToSpawnPos();
         }
-        await PauseMatch(5);
-        NewGame();
     }
     void NewGame()
     {

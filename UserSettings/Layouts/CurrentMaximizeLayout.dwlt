@@ -243,18 +243,18 @@ MonoBehaviour:
       m_ExpandedIDs: 1c94fffffe96ffff649affff449bffff5c9cffff40a6ffff9af6ffff6af7ffff80fafffffeaf000064b00000bcb000000ab5000062b5000020b90000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: "Ph\u1EA1t G\xF3c (2)"
+        m_OriginalName: "Ph\u1EA1t G\xF3c (2)"
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -54842
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -712,11 +712,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.2545017, y: 0.12274235, z: -0.03140765, w: -0.95874095}
     speed: 2
-    m_Value: {x: -0.25450075, y: 0.12274189, z: -0.031407535, w: -0.95873743}
+    m_Value: {x: -0.18843028, y: 0.64838326, z: -0.17031807, w: -0.7176942}
   m_Size:
     m_Target: 770.6066
     speed: 2
-    m_Value: 770.6066
+    m_Value: 0.36797416
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1002,11 +1002,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1400
     y: 0
-    width: 520
-    height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 14}
+    width: 510
+    height: 939
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}

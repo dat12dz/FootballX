@@ -29,13 +29,16 @@ public partial class Player
                 if (GrabAbleItem != null && !GrabAbleItem.isGrab())
                     GrabAbleItem.Grab(Graber);
                 grabitem = GrabAbleItem;
+                if (GrabAbleItem is Ball)
+                {
+                    var ball = (Ball)GrabAbleItem;
+                    ball.lastToucher = this;
+                }
                 
             }
             else
-            {
-           
-                Logging.Log("Không thể nhặt được item này");
-            
+            {          
+                Logging.Log("Không thể nhặt được item này"); 
             }
         }
       

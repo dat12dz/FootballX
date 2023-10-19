@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -75,10 +76,13 @@ public class ChangeSceneEffect : MonoBehaviour
     {
         Open();
         await Task.Delay(1000);
-        SceneManager.LoadScene(sceneIndex);
         SceneManager.sceneLoaded += (a, b) =>
         {
             Close();
+
         };
+        SceneManager.LoadScene(sceneIndex);
+
     }
+  
 }
