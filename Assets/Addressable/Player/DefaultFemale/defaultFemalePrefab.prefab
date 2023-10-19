@@ -53,7 +53,7 @@ MonoBehaviour:
     m_Hint: {fileID: 2929046664977286508}
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 1
-    m_HintWeight: 0.575
+    m_HintWeight: 0
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
 --- !u!1 &683089747364526052
@@ -414,7 +414,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Spacing: 13
-  DefaultFootPlacementDistance: 0.1
+  DefaultFootPlacementDistance: 0.05
 --- !u!1 &2704138522507214863
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
     m_Hint: {fileID: 1639612712084381752}
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 1
-    m_HintWeight: 0.575
+    m_HintWeight: 0
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
 --- !u!1 &4935030062718598634
@@ -662,6 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActiveModel: {fileID: 0}
+  animator: {fileID: 0}
   footControl: {fileID: 1713322082984394779}
   player: {fileID: 0}
   spine:
@@ -670,7 +671,6 @@ MonoBehaviour:
   CameraLookAt: {fileID: 5000292514907564247}
   Thumbnail: {fileID: 2178681595258467215, guid: 05e84c9182f41e848b758c093e8ada2b,
     type: 3}
-  animator: {fileID: 0}
   redTeamRef:
     model: {fileID: 3204419999341745037}
   BlueTeamRef:
@@ -3134,12 +3134,7 @@ PrefabInstance:
     - target: {fileID: 4870552773557632513, guid: 8a6b4c1c79ad90844a067faad43b6087,
         type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'J_Bip_R_UpperLeg'\n\tTransform 'J_Bip_C_Neck'\n\tTransform
-        'J_Bip_L_UpperLeg'\n\tTransform 'J_Bip_C_Head'\n\tTransform 'J_Bip_R_Foot'\n\tTransform
-        'J_Bip_L_Foot'\n\tTransform 'J_Bip_R_LowerLeg'\n\tTransform 'J_Bip_L_LowerLeg'\n\tTransform
-        'J_Bip_R_UpperLeg'\n\tTransform 'J_Bip_C_Neck'\n\tand more ..."
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4959603094128138565, guid: 8a6b4c1c79ad90844a067faad43b6087,
         type: 3}
@@ -3548,6 +3543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7140606858727328969, guid: 8a6b4c1c79ad90844a067faad43b6087,
         type: 3}
+      propertyPath: m_Quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140606858727328969, guid: 8a6b4c1c79ad90844a067faad43b6087,
+        type: 3}
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
@@ -3585,6 +3585,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140606858727328969, guid: 8a6b4c1c79ad90844a067faad43b6087,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[13]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7145515671107294405, guid: 8a6b4c1c79ad90844a067faad43b6087,
         type: 3}
@@ -9559,12 +9564,7 @@ PrefabInstance:
     - target: {fileID: 4870552773557632513, guid: 05e84c9182f41e848b758c093e8ada2b,
         type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'J_Bip_R_UpperLeg'\n\tTransform 'J_Bip_C_Neck'\n\tTransform
-        'J_Bip_L_UpperLeg'\n\tTransform 'J_Bip_C_Head'\n\tTransform 'J_Bip_R_Foot'\n\tTransform
-        'J_Bip_L_Foot'\n\tTransform 'J_Bip_R_LowerLeg'\n\tTransform 'J_Bip_L_LowerLeg'\n\tTransform
-        'J_Bip_R_UpperLeg'\n\tTransform 'J_Bip_C_Neck'\n\tand more ..."
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4959603094128138565, guid: 05e84c9182f41e848b758c093e8ada2b,
         type: 3}

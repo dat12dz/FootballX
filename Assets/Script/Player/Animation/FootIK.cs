@@ -126,6 +126,7 @@ public class FootIK : MonoBehaviour
     }
     private void Update()
     {
+        if (player == null) return;
        vel =  transform.position - lastPos;
           
 

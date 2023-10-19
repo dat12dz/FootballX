@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿
+using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using System;
@@ -14,6 +15,7 @@ using UniVRM10;
 public abstract class PlayerModelBase : WaitForStart
 {
     public GameObject ActiveModel;
+    [SerializeField] public Animator animator;
     [SerializeField] FootIK footControl;
     public Player player;
     public SpineRef spine;
@@ -21,18 +23,25 @@ public abstract class PlayerModelBase : WaitForStart
     [SerializeField]
     public Transform CameraLookAt;
     public Texture2D Thumbnail;
+    public static int BLENDSHAPE_CLOSE_EYE = 14;
    public abstract void IdleAnim();
     public abstract void SelectedAnim();
     public abstract void RedTeamInit();
     public abstract void BlueTeamInit();
-
+    [ContextMenu("Play close eyes")]
+    public virtual void CloseEye()
+    {
+       var Skin = ActiveModel.GetComponentInChildren<SkinnedMeshRenderer>();
+        DOTween.To(() => 0, (value) => Skin.SetBlendShapeWeight(BLENDSHAPE_CLOSE_EYE, value), 100, 2f).WaitForCompletion();
+        DOTween.To(() => 100, (value) => Skin.SetBlendShapeWeight(BLENDSHAPE_CLOSE_EYE, value), 0, 2f).Complete();
+    }
     protected override void Start()
     {
        player = transform.root.GetComponent<Player>();
         base.Start();
         if (player == null)
         {
-          var rigs =  GetComponentsInChildren<Rig>();
+          var rigs =  GetComponentsInChildren<Rig>(true);
             foreach (var rig in rigs)
             {
                 rig.weight = 0;
@@ -97,34 +106,4 @@ public abstract class PlayerModelBase : WaitForStart
 public class SpineRef
 {
    public Transform head;
-}
-class AnimationState
-{
-    string AnimName;
-    Animator animator;
-    protected int layer;
-    public AnimationState(string AnimName_ ,Animator t)
-    {
-        AnimName = AnimName_;
-        animator = t;
-    }
-    void PlayAnim()
-    {
-        animator.Play(AnimName);
-       var b = animator.GetCurrentAnimatorStateInfo(layer);
-       
-    }
-    async void PlayAnimAsync()
-    {
-        animator.Play(AnimName);
-        var b = animator.GetCurrentAnimatorStateInfo(layer);
-        await Task.Delay((int)(1000 * b.length));
-    }
-}
-class FaceAnimState : AnimationState
-{
-    public FaceAnimState(string AnimName_, Animator t) : base(AnimName_, t)
-    {
-        layer = 2;
-    }
 }

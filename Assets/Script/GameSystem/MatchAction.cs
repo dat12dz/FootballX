@@ -31,17 +31,17 @@ public class MatchAction
          await PauseMatch(5);
         StartTimer();
         gameSystem.OnTimeChange += (time) => {
-            if (gameSystem.EndGameTime % 2 == 0)
+            if (gameSystem.time.Value  == (int)(gameSystem.EndGameTime / 2))
             EndHalf();
         };
     }
     public async void EndHalf()
     {
-       await PauseMatch(10);
-        gameSystem.DisplayerInformerClientRpc("End Half","",6);
+        gameSystem.DisplayerInformerClientRpc("End Half", "", 6);
+        await PauseMatch(10);
         ResetGameScene();
         await PauseMatch(5);
-        if (gameSystem.MatchHalf == 1)
+        if (gameSystem.MatchHalf == 2)
         {
             EndGame();
         }
@@ -57,7 +57,7 @@ public class MatchAction
     }
     public async Task PauseTimer(int sec)
     {
-        if (NetworkManager.Singleton.IsServer) return;
+        if (!NetworkManager.Singleton.IsServer) return;
         MatchPause = true;
         incTimeSpeed = 0;
         await Task.Delay(sec * 1000);
@@ -65,7 +65,7 @@ public class MatchAction
     }
     public void ResumeTimer()
     {
-        if (NetworkManager.Singleton.IsServer) return;
+        if (!NetworkManager.Singleton.IsServer) return;
         MatchPause = false;
 
         incTimeSpeed = 1;
@@ -85,7 +85,7 @@ public class MatchAction
     }
     public async void OnGoal()
     {
-        if (NetworkManager.Singleton.IsServer) return;
+        if (!NetworkManager.Singleton.IsServer) return;
         await PauseMatch(10,true,false);
         
         ResetGameScene();
@@ -112,13 +112,12 @@ public class MatchAction
     }
     public async Task PauseMatch(int sec,bool changeSat = true,bool BallSuppress = true)
     {
-        if (NetworkManager.Singleton.IsServer) return;
+        if (!NetworkManager.Singleton.IsServer) return;
         PauseTimer(sec);
         var allPlayerInTheGame = gameSystem.room.playerDict;
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
         {
             Roomanager.thisPlayer.isSuppress.Value = true;
-            
         }
         Ball ball = gameSystem.sceneReference.ball;
         ball.Suppress(BallSuppress);
@@ -131,7 +130,7 @@ public class MatchAction
     }
     public void ResumeMatch()
     {
-        if (NetworkManager.Singleton.IsServer) return;
+        if (!NetworkManager.Singleton.IsServer) return;
         var allPlayerInTheGame = gameSystem.room.playerDict;
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
         {

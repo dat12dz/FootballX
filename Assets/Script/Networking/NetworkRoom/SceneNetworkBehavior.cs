@@ -30,7 +30,12 @@ namespace Assets.Script.Networking.NetworkRoom
         }
         void OnNewPlayerConnect(ulong id)
         {
-            NetworkObject.NetworkHide(id);
+            if (NetworkObject == null)
+            {
+                netmang.OnClientConnectedCallback -= OnNewPlayerConnect;
+                return;
+            }
+            NetworkObject.NetworkHide(id);   
         }
         void ShowObjecttoScenePlayer()
         {

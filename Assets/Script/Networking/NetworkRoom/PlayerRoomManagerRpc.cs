@@ -80,7 +80,7 @@ public partial class PlayerRoomManager
     {
         RoomRendererBase.instance.init(renderable);
         Logging.Log("Đã join thành công");
-        onSlotChange(0, 0);
+        onSlotChange(0, SlotInRoom.Value);
     }
     Action OnLeaveRoom;
     [ServerRpc]
@@ -105,10 +105,7 @@ public partial class PlayerRoomManager
         Logging.Log("Xóa người chơi thành công");
     }
     Action OnChangeSlot;
-    /// <summary>
-    /// Chuyển tới chỗ trống
-    /// </summary>
-    /// <param name="newSlot">Chỗ trống</param>
+
     [ServerRpc] 
     public void ChangePlayerSlotServerRpc(byte newSlot)
     {

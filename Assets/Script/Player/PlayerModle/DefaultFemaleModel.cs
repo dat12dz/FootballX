@@ -10,16 +10,17 @@ using UnityEngine.AddressableAssets;
 public class DefaultFemaleModel : PlayerModelBase
 {
 
-    [SerializeField] Animator animator;
+
     const string SELECT_ANIM_CLIP = "Selected";
     const string IDLE_ANIM_CLIP = "idle";
     const int LAYER_SELECT_ANIM = 1;
-
+    public AnimationState idle, RunninghandAnim;
     [SerializeField]
     TeamReference redTeamRef, BlueTeamRef;
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        idle = new AnimationState(IDLE_ANIM_CLIP,animator);
     }
     protected override void Start()
     {
@@ -52,7 +53,7 @@ public class DefaultFemaleModel : PlayerModelBase
     {
         redTeamRef.model.SetActive(false);
         animator = BlueTeamRef.model.GetComponent<Animator>();
-        ActiveModel = redTeamRef.model;
+        ActiveModel = BlueTeamRef.model;
         BlueTeamRef.model.SetActive(true);
     }
     void CloseEye()

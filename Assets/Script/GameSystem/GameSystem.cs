@@ -111,6 +111,11 @@ public class GameSystem : SceneNetworkBehavior
         };
  
     }
+    [ContextMenu("End half 1")]
+    void EndHalf()
+    {
+        time.Value = (int)(EndGameTime / 2);
+    }
     private void OnDisable()
     {
         GameSystemList.Remove(GameID);
@@ -131,7 +136,7 @@ public class GameSystem : SceneNetworkBehavior
     }
     [ClientRpc] public void DisplayerInformerClientRpc(FixedString128Bytes name, FixedString128Bytes des, int time)
     { 
-        UIHandler.WaitForInstace(() => UIHandler.instance.ShowInformation("Start phase", "Prepare for your match", 5));
+        UIHandler.WaitForInstace(() => UIHandler.instance.ShowInformation(name.ToString(), des.ToString(), 5));
     }
     [ClientRpc] public void ChangeClientSaturationClientRpc(int s)
     {

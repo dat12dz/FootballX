@@ -134,23 +134,28 @@ public class Room
     }
     public void StartGame()
     {
-
+        ChangeSceneEffect.Open();
         var LoadGame = SceneManager.LoadScene(2, new LoadSceneParameters(LoadSceneMode.Additive, LocalPhysicsMode.Physics3D));
         SceneManager.sceneLoaded += (scene, loadmoded) =>
         {
+
+          
             if (scene == LoadGame)
             {
+                UI_RoomRenderPnl.instance.gameObject.SetActive(false);
                 var RootGameObj =  LoadGame.GetRootGameObjects();
                 try
                 {
                     GameSceneSpawn loadedGameSystem = RootGameObj[0].GetComponent<GameSceneSpawn>();
                     loadedGameSystem.StartSpawn(this);
+             
                 }
                 catch (Exception e) 
                 {
                     Logging.LogError("Không thể tìm thấy Game system của scene,hãy chắc chắn là game system đang ở vị trí đầu tiên của GameScene");
                     Logging.Log(e);
                 }
+           
             }
         };
 

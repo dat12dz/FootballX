@@ -13,7 +13,7 @@ public class DefaultMaleModel : PlayerModelBase
 
     [SerializeField]
     TeamReference redTeamRef, BlueTeamRef;
-    [SerializeField] Animator animator;
+  
     const string IDLE_ANIM_CLIP = "idlle";
     const string SELECT_ANIM_CLIP = "Root_Selected";
     const int SELECLAYER_LAYER = 1;

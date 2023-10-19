@@ -41,7 +41,7 @@ public class ChangeSceneEffect : MonoBehaviour
 
         TransitionInit.instance.StartRendering();
         changeSceneEffect.style.display = DisplayStyle.Flex;
-        await Task.Delay(300);
+        await Task.Delay(3000);
     }
 
     public static async void Close()
