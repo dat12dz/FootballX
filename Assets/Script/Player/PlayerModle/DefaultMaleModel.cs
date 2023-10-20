@@ -48,6 +48,12 @@ public class DefaultMaleModel : PlayerModelBase
     {
         base.Start();
     }
+
+    const string RUNNING_WING_HAND_ANIM = "VelMagnitue";
+    public override void WingHandRunAnim(float velocity_magnitue)
+    {
+        animator.SetFloat(RUNNING_WING_HAND_ANIM, velocity_magnitue);
+    }
     // Start is called before the first frame update
 
 }

@@ -23,6 +23,7 @@ public partial class Move : NetworkBehaviour
     public float SafeDistanceCheck = 2f;
     PlayerNetworkTransform nettrans;
     public Transform head;
+    LayerMask unstandableZone_mask;
     Player player;
     void Start()
     {
@@ -32,7 +33,8 @@ public partial class Move : NetworkBehaviour
         playereye = GetComponentInChildren<Camera>();
         playereye.enabled = false;
        nettrans = GetComponent<PlayerNetworkTransform>();
-        player = GetComponent<Player>();    
+        player = GetComponent<Player>();
+        unstandableZone_mask = LayerMask.GetMask("UnstanableZone");
     }
     public void Teleport(Vector3 v)
     {
@@ -53,21 +55,28 @@ public partial class Move : NetworkBehaviour
             Logging.LogError("Người chơi chạy quá nhanh");
         }
     }
-    [ServerRpc]
+    [ServerRpc(Delivery = RpcDelivery.Unreliable)]
+
     public void MovePlayerXZServerRpc(float x, float z)
     {
         if (!player.isSuppress.Value)
         if (MathHelper.DistanceNoSqrt(new Vector2(x, z), new Vector2(transform.position.x, transform.position.z)) > MathHelper.Power2(SafeDistanceCheck))
         {
             nettrans.TeleportImidiateClientRpc(transform.position);
+            
         }
         else
         {
-            transform.position = new Vector3(x, transform.position.y, z);
+                var newPosition = new Vector3(x, transform.position.y, z);
+                Collider[] result = new Collider[1];
+                PhysicsScene physics = gameObject.scene.GetPhysicsScene();
+               int collider_got = physics.OverlapSphere(newPosition,0.001f, result,unstandableZone_mask,QueryTriggerInteraction.UseGlobal);
+                if (collider_got == 0)
+                    transform.position = newPosition;
         }
     }
 
-    [ServerRpc]
+    [ServerRpc(Delivery = RpcDelivery.Unreliable)]
     public void MoveCameraServerRpc(float CameraX,float headY)
     {
         if (head == null) Logging.Log("Không thể tìm thấy Head. Gắn nó vào đúng vị trí ");

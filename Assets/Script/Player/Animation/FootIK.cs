@@ -128,7 +128,7 @@ public class FootIK : MonoBehaviour
     {
         if (player == null) return;
        vel =  transform.position - lastPos;
-          
+      VariableHelper.TrackForVariableNotNull(() => baseModel.animator , () =>   baseModel.WingHandRunAnim(vel.magnitude));
 
         lastPos = transform.position;
         UpdateFootPosition();
