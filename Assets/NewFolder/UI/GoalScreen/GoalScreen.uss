@@ -1,97 +1,95 @@
 #container {
-	justify-content: center;
-	align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #goal-screen-scale {
-	width: 600px;
-	height: 160px;
-	justify-content: center;
-	overflow: hidden;
+    width: 600px;
+    height: 160px;
+    justify-content: center;
+    overflow: hidden;
 }
 
 #goal-screen-close {
-	position: absolute;
-	width: 600px;
-	height: 160px;
-	align-self: flex-end;
-	transition: 0.2s;
-	transition-timing-function: ease-in-cubic;
-	overflow: hidden;
+    position: absolute;
+    width: 600px;
+    height: 160px;
+    align-self: flex-end;
+    transition: 0.2s;
+    transition-timing-function: ease-in-cubic;
+    overflow: hidden;
 }
 
 #goal-screen {
-	position: absolute;
-	width: 600px;
-	height: 160px;
-	align-self: flex-end;
-	background-color: red;
+    position: absolute;
+    width: 600px;
+    height: 160px;
+    align-self: flex-end;
+    background-color: red;
 }
 
-
 #close-goal-screen-box {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	width: 600px;
-	flex-direction: row-reverse;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 600px;
+    flex-direction: row-reverse;
 }
 
 #goal-screen-box {
-	position: absolute;
-	width: 600px;
-	height: 160px;
-	transition: 0.4s;
-	overflow: hidden;
+    position: absolute;
+    width: 600px;
+    height: 160px;
+    transition: 0.4s;
+    overflow: hidden;
 }
 
 #animation-icon-and-text {
-	width: 600px;
-	align-items: center;
-	justify-content: space-between;
-	transition: 0.1s;
+    width: 600px;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.1s;
 }
 
 #ball-icon {
-	margin-top: 12px;
-	width: 54px;
-	height: 54px;
-	background-image: url('/Assets/NewFolder/Icons/ball.svg');
+    margin-top: 12px;
+    width: 54px;
+    height: 54px;
+    background-image: url('project://database/Assets/NewFolder/Icons/ball.svg?fileID=7388822144124034973&guid=7e2454ec6e0176e4098ebb84a7fa84dc&type=3#ball');
 }
 
 #goal-screen-text {
-	height: 40px;
-	color: white;
-	font-size: 24px;
-	-unity-text-align: middle-center;
-	-unity-font-style: bold;
+    height: 40px;
+    font-size: 24px;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
 }
 
 #red-hide {
-	position: absolute;
-	left: 0;
-	right:0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	background-color: red;
-	transition: 0.125s ease-out;
-	display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    transition: 0.125s ease-out;
+    display: none;
 }
 
 #goal-screen-background {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-image: url(/Assets/NewFolder/Resources/UI/messageBoxBackground.svg);
-	display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    display: none;
 }
 
 #goal-screen-text-info {
-	-unity-text-align: middle-center;
-	margin-top: 12px;
-	color: white;
+    -unity-text-align: middle-center;
+    margin-top: 12px;
+    color: white;
 }

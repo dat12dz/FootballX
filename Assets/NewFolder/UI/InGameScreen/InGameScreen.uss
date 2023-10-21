@@ -46,6 +46,12 @@
     border-color: rgba(0, 0, 0, 0.4);
     transition: 0.4s;
     transition-timing-function: ease-in-out-bounce;
+
+    flex-direction: row;
+}
+
+#match-time #min-label, #match-time #sec-label {
+    width: 24px;
 }
 
 #bottom-in-game-screen {

@@ -14,6 +14,25 @@ using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 internal class VariableHelper
 {
+    public static async Task WaitForVariableNotNullAsync(Func<object> value, int TimeoutInMs, Action callBack = null)
+    {
+        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        TrackForVariableNotNull(value, () => {
+
+            cancellationTokenSource.Cancel();
+            if (callBack != null)
+                callBack();
+
+        });
+        try
+        {
+            await Task.Delay(TimeoutInMs, cancellationTokenSource.Token);
+        }
+        catch
+        {
+
+        }
+    }
     public static void  TrackForVariableNotNull(Func<object> value, Action callBack)
     {
         /*    Job a = new Job() { value = value, callback = callBack };

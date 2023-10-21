@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &761897125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +429,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allChar: {fileID: 11400000, guid: 7c1a4d9f4843644479ac64b20f16ac9c, type: 2}
+  SpawnPosition: {fileID: 0}
+  CharShowCase: {fileID: 0}
+  camera: {fileID: 0}
+  startScreenHandler: {fileID: 0}
+  team: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1552550229
 MonoBehaviour:
   m_ObjectHideFlags: 0

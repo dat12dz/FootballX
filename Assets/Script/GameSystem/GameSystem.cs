@@ -136,7 +136,10 @@ public class GameSystem : SceneNetworkBehavior
     }
     [ClientRpc] public void DisplayerInformerClientRpc(FixedString128Bytes name, FixedString128Bytes des, int time)
     { 
-        UIHandler.WaitForInstace(() => UIHandler.instance.ShowInformation(name.ToString(), des.ToString(), 5));
+        InGameScreen.WaitForInstace(() =>
+        {
+            InGameScreen.instance.ShowInformation(name.ToString(), des.ToString(), 5);
+        });
     }
     [ClientRpc] public void ChangeClientSaturationClientRpc(int s)
     {

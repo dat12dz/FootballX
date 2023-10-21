@@ -1,22 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Utlis;
+using System;
+using Unity.Netcode;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using Assets.Script.NetCode;
 
-public class InGameScreen : MonoBehaviour
+public class InGameScreen : WaitForInstaceNotNull<InGameScreen>
 {
     static private VisualElement root;
     static private VisualElement container;
     static private VisualElement scoreBoard;
     static private Label redTeamScore;
     static private Label blueTeamScore;
-    static private Label matchTime;
+    static private VisualElement matchTime;
+    static private Label minLabel;
+    static private Label secLabel;
     static private VisualElement kickBar;
     static private VisualElement kickBarProgress;
     static private VisualElement kickBarOverrideBackground;
-
     [SerializeField] byte value;
+    
     void Start()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -24,18 +29,109 @@ public class InGameScreen : MonoBehaviour
         scoreBoard = root.Q<VisualElement>("score-board");
         redTeamScore = root.Q<Label>("red-team-score");
         blueTeamScore = root.Q<Label>("blue-team-score");
-        matchTime = root.Q<Label>("match-time");
+        matchTime = root.Q<VisualElement>("match-time");
+        minLabel = root.Q<Label>("min-label");
+        secLabel = root.Q<Label>("sec-label");
         kickBar = root.Q<VisualElement>("kick-bar");
         kickBarProgress = root.Q<VisualElement>("kick-bar-progress");
         kickBarOverrideBackground = root.Q<VisualElement>("kick-bar-override-background");
         InitStyle();
+        EnableInGameScreen();
 
+        //  CheckNullOrNot();
+        if (NetworkManager.Singleton.IsServer && !NetworkManager.Singleton.IsHost)
+        {
+            Destroy(gameObject);
+        }
+
+        GameSystem game = SceneHelper.GetGameSystem(gameObject.scene);
+        game.OnTimeChange += ShowTime;
+        game.OnScoreChange += ShowScore;
+        //Btn_Disconnect.onClick.AddListener(Btn_disCOnnect);
+        
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        instance = this;
     }
 
-    private void Update()
+    void Btn_disCOnnect()
     {
-        ProgressBar(value);
-        
+        //  NetworkSystem.instance.TryDisconnectoall();
+        NetworkManager.Singleton.Shutdown();
+        SceneManager.LoadScene(0);
+    }
+    void CheckNullOrNot()
+    {
+        //Logging.CheckNLogObjectNull(pnl_ingameInformer, nameof(pnl_ingameInformer));
+        Logging.CheckNLogObjectNull(blueTeamScore, nameof(blueTeamScore));
+        Logging.CheckNLogObjectNull(matchTime, nameof(matchTime));
+        Logging.CheckNLogObjectNull(redTeamScore, nameof(redTeamScore));
+    }
+    void ShowScore(int Red, int Blue, GameSystem.Team Goaler)
+    {
+        Action res = null;
+        if (Goaler == GameSystem.Team.red)
+        {
+            res = () => GoalScreen.Show("Goalllll!!", "Red team gooalll", 10, GoalScreen.ColorName.red_black);
+        }
+        if (Goaler == GameSystem.Team.blue)
+        {
+            res = () => GoalScreen.Show("Goalllll!!", "Blue team gooalll", 10, GoalScreen.ColorName.blue_white);
+        }
+        MainThreadDispatcher.ExecuteInMainThread(res);
+        var RedScore = Red.ToString();
+        var BlueScore = Blue.ToString();
+        MainThreadDispatcher.ExecuteInMainThread(() =>
+        {
+            redTeamScore.text = RedScore;
+            blueTeamScore.text = BlueScore;
+        });
+
+    }
+    void ShowTime(int time)
+    {
+        var Minute = time / 60;
+        var Second = time % 60;
+        var ShowMinString = Minute <= 9 ? $"0{Minute}" : Minute.ToString();
+        var ShowSecondString = Second <= 9 ? $"0{Second}" : Second.ToString();
+
+        MainThreadDispatcher.ExecuteInMainThread(() =>
+        {
+            minLabel.text = ShowMinString;
+            secLabel.text = ShowSecondString;
+        });
+
+    }
+    public void ShowInformation(string Title, string Infomation, int sec)
+    {
+        MainThreadDispatcher.ExecuteInMainThread(() => {
+            GoalScreen.Show(Title, Infomation, sec, GoalScreen.ColorName.black_white); 
+        });
+    }
+    bool isCursorLocked = true;
+
+    void LockCursor()
+    {
+
+        if (isCursorLocked)
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            UnityEngine.Cursor.visible = false;
+        }
+        else
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
+        }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isCursorLocked = !isCursorLocked;
+            LockCursor();
+            ProgressBar(value);
+        }
     }
 
     public static void ProgressBar(byte value)

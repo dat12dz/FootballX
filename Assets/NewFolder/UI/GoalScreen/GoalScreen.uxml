@@ -11,9 +11,9 @@
                             <ui:VisualElement name="animation-icon-and-text">
                                 <ui:VisualElement name="ball-icon" />
                                 <ui:VisualElement name="goal-screen-text-info" style="flex-grow: 1;">
-                                    <ui:Label tabindex="-1" text="VÀO" display-tooltip-when-elided="true" name="goal-screen-text" />
-                                    <ui:Label tabindex="-1" text="Title" parse-escape-sequences="true" display-tooltip-when-elided="true" name="goal-screen-title" />
-                                    <ui:Label tabindex="-1" text="Description" parse-escape-sequences="true" display-tooltip-when-elided="true" name="goal-screen-description" />
+                                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="goal-screen-text" />
+                                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="goal-screen-title" />
+                                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="goal-screen-description" />
                                     <ui:VisualElement name="red-hide" />
                                 </ui:VisualElement>
                             </ui:VisualElement>
