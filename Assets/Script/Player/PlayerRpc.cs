@@ -62,6 +62,9 @@ public partial class Player
      
         
     }
-    
+    [ClientRpc] public void ToggleUnstandbaleZone_ClientRpc(bool a)
+    {
+        ToggleUnstanableZone(a);
+    }
     
 }

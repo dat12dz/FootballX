@@ -1,25 +1,19 @@
 ﻿using Assets.Script.Utlis;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Unity.Jobs;
-using UnityEngine;
-using static UnityEngine.Rendering.VirtualTexturing.Debugging;
+
 
 internal class VariableHelper
 {
-    public static async Task WaitForVariableNotNullAsync(Func<object> value, int TimeoutInMs, Action callBack = null)
+  static  int loop = 100000;
+    public static async Task WaitForVariableNotNullAsync(Func<object> value,int TimeoutInMs = 50000, Action callBack = null)
     {
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        TrackForVariableNotNull(value, () => {
-
-            cancellationTokenSource.Cancel();
+        TrackForVariableNotNull(value,() => { 
+             
+                cancellationTokenSource.Cancel();
             if (callBack != null)
                 callBack();
 
@@ -30,7 +24,7 @@ internal class VariableHelper
         }
         catch
         {
-
+            //
         }
     }
     public static void  TrackForVariableNotNull(Func<object> value, Action callBack)
@@ -40,8 +34,16 @@ internal class VariableHelper
             jobHandle.Complete();*/
         ThreadHelper.SafeThreadCall(() =>
         {
-            var loop = 100000;
+        
             int i = 0;
+            var Value_ = value();
+            if (Value_ is UnityEngine.Object)
+            {
+                HandleUnityObject(Value_ as UnityEngine.Object, callBack);
+              
+            }
+            else
+            { 
             if (value() != null)
             {
                 MainThreadDispatcher.ExecuteInMainThread(() =>
@@ -50,6 +52,7 @@ internal class VariableHelper
                 });
                 return;
             }
+            
             while (true)
             {
                 i++;
@@ -63,9 +66,41 @@ internal class VariableHelper
                 }
                 Thread.Sleep(10);
             }
+            }
         });
     }
-
+    static void HandleUnityObject(UnityEngine.Object obj_, Action callBack)
+    {
+       
+        int i = 0;
+        bool Continue = true;
+            MainThreadDispatcher.ExecuteInMainThread(() =>
+            {
+                if (obj_)
+                {
+                    callBack();
+                    lock (new object())
+                    {
+                        Continue = false;
+                    }
+                }
+            });
+        if (Continue)
+        while (true)
+        {
+            i++;
+            if (obj_ || i >= loop)
+            {
+                MainThreadDispatcher.ExecuteInMainThread(() =>
+                {
+                    callBack();
+                });
+                break;
+            }
+            Thread.Sleep(10);
+        }
+    }
+    
     public unsafe struct Job : IJobParallelFor
     {
         public Func<object> value;

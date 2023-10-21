@@ -60,7 +60,7 @@ public class CharacterScreen : MonoBehaviour
         blueClothes = root.Q<Button>("blue-clothes");
         characterSelection = GetComponent<CharacterSelection>();
         SpawnAllButton();
-        CharIndex = 0;
+        CharIndex = 1;
 
         selectBtn.clicked += () =>
         {

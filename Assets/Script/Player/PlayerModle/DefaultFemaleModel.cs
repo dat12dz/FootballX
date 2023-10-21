@@ -19,7 +19,7 @@ public class DefaultFemaleModel : PlayerModelBase
     TeamReference redTeamRef, BlueTeamRef;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+  
         idle = new AnimationState(IDLE_ANIM_CLIP,animator);
     }
     protected override void Start()
@@ -55,6 +55,11 @@ public class DefaultFemaleModel : PlayerModelBase
         animator = BlueTeamRef.model.GetComponent<Animator>();
         ActiveModel = BlueTeamRef.model;
         BlueTeamRef.model.SetActive(true);
+    }
+    const string RUNNING_WING_HAND_ANIM = "VelMagnitue";
+    public override void WingHandRunAnim(float velocity_magnitue)
+    {
+        animator.SetFloat(RUNNING_WING_HAND_ANIM, velocity_magnitue);
     }
     void CloseEye()
     {

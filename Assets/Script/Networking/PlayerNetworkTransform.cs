@@ -17,7 +17,7 @@ public class PlayerNetworkTransform : NetworkBehaviour
     {
         moveHelper = GetComponent<Move>();
     }
-    [ClientRpc] void ChangePosInClientClientRpc(Vector3 newPos)
+    [ClientRpc(Delivery = RpcDelivery.Unreliable)] void ChangePosInClientClientRpc(Vector3 newPos)
     {
         
         if (IsLocalPlayer)
@@ -40,7 +40,7 @@ public class PlayerNetworkTransform : NetworkBehaviour
         moveHelper.head.transform.localRotation = Quaternion.Euler(0, HeadY, 0);
 
     }
-    [ClientRpc(Delivery = RpcDelivery.Unreliable)] public void TeleportImidiateClientRpc(Vector3 v)
+    [ClientRpc] public void TeleportImidiateClientRpc(Vector3 v)
     {
         transform.position = v;
     }

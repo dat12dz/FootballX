@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b4cf4e4b3e1a44281f3736ecd83225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastToucher: {fileID: 0}
   rb: {fileID: 6336928042598839495}
   thisSceneGameSystem: {fileID: 0}
 --- !u!114 &985664045094757176
