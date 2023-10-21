@@ -38,7 +38,7 @@ public class MultiplePlayerHandle : MonoBehaviour
         Logging.CheckNLogObjectNull(inputIp, nameof(inputIp));
         Logging.CheckNLogObjectNull(connectBtn, nameof(connectBtn));
         Logging.CheckNLogObjectNull(localIpBtn, nameof(localIpBtn));
-
+        Application.targetFrameRate = 60;
 
         localIpBtn.clicked += () =>
         {

@@ -77,10 +77,7 @@ public class ChangeSceneEffect : MonoBehaviour
     {
         Open();
         await Task.Delay(300);
-        SceneManager.sceneLoaded += (a, b) =>
-        {
-            Close();
-        };
+   
         SceneManager.LoadScene(sceneIndex);
     }
   

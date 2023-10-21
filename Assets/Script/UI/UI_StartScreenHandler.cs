@@ -25,6 +25,7 @@ public class UI_StartScreenHandler : MonoBehaviour
     int maxHostPlayer = 10;
     void Start()
     {
+
             netmang = NetworkManager.Singleton;
             maxHostPlayer = 10;
             Logging.CheckNLogObjectNull(inp_PlayerName,nameof(inp_PlayerName));

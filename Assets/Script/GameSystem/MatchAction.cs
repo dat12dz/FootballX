@@ -1,4 +1,5 @@
 ﻿using Assets.Script.Utlis;
+using Assets.Utlis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,10 @@ public class MatchAction
     GameSystem gameSystem;
     ColorAdjustments color;
     public bool MatchPause;
+    object locker = new object();
     public MatchAction(GameSystem g)
     {
+      
         gameSystem = g;
         Volume volume = g.sceneReference.PostProcessingVolume;
         volume.profile.TryGet(out color);
@@ -59,6 +62,7 @@ public class MatchAction
     {
         if (!NetworkManager.Singleton.IsServer) return;
         MatchPause = true;
+        lock(locker)
         incTimeSpeed = 0;
         await Task.Delay(sec * 1000);
         ResumeTimer();
@@ -73,12 +77,15 @@ public class MatchAction
     int incTimeSpeed = 1;
     void StartTimer()
     {
-        if (!NetworkManager.Singleton.IsClient) return;
+        
+        if (!NetworkManager.Singleton.IsServer) return;
         ThreadHelper.SafeThreadCall(() =>
         {
+            
             while (true)
             {
-                gameSystem.time.Value += incTimeSpeed;
+                lock (locker)
+                    gameSystem.time.Value += incTimeSpeed;
                 Thread.Sleep(1000);
             }
         });
@@ -86,20 +93,21 @@ public class MatchAction
     public async void OnGoal()
     {
         if (!NetworkManager.Singleton.IsServer) return;
-        await PauseMatch(10,true,false);
-        
+        await PauseMatch(10,true,false);       
         ResetGameScene();
         await PauseMatch(5);
-        NewGame();
+       
     }
     public void ResetGameScene()
     {
         var allPlayerInTheGame = gameSystem.room.playerDict;
+        gameSystem.sceneReference.ball.BackToSpawnPos();
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
         {
             Roomanager.thisPlayer.TelebackToSpawnPoint();
-            gameSystem.sceneReference.ball.BackToSpawnPos();
+            Logging.Log("TELE");
         }
+       
     }
     void NewGame()
     {

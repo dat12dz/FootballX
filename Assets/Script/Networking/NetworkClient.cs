@@ -38,13 +38,15 @@ static class NetworkClient_
         {
             
         }
+      
+
     }
 
      static void Netmang_OnClientStarted()
     {
        
         SceneManager.LoadScene(1);
-        ChangeSceneEffect.Close();
+      
     }
 }
 public class ClientApproveData

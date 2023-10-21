@@ -35,7 +35,7 @@ public class GameSystem : SceneNetworkBehavior
     public uint GameID;
     public Room room;
     static int MatchTimeSpeed;
-    public NetworkVariable<int> time = new NetworkVariable<int>(-1);
+    public NetworkVariable<int> time;
 /*        get { return Time_; }
         set 
         { 
@@ -79,6 +79,7 @@ public class GameSystem : SceneNetworkBehavior
     }
     void Start()
     {
+        Application.targetFrameRate = 60;
         if (!NetworkObject.IsSpawned)
         {
             Destroy(gameObject);

@@ -14,9 +14,9 @@ scopes = {
 	"last_search.3BE40471" = "Foot"
 	"OpenInspectorPreview.3BE40471" = "0"
 	"currentGroup.3BE40471" = "scene"
-	"last_search.110DEAF1" = "spawner"
+	"last_search.110DEAF1" = ""
 	"OpenInspectorPreview.110DEAF1" = "0"
-	"currentGroup.110DEAF1" = "asset"
+	"currentGroup.110DEAF1" = "all"
 }
 providers = {
 	packages = {
@@ -89,6 +89,8 @@ objectSelectors = {
 }
 recentSearches = [
 	""
+	"p: dir=\"Assets\" "
+	"player"
 	"spawner"
 ]
 searchItemFavorites = [

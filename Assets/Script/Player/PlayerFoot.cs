@@ -21,7 +21,13 @@ public class PlayerFoot : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        var ball = thisPlayer.System.sceneReference.ball;
+        Ball ball;
+        if (NetworkManager.Singleton.IsClient)
+        {
+            ball = Ball.instance;
+        }
+        else
+        ball = thisPlayer.System.sceneReference.ball;
         if (NetworkManager.Singleton.IsServer)
         if (collision.gameObject.layer == ballMask)
         {

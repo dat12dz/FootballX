@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Script.Utlis;
 using Unity.Netcode;
-using Unity.Netcode.Components;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerNetworkTransform : NetworkBehaviour
@@ -15,11 +11,12 @@ public class PlayerNetworkTransform : NetworkBehaviour
     Move moveHelper;
     void Start()
     {
+        if (IsHost) Interpolate = true;
         moveHelper = GetComponent<Move>();
     }
     [ClientRpc(Delivery = RpcDelivery.Unreliable)] void ChangePosInClientClientRpc(Vector3 newPos)
     {
-        
+
         if (IsLocalPlayer)
         {
             ServerPositon = new Vector3(transform.position.x, newPos.y, transform.position.z);
@@ -47,16 +44,16 @@ public class PlayerNetworkTransform : NetworkBehaviour
     Vector3 oldPos;
     private void Update()
     {
-        if (IsServer)
-        {
-            if (Vector3.Distance(transform.position, oldPos ) > DistanceCheckk)
+      if (IsServer)
+            if (MathHelper.DistanceNoSqrt(transform.position, oldPos ) > DistanceCheckk * DistanceCheckk)
             {
 
                 ChangePosInClientClientRpc(transform.position);
                 oldPos = transform.position;
-            }
-        }
-        if (IsClient && Interpolate)
+           }
+        
+
+        if (!IsServer && Interpolate)
         {
             // Making some interpolation wiith server positionn;
             if (IsLocalPlayer)
