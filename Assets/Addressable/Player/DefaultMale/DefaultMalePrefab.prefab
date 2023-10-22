@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActiveModel: {fileID: 0}
+  ModelName: AMBITION
   animator: {fileID: 0}
   footControl: {fileID: 8497006984350662549}
   player: {fileID: 0}

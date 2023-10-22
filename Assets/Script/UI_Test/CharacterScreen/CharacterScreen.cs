@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.AddressableAssets;
+using TMPro;
+using UnityEditor;
+using System.Threading.Tasks;
+
 public class CharacterScreen : MonoBehaviour
 {
     [SerializeField] AllCharectorAssetReference allChar;
@@ -11,7 +15,7 @@ public class CharacterScreen : MonoBehaviour
     [SerializeField] Transform SpawnPosition;
     [SerializeField] Transform CharShowCase;
     // Camera ảo
-    [SerializeField] CinemachineVirtualCamera camera;
+    [SerializeField] CinemachineVirtualCamera camera,BackgroundCamera;
     // Tham chiếu vào UI khởi đầu (UI có nút host,connect)
     [SerializeField] MultiplePlayerHandle startScreenHandler;
 
@@ -161,8 +165,34 @@ public class CharacterScreen : MonoBehaviour
         oldModel = selectedPlayerModel;
 
         camera.LookAt = selectedPlayerModel.CameraLookAt;
-    }
+        ShowPlayerName(selectedPlayerModel.ModelName);
 
+
+    }
+    [Header("background")]
+   [SerializeField]  Material PlayerNamebackgroundMaterial;
+    async void ShowPlayerName(string t)
+    {
+        
+        PlayerNamebackgroundMaterial.SetInt("_isOff", 0);
+        PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 1.005f);
+        await Task.Delay(50);
+
+        PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 0.995f);
+        await Task.Delay(50);
+        var TextMeshpro = CharShowCase.GetComponentsInChildren<TextMeshPro>();
+        for (int i = 0; i < TextMeshpro.Length; i++)
+        {
+            TextMeshpro[i].text = t;
+        }
+        PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 1.002f);
+        await Task.Delay(50);
+        PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 0.998f);
+        await Task.Delay(50);
+        PlayerNamebackgroundMaterial.SetInt("_isOff", 1);
+        PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 1);
+
+    }
     public void Btn_SelectCharAction()
     {
         SelectedChar = CharIndex;
@@ -190,12 +220,14 @@ public class CharacterScreen : MonoBehaviour
     {
         model.WaitForStart_(() => model.SelectedAnim());
         DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(2.1f, 1), 1).SetEase(Ease.InOutQuart);
+        DOTween.To(() => BackgroundCamera.m_Lens.FieldOfView, (x) => BackgroundCamera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(2.1f, 1), 1).SetEase(Ease.InOutQuart);
         //btn_SelectChar.interactable = false;
     }
     public void PlayUnSelectedAnimation(PlayerModelBase player)
     {
         player.WaitForStart_(() => player.IdleAnim());
         DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(1.6f, 1), 1).SetEase(Ease.InOutQuart);
+        DOTween.To(() => BackgroundCamera.m_Lens.FieldOfView, (x) => BackgroundCamera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(1.6f, 1), 1).SetEase(Ease.InOutQuart);
         //btn_SelectChar.interactable = true;
     }
 }

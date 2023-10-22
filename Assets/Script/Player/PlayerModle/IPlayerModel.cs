@@ -15,6 +15,7 @@ using UniVRM10;
 public abstract class PlayerModelBase : WaitForStart
 {
     public GameObject ActiveModel;
+    public string ModelName;
     [SerializeField] public Animator animator;
     [SerializeField] FootIK footControl;
     public Player player;

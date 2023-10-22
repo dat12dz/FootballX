@@ -45,11 +45,12 @@ public class MainThreadDispatcher : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
-        
+        Application.targetFrameRate = 60; 
     }
 
     private void Update()
     {
+   
         if (ImidiatelyAction != null)
         {
             ImidiatelyAction();
