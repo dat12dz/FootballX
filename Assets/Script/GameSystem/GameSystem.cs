@@ -72,10 +72,12 @@ public class GameSystem : SceneNetworkBehavior
     }
     public override void OnNetworkSpawn()
     {
+        instance = this;
         base.OnNetworkSpawn();
         sceneReference.Init(this);
         MatchAction = new MatchAction(this);
         MatchAction.OnStartMatch();
+     
     }
     void Start()
     {
@@ -105,7 +107,7 @@ public class GameSystem : SceneNetworkBehavior
                 Goaler = Team.blue;
             if (OnScoreChange != null) OnScoreChange(ScoreRedTeam.Value, curr, Goaler);
         };
-        instance = this;
+       
         time.OnValueChanged += (old, curr) =>
         {
             OnTimeChange(curr);

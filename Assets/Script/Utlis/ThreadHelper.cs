@@ -45,35 +45,20 @@ namespace Assets.Script.Utlis
                 });
             }
         }
-        public static void WaitForSecond(CancellationTokenSource s, Action a = null, int timeout = 3000)
+        public static async Task WaitForSecond(CancellationTokenSource s, Action a = null, int timeout = 3000)
         {
             try
             {
-                Task.Delay(timeout, s.Token).Wait();
+               await Task.Delay(timeout, s.Token);
             }
             catch
             {
-
+                
             }
             if (a != null) 
             a();
         }
-        public static void CloseAllIngameThread()
-        {
-/*            for (int i= 0; i < InGamethreads.Count; i++)
-            {
-                foreach(Thread thread in InGamethreads)
-                try
-                {
-                    thread.Interrupt();
-                        
-                }
-                catch { 
-                }
-                InGamethreads.Clear();
-            }*/
-
-        }
+        
     }
 
 }

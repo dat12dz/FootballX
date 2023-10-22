@@ -94,7 +94,7 @@ public class InGameScreen : WaitForInstaceNotNull<InGameScreen>
         var ShowMinString = Minute <= 9 ? $"0{Minute}" : Minute.ToString();
         var ShowSecondString = Second <= 9 ? $"0{Second}" : Second.ToString();
 
-        MainThreadDispatcher.ExecuteInMainThread(() =>
+        MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
         {
             minLabel.text = ShowMinString;
             secLabel.text = ShowSecondString;
