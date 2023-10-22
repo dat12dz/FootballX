@@ -29,6 +29,7 @@ public class UIHandler : WaitForInstaceNotNull<UIHandler>
         {
             Destroy(gameObject);  
         }
+
         GameSystem game = GameSystem.instance;
         game.OnTimeChange += ShowTime;
         game.OnScoreChange += ShowScore;

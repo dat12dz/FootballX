@@ -73,7 +73,6 @@ public class MultiplePlayerHandle : MonoBehaviour
                 {
                     res.Approved = false;
                     res.Reason = "Server is full";
-
                 }
                 res.Approved = true;
                 res.CreatePlayerObject = true;

@@ -22,7 +22,7 @@ public class Test : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            GoalScreen.EnableGoalScreen();
+            GoalScreen.Show("Goal!!!", "Abc", 10);
         }
 
         if (Input.GetKeyDown(KeyCode.D))

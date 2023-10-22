@@ -11,7 +11,6 @@ public class CharacterSelection : MonoBehaviour
         g = gameObject;
     }
 
-
     public static void SetActive(bool active)
     {
         g.SetActive(active);
