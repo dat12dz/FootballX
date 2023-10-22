@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSelection : MonoBehaviour
+public class UINew_CharacterSelection : MonoBehaviour
 {
     static GameObject g;
     void Start()

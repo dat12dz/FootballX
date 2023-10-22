@@ -35,7 +35,7 @@ public class UI_StartScreenHandler : MonoBehaviour
             btn_Connect.onClick.AddListener(() => {
             if (inp_PlayerName.text == string.Empty)
             {
-                MessageBox.Show("Player name cannot empty", "Please fill in your player name");
+                UINew_MessageBox.Show("Player name cannot empty", "Please fill in your player name");
                 return;
             }
             if (inp_ServerIP.text == string.Empty)
@@ -87,7 +87,7 @@ public class UI_StartScreenHandler : MonoBehaviour
     private void Netmang_OnClientDisconnectCallback(ulong obj)
     {
         if (!netmang.IsServer)
-            MessageBox.Show("Disconnect from server",$"{netmang.DisconnectReason}");
+            UINew_MessageBox.Show("Disconnect from server",$"{netmang.DisconnectReason}");
     }
 
     private void Netmang_OnTransportFailure()

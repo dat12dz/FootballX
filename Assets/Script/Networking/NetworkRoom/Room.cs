@@ -134,7 +134,7 @@ public class Room
     }
     public void StartGame()
     {
-        ChangeSceneEffect.Open();
+        UINew_ChangeSceneEffect.Open();
         var LoadGame = SceneManager.LoadScene(2, new LoadSceneParameters(LoadSceneMode.Additive, LocalPhysicsMode.Physics3D));
         SceneManager.sceneLoaded += (scene, loadmoded) =>
         {

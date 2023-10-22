@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class ChangeSceneEffect : MonoBehaviour
+public class UINew_ChangeSceneEffect : MonoBehaviour
 {
-    static ChangeSceneEffect instance;
+    static UINew_ChangeSceneEffect instance;
     private VisualElement root;
     private static VisualElement container;
     private static VisualElement changeSceneEffect;

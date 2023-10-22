@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [DefaultExecutionOrder(0)]
-public class LobbyScreen : MonoBehaviour
+public class UINew_LobbyScreen : MonoBehaviour
 {
     private VisualElement root;
     private static VisualElement container;

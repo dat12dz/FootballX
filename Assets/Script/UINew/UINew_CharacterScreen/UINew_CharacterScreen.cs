@@ -4,11 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.AddressableAssets;
-using TMPro;
-using UnityEditor;
-using System.Threading.Tasks;
-
-public class CharacterScreen : MonoBehaviour
+public class UINew_CharacterScreen : MonoBehaviour
 {
     [SerializeField] AllCharectorAssetReference allChar;
     // Vị trí spawn người chơi
@@ -17,7 +13,7 @@ public class CharacterScreen : MonoBehaviour
     // Camera ảo
     [SerializeField] CinemachineVirtualCamera camera,BackgroundCamera;
     // Tham chiếu vào UI khởi đầu (UI có nút host,connect)
-    [SerializeField] MultiplePlayerHandle startScreenHandler;
+    [SerializeField] UINew_MultiplePlayerScreen startScreenHandler;
 
     VisualElement root;
     VisualElement container;
@@ -28,7 +24,7 @@ public class CharacterScreen : MonoBehaviour
     Button redClothes;
     Button blueClothes;
     Button[] charBtns;
-    CharacterSelection characterSelection;
+    UINew_CharacterSelection characterSelection;
     // Nhân vật đang hiển thị
     int CharIndex_;
     int CharIndex
@@ -62,7 +58,7 @@ public class CharacterScreen : MonoBehaviour
         selectBtn = root.Q<Button>("select-btn");
         redClothes = root.Q<Button>("red-clothes");
         blueClothes = root.Q<Button>("blue-clothes");
-        characterSelection = GetComponent<CharacterSelection>();
+        characterSelection = GetComponent<UINew_CharacterSelection>();
         SpawnAllButton();
         CharIndex = 1;
 
@@ -98,7 +94,7 @@ public class CharacterScreen : MonoBehaviour
     public void Display(bool a)
     {
         //characterSelection.gameObject.SetActive(a);
-        CharacterSelection.SetActive(a);
+        UINew_CharacterSelection.SetActive(a);
     }
 
     void SpawnAllButton()

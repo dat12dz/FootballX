@@ -7,7 +7,7 @@ using Unity.Netcode;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
-public class MultiplePlayerHandle : MonoBehaviour
+public class UINew_MultiplePlayerScreen : MonoBehaviour
 {
     private VisualElement root;
     private TextField inputName;
@@ -16,7 +16,7 @@ public class MultiplePlayerHandle : MonoBehaviour
     private Button connectBtn;
     private Button hostBtn;
     private Button characterBtn;
-    [SerializeField] CharacterScreen charSelectionUI;
+    [SerializeField] UINew_CharacterScreen charSelectionUI;
     //[SerializeField] TMP_InputField inp_PlayerName, inp_ServerIP;
     //[SerializeField] Button btn_Connect, btn_autoLocalhost, btn_HostBtn, btn_ShowCharSelectionUI;
     public static StartSceneInfo StartSceneInfoSync;
@@ -49,7 +49,7 @@ public class MultiplePlayerHandle : MonoBehaviour
         {
             if (inputName.text == string.Empty)
             {
-                MessageBox.Show("Player name cannot empty", "Please fill in your player name");
+                UINew_MessageBox.Show("Player name cannot empty", "Please fill in your player name");
                 return;
             }
             if (inputIp.text == string.Empty)
@@ -79,7 +79,7 @@ public class MultiplePlayerHandle : MonoBehaviour
             };
             if (netmang.StartHost())
                 //SceneManager.LoadScene(1);
-                ChangeSceneEffect.ChangeScene(1);
+                UINew_ChangeSceneEffect.ChangeScene(1);
         };
 
         characterBtn.clicked += () =>
@@ -107,24 +107,24 @@ public class MultiplePlayerHandle : MonoBehaviour
     private void Netmang_OnClientDisconnectCallback(ulong obj)
     {
         if (!netmang.IsServer)
-            MessageBox.Show("Disconnect from server", $"{netmang.DisconnectReason}");
+            UINew_MessageBox.Show("Disconnect from server", $"{netmang.DisconnectReason}");
     }
 
     private void Netmang_OnTransportFailure()
     {
         //SceneManager.LoadScene(0);
-        ChangeSceneEffect.ChangeScene(0);
+        UINew_ChangeSceneEffect.ChangeScene(0);
     }
 
     private void Netmang_OnClientStopped(bool obj)
     {
         //SceneManager.LoadScene(0);
-        ChangeSceneEffect.ChangeScene(0);
+        UINew_ChangeSceneEffect.ChangeScene(0);
     }
 
     private void Netmang_OnServerStopped(bool obj)
     {
         //SceneManager.LoadScene(0);
-        ChangeSceneEffect.ChangeScene(0);
+        UINew_ChangeSceneEffect.ChangeScene(0);
     }
 }

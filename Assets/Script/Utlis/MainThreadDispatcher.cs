@@ -28,7 +28,7 @@ public class MainThreadDispatcher : MonoBehaviour
     {
         SceneManager.sceneLoaded += (S, lm) =>
         {
-            ChangeSceneEffect.Close();
+            UINew_ChangeSceneEffect.Close();
         };
         Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);
         if (instance != null)

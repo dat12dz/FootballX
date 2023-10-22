@@ -145,7 +145,7 @@ public partial class PlayerRoomManager
     [ClientRpc] public void OnKickPlayerCompleteClientRpc(ClientRpcParams pa)
     {
         Logging.Log("bạn đã bị buộc rời khỏi phòng");
-        MessageBox.Show("Rời khỏi phòng", "Bạn đã bị buộc rời khỏi phòng");
+        UINew_MessageBox.Show("Rời khỏi phòng", "Bạn đã bị buộc rời khỏi phòng");
     }
     [ServerRpc] public void SetOwnerServerRpc(byte slot)
     {

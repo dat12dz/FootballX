@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Assets.Script.NetCode;
 
-public class InGameScreen : WaitForInstaceNotNull<InGameScreen>
+public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
 {
     static private VisualElement root;
     static private VisualElement container;
@@ -71,11 +71,11 @@ public class InGameScreen : WaitForInstaceNotNull<InGameScreen>
         Action res = null;
         if (Goaler == GameSystem.Team.red)
         {
-            res = () => GoalScreen.Show("Goalllll!!", "Red team gooalll", 10, GoalScreen.ColorName.red_black);
+            res = () => UINew_GoalScreen.Show("Goalllll!!", "Red team gooalll", 10, UINew_GoalScreen.ColorName.red_black);
         }
         if (Goaler == GameSystem.Team.blue)
         {
-            res = () => GoalScreen.Show("Goalllll!!", "Blue team gooalll", 10, GoalScreen.ColorName.blue_white);
+            res = () => UINew_GoalScreen.Show("Goalllll!!", "Blue team gooalll", 10, UINew_GoalScreen.ColorName.blue_white);
         }
         MainThreadDispatcher.ExecuteInMainThread(res);
         var RedScore = Red.ToString();
@@ -94,7 +94,7 @@ public class InGameScreen : WaitForInstaceNotNull<InGameScreen>
         var ShowMinString = Minute <= 9 ? $"0{Minute}" : Minute.ToString();
         var ShowSecondString = Second <= 9 ? $"0{Second}" : Second.ToString();
 
-        MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
+        MainThreadDispatcher.ExecuteInMainThread(() =>
         {
             minLabel.text = ShowMinString;
             secLabel.text = ShowSecondString;
@@ -104,7 +104,7 @@ public class InGameScreen : WaitForInstaceNotNull<InGameScreen>
     public void ShowInformation(string Title, string Infomation, int sec)
     {
         MainThreadDispatcher.ExecuteInMainThread(() => {
-            GoalScreen.Show(Title, Infomation, sec, GoalScreen.ColorName.black_white); 
+            UINew_GoalScreen.Show(Title, Infomation, sec, UINew_GoalScreen.ColorName.black_white); 
         });
     }
     bool isCursorLocked = true;
