@@ -17,28 +17,28 @@ public class Test : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            LobbyScreen.Show();
+            UINew_LobbyScreen.Show();
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            GoalScreen.Show("Goal!!!", "Abc", 10);
+            UINew_GoalScreen.Show("Goal!!!", "Abc", 10);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            InGameScreen.EnableInGameScreen();
+            UINew_InGameScreen.EnableInGameScreen();
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            InGameScreen.DisableInGameScreen();
+            UINew_InGameScreen.DisableInGameScreen();
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            ChangeSceneEffect.Open();
-            ChangeSceneEffect.Close();
+            UINew_ChangeSceneEffect.Open();
+            UINew_ChangeSceneEffect.Close();
         }
     }
 }

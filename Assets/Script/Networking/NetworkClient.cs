@@ -13,7 +13,7 @@ static class NetworkClient_
     static bool FirstTimeInit;
     public static void StartClient(string ip, string name)
     {
-        ChangeSceneEffect.Open();
+        UINew_ChangeSceneEffect.Open();
         var ip_ = "";
         NetworkManager netmang = NetworkManager.Singleton;
         ClientApproveData c = new ClientApproveData() { name = name };

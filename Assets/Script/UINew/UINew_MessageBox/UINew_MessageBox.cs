@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class MessageBox : MonoBehaviour
+public class UINew_MessageBox : MonoBehaviour
 {
-    static MessageBox instance;
+    static UINew_MessageBox instance;
     static VisualElement root;
     static VisualElement container;
     static VisualElement messageBox;

@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class GoalScreen : MonoBehaviour
+public class UINew_GoalScreen : MonoBehaviour
 {
-    public static GoalScreen instance;
+    public static UINew_GoalScreen instance;
     static VisualElement root;
     static VisualElement container;
     static VisualElement goalScreenScale;
