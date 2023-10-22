@@ -27,25 +27,31 @@ internal class VariableHelper
             //
         }
     }
-    public static void  TrackForVariableNotNull(Func<object> value, Action callBack)
+    public static void  TrackForVariableNotNull(Func<object> value, Action callBack,bool ExecuteImidiate = false)
     {
-        /*    Job a = new Job() { value = value, callback = callBack };
-            JobHandle jobHandle = a.Schedule(1, 1);
-            jobHandle.Complete();*/
+   
         ThreadHelper.SafeThreadCall(() =>
         {
         
             int i = 0;
             var Value_ = value();
-            if (Value_ is UnityEngine.Object)
+/*            if (Value_ is UnityEngine.Object)
             {
                 HandleUnityObject(Value_ as UnityEngine.Object, callBack);
-              
+
             }
-            else
+            else*/
             { 
-            if (value() != null)
+            if (Value_ != null)
             {
+                    if (ExecuteImidiate)
+                    {
+                        MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
+                        {
+                            callBack();
+                        });
+                    }
+                    else
                 MainThreadDispatcher.ExecuteInMainThread(() =>
                 {
                     callBack();
@@ -56,36 +62,50 @@ internal class VariableHelper
             while (true)
             {
                 i++;
-                if (value() != null || i >= loop)
+                if (Value_ != null || i >= loop)
                 {
-                    MainThreadDispatcher.ExecuteInMainThread(() =>
-                    {
-                        callBack();
-                    });
-                    break;
+                        if (ExecuteImidiate)
+                        {
+                            MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
+                            {
+                                callBack();
+                            });
+                        }
+                        else
+                            MainThreadDispatcher.ExecuteInMainThread(() =>
+                            {
+                                callBack();
+                            });
+                        
+                        break;
                 }
                 Thread.Sleep(10);
             }
             }
         });
     }
-    static void HandleUnityObject(UnityEngine.Object obj_, Action callBack)
+    static async void HandleUnityObject(UnityEngine.Object obj_, Action callBack)
     {
-       
+        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         int i = 0;
-        bool Continue = true;
             MainThreadDispatcher.ExecuteInMainThread(() =>
             {
                 if (obj_)
                 {
                     callBack();
-                    lock (new object())
-                    {
-                        Continue = false;
-                    }
+
+                    cancellationTokenSource.Cancel();
                 }
             });
-        if (Continue)
+        Task t = Task.Delay(9000, cancellationTokenSource.Token);
+        try
+        {
+            await t;
+        }
+        catch { 
+        
+        }
+        if (!t.IsCanceled)
         while (true)
         {
             i++;
@@ -101,34 +121,7 @@ internal class VariableHelper
         }
     }
     
-    public unsafe struct Job : IJobParallelFor
-    {
-        public Func<object> value;
-       
-        public Action callback;
-        public int loop;
-        public void Execute(int index)
-        {
-        
-            loop = 100000;
-            int i= 0;
-            if (value != null)
-            {
-                callback();
-                return;
-            }
-            while (true)
-            {
-                i++;
-                if (value != null|| i >= loop)
-                {
-                    callback();
-                    break;
-                }
-
-            }
-        }
-    }
+    
 }
 
 

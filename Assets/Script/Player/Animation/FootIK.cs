@@ -128,7 +128,7 @@ public class FootIK : MonoBehaviour
     {
         if (player == null) return;
        vel =  transform.position - lastPos;
-      VariableHelper.TrackForVariableNotNull(() => baseModel.animator , () =>   baseModel.WingHandRunAnim(vel.magnitude));
+      VariableHelper.TrackForVariableNotNull(() => baseModel.animator , () =>   baseModel.WingHandRunAnim(vel.magnitude),true);
 
         lastPos = transform.position;
         UpdateFootPosition();
@@ -178,7 +178,7 @@ class FootRef
             return;
         }
         currentTime += Time.deltaTime;
-        currentRate += incRateSpeed * Time.deltaTime * curve.Evaluate(currentTime);
+        currentRate += incRateSpeed * Time.deltaTime;
         var StartPosXZ = new Vector2(StartPosition.x, StartPosition.z);
         var DestinationXZ = new Vector2(Destination.x, Destination.z);
         CurrentXZ = Vector2.Lerp(StartPosXZ, DestinationXZ, currentRate);

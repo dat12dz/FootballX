@@ -8,6 +8,7 @@ using Assets.Script.Utlis;
 using System.Collections.Concurrent;
 using Unity.VisualScripting;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class MainThreadDispatcher : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class MainThreadDispatcher : MonoBehaviour
     }
     private void Awake()
     {
+        SceneManager.sceneLoaded += (S, lm) =>
+        {
+            ChangeSceneEffect.Close();
+        };
         Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);
         if (instance != null)
         {

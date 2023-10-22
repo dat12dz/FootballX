@@ -35,7 +35,7 @@ public class GameSystem : SceneNetworkBehavior
     public uint GameID;
     public Room room;
     static int MatchTimeSpeed;
-    public NetworkVariable<int> time = new NetworkVariable<int>(-1);
+    public NetworkVariable<int> time;
 /*        get { return Time_; }
         set 
         { 
@@ -72,13 +72,16 @@ public class GameSystem : SceneNetworkBehavior
     }
     public override void OnNetworkSpawn()
     {
+        instance = this;
         base.OnNetworkSpawn();
         sceneReference.Init(this);
         MatchAction = new MatchAction(this);
         MatchAction.OnStartMatch();
+     
     }
     void Start()
     {
+        Application.targetFrameRate = 60;
         if (!NetworkObject.IsSpawned)
         {
             Destroy(gameObject);
@@ -104,7 +107,7 @@ public class GameSystem : SceneNetworkBehavior
                 Goaler = Team.blue;
             if (OnScoreChange != null) OnScoreChange(ScoreRedTeam.Value, curr, Goaler);
         };
-        instance = this;
+       
         time.OnValueChanged += (old, curr) =>
         {
             OnTimeChange(curr);

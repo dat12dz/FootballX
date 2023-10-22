@@ -36,13 +36,7 @@ public partial class Move : NetworkBehaviour
         player = GetComponent<Player>();
         unstandableZone_mask = LayerMask.GetMask("UnstanableZone");
     }
-    public void Teleport(Vector3 v)
-    {
-        if (Vector3.Distance(v, controller.transform.position) < SafeDistanceCheck)
-        {
-            transform.position = v;
-        }
-    }
+
     public void TeleportXZ(float x,float z)
     {
         var newPos = new Vector3(x, transform.position.y, z);
@@ -56,14 +50,13 @@ public partial class Move : NetworkBehaviour
         }
     }
     [ServerRpc(Delivery = RpcDelivery.Unreliable)]
-
     public void MovePlayerXZServerRpc(float x, float z)
     {
         if (!player.isSuppress.Value)
         if (MathHelper.DistanceNoSqrt(new Vector2(x, z), new Vector2(transform.position.x, transform.position.z)) > MathHelper.Power2(SafeDistanceCheck))
         {
             nettrans.TeleportImidiateClientRpc(transform.position);
-            
+                Logging.LogError("Người chơi chạy quá nhanh");
         }
         else
         {
@@ -139,8 +132,10 @@ public partial class Move : NetworkBehaviour
              
                 if (!player.isSuppress.Value)
                 {
-                    MovePlayer(MoveDirectionn * RuntimeSpeed * Time.deltaTime);
-                    MovePlayerXZServerRpc(transform.position.x, transform.position.z);
+                  
+                        MovePlayer(MoveDirectionn * RuntimeSpeed * Time.deltaTime);
+                        MovePlayerXZServerRpc(transform.position.x, transform.position.z);
+                    
                 }
 
             }

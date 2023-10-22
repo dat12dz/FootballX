@@ -39,6 +39,7 @@ namespace Assets.Script.Networking.NetworkRoom
         }
         void ShowObjecttoScenePlayer()
         {
+            
             var listPlayer = system.room.playerDict;
             if (listPlayer.Count > 0)
             {

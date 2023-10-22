@@ -80,7 +80,7 @@ public class UIHandler : WaitForInstaceNotNull<UIHandler>
         var ShowMinString = Minute <= 9 ? $"0{Minute}" : Minute.ToString();
         var ShowSecondString = Second <= 9 ? $"0{Second}" : Second.ToString();
 
-        MainThreadDispatcher.ExecuteInMainThread(() => txtblk_Time.SetText(ShowMinString + ":" + ShowSecondString));
+        MainThreadDispatcher.ExecuteInMainThreadImidiately(() => txtblk_Time.SetText(ShowMinString + ":" + ShowSecondString));
            
     }
     public void ShowInformation(string Title,string Infomation,int sec)

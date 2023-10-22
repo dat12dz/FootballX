@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity.Netcode;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -39,8 +40,10 @@ namespace Assets.Script.NetCode
         {
             var allSceneObj = scene.GetRootGameObjects();
             GameSceneSpawn res = allSceneObj[0].GetComponent<GameSceneSpawn>();
-            
+            if (NetworkManager.Singleton.IsClient)
+                return GameSystem.instance;
             return res.currGameSystem;
+            
         }
     }
 }
