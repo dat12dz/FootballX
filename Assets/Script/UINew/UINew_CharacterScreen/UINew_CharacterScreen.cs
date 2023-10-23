@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.AddressableAssets;
+using System.Threading.Tasks;
+using TMPro;
+
 public class UINew_CharacterScreen : MonoBehaviour
 {
     [SerializeField] AllCharectorAssetReference allChar;
@@ -181,6 +184,8 @@ public class UINew_CharacterScreen : MonoBehaviour
         {
             TextMeshpro[i].text = t;
         }
+        BackgroundCamera.enabled = false;
+        BackgroundCamera.enabled = true;
         PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 1.002f);
         await Task.Delay(50);
         PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 0.998f);

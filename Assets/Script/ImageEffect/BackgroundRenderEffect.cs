@@ -18,6 +18,11 @@ public class BackgroundRenderEffect : MonoBehaviour
         renderPass = new CameraRenderPass(material);
      
         RenderPipelineManager.beginCameraRendering += RenderPipelineManager_beginCameraRendering;
+        RenderPipelineManager.endCameraRendering += RenderPipelineManager_endCameraRendering;
+    }
+
+    private void RenderPipelineManager_endCameraRendering(ScriptableRenderContext arg1, Camera arg2)
+    {
         
     }
 
