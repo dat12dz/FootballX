@@ -73,6 +73,7 @@
     <None Include="Assets\NewFolder\UI\MultiplePlayerScreen\MultiplePlayerScreen.uxml" />
     <None Include="Assets\NewFolder\UI\CharacterScreen\CharacterScreen.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\NewFolder\UI\PauseScreen\PauseScreen.uxml" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_attribute.hlsl" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_vertex.hlsl" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_uv.hlsl" />
@@ -121,6 +122,7 @@
     <None Include="Assets\VRMShaders\GLTF\IO\Resources\UniGLTF\StandardMapImporter.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\NewFolder\UI\CharacterScreen\CharacterScreen.uxml" />
+    <None Include="Assets\NewFolder\UI\PauseScreen\PauseScreen.uss" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_render_pipeline.hlsl" />
     <None Include="Assets\NewFolder\UI\LobbyScreen\player-card.uxml" />
     <None Include="Assets\VRMShaders\GLTF\UniUnlit\Resources\UniGLTF\UniUnlit.shader" />

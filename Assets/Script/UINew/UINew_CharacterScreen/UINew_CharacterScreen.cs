@@ -1,9 +1,12 @@
 ﻿using Cinemachine;
 using DG.Tweening;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.AddressableAssets;
+using TMPro;
+
 public class UINew_CharacterScreen : MonoBehaviour
 {
     [SerializeField] AllCharectorAssetReference allChar;

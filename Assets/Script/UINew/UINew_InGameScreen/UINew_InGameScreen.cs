@@ -99,7 +99,6 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
             minLabel.text = ShowMinString;
             secLabel.text = ShowSecondString;
         });
-
     }
     public void ShowInformation(string Title, string Infomation, int sec)
     {

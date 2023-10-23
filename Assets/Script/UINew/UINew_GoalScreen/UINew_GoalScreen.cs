@@ -60,10 +60,10 @@ public class UINew_GoalScreen : MonoBehaviour
     /// <param name="color">0 is red-black, 1 is blue-white, 2 is black-white</param>
     static async void EnableGoalScreen(int second, ColorName color = 0)
     {
-        await VariableHelper.WaitForVariableNotNullAsync(() => container, 50000);
-        await VariableHelper.WaitForVariableNotNullAsync(() => goalScreen, 50000);
-        await VariableHelper.WaitForVariableNotNullAsync(() => goalScreenBackground, 50000);
-        await VariableHelper.WaitForVariableNotNullAsync(() => goalScreenScale, 50000);
+        //await VariableHelper.WaitForVariableNotNullAsync(() => container, 50000);
+        //await VariableHelper.WaitForVariableNotNullAsync(() => goalScreen, 50000);
+        //await VariableHelper.WaitForVariableNotNullAsync(() => goalScreenBackground, 50000);
+        //await VariableHelper.WaitForVariableNotNullAsync(() => goalScreenScale, 50000);
         switch (color)
         {
             case ColorName.red_black:
@@ -91,8 +91,6 @@ public class UINew_GoalScreen : MonoBehaviour
                     break;
                 }
         }
-        
-
         container.style.display = DisplayStyle.Flex;
 
         goalScreen.style.opacity = 1;
@@ -129,16 +127,16 @@ public class UINew_GoalScreen : MonoBehaviour
         ResetGoalScreen();
     }
 
-    static async void ResetGoalScreen()
+    static void ResetGoalScreen()
     {
-        await VariableHelper.WaitForVariableNotNullAsync(() => container, 50000);
+        //await VariableHelper.WaitForVariableNotNullAsync(() => container, 50000);
         container.style.display = DisplayStyle.None;
 
         goalScreenScale.style.width = new Length(600, LengthUnit.Pixel);
         goalScreenClose.style.width = new Length(100, LengthUnit.Percent);
         //goalScreenClose.style.width = new Length(60, LengthUnit.Percent);
 
-        await VariableHelper.WaitForVariableNotNullAsync(() => goalScreen, 50000);
+        //await VariableHelper.WaitForVariableNotNullAsync(() => goalScreen, 50000);
         goalScreen.style.opacity = 0;
         goalScreen.style.transitionDuration = null;
 
@@ -153,19 +151,19 @@ public class UINew_GoalScreen : MonoBehaviour
 
     void InitStyle()
     {
-        VariableHelper.TrackForVariableNotNull(() => container, () => container.style.display = DisplayStyle.None);
-        VariableHelper.TrackForVariableNotNull(() => goalScreen, () => goalScreen.style.opacity = 0);
-        //container.style.display = DisplayStyle.None;
-        //goalScreen.style.opacity = 0;
+        //VariableHelper.TrackForVariableNotNull(() => container, () => container.style.display = DisplayStyle.None);
+        //VariableHelper.TrackForVariableNotNull(() => goalScreen, () => goalScreen.style.opacity = 0);
+        container.style.display = DisplayStyle.None;
+        goalScreen.style.opacity = 0;
         animationIconAndText.style.opacity = 0;
     }
 
     public static void Show(string text, string title, int second, ColorName color = 0)
     {
-        VariableHelper.TrackForVariableNotNull(() => goalScreenText, () => goalScreenText.text = text);
-        VariableHelper.TrackForVariableNotNull(() => goalScreenTitle, () => goalScreenTitle.text = title);
-        //goalScreenText.text = text;
-        //goalScreenTitle.text = title;
+        //VariableHelper.TrackForVariableNotNull(() => goalScreenText, () => goalScreenText.text = text);
+        //VariableHelper.TrackForVariableNotNull(() => goalScreenTitle, () => goalScreenTitle.text = title);
+        goalScreenText.text = text;
+        goalScreenTitle.text = title;
         EnableGoalScreen(second, color);
     }
 }

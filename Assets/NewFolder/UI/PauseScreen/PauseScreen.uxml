@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
+    <Style src="project://database/Assets/NewFolder/UI/PauseScreen/PauseScreen.uss?fileID=7433441132597879392&amp;guid=0ccee88392c3e5441961fc7ab690c91a&amp;type=3#PauseScreen" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:VisualElement name="pause-screen">
+            <ui:Button text="Resume" display-tooltip-when-elided="true" name="resume-btn" class="unity-button btn-handle" />
+            <ui:Button text="Options" display-tooltip-when-elided="true" name="options-btn" class="unity-button btn-handle" />
+            <ui:Button text="Exit" display-tooltip-when-elided="true" name="exit-btn" class="unity-button btn-handle" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
