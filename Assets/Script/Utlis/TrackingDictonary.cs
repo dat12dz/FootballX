@@ -29,6 +29,7 @@ namespace Assets.Script.Utlis
         {
             get 
             {
+               
                 return base[a];
             } 
             set 

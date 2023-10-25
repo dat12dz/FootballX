@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -113,6 +114,10 @@ public class Room
         {
             DeleteRoom();
         }
+        if (NetworkManager.Singleton.IsHost)
+        {
+            NetworkManager.Singleton.DisconnectClient(PlayerNeedRemove.OwnerClientId);
+        }    
         return PlayerNeedRemove;
     }
     public void DeleteRoom()

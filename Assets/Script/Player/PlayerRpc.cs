@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
-using UnityEditor;
 using UnityEngine;
 public partial class Player
 {
@@ -26,15 +25,7 @@ public partial class Player
             if (r.collider != null)
             {
                 Grabable GrabAbleItem = r.collider.GetComponent<Grabable>();
-                if (GrabAbleItem != null && !GrabAbleItem.isGrab())
-                    GrabAbleItem.Grab(Graber);
-                grabitem = GrabAbleItem;
-                if (GrabAbleItem is Ball)
-                {
-                    var ball = (Ball)GrabAbleItem;
-                    ball.lastToucher = this;
-                }
-                
+                Grab(GrabAbleItem);
             }
             else
             {          
@@ -44,11 +35,33 @@ public partial class Player
       
         if (ThrowForce > MinThrowingForce && MaxThrowingForce > ThrowForce && isGrabed.Value) // throw item
         {
-           if (grabitem != null) 
-            grabitem.Throw(Playereyes.transform.forward * ThrowForce);
-            grabitem = null;
+            Throw(ThrowForce);
         }
         isGrabed.Value = grabitem != null;
+    }
+    public Action<Grabable> OnThrowSomeThing;
+    public void Grab(Grabable GrabAbleItem)
+    {
+        if (GrabAbleItem != null && !GrabAbleItem.isGrab())
+            GrabAbleItem.Grab(Graber);
+        grabitem = GrabAbleItem;
+
+        if (GrabAbleItem is Ball)
+        {
+            var ball = (Ball)GrabAbleItem;
+            ball.lastToucher = this;
+        }
+    }
+   
+    public void Throw(float Force)
+    {
+        if (grabitem != null)
+            grabitem.Throw(Playereyes.transform.forward * Force);
+        grabitem = null;
+        if (OnThrowSomeThing != null)
+        {
+            OnThrowSomeThing(grabitem);
+        }
     }
     [ServerRpc]
     public void SendShootForceServerRpc(float shootForce)
@@ -59,9 +72,10 @@ public partial class Player
     public void SendPlayerNameToServerRpc(InitialPlayerData playeData)
     {
         initialPlayerData.Value = playeData;
-     
+        
         
     }
+
     [ClientRpc] public void ToggleUnstandbaleZone_ClientRpc(bool a)
     {
         ToggleUnstanableZone(a);
