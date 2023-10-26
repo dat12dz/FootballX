@@ -13,7 +13,7 @@ namespace Assets.Utlis
     {
         [SerializeField] Player player;
         Camera PlayerCam;
-        [SerializeField] float MouseSen;
+        [SerializeField] public float MouseSen;
 
         [SerializeField] public Transform HeadObj;
         private void Start()
