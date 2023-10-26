@@ -1,6 +1,27 @@
 #container {
 }
 
+#pause-btn {
+    position: absolute;
+    right: 0;
+    margin: 8px 8px 0 0;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#pause-btn:hover {
+    background-color: rgba(100,100,100,1);
+}
+
+#pause-bg {
+    width: 8px;
+    height: 8px;
+    background-image: url(/Assets/NewFolder/Icons/pauseBtn.svg);
+}
+
 #score-board {
     flex-direction: row;
     align-self: center;

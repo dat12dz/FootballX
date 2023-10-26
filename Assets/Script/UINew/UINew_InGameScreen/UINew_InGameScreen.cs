@@ -9,6 +9,7 @@ using Assets.Script.NetCode;
 
 public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
 {
+    //public static UINew_InGameScreen instance;
     static private VisualElement root;
     static private VisualElement container;
     static private VisualElement scoreBoard;
@@ -17,6 +18,7 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
     static private VisualElement matchTime;
     static private Label minLabel;
     static private Label secLabel;
+    static private Button pauseBtn;
     static private VisualElement kickBar;
     static private VisualElement kickBarProgress;
     static private VisualElement kickBarOverrideBackground;
@@ -24,6 +26,7 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
     
     void Start()
     {
+        //instance = this;
         root = GetComponent<UIDocument>().rootVisualElement;
         container = root.Q<VisualElement>("container");
         scoreBoard = root.Q<VisualElement>("score-board");
@@ -32,6 +35,7 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
         matchTime = root.Q<VisualElement>("match-time");
         minLabel = root.Q<Label>("min-label");
         secLabel = root.Q<Label>("sec-label");
+        pauseBtn = root.Q<Button>("pause-btn");
         kickBar = root.Q<VisualElement>("kick-bar");
         kickBarProgress = root.Q<VisualElement>("kick-bar-progress");
         kickBarOverrideBackground = root.Q<VisualElement>("kick-bar-override-background");
@@ -47,8 +51,13 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
         GameSystem game = SceneHelper.GetGameSystem(gameObject.scene);
         game.OnTimeChange += ShowTime;
         game.OnScoreChange += ShowScore;
-        //Btn_Disconnect.onClick.AddListener(Btn_disCOnnect);
         
+        pauseBtn.clicked += () =>
+        {
+            UINew_PauseScreen.Show();
+        };
+
+
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         instance = this;
     }
@@ -140,8 +149,9 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
         kickBarProgress.style.width = new StyleLength(new Length(value, LengthUnit.Percent));
     }
 
-    public static async void EnableInGameScreen()
+    public async void EnableInGameScreen()
     {
+        await Task.Delay(5000);
         scoreBoard.style.translate = new StyleTranslate(new Translate(0, 0));
         await Task.Delay(200);
         await Task.Delay(800);

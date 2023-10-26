@@ -69,6 +69,7 @@
     <None Include="Assets\NewFolder\UI\LobbyScreen\LobbyScreen.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon.shader" />
+    <None Include="Assets\NewFolder\UI\MVPScreen\MVPScreen.uss" />
     <None Include="Assets\NewFolder\UI\GoalScreen\GoalScreen.uss" />
     <None Include="Assets\NewFolder\UI\MultiplePlayerScreen\MultiplePlayerScreen.uxml" />
     <None Include="Assets\NewFolder\UI\CharacterScreen\CharacterScreen.uss" />
@@ -90,6 +91,7 @@
     <None Include="Assets\NewFolder\UI\TitleScreen\TitleScreen.uss" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uxml" />
     <None Include="Assets\Fantasy Skybox FREE\ReleaseNotes.txt" />
+    <None Include="Assets\NewFolder\UI\NewUXMLTemplate.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_shadowcaster_vertex.hlsl" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_forward_vertex.hlsl" />
@@ -133,6 +135,7 @@
     <None Include="Assets\NewFolder\UITemplate\RadioButton-element.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\NewFolder\UI\MVPScreen\MVPScreen.uxml" />
     <None Include="Assets\NewFolder\UITemplate\Button-element.uxml" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\NewFolder\UI\MultiplePlayerScreen\MultiplePlayerScreen.uss" />

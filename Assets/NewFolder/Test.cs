@@ -25,11 +25,6 @@ public class Test : MonoBehaviour
             UINew_GoalScreen.Show("Goal!!!", "Abc", 10);
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            UINew_InGameScreen.EnableInGameScreen();
-        }
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             UINew_InGameScreen.DisableInGameScreen();

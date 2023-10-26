@@ -8,27 +8,14 @@
     --second-text-color:#ccc;
 }
 
-#unity-text-input {
-    padding: 8px 8px;
-    border-width: 4px;
-    border-radius: 20px;
-    border-color: rgb(100, 100, 100);
-}
-
-.unity-button {
-    padding: 8px 12px;
-    margin: 0;
-}
-
 .unity-label {
     padding: 0;
     margin: 0;
     white-space: normal;
 }
 
-
 /* Button */
-.btn-handle {
+Button {
     color: white;
     background-color: black;
     border-color: rgb(100, 100, 100);
@@ -37,46 +24,36 @@
     transition: 0.4s;
 }
 
-.btn-handle:hover {
+Button:hover {
     color: rgb(0, 0, 0);
     background-color: white;
     border-color: rgb(0, 0, 1);
 }
 
-.btn-handle:active {
+Button:active {
     background-color: black;
     color: white;
 }
 
-.success-btn {
-    color: #000;
-    border-color: rgb(0, 0, 1);
-    background-color: #a0c200;
-}
-
-.warning-btn {
-    color: #000;
-    background-color: #ffcf27;
-}
-
-.error-btn {
-    color: #000;
-    background-color: #b20609;
+Button .unity-button {
+    padding: 8px 12px;
+    margin: 0;
 }
 
 /* Radio Button */
-RadioButton VisualElement VisualElement {
+RadioButton > VisualElement > VisualElement {
     position: relative;
     padding: 0;
     border-width: 0;
     transition: 0.25s;
+    background-color: white;
 }
 
 RadioButton #unity-checkmark {
     position: absolute;
-    translate: 50% -50%;
     top: 50%;
     scale: 0;
+    translate: 50% -50%;
     transition: 0.25s, ease;
     align-self: stretch;
 }
@@ -88,69 +65,96 @@ RadioButton:checked #unity-checkmark {
 RadioButton:hover VisualElement .unity-radio-button__checkmark-background {
     background-color: #ccc;
 }
+/* Foldout */
+Foldout {
+
+}
+
+Foldout .unity-foldout__toggle > .unity-foldout__input {
+    max-width: none;
+    min-width: 0;
+    background-color: rgba(0,0,0,0);
+    align-items: center;
+    justify-content: flex-start;
+}
+
+Foldout .unity-foldout__toggle > .unity-foldout__input > .unity-foldout__checkmark {
+    max-width: 8px;
+    max-height: 12px;
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+    margin: 0;
+    margin: 0 8px;
+    background-image: url(/Assets/NewFolder/Icons/rightArrow.svg);
+    transition: 0.4s;
+    transition-timing-function: ease-out-bounce;
+    scale: 1;
+}
+
+Foldout:hover .unity-foldout__toggle > .unity-foldout__input > .unity-foldout__checkmark {
+    background-image: url(/Assets/NewFolder/Icons/rightArrow.svg);
+}
+
+Foldout:checked .unity-foldout__toggle > .unity-foldout__input > .unity-foldout__checkmark {
+    rotate: 90deg;
+    transition-timing-function: ease-out-bounce;
+}
+
+Foldout:checked:hover .unity-foldout__toggle > .unity-foldout__input > .unity-foldout__checkmark {
+    rotate: 90deg;
+    background-image: url(/Assets/NewFolder/Icons/rightArrow.svg);
+}
+
+Foldout .unity-foldout__toggle > .unity-foldout__input >  Label {
+    
+}
 
 /* Toggle */
-#Toggle-element {
-    flex-direction: row;
-    align-items: center;
-}
-
-#Toggle-element #Toggle-lable {
-    margin-right: 24px;
-}
-
-#Toggle-element #Toggle {
-    width: 24px;
+Toggle > VisualElement {
+    max-width: 24px;
     height: 24px;
-    margin: 0;
-    background-color: white;
-    border-radius: 4px;
-} 
-
-#Toggle-element #Toggle Label {
-    display: none;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s;
 }
 
-#Toggle-element #Toggle VisualElement {
+Toggle:hover > VisualElement {
+    background-color: #ccc;
+}
+
+.unity-toggle > .unity-toggle__input:hover > .unity-toggle__checkmark {
+    background-image: none;
+}
+
+.unity-toggle > .unity-toggle__input:hover:checked > .unity-toggle__checkmark {
+    background-image: url(/Assets/NewFolder/Icons/check.svg);
+}
+
+.unity-toggle .unity-toggle__checkmark {
+    width: 18px;
+    height: 16px;
     border-width: 0;
-}
-
- #Toggle-element #Toggle VisualElement #unity-checkmark {
-    width: 80%;
-    margin: 0 auto;
     background-color: rgba(0,0,0,0);
     transition: 0.4s;
     transition-timing-function: ease-in-bounce;
     scale: 0;
 }
-#Toggle-element #Toggle VisualElement:checked #unity-checkmark {
+
+.unity-toggle:checked .unity-toggle__checkmark {
     scale: 1;
-}
-
-#Toggle-element #Toggle VisualElement:checked #unity-checkmark {
     background-image: url(/Assets/NewFolder/Icons/check.svg);
-    -unity-background-image-tint-color: black;
+    transition-timing-function: ease-out-bounce;
 }
 
-/* Slider */
-/* Slider Label {  
-    min-width: 80px;
-    color: black;
-    -unity-text-align: middle-left;
-}
-
-Slider:focus Label {
-    color: black;
-}
-
-Slider #unity-tracker {
+/* Slider, SliderInt */
+Slider #unity-tracker, SliderInt #unity-tracker, MinMaxSlider #unity-tracker {
     margin: -3px 9px 0;
-    background-color: white;
+    background-color: rgb(220,220,220);
     border-width: 0;
-    background-color: #ccc;
 }
 
-Slider #unity-dragger {
+Slider #unity-dragger, SliderInt #unity-dragger {
     margin-top: -10px;
     width: 18px;
     height: 18px;
@@ -160,6 +164,109 @@ Slider #unity-dragger {
     background-color: black;
  }
 
-#unity-dragger-container:focus #unity-dragger {
+ /* MinMaxSlider */
+MinMaxSlider #unity-dragger {
+    background-color: rgba(0,0,0,0);
+    border-width: 0;
+    justify-content: center;
+}
+
+MinMaxSlider #unity-thumb-min, MinMaxSlider #unity-thumb-max {
+    margin-top: -6px;
+    min-width: 18px;
+    min-height: 18px;
+    border-radius: 50%;
+    border-width: 4px;
     border-color: white;
-} */
+    background-color: black;
+}
+
+MinMaxSlider #unity-thumb-max {
+    translate: -10px 0;
+}
+
+
+/* Input */
+RadioButton > .unity-label,Toggle > .unity-label,Slider > .unity-label,SliderInt > .unity-label,MinMaxSlider > .unity-label, TextField > .unity-label, IntegerField > .unity-label, FloatField > .unity-label, LongField > .unity-label, DoubleField > .unity-label, Hash128Field > .unity-label, UnsignedIntegerField > .unity-label, UnsignedLongField > .unity-label {
+    min-width: 0;
+    margin-right: 32px;
+    -unity-text-align: middle-left;
+}
+
+#unity-text-input {
+    padding: 8px 8px;
+    border-width: 4px;
+    border-radius: 18px;
+    border-color: rgb(100, 100, 100);
+}
+
+#unity-text-input TextElement {
+    padding: 0 4px;
+}
+
+/* ProgressBar */ 
+ProgressBar {
+    margin: 0;
+}
+
+ProgressBar Label {
+    color: #ccc;
+}
+
+ProgressBar #unity-progress-bar > VisualElement {
+    background-color: white;
+    border-radius: 12px;
+}
+
+ProgressBar #unity-progress-bar > VisualElement > .unity-progress-bar__progress {
+    background-color: rgb(100, 100, 100);
+    border-radius: 12px;
+}
+
+/* Scroller */
+.unity-scroller--vertical > .unity-scroller__low-button {
+    background-image: url(/Assets/NewFolder/Icons/topArrowBackground.svg);
+}
+
+.unity-scroller--vertical > .unity-scroller__high-button {
+    background-image: url(/Assets/NewFolder/Icons/bottomArrowBackground.svg);
+}
+
+.unity-scroller--horizontal > .unity-scroller__low-button {
+    background-image: url(/Assets/NewFolder/Icons/leftArrowBackground.svg);
+    
+}
+
+.unity-scroller--horizontal > .unity-scroller__high-button {
+    background-image: url(/Assets/NewFolder/Icons/rightArrowBackground.svg);
+}
+
+Scroller #unity-low-button, Scroller #unity-high-button {
+    border-width: 0px;
+    -unity-background-image-tint-color: rgba(255,255,255,1);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+Scroller #unity-slider #unity-tracker {
+    background-color: white;
+    border-color: white;
+}
+
+.unity-scroller--horizontal .unity-base-slider__dragger {
+    width: 64px;
+    border-radius: 12px;
+    border-color: rgb(100, 100, 100);
+    background-color: rgb(100, 100, 100);
+}
+
+.unity-scroller--vertical .unity-base-slider__dragger {
+    height: 64;
+    border-radius: 12px;
+    border-color: black;
+    background-color: white;
+}
+
+.unity-base-slider--vertical .unity-base-slider__input {
+    min-height: 120px;
+}

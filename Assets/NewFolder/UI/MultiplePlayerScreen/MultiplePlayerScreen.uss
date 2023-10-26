@@ -24,19 +24,18 @@ TextField {
 }
 
 TextField Label {
-	min-width: 120px;
+	width: 20%;
 	color: var(--primary-text-color);
 	font-size: 24px;
-	-unity-text-align: middle-left;
 }
 
 TextField #unity-text-input {
-	
+	width: 80%;
 }
 
 #local-ip-btn {
 	position: absolute;
-	left: 100%;
+	left: 102%;
 	bottom: 0;
 	padding: 0;
 	margin: 1px 4px;
