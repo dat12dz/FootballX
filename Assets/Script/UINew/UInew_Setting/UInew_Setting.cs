@@ -31,6 +31,12 @@ public partial class UInew_Setting : MonoBehaviour
 
         public Panel_GraphicsTabsElement(VisualElement base__) : base(base__)
         {
+            
+
+        }
+        public void InitValue()
+        {
+            slider_graphicLevel.value = SettingDAO.Instance.graphicSetting.ChosenPreset;
         }
     }
     class Panel_GamplayTabsElement : CustomTabsItem
@@ -40,6 +46,10 @@ public partial class UInew_Setting : MonoBehaviour
         public Panel_GamplayTabsElement(VisualElement base__) : base(base__)
         {
         }
+        public void InitValue()
+        {
+            txtbox_mouseSen.value = SettingDAO.Instance.gameplaySetting.MouseSen;
+        }
     }
     class Panel_SoundTabsElement : CustomTabsItem
     {
@@ -47,6 +57,10 @@ public partial class UInew_Setting : MonoBehaviour
 
         public Panel_SoundTabsElement(VisualElement base__) : base(base__)
         {
+        }
+        public void InitValue()
+        {
+            slider_volume.value = SettingDAO.Instance.SoundSetting.volume;
         }
     }
     [SerializeField] UIDocument document;
@@ -62,15 +76,18 @@ public partial class UInew_Setting : MonoBehaviour
         GraphicTab.slider_graphicLevel = root.Q<SliderInt>("slider_graphicPreset");
         GraphicTab.slider_graphicLevel.highValue = SettingDAO.Instance.graphicSetting.GraphicPresetArray.Length - 1;
         GraphicTab.slider_graphicLevel.RegisterValueChangedCallback(OnSlider_GrapicPresetChange);
+        GraphicTab.InitValue();
         tabs.Add(GraphicTab);
         // Gameplay tab
         var GameplayTabs = new Panel_GamplayTabsElement(root.Q<VisualElement>("panel_Gameplay"));
         GameplayTabs.txtbox_mouseSen = root.Q<FloatField>("numbox_MouseSen");
+        GameplayTabs.InitValue();
         tabs.Add(GameplayTabs);
         // Sound tab
         var SoundTab = new Panel_SoundTabsElement(root.Q<VisualElement>("panel_Sound"));
         SoundTab.slider_volume = root.Q<Slider>("Slider_volume");
         SoundTab.slider_volume.RegisterValueChangedCallback(OnSlider_VolumeChange);
+        SoundTab.InitValue();
         tabs.Add(SoundTab);
         
         // Label
