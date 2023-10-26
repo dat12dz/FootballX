@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Setting
   m_EditorClassIdentifier: 
   graphicSetting:
-    ChosenPreset: 0
-    GraphicPresetArray: []
+    ChosenPreset: 3
+    GraphicPresetArray:
+    - {fileID: 11400000, guid: f481ca1593218a141ba02b8bd7c53497, type: 2}
+    - {fileID: 11400000, guid: 9f596e874edb82a4fa6fbd3a12e7be90, type: 2}
+    - {fileID: 11400000, guid: c59f7ee5134370c479c4aa517d37d4cb, type: 2}
+    - {fileID: 11400000, guid: 7e72e964134f07a46817525a373efc69, type: 2}
   gameplaySetting:
-    MouseSen: 2
+    MouseSen: 98
   SoundSetting:
     volume: 0

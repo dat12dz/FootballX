@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
@@ -50,10 +51,26 @@ public class SettingDAO : ScriptableObject
     public class Gameplay : ISaveableContent
     {
        public float MouseSen;
-
+        Assets.Utlis.Rotate LocalPlayerRotate;
         public override void ConstantSaver<T>(T temp)
         {
             
+        }
+        public void SetMouseSen(float val)
+        {
+           MouseSen = val;
+            try
+            {
+                if (!LocalPlayerRotate)
+                {
+                    LocalPlayerRotate = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponentInChildren<Assets.Utlis.Rotate>();
+                    LocalPlayerRotate.MouseSen = val;
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
     [Serializable]
