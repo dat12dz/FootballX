@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,7 +26,7 @@ public class Room
         {
             return RoomDict[RoomID];
         }
-        catch
+        catch (Exception e)
         {
             Logging.LogError("Không thể tìm thấy phòng ID:" + RoomID);
             return null; 
@@ -109,10 +110,16 @@ public class Room
         PlayerNeedRemove.isReady.Value = false;
         PlayerNeedRemove.HideToAllClientInTheRoom(this);
         // Nếu trong phòng kkhoong còn ai -> Xóa phòng
+        if (NetworkManager.Singleton.IsHost)
+        {
+            if (!PlayerNeedRemove.IsHost) 
+            NetworkManager.Singleton.DisconnectClient(PlayerNeedRemove.OwnerClientId);
+        }
         if (playerDict.Count == 0)
         {
             DeleteRoom();
         }
+
         return PlayerNeedRemove;
     }
     public void DeleteRoom()

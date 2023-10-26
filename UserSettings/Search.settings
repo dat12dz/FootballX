@@ -8,7 +8,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.E8DA15E5" = ""
+	"last_search.E8DA15E5" = "newton"
 	"OpenInspectorPreview.E8DA15E5" = "0"
 	"currentGroup.E8DA15E5" = "all"
 	"last_search.3BE40471" = ""
@@ -17,6 +17,9 @@ scopes = {
 	"last_search.110DEAF1" = ""
 	"OpenInspectorPreview.110DEAF1" = "0"
 	"currentGroup.110DEAF1" = "all"
+	"last_search.310DEAF1" = "_CameraDepthAttachment_1920x1009_Depth_MSAA8x t:RenderTexture"
+	"OpenInspectorPreview.310DEAF1" = "0"
+	"currentGroup.310DEAF1" = "asset"
 }
 providers = {
 	packages = {
@@ -88,6 +91,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"newton"
 	""
 	"p: dir=\"Assets\" "
 	"player"

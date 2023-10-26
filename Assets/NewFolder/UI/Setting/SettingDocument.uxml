@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="SettingUI" style="flex-grow: 1; color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0.66);">
+        <ui:Label tabindex="-1" text="SETTING" parse-escape-sequences="true" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); -unity-font: url(&apos;project://database/Assets/NewFolder/Fonts/en_inpin.ttf?fileID=12800000&amp;guid=eb2d226fcfa158c4f96775c076122fd5&amp;type=3#en_inpin&apos;); -unity-font-definition: initial; font-size: 20px; height: 28px; width: 105px;" />
+        <ui:Label tabindex="-1" text="Graphic" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Graphic" style="-unity-font: url(&apos;project://database/Assets/FOnt/Industry%20Test/IndustryTest-Demi.otf?fileID=12800000&amp;guid=387c96c9d0096714cae9f30761986040&amp;type=3#IndustryTest-Demi&apos;); -unity-font-definition: initial; color: rgb(255, 255, 255); position: absolute; top: 4px; left: 286px; bottom: 415px;" />
+        <ui:Label tabindex="-1" text="Gameplay" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Gamplay" style="-unity-font: url(&apos;project://database/Assets/FOnt/Industry%20Test/IndustryTest-Demi.otf?fileID=12800000&amp;guid=387c96c9d0096714cae9f30761986040&amp;type=3#IndustryTest-Demi&apos;); -unity-font-definition: initial; color: rgb(255, 255, 255); position: absolute; top: 5px; left: 370px;" />
+        <ui:Label tabindex="-1" text="Sound" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Sound" style="-unity-font: url(&apos;project://database/Assets/FOnt/Industry%20Test/IndustryTest-Demi.otf?fileID=12800000&amp;guid=387c96c9d0096714cae9f30761986040&amp;type=3#IndustryTest-Demi&apos;); -unity-font-definition: initial; color: rgb(255, 255, 255); position: absolute; top: 5px; left: 467px;" />
+        <ui:VisualElement name="panel_Graphic" style="flex-grow: 1; display: none;">
+            <ui:SliderInt picking-mode="Ignore" label="Graphic mode       Low" value="2" high-value="3" show-input-field="false" name="slider_graphicPreset" style="-unity-font: url(&apos;project://database/Assets/FOnt/Industry%20Test/IndustryTest-Light.otf?fileID=12800000&amp;guid=b40221245b053d84ab93b81031703470&amp;type=3#IndustryTest-Light&apos;); color: rgb(255, 255, 255); -unity-font-definition: initial; -unity-text-align: upper-center;">
+                <ui:Label tabindex="-1" text="High" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            </ui:SliderInt>
+        </ui:VisualElement>
+        <ui:VisualElement name="panel_Sound" style="flex-grow: 1; display: none;">
+            <ui:Slider picking-mode="Ignore" label="Volume" value="1" high-value="1" name="Slider_volume" style="-unity-text-align: lower-center; -unity-font: url(&apos;project://database/Assets/FOnt/Industry%20Test/IndustryTest-Book.otf?fileID=12800000&amp;guid=41c3736f3999f84469a8271dcb927583&amp;type=3#IndustryTest-Book&apos;); -unity-font-definition: initial; color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="panel_Gameplay" style="flex-grow: 1; display: flex;">
+            <ui:FloatField label="Mouse Sensitivity" value="0" name="numbox_MouseSen" style="-unity-text-align: middle-center; -unity-font: url(&apos;project://database/Assets/FOnt/Industry%20Test/IndustryTest-Book.otf?fileID=12800000&amp;guid=41c3736f3999f84469a8271dcb927583&amp;type=3#IndustryTest-Book&apos;); -unity-font-definition: initial; color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

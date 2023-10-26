@@ -25,6 +25,8 @@ public partial class Move : NetworkBehaviour
     public Transform head;
     LayerMask unstandableZone_mask;
     Player player;
+
+    [SerializeField] GameObject UnstandableZone;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -57,6 +59,7 @@ public partial class Move : NetworkBehaviour
         {
             nettrans.TeleportImidiateClientRpc(transform.position);
                 Logging.LogError("Người chơi chạy quá nhanh");
+                return;
         }
         else
         {
@@ -64,8 +67,11 @@ public partial class Move : NetworkBehaviour
                 Collider[] result = new Collider[1];
                 PhysicsScene physics = gameObject.scene.GetPhysicsScene();
                int collider_got = physics.OverlapSphere(newPosition,0.001f, result,unstandableZone_mask,QueryTriggerInteraction.UseGlobal);
-                if (collider_got == 0)
+                if (collider_got == 0 || result[0].gameObject == UnstandableZone)
+                {
                     transform.position = newPosition;
+                }
+
         }
     }
 

@@ -13,11 +13,12 @@ namespace Assets.Utlis
     {
         [SerializeField] Player player;
         Camera PlayerCam;
-        [SerializeField] float MouseSen = 3f;
+        [SerializeField] float MouseSen;
 
         [SerializeField] public Transform HeadObj;
         private void Start()
         {
+            MouseSen = SettingDAO.Instance.gameplaySetting.MouseSen;
             PlayerCam = GetComponent<Camera>();
             if (!PlayerCam) Logging.LogObjectNull(nameof(PlayerCam));
             if (!HeadObj) Logging.LogObjectNull(nameof(HeadObj));

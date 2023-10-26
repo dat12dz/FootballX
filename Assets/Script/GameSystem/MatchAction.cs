@@ -1,4 +1,5 @@
-﻿using Assets.Script.Utlis;
+﻿using Assets.Script;
+using Assets.Script.Utlis;
 using Assets.Utlis;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ public class MatchAction
     GameSystem gameSystem;
     ColorAdjustments color;
     public bool MatchPause;
+    public GameStateEnum gameState;
     object locker = new object();
     public MatchAction(GameSystem g)
     {
@@ -62,7 +64,6 @@ public class MatchAction
     {
         if (!NetworkManager.Singleton.IsServer) return;
         MatchPause = true;
-        lock(locker)
         incTimeSpeed = 0;
         await Task.Delay(sec * 1000);
         ResumeTimer();
@@ -98,17 +99,51 @@ public class MatchAction
         await PauseMatch(5);
        
     }
-    public void ResetGameScene()
+    public void ResetGameScene(bool ResetBall = true)
     {
         var allPlayerInTheGame = gameSystem.room.playerDict;
+        if (ResetBall)
         gameSystem.sceneReference.ball.BackToSpawnPos();
         foreach (PlayerRoomManager Roomanager in allPlayerInTheGame.Values)
         {
             Roomanager.thisPlayer.TelebackToSpawnPoint();
-            Logging.Log("TELE");
+
         }
        
     }
+    public async void StartThrowInPhase(StartThrowInPhase_Info ThrowInTeam)
+    {
+        Player PlayerHoldBall = ThrowInTeam.ThrowInTeam.GetRandomPlayer();
+       string PlayerHoldBallname = PlayerHoldBall != null ? PlayerHoldBall.initialPlayerData.Value.playerName.ToString() : "Nobody";
+        gameSystem.DisplayerInformerClientRpc("Throw In", $"{ThrowInTeam.ThrowInmakaer.initialPlayerData.Value.playerName} shoot the ball out of the Throw-in Range,{PlayerHoldBallname} will be the thrower", 5);
+        await PauseMatch(5,true,false);
+        if (PlayerHoldBall != null)
+        {
+            ResetGameScene();
+            gameState = GameStateEnum.ThrowIn;
+            var PlayerHoldBall_NetworkTransform = PlayerHoldBall.GetComponent<PlayerNetworkTransform>();
+            PlayerHoldBall_NetworkTransform.transform.position = ThrowInTeam.ThrowInPosition;
+            PlayerHoldBall_NetworkTransform.TeleportImidiateClientRpc(ThrowInTeam.ThrowInPosition);
+            PlayerHoldBall.ToggleUnstandbaleZone_ClientRpc(true);
+            PlayerHoldBall.SuppressPlayer(true);            
+            PlayerHoldBall.Grab(gameSystem.sceneReference.ball);
+           
+     
+            Action<Grabable> OnPlayerThrowBall = null;
+            
+            OnPlayerThrowBall = (ball) =>
+            {
+                gameState = GameStateEnum.Playing;
+                ResumeTimer();
+                PlayerHoldBall.SuppressPlayer(false);
+                PlayerHoldBall.OnThrowSomeThing -= OnPlayerThrowBall;
+            };
+            PlayerHoldBall.OnThrowSomeThing += OnPlayerThrowBall;
+           await PauseTimer(50);
+            PlayerHoldBall.Throw(PlayerHoldBall.MinThrowingForce);
+        }
+    }
+
     void NewGame()
     {
         if (NetworkManager.Singleton.IsServer) return;

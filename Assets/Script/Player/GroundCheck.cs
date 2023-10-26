@@ -10,13 +10,13 @@ using UnityEngine;
     public partial class Move
     {
         [SerializeField] Transform GroundCheck;
-         bool isGrounded;
+        bool isGrounded;
         public float GroundCheckRadius;
         [SerializeField] LayerMask GroundMask;
-       [SerializeField] float GravityInit = 9.81f;
+        [SerializeField] float GravityInit = 9.81f;
         float GravityRuntime;
-    // Create a sphere chheck physic
-    Collider[] c = new Collider[1];
+        // Create a sphere chheck physic
+        Collider[] c = new Collider[1];
        bool CheckisGrounded()
        {
             if (!GroundCheck)
