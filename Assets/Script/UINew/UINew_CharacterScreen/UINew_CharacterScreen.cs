@@ -54,6 +54,7 @@ public class UINew_CharacterScreen : MonoBehaviour
 
     void Start()
     {
+        SelectedChar = StartGameInfo.instance.playerData.playerChar;
         root = GetComponent<UIDocument>().rootVisualElement;
         container = root.Q<VisualElement>("container");
         characterScreen = root.Q<VisualElement>("character-screen");
@@ -216,6 +217,7 @@ public class UINew_CharacterScreen : MonoBehaviour
         startScreenHandler.gameObject.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
         //Display(false);
         StartGameInfo.instance.playerData.playerChar = SelectedChar;
+      
     }
 
     public void PlaySelectedAnimation(PlayerModelBase model)

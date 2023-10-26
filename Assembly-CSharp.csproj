@@ -90,6 +90,7 @@
     <None Include="Assets\NewFolder\UI\TitleScreen\TitleScreen.uss" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uxml" />
     <None Include="Assets\Fantasy Skybox FREE\ReleaseNotes.txt" />
+    <None Include="Assets\NewFolder\UI\Setting\SettingDocument.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_shadowcaster_vertex.hlsl" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_forward_vertex.hlsl" />

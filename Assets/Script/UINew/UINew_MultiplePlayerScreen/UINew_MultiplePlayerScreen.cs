@@ -39,12 +39,12 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
         Logging.CheckNLogObjectNull(connectBtn, nameof(connectBtn));
         Logging.CheckNLogObjectNull(localIpBtn, nameof(localIpBtn));
         Application.targetFrameRate = 60;
-
+   
         localIpBtn.clicked += () =>
         {
             inputIp.value = "127.0.0.1";
         };
-
+        inputName.value =  StartGameInfo.instance.playerData.playerName.ToString();
         connectBtn.clicked += () =>
         {
             if (inputName.text == string.Empty)
