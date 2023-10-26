@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/SimpleToolUIPack/Common.uss?fileID=7433441132597879392&amp;guid=41919c03bac4cb3469f4f98538c45c78&amp;type=3#Common" />
+    <ui:VisualElement style="background-color: rgba(255, 255, 255, 0.4); flex-grow: 1; justify-content: space-around;">
+        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+        <ui:Toggle label="Toggle" />
+        <ui:Scroller high-value="100" direction="Horizontal" value="42" />
+        <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" />
+        <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" />
+        <ui:MinMaxSlider picking-mode="Ignore" label="Min/Max Slider" min-value="10" max-value="12" low-limit="-10" high-limit="40" />
+        <ui:RadioButton label="Radio Button" />
+        <ui:IntegerField label="Integer Field" value="42" />
+        <ui:FloatField label="Float Field" value="42.2" />
+        <ui:Foldout text="Foldout" />
+    </ui:VisualElement>
+</ui:UXML>

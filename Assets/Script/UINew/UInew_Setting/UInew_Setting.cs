@@ -63,12 +63,24 @@ public partial class UInew_Setting : MonoBehaviour
             slider_volume.value = SettingDAO.Instance.SoundSetting.volume;
         }
     }
+
+    public static UInew_Setting instance;
     [SerializeField] UIDocument document;
     List<CustomTabsItem> tabs = new();
-    Label lb_btn_Graphic, lb_btn_Gameplay, lb_btn_Sound;
+    Button lb_btn_Graphic, lb_btn_Gameplay, lb_btn_Sound;
 
     private void Start()
     {
+        if(instance == null) 
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(this);
 
         var root = document.rootVisualElement;
         // Graphic tab
@@ -91,9 +103,9 @@ public partial class UInew_Setting : MonoBehaviour
         tabs.Add(SoundTab);
         
         // Label
-        lb_btn_Graphic = root.Q<Label>("lb_Graphic");
-        lb_btn_Gameplay = root.Q<Label>("lb_Gamplay");
-        lb_btn_Sound = root.Q<Label>("lb_Sound");
+        lb_btn_Graphic = root.Q<Button>("lb_Graphic");
+        lb_btn_Gameplay = root.Q<Button>("lb_Gamplay");
+        lb_btn_Sound = root.Q<Button>("lb_Sound");
         lb_btn_Graphic.RegisterCallback<PointerDownEvent>(lb_btn_Graphic_onClick);
         lb_btn_Sound.RegisterCallback<PointerDownEvent>(lb_btn_Sound_onClick);
         lb_btn_Gameplay.RegisterCallback<PointerDownEvent>(lb_btn_Gameplay_onClick);

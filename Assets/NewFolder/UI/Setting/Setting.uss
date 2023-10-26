@@ -1,0 +1,23 @@
+#numbox_MouseSen Label {
+	-unity-font: url(/Assets/FOnt/Industry_Test/IndustryTest-Book.otf);
+}
+
+#numbox_MouseSen TextElement {
+	color: #000;
+}
+
+.setting-btn {
+	background-color: rgba(0,0,0,0);
+	border-width: 0;
+	border-radius: 0;
+	padding: 4px 12px;
+	margin: 0 12px;
+	-unity-font: url(/Assets/FOnt/Industry_Test/IndustryTest-Book.otf);
+	min-width: 32px;
+}
+
+.setting-btn:hover {
+	color: #86c0f4;
+	background-color: rgba(60,150,230,0.5);
+	border-radius: 2px;
+}
