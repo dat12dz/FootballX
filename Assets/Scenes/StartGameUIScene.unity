@@ -124,6 +124,61 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &73151510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73151512}
+  - component: {fileID: 73151511}
+  m_Layer: 0
+  m_Name: Setting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &73151511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73151510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7989cfc77588d4541a2b1b2e05356c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graphicSetting:
+    ChosenPreset: 3
+    GraphicPresetArray:
+    - {fileID: 11400000, guid: f481ca1593218a141ba02b8bd7c53497, type: 2}
+    - {fileID: 11400000, guid: 9f596e874edb82a4fa6fbd3a12e7be90, type: 2}
+    - {fileID: 11400000, guid: c59f7ee5134370c479c4aa517d37d4cb, type: 2}
+    - {fileID: 11400000, guid: 7e72e964134f07a46817525a373efc69, type: 2}
+  gameplaySetting:
+    MouseSen: 90
+  SoundSetting:
+    volume: 0
+--- !u!4 &73151512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73151510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4971828, y: -0.10798389, z: 89.99831}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &164218814
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &348175384
 Transform:
   m_ObjectHideFlags: 0
@@ -8963,3 +9018,4 @@ SceneRoots:
   - {fileID: 1526667995}
   - {fileID: 1731498180}
   - {fileID: 1023487463}
+  - {fileID: 73151512}

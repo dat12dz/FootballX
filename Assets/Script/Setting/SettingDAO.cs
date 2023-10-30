@@ -10,7 +10,7 @@ using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Setting",menuName = "DatDauTechonologies/Setting")]
-public class SettingDAO : ScriptableObject
+public class SettingDAO : MonoBehaviour
 {
     public static SettingDAO Instance;
     public static string appdata;
@@ -18,7 +18,7 @@ public class SettingDAO : ScriptableObject
     {
         Instance = this;
     }
-    private void OnEnable()
+    private void Start()
     {
         appdata = Application.persistentDataPath;
         Application.quitting += () => {
@@ -50,7 +50,7 @@ public class SettingDAO : ScriptableObject
     [Serializable]
     public class Gameplay : ISaveableContent
     {
-       public float MouseSen;
+        public float MouseSen = 90;
         Assets.Utlis.Rotate LocalPlayerRotate;
         public override void ConstantSaver<T>(T temp)
         {
@@ -69,7 +69,7 @@ public class SettingDAO : ScriptableObject
             }
             catch
             {
-
+                
             }
         }
     }
