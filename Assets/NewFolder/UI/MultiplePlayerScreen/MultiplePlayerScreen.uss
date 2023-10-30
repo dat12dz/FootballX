@@ -3,6 +3,44 @@
 	align-items: center;
 }
 
+#setting-btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 48px;
+	height: 48px;
+	padding: 0;
+	margin: 12px 12px 0 0;
+	border-radius: 50%;
+	background-color: black;
+	justify-content: center;
+	align-items: center;
+}
+
+#setting-bg {
+	width: 30px;
+	height: 30px;
+	background-image: url(/Assets/NewFolder/Icons/setting.svg);
+	-unity-background-image-tint-color: white;
+	transition: 0.4s;
+}
+
+#setting-btn:hover {
+	border-color: rgb(200, 200, 200);
+}
+
+#setting-btn:active {
+	border-color: white;
+}
+
+#setting-btn:hover #setting-bg {
+	rotate: 90deg;
+}
+
+#setting-btn:active #setting-bg {
+	scale: 0.8;
+}
+
 #multiple-player-screen {
 	width: 460px;
 	align-items: center;

@@ -65,9 +65,11 @@ public partial class UInew_Setting : MonoBehaviour
     }
 
     public static UInew_Setting instance;
+    
     [SerializeField] UIDocument document;
     List<CustomTabsItem> tabs = new();
     Button lb_btn_Graphic, lb_btn_Gameplay, lb_btn_Sound;
+    VisualElement settingBar;
 
     private void Start()
     {
@@ -83,6 +85,7 @@ public partial class UInew_Setting : MonoBehaviour
         DontDestroyOnLoad(this);
 
         var root = document.rootVisualElement;
+        
         // Graphic tab
         var GraphicTab = new Panel_GraphicsTabsElement(root.Q<VisualElement>("panel_Graphic"));
         GraphicTab.slider_graphicLevel = root.Q<SliderInt>("slider_graphicPreset");
@@ -106,11 +109,34 @@ public partial class UInew_Setting : MonoBehaviour
         lb_btn_Graphic = root.Q<Button>("lb_Graphic");
         lb_btn_Gameplay = root.Q<Button>("lb_Gamplay");
         lb_btn_Sound = root.Q<Button>("lb_Sound");
-        lb_btn_Graphic.RegisterCallback<PointerDownEvent>(lb_btn_Graphic_onClick);
-        lb_btn_Sound.RegisterCallback<PointerDownEvent>(lb_btn_Sound_onClick);
-        lb_btn_Gameplay.RegisterCallback<PointerDownEvent>(lb_btn_Gameplay_onClick);
+        settingBar = root.Q<VisualElement>("setting-bar");
+
+        lb_btn_Graphic.clicked += () =>
+        {
+            lb_btn_Graphic_onClick();
+        };
+
+        lb_btn_Sound.clicked += () => 
+        {
+
+            lb_btn_Sound_onClick();
+        };
+
+        lb_btn_Gameplay.clicked += () =>
+        {
+            lb_btn_Gameplay_onClick();
+        };
+
+
 
     }
+
+    void InitStyle()
+    {
+        settingBar.style.translate = new Translate(new Length(-100f, LengthUnit.Percent), 0);
+
+    }
+
     public void OnSlider_GrapicPresetChange(ChangeEvent<int> ev)
     {
          SettingDAO.Instance.graphicSetting.SetGraphicPreset(ev.newValue);
@@ -143,17 +169,17 @@ public partial class UInew_Setting : MonoBehaviour
             tab.Display(false);
         }
     }
-    void lb_btn_Graphic_onClick(PointerDownEvent t)
+    void lb_btn_Graphic_onClick()
     {
         HideAllTabs();
         tabs[0].Display(true);
     }
-    void lb_btn_Gameplay_onClick(PointerDownEvent t)
+    void lb_btn_Gameplay_onClick()
     {
         HideAllTabs();
         tabs[1].Display(true);
     }
-    void lb_btn_Sound_onClick(PointerDownEvent t)
+    void lb_btn_Sound_onClick()
     {
         HideAllTabs();
         tabs[2].Display(true);

@@ -2,23 +2,23 @@
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
     <Style src="project://database/Assets/NewFolder/UI/Setting/Setting.uss?fileID=7433441132597879392&amp;guid=e84bc75e25f5aa5418b8af96527d0788&amp;type=3#Setting" />
     <ui:VisualElement name="SettingUI" style="flex-grow: 1; color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0.66);">
-        <ui:Label tabindex="-1" text="SETTING" parse-escape-sequences="true" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); font-size: 20px; position: absolute; left: 0; top: 0;" />
-        <ui:VisualElement style="top: 0; width: 100%; justify-content: center; flex-direction: row; align-self: center; height: 32px; align-items: center;">
+        <ui:VisualElement name="setting-bar" style="top: 0; width: 100%; justify-content: center; flex-direction: row; align-self: center; height: 32px; align-items: center; background-color: rgba(0, 0, 0, 0.12);">
+            <ui:Label tabindex="-1" text="SETTING" parse-escape-sequences="true" display-tooltip-when-elided="true" name="setting-label" style="color: rgb(255, 255, 255); font-size: 20px; position: absolute; left: 0; translate: 0 -50%; top: 50%;" />
             <ui:Button text="Graphic" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Graphic" class="setting-btn" />
             <ui:VisualElement style="height: 36%; width: 1px; background-color: rgb(255, 255, 255);" />
             <ui:Button text="Gameplay" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Gamplay" class="setting-btn" />
             <ui:VisualElement style="height: 36%; width: 1px; background-color: rgb(255, 255, 255);" />
             <ui:Button text="Sound" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Sound" class="setting-btn" />
         </ui:VisualElement>
-        <ui:VisualElement name="panel_Graphic" style="flex-grow: 1; display: none;">
-            <ui:SliderInt picking-mode="Ignore" label="Graphic mode       Low" value="2" high-value="3" show-input-field="false" name="slider_graphicPreset" style="-unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Light.otf?fileID=12800000&amp;guid=b40221245b053d84ab93b81031703470&amp;type=3#IndustryTest-Light&apos;); color: rgb(255, 255, 255); -unity-font-definition: initial; -unity-text-align: upper-center;">
+        <ui:VisualElement name="panel_Graphic" style="flex-grow: 1; display: flex;">
+            <ui:SliderInt picking-mode="Ignore" label="Graphic mode       Low" value="2" high-value="3" show-input-field="false" name="slider_graphicPreset" class="slider" style="-unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Light.otf?fileID=12800000&amp;guid=b40221245b053d84ab93b81031703470&amp;type=3#IndustryTest-Light&apos;); color: rgb(255, 255, 255); -unity-font-definition: initial; -unity-text-align: upper-center;">
                 <ui:Label tabindex="-1" text="High" parse-escape-sequences="true" display-tooltip-when-elided="true" />
             </ui:SliderInt>
         </ui:VisualElement>
-        <ui:VisualElement name="panel_Sound" style="flex-grow: 1; display: none;">
-            <ui:Slider picking-mode="Ignore" label="Volume" value="1" high-value="1" name="Slider_volume" style="-unity-text-align: lower-center; -unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Book.otf?fileID=12800000&amp;guid=41c3736f3999f84469a8271dcb927583&amp;type=3#IndustryTest-Book&apos;); -unity-font-definition: initial; color: rgb(255, 255, 255);" />
+        <ui:VisualElement name="panel_Sound" class="slider" style="flex-grow: 1; display: none;">
+            <ui:Slider picking-mode="Ignore" label="Volume" value="0.06" high-value="1" name="Slider_volume" style="-unity-text-align: lower-center; -unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Book.otf?fileID=12800000&amp;guid=41c3736f3999f84469a8271dcb927583&amp;type=3#IndustryTest-Book&apos;); -unity-font-definition: initial; color: rgb(255, 255, 255);" />
         </ui:VisualElement>
-        <ui:VisualElement name="panel_Gameplay" style="flex-grow: 1; display: flex;">
+        <ui:VisualElement name="panel_Gameplay" style="flex-grow: 1; display: none;">
             <ui:FloatField label="Mouse Sensitivity" value="0" name="numbox_MouseSen" style="-unity-text-align: middle-center; color: rgb(255, 255, 255);" />
         </ui:VisualElement>
     </ui:VisualElement>

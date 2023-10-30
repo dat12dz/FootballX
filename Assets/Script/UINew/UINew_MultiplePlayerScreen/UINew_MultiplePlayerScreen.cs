@@ -12,6 +12,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
     private VisualElement root;
     private TextField inputName;
     private TextField inputIp;
+    private Button settingBtn;
     private Button localIpBtn;
     private Button connectBtn;
     private Button hostBtn;
@@ -28,6 +29,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
         inputName = root.Q<TextField>("input-name");
         inputIp = root.Q<TextField>("input-ip");
+        settingBtn = root.Q<Button>("setting-btn");
         localIpBtn = root.Q<Button>("local-ip-btn");
         connectBtn = root.Q<Button>("connect-btn");
         hostBtn = root.Q<Button>("host-btn");
@@ -39,11 +41,17 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
         Logging.CheckNLogObjectNull(connectBtn, nameof(connectBtn));
         Logging.CheckNLogObjectNull(localIpBtn, nameof(localIpBtn));
         Application.targetFrameRate = 60;
-   
+
+        settingBtn.clicked += () =>
+        {
+            
+        };
+
         localIpBtn.clicked += () =>
         {
             inputIp.value = "127.0.0.1";
         };
+
         inputName.value =  StartGameInfo.instance.playerData.playerName.ToString();
         connectBtn.clicked += () =>
         {

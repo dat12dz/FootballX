@@ -1,4 +1,4 @@
-#numbox_MouseSen Label {
+#numbox_MouseSen Label, #Slider_volume Label, #slider_graphicPreset Label{
 	-unity-font: url(/Assets/FOnt/Industry_Test/IndustryTest-Book.otf);
 }
 
@@ -20,4 +20,16 @@
 	color: #86c0f4;
 	background-color: rgba(60,150,230,0.5);
 	border-radius: 2px;
+}
+
+.slider #unity-tracker {
+	border-radius: 3px;
+}
+
+.slider #unity-dragger {
+	transition: 0.1s ease-in-out-cubic;	
+}
+
+.slider .unity-base-field__input:focus #unity-dragger {
+	border-width: 6px;
 }
