@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UIElements;
+
+[RequireComponent(typeof(UIBase))]
 public class UINew_PauseScreen : MonoBehaviour
 {
     //public static UINew_PauseScreen instance;
@@ -32,11 +35,12 @@ public class UINew_PauseScreen : MonoBehaviour
 
         optionsBtn.clicked += () =>
         {
-
+            UInew_Setting.instance.Show();
         };
 
         exitBtn.clicked += () =>
         {
+            NetworkManager.Singleton.Shutdown();
             Application.Quit();
         };
     }

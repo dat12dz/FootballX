@@ -61,6 +61,7 @@
     <Analyzer Include="E:\App\Unity\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PermanentUI.cs" />
     <Compile Include="Assets\NewFolder\Test.cs" />
     <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
   </ItemGroup>

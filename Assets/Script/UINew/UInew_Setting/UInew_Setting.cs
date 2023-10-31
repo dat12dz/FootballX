@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(UIBase))]
 public partial class UInew_Setting : MonoBehaviour
 {
  
@@ -68,8 +69,11 @@ public partial class UInew_Setting : MonoBehaviour
     
     [SerializeField] UIDocument document;
     List<CustomTabsItem> tabs = new();
+    VisualElement container;
     Button lb_btn_Graphic, lb_btn_Gameplay, lb_btn_Sound;
+    Button saveBtn, closeBtn;
     VisualElement settingBar;
+
 
     private void Start()
     {
@@ -104,12 +108,15 @@ public partial class UInew_Setting : MonoBehaviour
         SoundTab.slider_volume.RegisterValueChangedCallback(OnSlider_VolumeChange);
         SoundTab.InitValue();
         tabs.Add(SoundTab);
-        
+
         // Label
+        container = root.Q<VisualElement>("container");
         lb_btn_Graphic = root.Q<Button>("lb_Graphic");
         lb_btn_Gameplay = root.Q<Button>("lb_Gamplay");
         lb_btn_Sound = root.Q<Button>("lb_Sound");
         settingBar = root.Q<VisualElement>("setting-bar");
+        saveBtn = root.Q<Button>("save-btn");
+        closeBtn = root.Q<Button>("close-btn");
 
         lb_btn_Graphic.clicked += () =>
         {
@@ -127,14 +134,33 @@ public partial class UInew_Setting : MonoBehaviour
             lb_btn_Gameplay_onClick();
         };
 
+        closeBtn.clicked += () =>
+        {
+            InitStyle();
+        };
 
-
+        InitStyle();
     }
 
     void InitStyle()
     {
-        settingBar.style.translate = new Translate(new Length(-100f, LengthUnit.Percent), 0);
+        container.style.transitionTimingFunction = new List<EasingFunction>()
+        {
+            new EasingFunction(EasingMode.EaseInCubic)
+        };
+        container.style.display = DisplayStyle.None;
+        container.style.translate = new Translate(new Length(-100f, LengthUnit.Percent), 0);
+    }
 
+    public async void Show()
+    {
+        container.style.transitionTimingFunction = new List<EasingFunction>()
+        {
+            new EasingFunction(EasingMode.EaseOutCubic)
+        };
+        container.style.display = DisplayStyle.Flex;
+        container.style.translate = new Translate(new Length(0, LengthUnit.Percent), 0);
+        await Task.Delay(400);
     }
 
     public void OnSlider_GrapicPresetChange(ChangeEvent<int> ev)

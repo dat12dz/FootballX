@@ -7,6 +7,7 @@ using Unity.Netcode;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(UIBase))]
 public class UINew_MultiplePlayerScreen : MonoBehaviour
 {
     private VisualElement root;
@@ -44,7 +45,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
 
         settingBtn.clicked += () =>
         {
-            
+            UInew_Setting.instance.Show();
         };
 
         localIpBtn.clicked += () =>

@@ -8,6 +8,7 @@ using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
 using TMPro;
 
+[RequireComponent(typeof(UIBase))]
 public class UINew_CharacterScreen : MonoBehaviour
 {
     [SerializeField] AllCharectorAssetReference allChar;

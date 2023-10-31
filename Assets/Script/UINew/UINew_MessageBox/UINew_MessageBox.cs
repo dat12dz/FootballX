@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(UIBase))]
 public class UINew_MessageBox : MonoBehaviour
 {
     static UINew_MessageBox instance;

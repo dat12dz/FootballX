@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Assets.Script.NetCode;
 
+[RequireComponent(typeof(UIBase))]
 public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
 {
     //public static UINew_InGameScreen instance;
