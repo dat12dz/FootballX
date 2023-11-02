@@ -41,7 +41,6 @@ public class UINew_PauseScreen : MonoBehaviour
         exitBtn.clicked += () =>
         {
             NetworkManager.Singleton.Shutdown();
-            Application.Quit();
         };
     }
 

@@ -144,22 +144,26 @@ public partial class UInew_Setting : MonoBehaviour
 
     void InitStyle()
     {
-        container.style.transitionTimingFunction = new List<EasingFunction>()
+        container.style.opacity = 0;
+        container.style.display = DisplayStyle.None;
+
+        settingBar.style.transitionTimingFunction = new List<EasingFunction>()
         {
             new EasingFunction(EasingMode.EaseInCubic)
         };
-        container.style.display = DisplayStyle.None;
-        container.style.translate = new Translate(new Length(-100f, LengthUnit.Percent), 0);
+        settingBar.style.translate = new Translate(new Length(-100f, LengthUnit.Percent), 0);
     }
 
     public async void Show()
     {
-        container.style.transitionTimingFunction = new List<EasingFunction>()
+        container.style.display = DisplayStyle.Flex;
+        container.style.opacity = 1;
+
+        settingBar.style.transitionTimingFunction = new List<EasingFunction>()
         {
             new EasingFunction(EasingMode.EaseOutCubic)
         };
-        container.style.display = DisplayStyle.Flex;
-        container.style.translate = new Translate(new Length(0, LengthUnit.Percent), 0);
+        settingBar.style.translate = new Translate(new Length(0, LengthUnit.Percent), 0);
         await Task.Delay(400);
     }
 
