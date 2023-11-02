@@ -90,4 +90,13 @@ public class TeamClass
         return PlayerList[UnityEngine.Random.Range(0, PlayerList.Count)];
         else return null;
     }
+    public TeamSeparateSceneRef GetSceneRefernce(GameSystem g)
+    {
+        if (team == TeamEnum.Red)
+        {
+            return g.sceneReference.RedTeanSceneRef;
+        }
+        else
+            return g.sceneReference.BlueTeamSceneRef;
+    }
 }

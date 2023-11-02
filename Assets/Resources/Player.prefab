@@ -483,7 +483,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -520,6 +520,10 @@ MonoBehaviour:
   playereye: {fileID: 7921253545775277628}
   SafeDistanceCheck: 2
   head: {fileID: 1692322850984172057}
+  SuppressZoneAnchor:
+    m_InternalValue: {x: 0, y: 0, z: 0}
+  SuppressRadius:
+    m_InternalValue: 0
   UnstandableZone: {fileID: 8650669385522179554}
   AirResist: 4.64
   jumpHeight: 1

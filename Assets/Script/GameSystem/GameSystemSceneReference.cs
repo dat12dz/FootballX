@@ -10,6 +10,7 @@ using UnityEngine.Rendering;
 [Serializable]
     public class GameSystemSceneReference
     {
+     public TeamSeparateSceneRef RedTeanSceneRef, BlueTeamSceneRef;
         [Header("Prefab")]
         [SerializeField]
         public Ball ballPrefab;
@@ -17,7 +18,8 @@ using UnityEngine.Rendering;
         public Ball ball;
         public Transform ballSpawnPos;
         public Transform GameSystem;
-    public Volume PostProcessingVolume;
+        public Volume PostProcessingVolume;
+        
         public void Init(GameSystem g) 
         {
             if (NetworkManager.Singleton.IsServer)
@@ -28,3 +30,13 @@ using UnityEngine.Rendering;
             }     
         }
     }
+[Serializable]
+public class TeamSeparateSceneRef
+{
+    public GoalDetect Goal;
+    [Header("Corner Kick")]
+    public Transform CornerKickBallSetterL, CornerKickBallSetterR;
+    public Transform CornerKickPlayerPosL, CornerKickPlayerPosR;
+    [Header("Goal Keeper")]
+    public Player GoalKeeper;
+}

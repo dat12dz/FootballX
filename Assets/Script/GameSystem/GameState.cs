@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-   public enum GameStateEnum
+   public enum GameStateEnum : byte
     {
         Playing,
-        ThrowIn
+        ThrowIn,
+        CornerKick
     }
 
