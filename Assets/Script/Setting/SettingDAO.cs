@@ -79,6 +79,7 @@ public class SettingDAO : MonoBehaviour
         public float volume;
         public void ChangeVolume(float v)
         {
+            volume = v;
             AudioListener.volume = v;
         }
 

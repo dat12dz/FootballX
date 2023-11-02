@@ -60,7 +60,7 @@ public class FootIK : MonoBehaviour
             {
                 var FootPlacePoint = hitInfo.point;
  
-                foot.StartInterpolated(foot.footIK.transform.position,hitInfo.point + vel * Spacing);
+                foot.StartInterpolated(foot.footIK.transform.position,hitInfo.point + player.Vel * Spacing);
                 foot.LastFootPlaceMent = FootPlacePoint;
                 foot.footIK.transform.rotation = Quaternion.Euler(baseModel.ActiveModel.transform.eulerAngles );
                 return true;
@@ -78,7 +78,7 @@ public class FootIK : MonoBehaviour
             LFoot.Interpolater(FootPlaceMentCurve);
         if (LFoot.currentRate <= 0 || LFoot.currentRate > 1)
             RFoot.Interpolater(FootPlaceMentCurve);
-        if (vel.magnitude > 0.01f)
+        if (player.Vel.sqrMagnitude > 0.01f)
         {
             FootPlacement(LFoot, DefaultFootPlacementDistance);
             FootPlacement(RFoot, DefaultFootPlacementDistance);
@@ -102,7 +102,7 @@ public class FootIK : MonoBehaviour
     {
        
     }
-    Vector3 vel;
+
     Vector3 lastPos;
     bool isStopped_;
     bool isStopped
@@ -127,12 +127,12 @@ public class FootIK : MonoBehaviour
     private void Update()
     {
         if (player == null) return;
-       vel =  transform.position - lastPos;
-      VariableHelper.TrackForVariableNotNull(() => baseModel.animator , () =>   baseModel.WingHandRunAnim(vel.magnitude),true);
+       player.Vel =  transform.position - lastPos;
+      VariableHelper.TrackForVariableNotNull(() => baseModel.animator , () =>   baseModel.WingHandRunAnim(player.Vel.magnitude),true);
 
         lastPos = transform.position;
         UpdateFootPosition();
-        isStopped = vel.magnitude < 0.01f;
+        isStopped = player.Vel.magnitude < 0.01f;
         if (!isStopped)
         {
             baseModel.Rotate(false);

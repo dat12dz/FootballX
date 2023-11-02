@@ -62,6 +62,7 @@ public partial class UInew_Setting : MonoBehaviour
         public void InitValue()
         {
             slider_volume.value = SettingDAO.Instance.SoundSetting.volume;
+      
         }
     }
 

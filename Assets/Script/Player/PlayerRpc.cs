@@ -16,7 +16,7 @@ public partial class Player
     [ServerRpc]
     public void GrabItemOrThrowServerRpc(float ThrowForce = 0)
     {
-        if (ThrowForce < MinThrowingForce) // pick up item
+        if (!grabitem && !isGoalKeeper) // if you are not the goalkeeper so notdoing anything
         {
 
             RaycastHit r;
@@ -33,15 +33,17 @@ public partial class Player
             }
         }
       
-        if (ThrowForce > MinThrowingForce && MaxThrowingForce > ThrowForce && isGrabed.Value) // throw item
+        else // throw item
         {
             Throw(ThrowForce);
         }
         isGrabed.Value = grabitem != null;
     }
     public Action<Grabable> OnThrowSomeThing;
+    public Action OnShootBall;
     public void Grab(Grabable GrabAbleItem)
     {
+      
         if (GrabAbleItem != null && !GrabAbleItem.isGrab())
             GrabAbleItem.Grab(Graber);
         grabitem = GrabAbleItem;

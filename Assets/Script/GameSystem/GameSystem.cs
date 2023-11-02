@@ -67,7 +67,19 @@ public class GameSystem : SceneNetworkBehavior
             SceneManager.MoveGameObjectToScene(player.gameObject, gameObject.scene);
             thisPlayerInfo.isInGame.Value = true;
             thisPlayerInfo.System = this;
-            counter++;     
+            if (player.thisPlayer.isGoalKeeper)
+            {
+                if (counter == 4)
+                {
+                    sceneReference.BlueTeamSceneRef.GoalKeeper = player.thisPlayer;
+                }
+                if (counter == 9)
+                {
+                    sceneReference.RedTeanSceneRef.GoalKeeper = player.thisPlayer;
+                }
+            }
+            counter++;
+          
         }
     }
     public override void OnNetworkSpawn()

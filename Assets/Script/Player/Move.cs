@@ -25,7 +25,10 @@ public partial class Move : NetworkBehaviour
     public Transform head;
     LayerMask unstandableZone_mask;
     Player player;
-
+    [Header("Suppress Zone")]
+   public NetworkVariable<Vector3> SuppressZoneAnchor;
+    
+    public NetworkVariable<float> SuppressRadius;
     [SerializeField] GameObject UnstandableZone;
     void Start()
     {
@@ -54,8 +57,18 @@ public partial class Move : NetworkBehaviour
     [ServerRpc(Delivery = RpcDelivery.Unreliable)]
     public void MovePlayerXZServerRpc(float x, float z)
     {
-        if (!player.isSuppress.Value)
-        if (MathHelper.DistanceNoSqrt(new Vector2(x, z), new Vector2(transform.position.x, transform.position.z)) > MathHelper.Power2(SafeDistanceCheck))
+        Vector2 SuppressPlayerCenter()
+        {
+            if (SuppressRadius.Value > 0)
+            {
+                return new Vector2 (SuppressZoneAnchor.Value.x, SuppressZoneAnchor.Value.z);
+            }
+            else
+            {
+                return new Vector2(transform.position.x, transform.position.z);
+            }
+        }
+        if (MathHelper.DistanceNoSqrt(new Vector2(x, z), SuppressPlayerCenter()) > MathHelper.Power2(SafeDistanceCheck))
         {
             nettrans.TeleportImidiateClientRpc(transform.position);
                 Logging.LogError("Người chơi chạy quá nhanh");
@@ -133,15 +146,11 @@ public partial class Move : NetworkBehaviour
 
             if (MoveDirectionn != Vector3.zero)
             {
-                var newX = MoveDirectionn.x;
-                var newZ = MoveDirectionn.z;
              
-                if (!player.isSuppress.Value)
-                {
-                  
+                if (!(player.isSuppress.Value && SuppressRadius.Value == 0))
+                {                  
                         MovePlayer(MoveDirectionn * RuntimeSpeed * Time.deltaTime);
                         MovePlayerXZServerRpc(transform.position.x, transform.position.z);
-                    
                 }
 
             }
@@ -177,6 +186,7 @@ public partial class Move : NetworkBehaviour
         {
             jump = false;
         }
+
     }
     [SerializeField] float jumpHeight = 9;
     bool jump = true;

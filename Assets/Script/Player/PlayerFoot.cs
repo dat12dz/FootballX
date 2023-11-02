@@ -31,6 +31,7 @@ public class PlayerFoot : MonoBehaviour
         if (NetworkManager.Singleton.IsServer)
         if (collision.gameObject.layer == ballMask)
         {
+                if (thisPlayer.Vel.sqrMagnitude > 0)
             thisPlayer.Shootball(ball);
         }
      ;

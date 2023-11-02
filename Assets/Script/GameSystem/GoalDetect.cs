@@ -8,6 +8,7 @@ public class GoalDetect : MonoBehaviour
 {
    public GameSystem.Team ownerTeam;
     GameSystem thisGamesystem;
+    
     private void Start()
     {
         thisGamesystem = transform.root.GetComponent<GameSystem>();
