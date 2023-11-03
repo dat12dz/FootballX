@@ -46,12 +46,12 @@ public class FootIK : MonoBehaviour
         if (physisScene != null)
         {
          
-             isSucess =  physisScene.Raycast(foot.Raycaster.position, Vector3.down,out hitInfo,Mathf.Infinity, groundMask);
+             isSucess =  physisScene.Raycast(foot.Raycaster.position, Vector3.down,out hitInfo,3, groundMask);
 
         }
         else
         {
-            isSucess = Physics.Raycast(foot.Raycaster.position, Vector3.down, out hitInfo, Mathf.Infinity, groundMask);
+            isSucess = Physics.Raycast(foot.Raycaster.position, Vector3.down, out hitInfo, 3, groundMask);
 
         }
         if (isSucess && hitInfo.collider != null)
@@ -59,8 +59,11 @@ public class FootIK : MonoBehaviour
             if (MathHelper.DistanceNoSqrt(hitInfo.point, foot.LastFootPlaceMent) >= distanceCheck * distanceCheck)
             {
                 var FootPlacePoint = hitInfo.point;
- 
-                foot.StartInterpolated(foot.footIK.transform.position,hitInfo.point + player.Vel * Spacing);
+                Vector3 PlayerVel()
+                {
+                        return player.Vel; 
+                }
+                foot.StartInterpolated(foot.footIK.transform.position,hitInfo.point + PlayerVel() * Spacing);
                 foot.LastFootPlaceMent = FootPlacePoint;
                 foot.footIK.transform.rotation = Quaternion.Euler(baseModel.ActiveModel.transform.eulerAngles );
                 return true;
@@ -187,6 +190,8 @@ class FootRef
         try
         {
             footIK.transform.position = new Vector3(CurrentXZ.x, CurvedY, CurrentXZ.y);
+            Debug.Log(CurvedY + " " + (Destination.y - StartPosition.y) * currentRate);
+     
         }
         catch
         {

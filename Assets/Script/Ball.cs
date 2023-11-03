@@ -1,5 +1,6 @@
-using Assets.Script;
+﻿using Assets.Script;
 using Assets.Script.NetCode;
+using Assets.Utlis;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -10,6 +11,7 @@ using UnityEngine;
 
 public class Ball : Grabable
 {
+   
    public Player lastToucher;
    public Rigidbody rb;
     // Client instance
@@ -17,6 +19,7 @@ public class Ball : Grabable
     NetworkObject thisNetobj;
     public GameSystem thisSceneGameSystem;
     Transform ballSpawnPoint;
+    public OnCatchableZoneEnum OnCatchableZone = OnCatchableZoneEnum.None;
     private void Awake()
     {
       //  base.Awake();
@@ -57,10 +60,20 @@ public class Ball : Grabable
     {
         base.Update();
     }
-
-    public override void Grab(Transform graber_)
+    
+    public override bool Grab(Transform graber_,bool isPlayerAction)
     {
-        base.Grab(graber_);
+        Player Graber = graber_.root.GetComponent<Player>();
+        if (isPlayerAction && Graber.isGoalKeeper)
+        {
+            if ((byte)OnCatchableZone != (byte)Graber.team.team)
+            {
+                Logging.LogError("Không thể nhặt bóng trong vùng cấm nhặt");
+                return false;
+            }
+          
+        }
+       return base.Grab(graber_);
     }
     public void Suppress(bool t)
     {

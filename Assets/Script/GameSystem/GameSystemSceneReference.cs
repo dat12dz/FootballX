@@ -39,4 +39,5 @@ public class TeamSeparateSceneRef
     public Transform CornerKickPlayerPosL, CornerKickPlayerPosR;
     [Header("Goal Keeper")]
     public Player GoalKeeper;
+    public Transform GoalKeeperBallSetter;
 }

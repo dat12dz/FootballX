@@ -7,8 +7,6 @@ using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Assets.Script.Player
-{
      class ControlKey
     {
         public static KeyCode Shoot = KeyCode.Mouse0;
@@ -20,4 +18,4 @@ namespace Assets.Script.Player
         public static KeyCode GrabNThrow = KeyCode.Mouse1;
        
     }
-}
+

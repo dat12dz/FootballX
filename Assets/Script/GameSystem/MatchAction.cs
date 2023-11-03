@@ -2,9 +2,6 @@
 using Assets.Script.Utlis;
 using Assets.Utlis;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,7 +20,6 @@ public class MatchAction
     object locker = new object();
     public MatchAction(GameSystem g)
     {
-      
         gameSystem = g;
         Volume volume = g.sceneReference.PostProcessingVolume;
         volume.profile.TryGet(out color);
@@ -221,10 +217,23 @@ public class MatchAction
        gameSystem.DisplayerInformerClientRpc("Ball out", $"{PlayerShootTheBallOut} shoot the ball out of the map",5);
        await PauseMatch(5, true);
        var SceneReferencec = team.GetSceneRefernce(gameSystem);
-        if (SceneReferencec.GoalKeeper)
+        Player GoalKeeperPlayer = SceneReferencec.GoalKeeper;
+        if (GoalKeeperPlayer)
         {
-            SceneReferencec.GoalKeeper.Grab(gameSystem.sceneReference.ball);
+            // Set ball to the ball
+            gameSystem.sceneReference.ball.transform.position = SceneReferencec.GoalKeeperBallSetter.position;
             ResetGameScene(false);
+            GoalKeeperPlayer.CanGrab = false;
+
+            Action OnShoot = null;
+            OnShoot =() =>
+            {            
+                GoalKeeperPlayer.OnShootBall -= OnShoot;
+            };
+            GoalKeeperPlayer.OnShootBall += OnShoot;
+
+            GoalKeeperPlayer.CanGrab = true;
+
         }
     }
     void NewGame()

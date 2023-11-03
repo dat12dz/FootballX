@@ -1,6 +1,6 @@
 ﻿
 using Assets.Script.NetCode;
-using Assets.Script.Player;
+
 using Assets.Script.Utlis;
 using Assets.Utlis;
 using System;

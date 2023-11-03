@@ -26,11 +26,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ADVANCED_LIGHTING
-  - _BILLBOARD
-  m_InvalidKeywords:
-  - _ALPHATOCOVERAGE_ON
-  - _BILLBOARD_ON
-  - _ENVIRONMENTREFLECTIONS_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -93,12 +89,12 @@ Material:
     m_Floats:
     - _AdvancedLighting: 1
     - _AlphaClip: 0
-    - _AlphaToCoverage: 1
+    - _AlphaToCoverage: 0
     - _AngleFading: 0
     - _BendFlattenStrength: 1
     - _BendMode: 0
     - _BendPushStrength: 1
-    - _Billboard: 1
+    - _Billboard: 0
     - _Blend: 0
     - _BumpScale: 0
     - _ColorMapHeight: 0
@@ -127,7 +123,7 @@ Material:
     - _ReceiveShadows: 1
     - _Scalemap: 0
     - _ShadowBiasCorrection: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.209
     - _SmoothnessTextureChannel: 0
     - _SpecularAmount: 0.1
     - _SpecularHighlights: 1
@@ -136,7 +132,7 @@ Material:
     - _Translucency: 0.791
     - _TranslucencyDirect: 1
     - _TranslucencyFalloff: 4
-    - _TranslucencyIndirect: 0
+    - _TranslucencyIndirect: 0.058
     - _TranslucencyOffset: 0
     - _VertexDarkening: 0.527
     - _WindAmbientStrength: 0.2
@@ -157,8 +153,8 @@ Material:
     - _BendTint: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0.055409443, g: 0.055409443, b: 0.055409443, a: 1}
-    - _FadeFar: {r: 50, g: 100, b: 0, a: 0}
-    - _FadeNear: {r: 0.25, g: 0.5, b: 0, a: 0}
+    - _FadeFar: {r: 64.89293, g: 121.38223, b: 0, a: 0}
+    - _FadeNear: {r: 0, g: 2.1967878, b: 0, a: 0}
     - _FadeParams: {r: 50, g: 100, b: 0, a: 0}
     - _HueVariation: {r: 0.96470594, g: 1, b: 0, a: 0.15}
     - _LODDebugColor: {r: 1, g: 1, b: 1, a: 1}

@@ -325,7 +325,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -574,6 +574,8 @@ MonoBehaviour:
   PlayerLookAt: {fileID: 5407002455984239018}
   team:
     team: 0
+  isGoalKeeper: 0
+  Vel: {x: 0, y: 0, z: 0}
   Toggle: {fileID: 1318876011583078747}
   isInGame:
     m_InternalValue: 0
