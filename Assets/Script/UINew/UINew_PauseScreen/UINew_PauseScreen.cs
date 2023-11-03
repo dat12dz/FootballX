@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class UINew_PauseScreen : MonoBehaviour
 {
     //public static UINew_PauseScreen instance;
-    private VisualElement root;
+    public static VisualElement root;
     private static VisualElement container;
     private static VisualElement pauseScreen;
     private Button resumeBtn;
@@ -30,6 +30,8 @@ public class UINew_PauseScreen : MonoBehaviour
 
         resumeBtn.clicked += () =>
         {
+            Player.localPlayer.GetComponent<Move>().enabled = true;
+            Player.localPlayer.GetComponentInChildren<Assets.Utlis.Rotate>().enabled = true;
             InitStyle();
         };
 
