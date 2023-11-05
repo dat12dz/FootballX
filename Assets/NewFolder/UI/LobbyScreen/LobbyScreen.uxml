@@ -11,9 +11,9 @@
                     <ui:Label tabindex="-1" text="Tên phòng: " display-tooltip-when-elided="true" name="room-name" />
                 </ui:VisualElement>
                 <ui:VisualElement name="top-right-lobby">
-                    <ui:VisualElement name="exit-btn">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit-btn" class="reset-btn">
                         <ui:VisualElement name="exit-bg" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
-                    </ui:VisualElement>
+                    </ui:Button>
                     <ui:Label tabindex="-1" text="Id: " display-tooltip-when-elided="true" name="room-id" />
                 </ui:VisualElement>
             </ui:VisualElement>
