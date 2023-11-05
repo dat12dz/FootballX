@@ -1,4 +1,5 @@
-﻿using Assets.Script.Networking.NetworkRoom;
+﻿using Assets.Script.NetCode;
+using Assets.Script.Networking.NetworkRoom;
 using Assets.Script.Utlis;
 using Assets.Utlis;
 using System;
@@ -150,11 +151,11 @@ public class Room
             if (scene == LoadGame)
             {
                 UI_RoomRenderPnl.instance.gameObject.SetActive(false);
-                var RootGameObj =  LoadGame.GetRootGameObjects();
+              
                 try
                 {
-                    GameSceneSpawn loadedGameSystem = RootGameObj[0].GetComponent<GameSceneSpawn>();
-                    loadedGameSystem.StartSpawn(this);
+                    GameSystem loadedGameSystem = SceneHelper.GetGameSystem(scene);
+                    loadedGameSystem.Init(this);
              
                 }
                 catch (Exception e) 

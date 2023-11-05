@@ -29,25 +29,19 @@ static class NetworkClient_
         netmang.GetComponent<UnityTransport>().ConnectionData.Address = ip_;
         if (!FirstTimeInit)
         {
-            netmang.OnClientStarted += Netmang_OnClientStarted;
+            //netmang.OnClientStarted += Netmang_OnClientStarted;
             FirstTimeInit = false;
         }
       
   
         if (netmang.StartClient())
         {
-            
+            SceneManager.LoadScene(1);
         }
       
 
     }
 
-     static void Netmang_OnClientStarted()
-    {
-       
-        SceneManager.LoadScene(1);
-      
-    }
 }
 public class ClientApproveData
 {

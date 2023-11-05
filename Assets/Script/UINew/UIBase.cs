@@ -17,6 +17,7 @@ public class UIBase : MonoBehaviour
         {
             btn.clicked += () =>
             {
+                if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.KeypadEnter)) return;
                 audioSource.Play();
             };
         }

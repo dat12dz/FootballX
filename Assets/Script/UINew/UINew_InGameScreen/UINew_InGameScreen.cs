@@ -23,7 +23,8 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
     static private VisualElement kickBar;
     static private VisualElement kickBarProgress;
     static private VisualElement kickBarOverrideBackground;
-    [SerializeField] byte value;
+
+    [SerializeField]float value;
     
     void Start()
     {
@@ -55,9 +56,13 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
         
         pauseBtn.clicked += () =>
         {
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.KeypadEnter)) return;
+            Player.localPlayer.GetComponent<Move>().enabled = false;
+            Player.localPlayer.GetComponentInChildren<Assets.Utlis.Rotate>().enabled = false;
             UINew_PauseScreen.Show();
         };
 
+        
 
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         instance = this;
@@ -120,7 +125,6 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
 
     void LockCursor()
     {
-
         if (isCursorLocked)
         {
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
@@ -139,14 +143,35 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
         {
             isCursorLocked = !isCursorLocked;
             LockCursor();
-            ProgressBar(value);
         }
+        ProgressBar();
     }
 
-    public static void ProgressBar(byte value)
+    public void ProgressBar()
     {
-        float c = 1 - ((255/100) * (float)value / 255);
+        float value;
+        float minValue;
+        float maxValue;
+        if (Player.localPlayer.grabitem)
+        {
+            value = Player.localPlayer.FinalThrowForce;
+            minValue = Player.localPlayer.MinThrowingForce;
+            maxValue = Player.localPlayer.MaxThrowingForce;
+        }
+
+        else
+        {
+            value = Player.localPlayer.FinalShootForce;
+            minValue = Player.localPlayer.MinUltraShootForce;
+            maxValue = Player.localPlayer.MaxUltraShootForce;
+        }
+
+        value = (value - minValue) / (maxValue - minValue) * 100;
+
+        float c = 1 - ((255/100) * (float) value / 255);
         kickBarOverrideBackground.style.backgroundColor = new Color(1, c, c);
+
+
         kickBarProgress.style.width = new StyleLength(new Length(value, LengthUnit.Percent));
     }
 

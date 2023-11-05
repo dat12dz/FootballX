@@ -29,9 +29,11 @@ public partial class Move : NetworkBehaviour
    public NetworkVariable<Vector3> SuppressZoneAnchor;
     
     public NetworkVariable<float> SuppressRadius;
+    public Collider SuppressZone;
     [SerializeField] GameObject UnstandableZone;
     void Start()
     {
+        
         controller = GetComponent<CharacterController>();
         if (controller == null) Logging.LogObjectNull(nameof(controller));
         RuntimeSpeed = InitSpeed;
@@ -57,22 +59,46 @@ public partial class Move : NetworkBehaviour
     [ServerRpc(Delivery = RpcDelivery.Unreliable)]
     public void MovePlayerXZServerRpc(float x, float z)
     {
+        bool? SuppressionZoneCheck() // Retturn true khi người chơi đang ở trong vùng 
+        {
+            if (SuppressZone && player.isSuppress.Value)
+            {
+                Collider[] hit = new Collider[1];
+                player.thisPhysicScene.OverlapSphere(new Vector3(x, transform.position.y, z), 0.1f, hit, LayerMask.GetMask("GoalkeeperZone"), QueryTriggerInteraction.Collide);
+                if (hit.Length > 0 && hit[0] == SuppressZone)
+                {
+                    return true;
+                }
+                else
+               return false;    
+            }
+            return null;
+        }
+        bool? SuppressionZoneCheckResult = SuppressionZoneCheck();
+   
         Vector2 SuppressPlayerCenter()
         {
+
             if (SuppressRadius.Value > 0)
             {
                 return new Vector2 (SuppressZoneAnchor.Value.x, SuppressZoneAnchor.Value.z);
-            }
-            else
-            {
+            }          
                 return new Vector2(transform.position.x, transform.position.z);
-            }
+            
+       
         }
-        if (MathHelper.DistanceNoSqrt(new Vector2(x, z), SuppressPlayerCenter()) > MathHelper.Power2(SafeDistanceCheck))
+        if (MathHelper.DistanceNoSqrt(new Vector2(x, z), SuppressPlayerCenter()) > MathHelper.Power2(SafeDistanceCheck) || SuppressionZoneCheckResult == false)
         {
             nettrans.TeleportImidiateClientRpc(transform.position);
                 Logging.LogError("Người chơi chạy quá nhanh");
-                return;
+
+            if (IsHost && player.networkTransform_.ClientAuth.Value)
+            {
+                MovePlayer(-MoveDirectionn * RuntimeSpeed * Time.deltaTime);
+            }
+            return;
+       
+              
         }
         else
         {
@@ -106,12 +132,12 @@ public partial class Move : NetworkBehaviour
         controller.Move(new Vector3(x, y, z));
     }
     // Update is called once per frame
-
+    Vector3 MoveDirectionn = new Vector3();
     void Update()
     {
 
-        
-        var MoveDirectionn = new Vector3();
+
+        MoveDirectionn = Vector3.zero;
 
         if (IsLocalPlayer)
         {
@@ -147,8 +173,9 @@ public partial class Move : NetworkBehaviour
             if (MoveDirectionn != Vector3.zero)
             {
              
-                if (!(player.isSuppress.Value && SuppressRadius.Value == 0))
+                if (!(player.isSuppress.Value && SuppressRadius.Value == 0 && SuppressZone == null))
                 {                  
+                        
                         MovePlayer(MoveDirectionn * RuntimeSpeed * Time.deltaTime);
                         MovePlayerXZServerRpc(transform.position.x, transform.position.z);
                 }

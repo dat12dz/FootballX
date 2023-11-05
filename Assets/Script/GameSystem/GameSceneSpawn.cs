@@ -13,7 +13,7 @@ internal class GameSceneSpawn   :MonoBehaviour
     [SerializeField] public GameSystem currGameSystem;
    public void StartSpawn(Room r)
     {
-          currGameSystem =  GameObject.Instantiate(gameSystem);
+        currGameSystem =  GameObject.Instantiate(gameSystem);
         SceneManager.MoveGameObjectToScene(currGameSystem.gameObject, gameObject.scene);
         currGameSystem.Init(r);
         currGameSystem.NetworkObject.Spawn(true);

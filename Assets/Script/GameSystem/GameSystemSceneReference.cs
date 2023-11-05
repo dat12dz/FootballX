@@ -40,4 +40,5 @@ public class TeamSeparateSceneRef
     [Header("Goal Keeper")]
     public Player GoalKeeper;
     public Transform GoalKeeperBallSetter;
+    public Collider GoalKeeperZone;
 }

@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class Ball : Grabable
 {
-   
+    [SerializeField] SoundPlayer soundPlayer;
    public Player lastToucher;
    public Rigidbody rb;
     // Client instance
@@ -74,6 +74,10 @@ public class Ball : Grabable
           
         }
        return base.Grab(graber_);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+      soundPlayer.PlayRandomSound();
     }
     public void Suppress(bool t)
     {

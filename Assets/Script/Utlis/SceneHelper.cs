@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Unity.Netcode;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -39,11 +40,10 @@ namespace Assets.Script.NetCode
         public static GameSystem GetGameSystem(Scene scene)
         {
             var allSceneObj = scene.GetRootGameObjects();
-            GameSceneSpawn res = allSceneObj[0].GetComponent<GameSceneSpawn>();
-            if (NetworkManager.Singleton.IsClient)
+            GameSystem res = GameObject.FindAnyObjectByType<GameSystem>();
+            if (!NetworkManager.Singleton.IsServer) 
                 return GameSystem.instance;
-            return res.currGameSystem;
-            
+            return res;              
         }
     }
 }

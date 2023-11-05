@@ -36,7 +36,6 @@ class CornerKickCheck : MonoBehaviour
         }
         else
         {
-
             gameSystem.MatchAction.GoalKeeperTakeTheBall(PlayerShootTheBall.initialPlayerData.Value.playerName.ToString(), CornerKickMakerTeam);
         }
     }

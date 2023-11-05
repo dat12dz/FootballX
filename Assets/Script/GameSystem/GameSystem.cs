@@ -5,14 +5,12 @@ using Assets.Utlis;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 [CheckNullProperties]
 public class GameSystem : SceneNetworkBehavior
@@ -52,6 +50,8 @@ public class GameSystem : SceneNetworkBehavior
     public GameSystemSceneReference sceneReference;
     public NetworkVariable<int> ScoreBlueTeam;
     public NetworkVariable<int> ScoreRedTeam;
+    
+    [SerializeField] public SoundPlayer WhiselSoundPlayer;
     public void Init(Room room_)
     {
         // On Server code
@@ -69,24 +69,25 @@ public class GameSystem : SceneNetworkBehavior
             thisPlayerInfo.System = this;
             if (player.thisPlayer.isGoalKeeper)
             {
-                if (counter == 4)
-                {
-                    sceneReference.BlueTeamSceneRef.GoalKeeper = player.thisPlayer;
-                }
-                if (counter == 9)
+                if (player.SlotInRoom.Value == 4)
                 {
                     sceneReference.RedTeanSceneRef.GoalKeeper = player.thisPlayer;
+                }
+                if (player.SlotInRoom.Value == 9)
+                {
+                    sceneReference.BlueTeamSceneRef.GoalKeeper = player.thisPlayer;
                 }
             }
             counter++;
           
         }
+        NetworkObject.Spawn();
     }
     public override void OnNetworkSpawn()
     {
-        instance = this;
-        base.OnNetworkSpawn();
+        instance = this;      
         sceneReference.Init(this);
+        base.OnNetworkSpawn();
         MatchAction = new MatchAction(this);
         MatchAction.OnStartMatch();
      
@@ -96,7 +97,7 @@ public class GameSystem : SceneNetworkBehavior
         Application.targetFrameRate = 60;
         if (!NetworkObject.IsSpawned)
         {
-            Destroy(gameObject);
+           
             return;
         }
         GameID = GameSystemList.Add(this);
@@ -168,4 +169,28 @@ public class GameSystem : SceneNetworkBehavior
           ps.Simulate(Time.fixedDeltaTime);
     }
 
+    public PlayerRoomManager[] CaculateRank()
+    {
+        PlayerRoomManager[] PlayerSortedRank;
+        PlayerSortedRank = room.playerDict.Values.ToArray();
+       Array.Sort(PlayerSortedRank,new ComparePlayer());
+        return PlayerSortedRank; 
+    }
+    class ComparePlayer : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            var PlayerX = (PlayerRoomManager)x;
+            var PlayerY = (PlayerRoomManager)y;
+            if (PlayerX.thisPlayer.Score > PlayerY.thisPlayer.Score)
+            {
+                return -1;
+            }
+            if (PlayerX.thisPlayer.Score < PlayerY.thisPlayer.Score)
+            {
+                return 1;
+            }
+            return 0;
+        }
+    }
 }

@@ -27,6 +27,7 @@ public partial class Player
                 
                 Grabable GrabAbleItem = r.collider.GetComponent<Grabable>();
                 Grab(GrabAbleItem,true);
+             
             }
             else
             {          
@@ -47,7 +48,7 @@ public partial class Player
 
         if (GrabAbleItem != null && !GrabAbleItem.isGrab() &&  CanGrab && GrabAbleItem.Grab(Graber, isPlayerAction))
         {
-           
+            System.MatchAction.GoalKeeperCatchTheBall(this);
             grabitem = GrabAbleItem;
             if (GrabAbleItem is Ball)
             {
