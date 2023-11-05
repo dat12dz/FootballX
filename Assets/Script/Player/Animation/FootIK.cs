@@ -1,17 +1,7 @@
 ﻿using Assets.Script.Utlis;
 using Assets.Utlis;
-
-using DG.Tweening;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using Unity.Collections;
-using Unity.Jobs;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Jobs;
 
 
 public class FootIK : MonoBehaviour
@@ -23,6 +13,7 @@ public class FootIK : MonoBehaviour
     [SerializeField] GameObject Raycaster,Hint;
    [SerializeField] FootRef LFoot, RFoot;
     [SerializeField] AnimationCurve FootPlaceMentCurve;
+    [SerializeField] SoundPlayer SoundPlayer_StepOnGrass;
     Player player;
     void Start()
     {
@@ -39,19 +30,19 @@ public class FootIK : MonoBehaviour
     }
     [SerializeField] float Spacing = 0.2f;
      bool FootPlacement(FootRef foot, float distanceCheck = 0)
-    {
+     {
         RaycastHit hitInfo;
         var physisScene =  gameObject.scene.GetPhysicsScene();
         bool isSucess;
         if (physisScene != null)
         {
          
-             isSucess =  physisScene.Raycast(foot.Raycaster.position, Vector3.down,out hitInfo,Mathf.Infinity, groundMask);
+             isSucess =  physisScene.Raycast(foot.Raycaster.position, Vector3.down,out hitInfo,3, groundMask);
 
         }
         else
         {
-            isSucess = Physics.Raycast(foot.Raycaster.position, Vector3.down, out hitInfo, Mathf.Infinity, groundMask);
+            isSucess = Physics.Raycast(foot.Raycaster.position, Vector3.down, out hitInfo, 3, groundMask);
 
         }
         if (isSucess && hitInfo.collider != null)
@@ -59,8 +50,11 @@ public class FootIK : MonoBehaviour
             if (MathHelper.DistanceNoSqrt(hitInfo.point, foot.LastFootPlaceMent) >= distanceCheck * distanceCheck)
             {
                 var FootPlacePoint = hitInfo.point;
- 
-                foot.StartInterpolated(foot.footIK.transform.position,hitInfo.point + player.Vel * Spacing);
+                Vector3 PlayerVel()
+                {
+                        return player.Vel; 
+                }
+                foot.StartInterpolated(foot.footIK.transform.position,hitInfo.point + PlayerVel() * Spacing);
                 foot.LastFootPlaceMent = FootPlacePoint;
                 foot.footIK.transform.rotation = Quaternion.Euler(baseModel.ActiveModel.transform.eulerAngles );
                 return true;
@@ -74,11 +68,18 @@ public class FootIK : MonoBehaviour
  
     public  void UpdateFootPosition()
     {
+
+
         if (RFoot.currentRate <= 0 || RFoot.currentRate > 1)
-            LFoot.Interpolater(FootPlaceMentCurve);
+        {
+            LFoot.Interpolater(FootPlaceMentCurve,SoundPlayer_StepOnGrass);
+        }
         if (LFoot.currentRate <= 0 || LFoot.currentRate > 1)
-            RFoot.Interpolater(FootPlaceMentCurve);
-        if (player.Vel.sqrMagnitude > 0.01f)
+        {
+            RFoot.Interpolater(FootPlaceMentCurve, SoundPlayer_StepOnGrass);
+        }
+    
+        if (player.Vel.sqrMagnitude > 0.0001f)
         {
             FootPlacement(LFoot, DefaultFootPlacementDistance);
             FootPlacement(RFoot, DefaultFootPlacementDistance);
@@ -155,13 +156,16 @@ class FootRef
     public float incRateSpeed = 5f;
 
     public float Amp = 0.3f;
+    bool Stepped;
     public void StartInterpolated(Vector3 StartPos ,Vector3 des)
     {
         if (currentRate > 1)
         {
             StartPosition = StartPos; Destination = des;
             currentRate = 0;
-           
+            Stepped = false;
+
+
         }
         else
         {
@@ -169,13 +173,23 @@ class FootRef
         }    
     }
     float currentTime;
-    public void Interpolater(AnimationCurve curve)
+   public static bool isLFoot;
+    public void Interpolater(AnimationCurve curve,SoundPlayer player)
     {
         if (currentRate > 1)
         {
-          
-            Destination = StartPosition;
+            isLFoot = !isLFoot;
+              Destination = StartPosition;
+
             return;
+        }
+        if (currentRate > 0.90f)
+        {
+            if (!Stepped)
+            {
+                player.PlayRandomSound();
+                Stepped = true;
+            }
         }
         currentTime += Time.deltaTime;
         currentRate += incRateSpeed * Time.deltaTime;
@@ -187,6 +201,8 @@ class FootRef
         try
         {
             footIK.transform.position = new Vector3(CurrentXZ.x, CurvedY, CurrentXZ.y);
+     
+     
         }
         catch
         {

@@ -14,8 +14,7 @@ Material:
   m_ValidKeywords:
   - _ADVANCED_LIGHTING
   - _ENVIRONMENTREFLECTIONS_OFF
-  m_InvalidKeywords:
-  - _ALPHATOCOVERAGE_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0

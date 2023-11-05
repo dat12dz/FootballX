@@ -325,7 +325,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -351,7 +351,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3451818912601638879}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!114 &8823791990145170852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +524,7 @@ MonoBehaviour:
     m_InternalValue: {x: 0, y: 0, z: 0}
   SuppressRadius:
     m_InternalValue: 0
+  SuppressZone: {fileID: 0}
   UnstandableZone: {fileID: 8650669385522179554}
   AirResist: 4.64
   jumpHeight: 1
@@ -562,18 +563,23 @@ MonoBehaviour:
   Playereyes: {fileID: 0}
   Graber: {fileID: 3102569710108346824}
   grabitem: {fileID: 0}
+  CanGrab: 1
   MinUltraShootForce: 8
   MaxUltraShootForce: 20
   UltraShootForceSpeed: 1
   head_: {fileID: 1692322850984172057}
+  FinalShootForce: 0
   MinThrowingForce: 10
   MaxThrowingForce: 60
   ThrowingForceSpeed: 4
+  FinalThrowForce: 0
   ModelRef: {fileID: 11400000, guid: 7c1a4d9f4843644479ac64b20f16ac9c, type: 2}
   thisPlayerModel: {fileID: 0}
   PlayerLookAt: {fileID: 5407002455984239018}
   team:
     team: 0
+  isGoalKeeper: 0
+  Vel: {x: 0, y: 0, z: 0}
   Toggle: {fileID: 1318876011583078747}
   isInGame:
     m_InternalValue: 0
@@ -602,6 +608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8c48befa90ba54a908e7459419451a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClientAuth:
+    m_InternalValue: 0
   DistanceCheckk: 0.02
   Interpolate: 0
   InterplolateSpeed: 10.47

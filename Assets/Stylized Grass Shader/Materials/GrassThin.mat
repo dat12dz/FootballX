@@ -26,12 +26,9 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ADVANCED_LIGHTING
-  - _BILLBOARD
   m_InvalidKeywords:
-  - _ALPHATOCOVERAGE_ON
-  - _BILLBOARD_ON
   - _ENVIRONMENTREFLECTIONS_ON
-  m_LightmapFlags: 4
+  m_LightmapFlags: 5
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -93,18 +90,18 @@ Material:
     m_Floats:
     - _AdvancedLighting: 1
     - _AlphaClip: 0
-    - _AlphaToCoverage: 1
+    - _AlphaToCoverage: 0
     - _AngleFading: 0
     - _BendFlattenStrength: 1
     - _BendMode: 0
     - _BendPushStrength: 1
-    - _Billboard: 1
+    - _Billboard: 0
     - _Blend: 0
     - _BumpScale: 0
-    - _ColorMapHeight: 0
-    - _ColorMapStrength: 1
-    - _Cull: 1
-    - _Cutoff: 0.5
+    - _ColorMapHeight: 0.574
+    - _ColorMapStrength: 0.916
+    - _Cull: 0
+    - _Cutoff: 0.485
     - _Darkening: 0.1
     - _DisableBending: 0
     - _DisableDecals: 0
@@ -117,17 +114,17 @@ Material:
     - _GlossyReflections: 0
     - _LightingMode: 2
     - _Metallic: 0
-    - _NormalFlattenDepthNormals: 0
-    - _NormalFlattening: 1
+    - _NormalFlattenDepthNormals: 0.511
+    - _NormalFlattening: 0
     - _NormalSpherify: 0
     - _NormalSpherifyMask: 0
-    - _OcclusionStrength: 0.908
+    - _OcclusionStrength: 0.414
     - _PerspectiveCorrection: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Scalemap: 0
     - _ShadowBiasCorrection: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.329
     - _SmoothnessTextureChannel: 0
     - _SpecularAmount: 0.1
     - _SpecularHighlights: 1
@@ -135,10 +132,10 @@ Material:
     - _Surface: 0
     - _Translucency: 0.791
     - _TranslucencyDirect: 1
-    - _TranslucencyFalloff: 4
+    - _TranslucencyFalloff: 2.53
     - _TranslucencyIndirect: 0
-    - _TranslucencyOffset: 0
-    - _VertexDarkening: 0.527
+    - _TranslucencyOffset: 0.081
+    - _VertexDarkening: 0
     - _WindAmbientStrength: 0.2
     - _WindGustFreq: 4
     - _WindGustSpeed: 4
@@ -153,12 +150,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.5984462, g: 1, b: 0.051886797, a: 1}
-    - _BendTint: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.7170732, g: 1, b: 0, a: 1}
+    - _BendTint: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _EmissionColor: {r: 0.055409443, g: 0.055409443, b: 0.055409443, a: 1}
-    - _FadeFar: {r: 50, g: 100, b: 0, a: 0}
-    - _FadeNear: {r: 0.25, g: 0.5, b: 0, a: 0}
+    - _EmissionColor: {r: 0.022514014, g: 0.022514014, b: 0.022514014, a: 1}
+    - _FadeFar: {r: 64.89293, g: 121.38223, b: 0, a: 0}
+    - _FadeNear: {r: 0, g: 2.1967878, b: 0, a: 0}
     - _FadeParams: {r: 50, g: 100, b: 0, a: 0}
     - _HueVariation: {r: 0.96470594, g: 1, b: 0, a: 0.15}
     - _LODDebugColor: {r: 1, g: 1, b: 1, a: 1}

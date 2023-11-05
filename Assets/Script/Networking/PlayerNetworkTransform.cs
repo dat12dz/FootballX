@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerNetworkTransform : NetworkBehaviour
 {
     Vector3 ServerPositon;
+    public NetworkVariable<bool> ClientAuth;
     public float DistanceCheckk = 0.02f;
     public bool Interpolate = true;
     public float InterplolateSpeed = 1;
@@ -13,11 +14,12 @@ public class PlayerNetworkTransform : NetworkBehaviour
     {
         if (IsHost) Interpolate = true;
         moveHelper = GetComponent<Move>();
+        ClientAuth.Value = true;
     }
     [ClientRpc(Delivery = RpcDelivery.Unreliable)] void ChangePosInClientClientRpc(Vector3 newPos)
     {
 
-        if (IsLocalPlayer)
+        if (IsLocalPlayer && ClientAuth.Value)
         {
             ServerPositon = new Vector3(transform.position.x, newPos.y, transform.position.z);
             if (!Interpolate) 

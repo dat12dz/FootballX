@@ -22,12 +22,13 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
     //[SerializeField] TMP_InputField inp_PlayerName, inp_ServerIP;
     //[SerializeField] Button btn_Connect, btn_autoLocalhost, btn_HostBtn, btn_ShowCharSelectionUI;
     public static StartSceneInfo StartSceneInfoSync;
-    public static bool isBtnClick = false;
+
     NetworkManager netmang;
     int maxHostPlayer = 10;
     void Start()
     {
-        root = GetComponent<UIDocument>().rootVisualElement;
+       UnityEngine.Cursor.lockState = CursorLockMode.None;
+       root = GetComponent<UIDocument>().rootVisualElement;
         inputName = root.Q<TextField>("input-name");
         inputIp = root.Q<TextField>("input-ip");
         settingBtn = root.Q<Button>("setting-btn");
@@ -52,7 +53,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
         {
             inputIp.value = "127.0.0.1";
         };
-
+        
         inputName.value =  StartGameInfo.instance.playerData.playerName.ToString();
 
         if (isBtnClick)
@@ -79,7 +80,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
             netmang.OnClientDisconnectCallback += Netmang_OnClientDisconnectCallback;
             FirstTimeInit = false;  
         }
-        //isBtnClick = true;
+
     }
     public static bool FirstTimeInit = true;
     private void Clickable_clicked()

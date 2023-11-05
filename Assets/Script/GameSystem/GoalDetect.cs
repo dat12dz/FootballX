@@ -8,7 +8,9 @@ public class GoalDetect : MonoBehaviour
 {
    public GameSystem.Team ownerTeam;
     GameSystem thisGamesystem;
-    
+    /// <summary>
+    /// /
+    /// </summary>
     private void Start()
     {
         thisGamesystem = transform.root.GetComponent<GameSystem>();
@@ -23,11 +25,12 @@ public class GoalDetect : MonoBehaviour
             {
                 case GameSystem.Team.blue:
                     thisGamesystem.ScoreRedTeam.Value++;
-                       
+                        thisGamesystem.MatchAction.OnGoal(ball.lastToucher,TeamEnum.Red);
                     break;
                 case GameSystem.Team.red:
                     thisGamesystem.ScoreBlueTeam.Value++;
-                    break;
+                        thisGamesystem.MatchAction.OnGoal(ball.lastToucher,TeamEnum.Blue);
+                        break;
                 default:
                     Debug.Log("Please assign team for the goal");
                     break;

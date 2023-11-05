@@ -43,14 +43,16 @@ namespace Assets.Script
         {
             HolderCheck();
         }
-        public virtual void Grab(Transform graber) 
+        public virtual bool Grab(Transform graber,bool isPlayerAction = false) 
         {
+
             Graber = graber;
             var rb = GetComponent<Rigidbody>();
             if (rb != null )
             {
                 rb.isKinematic = true;
             }
+            return true;
         }
     }
 }

@@ -16,7 +16,7 @@ public partial class Player
     [ServerRpc]
     public void GrabItemOrThrowServerRpc(float ThrowForce = 0)
     {
-        if (!grabitem && !isGoalKeeper) // if you are not the goalkeeper so notdoing anything
+        if (!grabitem && isGoalKeeper) // if you are not the goalkeeper so notdoing anything
         {
 
             RaycastHit r;
@@ -24,8 +24,10 @@ public partial class Player
             thisPhysicScene.Raycast(Playereyes.transform.position, Playereyes.transform.forward, out r, LookatDistance, lookatMask);
             if (r.collider != null)
             {
+                
                 Grabable GrabAbleItem = r.collider.GetComponent<Grabable>();
-                Grab(GrabAbleItem);
+                Grab(GrabAbleItem,true);
+             
             }
             else
             {          
@@ -41,17 +43,18 @@ public partial class Player
     }
     public Action<Grabable> OnThrowSomeThing;
     public Action OnShootBall;
-    public void Grab(Grabable GrabAbleItem)
+    public void Grab(Grabable GrabAbleItem,bool isPlayerAction = false)
     {
-      
-        if (GrabAbleItem != null && !GrabAbleItem.isGrab())
-            GrabAbleItem.Grab(Graber);
-        grabitem = GrabAbleItem;
 
-        if (GrabAbleItem is Ball)
+        if (GrabAbleItem != null && !GrabAbleItem.isGrab() &&  CanGrab && GrabAbleItem.Grab(Graber, isPlayerAction))
         {
-            var ball = (Ball)GrabAbleItem;
-            ball.lastToucher = this;
+            System.MatchAction.GoalKeeperCatchTheBall(this);
+            grabitem = GrabAbleItem;
+            if (GrabAbleItem is Ball)
+            {
+                var ball = (Ball)GrabAbleItem;
+                ball.lastToucher = this;
+            }
         }
     }
    
@@ -73,9 +76,7 @@ public partial class Player
     [ServerRpc] 
     public void SendPlayerNameToServerRpc(InitialPlayerData playeData)
     {
-        initialPlayerData.Value = playeData;
-        
-        
+        initialPlayerData.Value = playeData;       
     }
 
     [ClientRpc] public void ToggleUnstandbaleZone_ClientRpc(bool a)

@@ -25,11 +25,12 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _BILLBOARD
   - _SIMPLE_LIGHTING
-  m_InvalidKeywords: []
-  m_LightmapFlags: 6
-  m_EnableInstancingVariants: 1
+  m_InvalidKeywords:
+  - _ALPHATOCOVERAGE_ON
+  - _ENVIRONMENTREFLECTIONS_ON
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -103,7 +104,7 @@ Material:
     - _BendFlattenStrength: 0
     - _BendMode: 0
     - _BendPushStrength: 0
-    - _Billboard: 1
+    - _Billboard: 0
     - _BillboardKwToggle: 0
     - _BillboardShadowFade: 0.5
     - _Blend: 0
