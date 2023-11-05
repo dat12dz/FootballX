@@ -47,11 +47,14 @@ public partial class PlayerRoomManager
     {
         if (IsLocalPlayer)
         {
-            RoomRendererBase.WaitForInstace(() => RoomRendererBase.instance.init(renderable));
+            RoomRendererBase.WaitForInstace(() =>
+            {
+                RoomRendererBase.instance.init(renderable);
+            });
             onSlotChange(0, 0);
 
         }
-        Logging.Log($"Client đã nhận được id phòng ID {RoomID.Value} slot : {SlotInRoom.Value} trường phòng:{isHeader.Value}");
+        //Logging.Log($"Client đã nhận được id phòng ID {RoomID.Value} slot : {SlotInRoom.Value} trường phòng:{isHeader.Value}");
     }
 
     [ServerRpc]

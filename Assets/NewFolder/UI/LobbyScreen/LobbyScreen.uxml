@@ -23,7 +23,9 @@
                     <ui:Instance template="PlayerCard" name="player-card" class="red-team player-red-border" />
                     <ui:Instance template="PlayerCard" name="player-card" class="red-team player-red-border" />
                     <ui:Instance template="PlayerCard" name="player-card" class="red-team player-red-border" />
-                    <ui:Instance template="PlayerCard" name="player-card" class="red-team player-red-border" />
+                    <ui:Instance template="PlayerCard" name="player-card" class="red-team player-red-border">
+                        <ui:VisualElement name="position" />
+                    </ui:Instance>
                 </ui:VisualElement>
                 <ui:Label tabindex="-1" text="VS" display-tooltip-when-elided="true" name="vs" style="font-size: 24px; -unity-font-style: italic;" />
                 <ui:VisualElement name="blue-team" class="lobby-screen-box">
@@ -31,7 +33,9 @@
                     <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" />
                     <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" />
                     <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" style="transition-timing-function: ease-in-sine;" />
-                    <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team" />
+                    <ui:Instance template="player-card" name="player-card" class="player-blue-border blue-team">
+                        <ui:VisualElement name="position" />
+                    </ui:Instance>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="bottom-lobby">

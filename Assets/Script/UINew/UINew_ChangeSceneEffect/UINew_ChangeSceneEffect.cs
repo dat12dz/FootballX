@@ -77,7 +77,6 @@ public class UINew_ChangeSceneEffect : MonoBehaviour
     {
         Open();
         await Task.Delay(300);
-   
         SceneManager.LoadScene(sceneIndex);
     }
   

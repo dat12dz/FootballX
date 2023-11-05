@@ -74,7 +74,7 @@
 /* middle-lobby */
 #middle-lobby {
     width: 100%;
-    min-height: 380px;
+    min-height: 420px;
     height: 30%;
     flex-direction: column;
     justify-content: space-between;
@@ -168,6 +168,7 @@
 }
 
 #top-player-description {
+    /* position: absolute; */
     margin: 4px 4px 0 4px;
     flex-direction: row;
     justify-content: space-between;
@@ -298,10 +299,20 @@
 
 /* notify */
 #notify {
-    display: none;
     position: absolute;
-    bottom: 110%;
-    left: 60%;
+    bottom: 100%;
+    translate: 76px 0;
+    width: 120px;
+    height: 70px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0);
+    align-self: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+#notify-child{
     width: 120px;
     height: 60px;
     border-radius: 10px;
@@ -328,12 +339,14 @@
     justify-content: center;
 }
 
+
 /* ProgressBar */
 #notify ProgressBar {
-    width: 100%;
+    width: 120px;
     margin: 0;
     padding: 0 12px;
 }
+
 
 #notify ProgressBar #unity-progress-bar {
     min-height: 0;
@@ -343,12 +356,12 @@
     height: 8px;
     border-width: 2px;
     flex-grow: 0;
+    border-radius: 0px;
 }
 
 #notify ProgressBar #unity-progress-bar .unity-progress-bar__progress {
-    
     margin: 0;
-    height: 3px;
+    border-radius: 0px;
 }
 
 #notify ProgressBar #unity-progress-bar .unity-progress-bar__title-container {
@@ -363,6 +376,7 @@
     transition: 0.2s;
 }
 
+
 #notify-yes-btn {
     background-image: url(/Assets/NewFolder/Icons/check.svg);
 }
@@ -374,18 +388,13 @@
     background-image: url(/Assets/NewFolder/Icons/xMark.svg);
 }
 
+
 #notify-triangle {
-    position: absolute;
-    left: 20%;
-    top: 100%;
-    width: 0;
-    height: 0;
-    border-left-width: 14px;
-    border-right-width: 14px;
-    border-top-width: 28px;
-    border-left-color: rgba(0,0,0,0);
-    border-right-color: rgba(0,0,0,0);
-    border-top-color: rgba(0,0,0,1);
+    width: 20px;
+    height: 10px;
+    translate: -24px 0px;
+    background-image: url(/Assets/NewFolder/Icons/triangle.svg);
+    -unity-background-image-tint-color: rgb(0,0,0);
 }
 
 /* hover */
@@ -447,4 +456,24 @@
 
 #exit-btn:hover #exit-bg {
     scale: 1.1;
+}
+
+.reset-btn {
+    padding: 0;
+    background-color: rgba(0,0,0,0);
+    border-width: 0;
+}
+
+.reset-btn:hover {
+    background-color: rgba(0,0,0,0);
+}
+
+#position {
+    position: absolute;
+    top: 148%;
+    align-self: center;
+    width: 40px;
+    height: 24px;
+    background-image: url(/Assets/NewFolder/Icons/gloves.svg);
+    -unity-background-image-tint-color: black;
 }

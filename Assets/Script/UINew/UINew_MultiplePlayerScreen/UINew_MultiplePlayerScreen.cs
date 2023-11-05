@@ -70,12 +70,17 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
             {
                 NetworkClient_.StartClient(inputIp.text, inputName.text);
                 StartGameInfo.instance.playerData.playerName = inputName.text;
+                UINew_ChangeSceneEffect.ChangeScene(1);
             }
         };
 
+        
+
         hostBtn.clicked += () =>
         {
+            Debug.LogError("HostBtn is click");
             StartGameInfo.instance.playerData.playerName = inputName.text;
+
             netmang.ConnectionApprovalCallback = (req, res) =>
             {
                 if (netmang.ConnectedClients.Count > maxHostPlayer)
@@ -105,7 +110,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
             netmang.OnClientDisconnectCallback += Netmang_OnClientDisconnectCallback;
             FirstTimeInit = false;  
         }
-        
+
     }
     public static bool FirstTimeInit = true;
     private void Clickable_clicked()

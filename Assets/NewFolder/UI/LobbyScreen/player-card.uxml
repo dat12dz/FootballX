@@ -4,13 +4,15 @@
         <ui:VisualElement>
             <ui:VisualElement name="player-description">
                 <ui:VisualElement name="notify">
-                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="notify-description" />
-                    <ui:VisualElement name="notify-btn">
-                        <ui:VisualElement name="notify-yes-btn" />
-                        <ui:VisualElement name="notify-no-btn" />
-                        <ui:VisualElement name="notify-stop-request-btn" />
+                    <ui:VisualElement name="notify-child">
+                        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="notify-description" />
+                        <ui:VisualElement name="notify-btn">
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="notify-yes-btn" class="reset-btn" />
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="notify-no-btn" class="reset-btn" />
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="notify-stop-request-btn" class="reset-btn" />
+                        </ui:VisualElement>
+                        <ui:ProgressBar value="50" />
                     </ui:VisualElement>
-                    <ui:ProgressBar value="50" name="ProgressBar" />
                     <ui:VisualElement name="notify-triangle" />
                 </ui:VisualElement>
                 <ui:VisualElement name="top-player-description">
@@ -28,7 +30,7 @@
                 <ui:VisualElement name="bottom-player-description" style="flex-grow: 1;">
                     <ui:VisualElement name="leader" />
                     <ui:VisualElement name="ready" />
-                    <ui:VisualElement name="swap-btn" />
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="swap-btn" class="reset-btn" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="player-empty" class="player-empty">
