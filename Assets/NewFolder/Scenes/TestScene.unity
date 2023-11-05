@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 598754111}
   - component: {fileID: 598754110}
   - component: {fileID: 598754112}
+  - component: {fileID: 598754113}
   m_Layer: 0
   m_Name: MutiplePlayerScreen
   m_TagString: Untagged
@@ -186,6 +187,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charSelectionUI: {fileID: 0}
+--- !u!114 &598754113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598754109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec8f57ea4b849e4096ba4632955d680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +390,7 @@ GameObject:
   - component: {fileID: 761897126}
   - component: {fileID: 761897125}
   - component: {fileID: 761897127}
+  - component: {fileID: 761897128}
   m_Layer: 0
   m_Name: CharacterScreen
   m_TagString: Untagged
@@ -436,6 +450,18 @@ MonoBehaviour:
   startScreenHandler: {fileID: 0}
   team: 0
   PlayerNamebackgroundMaterial: {fileID: 0}
+--- !u!114 &761897128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761897124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec8f57ea4b849e4096ba4632955d680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1050969161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,13 +708,14 @@ GameObject:
   - component: {fileID: 1247787797}
   - component: {fileID: 1247787796}
   - component: {fileID: 1247787798}
+  - component: {fileID: 1247787799}
   m_Layer: 0
   m_Name: InGameScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1247787796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,6 +761,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+--- !u!114 &1247787799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247787795}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec8f57ea4b849e4096ba4632955d680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1536790934
 GameObject:
   m_ObjectHideFlags: 0
