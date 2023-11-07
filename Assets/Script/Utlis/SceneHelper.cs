@@ -40,10 +40,10 @@ namespace Assets.Script.NetCode
         public static GameSystem GetGameSystem(Scene scene)
         {
             var allSceneObj = scene.GetRootGameObjects();
-            GameSystem res = GameObject.FindAnyObjectByType<GameSystem>();
+          
             if (!NetworkManager.Singleton.IsServer) 
                 return GameSystem.instance;
-            return res;              
+            return allSceneObj[0].GetComponent<GameSystem>();              
         }
     }
 }

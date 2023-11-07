@@ -22,11 +22,25 @@ public class FootIK : MonoBehaviour
         if (player != null)
         {
             var rotate = player.GetComponentInChildren<Rotate>();
-           Hint.transform.parent =  rotate.HeadObj;
+            Hint.transform.parent = rotate.HeadObj;
             Raycaster.transform.parent = rotate.HeadObj;
+
+            player.isInGame.OnValueChanged += (old, curr) =>
+            {
+                if (curr)
+                {
+                    LFoot.footIK.transform.parent = null;
+                    RFoot.footIK.transform.parent = null;
+                }
+                else
+                {
+                    LFoot.footIK.transform.parent = transform;
+                    RFoot.footIK.transform.parent = transform;
+                }    
+            };
         }
-        LFoot.footIK.transform.parent = null;
-        RFoot.footIK.transform.parent = null;
+        
+
     }
     [SerializeField] float Spacing = 0.2f;
      bool FootPlacement(FootRef foot, float distanceCheck = 0)
