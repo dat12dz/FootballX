@@ -17,17 +17,12 @@ public class Test : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            UINew_LobbyScreen.Show();
+            UINew_MVPScreen.Show();
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            UINew_GoalScreen.Show("Goal!!!", "Abc", 10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            UINew_InGameScreen.DisableInGameScreen();
+            UINew_MVPScreen.ResetStyle();
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))

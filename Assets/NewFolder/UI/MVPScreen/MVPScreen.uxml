@@ -2,13 +2,14 @@
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
     <Style src="project://database/Assets/NewFolder/UI/MVPScreen/MVPScreen.uss?fileID=7433441132597879392&amp;guid=01a20f6615c1db642be4c3fa48485a57&amp;type=3#MVPScreen" />
     <ui:VisualElement name="container" style="flex-grow: 1;">
-        <ui:VisualElement name="show-character" />
-        <ui:VisualElement name="mvp-screen-bottom">
-            <ui:VisualElement name="mvp-text-box">
-                <ui:Label tabindex="-1" text="MVP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="mvp" />
-                <ui:Label tabindex="-1" text="Goal/Ball taken taime" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+        <ui:VisualElement name="mvp-screen">
+            <ui:VisualElement name="first-bg" />
+            <ui:VisualElement name="second-bg" />
+            <ui:VisualElement name="third-bg" style="-unity-background-scale-mode: scale-and-crop;" />
+            <ui:VisualElement name="fourth-bg">
+                <ui:VisualElement name="width-scale" />
             </ui:VisualElement>
-            <ui:Label tabindex="-1" text="PlayerName" parse-escape-sequences="true" display-tooltip-when-elided="true" name="name" />
+            <ui:VisualElement name="fifth-bg" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

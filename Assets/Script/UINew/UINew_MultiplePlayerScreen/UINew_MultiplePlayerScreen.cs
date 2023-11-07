@@ -56,12 +56,6 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
         
         inputName.value =  StartGameInfo.instance.playerData.playerName.ToString();
 
-        if (isBtnClick)
-        {
-            connectBtn.clicked -= Btn_ConnectClick;
-            hostBtn.clicked -= Btn_HostClick;
-        }
-
         connectBtn.clicked += Btn_ConnectClick;
 
         hostBtn.clicked += Btn_HostClick;
