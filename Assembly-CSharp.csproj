@@ -157,8 +157,10 @@
     <None Include="Assets\NewFolder\UITemplate\Button-element.uxml" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\NewFolder\UI\MultiplePlayerScreen\MultiplePlayerScreen.uss" />
+    <None Include="Assets\NewFolder\UI\ShowGameResult\GameFinalREsult.uxml" />
     <None Include="Assets\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_shadowcaster_fragment.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\NewFolder\UITemplate\MatchResult_infoCard.uxml" />
     <None Include="Assets\Stylized Grass Shader\Shaders\Libraries\Lighting.hlsl" />
     <None Include="Assets\NewFolder\UI\MessageBox\MessageBox.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />

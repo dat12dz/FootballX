@@ -30,6 +30,7 @@ public abstract class PlayerModelBase : WaitForStart
     public abstract void RedTeamInit();
     public abstract void BlueTeamInit();
 
+    public abstract void PlayMvpAnimation();
     public abstract void WingHandRunAnim(float velocity_magnitue);
 
     [ContextMenu("Play close eyes")]

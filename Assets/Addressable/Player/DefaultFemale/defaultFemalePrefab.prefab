@@ -4342,6 +4342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7140606858727328969, guid: 8a6b4c1c79ad90844a067faad43b6087,
         type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140606858727328969, guid: 8a6b4c1c79ad90844a067faad43b6087,
+        type: 3}
       propertyPath: m_AABB.m_Center.x
       value: -0.000000029802322
       objectReference: {fileID: 0}
@@ -11113,6 +11118,11 @@ PrefabInstance:
     - target: {fileID: 7140606858727328969, guid: 05e84c9182f41e848b758c093e8ada2b,
         type: 3}
       propertyPath: m_DirtyAABB
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140606858727328969, guid: 05e84c9182f41e848b758c093e8ada2b,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7140606858727328969, guid: 05e84c9182f41e848b758c093e8ada2b,

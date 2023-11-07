@@ -13,8 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
-  - _MTOON_EMISSIVEMAP
-  - _MTOON_OUTLINE_WORLD
+  - _MTOON_OUTLINE_SCREEN
   - _MTOON_RIMMAP
   - _NORMALMAP
   m_InvalidKeywords: []
@@ -35,8 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: -3385409432791851051, guid: 8a6b4c1c79ad90844a067faad43b6087,
-          type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -74,9 +72,9 @@ Material:
     m_Floats:
     - _AlphaMode: 1
     - _BumpScale: 1
-    - _Cutoff: 0.5
+    - _Cutoff: 0.529
     - _DoubleSided: 0
-    - _GiEqualization: 0.9
+    - _GiEqualization: 0
     - _M_AlphaToMask: 1
     - _M_CullMode: 2
     - _M_DebugMode: 0
@@ -86,10 +84,10 @@ Material:
     - _M_ZWrite: 1
     - _OutlineLightingMix: 0
     - _OutlineWidth: 0.0013
-    - _OutlineWidthMode: 1
+    - _OutlineWidthMode: 2
     - _RenderQueueOffset: 0
     - _RimFresnelPower: 100
-    - _RimLift: 0.1
+    - _RimLift: 0.176
     - _RimLightingMix: 1
     - _ShadingShiftFactor: 0
     - _ShadingShiftTexScale: 1
@@ -99,10 +97,10 @@ Material:
     - _UvAnimScrollXSpeed: 0
     - _UvAnimScrollYSpeed: 0
     m_Colors:
-    - _Color: {r: 0.9339623, g: 0.76214844, b: 0.76214844, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9056604, g: 0.72196513, b: 0.72196513, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MatcapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadeColor: {r: 0.7924528, g: 0.5793876, b: 0.5793876, a: 1}
+    - _ShadeColor: {r: 0.9056604, g: 0.6963332, b: 0.6963332, a: 1}
   m_BuildTextureStacks: []

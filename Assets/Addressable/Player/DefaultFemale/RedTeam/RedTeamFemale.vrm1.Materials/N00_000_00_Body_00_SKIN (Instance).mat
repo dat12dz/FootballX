@@ -14,7 +14,7 @@ Material:
   m_ValidKeywords:
   - _ALPHATEST_ON
   - _MTOON_EMISSIVEMAP
-  - _MTOON_OUTLINE_WORLD
+  - _MTOON_OUTLINE_SCREEN
   - _MTOON_RIMMAP
   - _NORMALMAP
   m_InvalidKeywords: []
@@ -86,7 +86,7 @@ Material:
     - _M_ZWrite: 1
     - _OutlineLightingMix: 0
     - _OutlineWidth: 0.0013
-    - _OutlineWidthMode: 1
+    - _OutlineWidthMode: 2
     - _RenderQueueOffset: 0
     - _RimFresnelPower: 100
     - _RimLift: 0.1

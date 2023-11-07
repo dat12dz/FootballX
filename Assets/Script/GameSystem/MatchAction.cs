@@ -1,5 +1,6 @@
 ﻿using Assets.Script;
 using Assets.Script.Utlis;
+using Assets.Script.Utlis.CheckNullProp;
 using Assets.Utlis;
 using System;
 using System.Text;
@@ -22,8 +23,7 @@ public class MatchAction
     {
         gameSystem = g;
         Volume volume = g.sceneReference.PostProcessingVolume;
-        volume.profile.TryGet(out color);
-       
+        volume.profile.TryGet(out color);       
     }
 
     public async void OnStartMatch()
@@ -37,7 +37,8 @@ public class MatchAction
         {
             if (gameSystem.time.Value == (int)(gameSystem.EndGameTime / 2))
                 MainThreadDispatcher.ExecuteInMainThread(() => EndHalf());
-
+            if (gameSystem.time.Value == gameSystem.EndGameTime)
+                MainThreadDispatcher.ExecuteInMainThread(() => EndGame()); 
         };
     }
     public async void EndHalf()
@@ -46,12 +47,6 @@ public class MatchAction
         gameSystem.DisplayerInformerClientRpc("End Half", "", 6);
         await PauseMatch(5);
         ResetGameScene();
-        if (gameSystem.MatchHalf == 2)
-        {
-            EndGame();
-            return;
-        }
-        else
         {
             gameSystem.DisplayerInformerClientRpc("Start new match half", "", 4);
             gameSystem.MatchHalf++;
@@ -59,11 +54,45 @@ public class MatchAction
         await PauseMatch(5);
 
     }
-    void EndGame()
+    async void EndGame()
     {
-        var PlayerListSorted = gameSystem.CaculateRank();
-        Player mvp = PlayerListSorted[0].thisPlayer;  
-        Debug.Log("endGame");
+        PlayWhiselSound();
+        TeamEnum? winner()
+        {
+            TeamEnum? res = null;
+            if (gameSystem.ScoreBlueTeam.Value > gameSystem.ScoreRedTeam.Value)
+            {
+                res = TeamEnum.Blue;
+            }
+            if (gameSystem.ScoreBlueTeam.Value < gameSystem.ScoreRedTeam.Value)
+            {
+                res = TeamEnum.Red;
+            }
+            return res;
+        }
+        var Winner = winner();
+
+        
+        if (!Winner.HasValue)
+        {
+            gameSystem.DisplayerFinalResultTie_ClientRpc();
+        }
+        else
+        {
+            foreach (PlayerRoomManager player in gameSystem.room.playerDict.Values)
+            {
+               var ClientRpc = NetworkkHelper.CreateRpcTo(player.OwnerClientId);
+                if (player.thisPlayer.team.team != Winner)
+                gameSystem.DisplayerFinalResultLoss_ClientRpc(ClientRpc);
+                if (player.thisPlayer.team.team == Winner)
+                    gameSystem.DisplayerFinalResultWin_ClientRpc(ClientRpc);
+                player.thisPlayer.isInGame.Value = false;
+            }
+        }
+        if (!NetworkManager.Singleton.IsClient)
+        {
+            await Task.Delay(5000);
+        }
     }
     CancellationTokenSource PauseTimer_cancel;
 
@@ -82,12 +111,11 @@ public class MatchAction
         catch (TaskCanceledException)
         {
             return false;
-            Logging.Log("A task have been cancel");
+     
         }
         catch (Exception e)
         {
             return false;
-            Logging.Log(e);
         }
         return true;
     }
@@ -121,11 +149,11 @@ public class MatchAction
     {
         if (GoalMaker.team.team == teamAddPoint) 
         {
-            GoalMaker.GoalTimes++;
+            GoalMaker.GoalTimes.Value++;
         }
         else
         {
-            GoalMaker.GoalTimes--;
+            GoalMaker.GoalTimes.Value--;
         }
         if (!NetworkManager.Singleton.IsServer) return;
         await PauseMatch(10, true, false);
@@ -147,7 +175,7 @@ public class MatchAction
     }
     public async void StartThrowInPhase(StartThrowInPhase_Info ThrowInTeam)
     {
-      
+       
         if (gameState != GameStateEnum.Playing) return;
         PlayWhiselSound();
         Player PlayerHoldBall = ThrowInTeam.ThrowInTeam.GetRandomPlayer();
@@ -343,7 +371,7 @@ public class MatchAction
     }
     public void PlayWhiselSound()
     {
-        gameSystem.WhiselSoundPlayer.PlayRandomSound();
+        gameSystem.PlayWhiselSound_ClientRpc();
     }
 }
 

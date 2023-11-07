@@ -24,10 +24,9 @@ public partial class Player
             thisPhysicScene.Raycast(Playereyes.transform.position, Playereyes.transform.forward, out r, LookatDistance, lookatMask);
             if (r.collider != null)
             {
-                
+                CatchedBallTimes.Value++;
                 Grabable GrabAbleItem = r.collider.GetComponent<Grabable>();
-                Grab(GrabAbleItem,true);
-             
+                Grab(GrabAbleItem,true);            
             }
             else
             {          

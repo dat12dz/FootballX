@@ -54,6 +54,10 @@ public class DefaultMaleModel : PlayerModelBase
     {
         animator.SetFloat(RUNNING_WING_HAND_ANIM, velocity_magnitue);
     }
+
+    public override void PlayMvpAnimation()
+    {
+    }
     // Start is called before the first frame update
 
 }

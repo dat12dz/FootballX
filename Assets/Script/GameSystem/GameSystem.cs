@@ -19,7 +19,7 @@ public class GameSystem : SceneNetworkBehavior
     public static Action<uint> OnStartGameSystem;
     public uint EndGameTime = 900;
     public uint MatchHalf = 1;
-  public enum Team
+    public enum Team
     {
         NULL,
         blue,
@@ -34,15 +34,15 @@ public class GameSystem : SceneNetworkBehavior
     public Room room;
     static int MatchTimeSpeed;
     public NetworkVariable<int> time;
-/*        get { return Time_; }
-        set 
-        { 
-            if (OnTimeChange != null) OnTimeChange(value);
-            Time_ = value; 
-        }  */
-    
+    /*        get { return Time_; }
+            set 
+            { 
+                if (OnTimeChange != null) OnTimeChange(value);
+                Time_ = value; 
+            }  */
+
     //input: Redteam, BlueTeam , Team;
-    public Action<int,int, Team> OnScoreChange;
+    public Action<int, int, Team> OnScoreChange;
     PhysicsScene ps;
     DrawSpawnPoint[] spawnPoint;
     [Header("Reference")]
@@ -50,7 +50,7 @@ public class GameSystem : SceneNetworkBehavior
     public GameSystemSceneReference sceneReference;
     public NetworkVariable<int> ScoreBlueTeam;
     public NetworkVariable<int> ScoreRedTeam;
-    
+
     [SerializeField] public SoundPlayer WhiselSoundPlayer;
     public void Init(Room room_)
     {
@@ -61,7 +61,7 @@ public class GameSystem : SceneNetworkBehavior
         byte counter = 0;
         foreach (var player in room.playerDict.Values)
         {
-            Player thisPlayerInfo = player.thisPlayer; 
+            Player thisPlayerInfo = player.thisPlayer;
             thisPlayerInfo.SpawnPoint = spawnPoint[player.SlotInRoom.Value].transform;
             thisPlayerInfo.TelebackToSpawnPoint();
             SceneManager.MoveGameObjectToScene(player.gameObject, gameObject.scene);
@@ -79,25 +79,25 @@ public class GameSystem : SceneNetworkBehavior
                 }
             }
             counter++;
-          
+
         }
         NetworkObject.Spawn();
     }
     public override void OnNetworkSpawn()
     {
-        instance = this;      
+        instance = this;
         sceneReference.Init(this);
         base.OnNetworkSpawn();
         MatchAction = new MatchAction(this);
         MatchAction.OnStartMatch();
-     
+
     }
     void Start()
     {
         Application.targetFrameRate = 60;
         if (!NetworkObject.IsSpawned)
         {
-           
+
             return;
         }
         GameID = GameSystemList.Add(this);
@@ -109,9 +109,9 @@ public class GameSystem : SceneNetworkBehavior
             Team Goaler = Team.NULL;
             // Tăng điểm
             if (curr > old) Goaler = Team.red;
-            
+
             if (OnScoreChange != null) OnScoreChange(curr, ScoreBlueTeam.Value, Goaler);
-            
+
         };
         ScoreBlueTeam.OnValueChanged += (old, curr) =>
         {
@@ -120,17 +120,22 @@ public class GameSystem : SceneNetworkBehavior
                 Goaler = Team.blue;
             if (OnScoreChange != null) OnScoreChange(ScoreRedTeam.Value, curr, Goaler);
         };
-       
+
         time.OnValueChanged += (old, curr) =>
         {
             OnTimeChange(curr);
         };
- 
+
     }
     [ContextMenu("End half 1")]
     void EndHalf()
     {
         time.Value = (int)(EndGameTime / 2);
+    }
+    [ContextMenu("EndGame")]
+    void Engame()
+    {
+        time.Value = (int)EndGameTime - 1;
     }
     private void OnDisable()
     {
@@ -148,8 +153,12 @@ public class GameSystem : SceneNetworkBehavior
     // Update is called once per frame
     void Update()
     {
-      
+
     }
+    [ClientRpc] public void PlayWhiselSound_ClientRpc()
+    {
+        WhiselSoundPlayer.PlayRandomSound();
+    }    
     [ClientRpc] public void DisplayerInformerClientRpc(FixedString128Bytes name, FixedString128Bytes des, int time)
     { 
         UINew_InGameScreen.WaitForInstace(() =>
@@ -160,8 +169,60 @@ public class GameSystem : SceneNetworkBehavior
     [ClientRpc] public void ChangeClientSaturationClientRpc(int s)
     {
         MatchAction.ChangeScreenStaturation(s);
+
     }
-    
+    [ClientRpc] public void DisplayerFinalResultWin_ClientRpc(ClientRpcParams rpcParam = default)
+    {
+        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Victory",5);
+        Client_DisplayerFinalResultBase();
+    }
+    [ClientRpc] public void DisplayerFinalResultLoss_ClientRpc(ClientRpcParams rpcParam = default)
+    {
+        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Loss", 5);
+        Client_DisplayerFinalResultBase();
+    }
+    [ClientRpc] public void DisplayerFinalResultTie_ClientRpc()
+    {
+        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Tie", 5);
+        Client_DisplayerFinalResultBase();
+    }
+    public void Client_DisplayerFinalResultBase()
+    {
+        var AllPlayer = CaculateRank();
+        TeamEnum? winner()
+        {
+            TeamEnum? res = null;
+            if (this.ScoreBlueTeam.Value > this.ScoreRedTeam.Value)
+            {
+                res = TeamEnum.Blue;
+            }
+            if (this.ScoreBlueTeam.Value < this.ScoreRedTeam.Value)
+            {
+                res = TeamEnum.Red;
+            }
+            return res;
+        }
+        var Winner = winner();
+
+        var PlayerListSorted = this.CaculateRank();
+        Player FindMvp()
+        {
+            for (int i = 0; i < PlayerListSorted.Length; i++)
+            {
+
+                Player p = PlayerListSorted[0].thisPlayer;
+                if (p.team.team == Winner) return p;
+            }
+            return null;
+        }
+        var Mvp = FindMvp();
+        UInew_ShowFinalResult.instance.DisplayMvp(Mvp);
+    }    
+
+    public Player[] Client_GetAllPlayerList()
+    {
+        return GameObject.FindObjectsOfType<Player>();
+    }    
     /*public bool Pause;*/
     private void FixedUpdate()
     {
