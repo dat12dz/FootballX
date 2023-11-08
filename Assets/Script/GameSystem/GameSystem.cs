@@ -234,9 +234,12 @@ public class GameSystem : SceneNetworkBehavior
         var Mvp = FindMvp();
         var Playertxt = await Mvp.thisPlayerModel.PlayMvpAnimation();
         UInew_ShowFinalResult.instance.DisplayMvp(Mvp, Playertxt);
-    //    Player.localPlayer.TogglePoolObj(false);
     }    
-
+    public void ResetScene()
+    {
+        SceneManager.UnloadSceneAsync(gameObject.scene);
+        Player.localPlayer.TogglePoolObj(false);       
+    }
     public Player[] Client_GetAllPlayerList()
     {
         return GameObject.FindObjectsOfType<Player>();
@@ -252,7 +255,7 @@ public class GameSystem : SceneNetworkBehavior
     {
         PlayerRoomManager[] PlayerSortedRank;
         PlayerSortedRank = room.playerDict.Values.ToArray();
-       Array.Sort(PlayerSortedRank,new ComparePlayer());
+        Array.Sort(PlayerSortedRank,new ComparePlayer());
         return PlayerSortedRank; 
     }
     class ComparePlayer : IComparer
