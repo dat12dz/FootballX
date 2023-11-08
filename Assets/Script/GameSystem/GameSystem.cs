@@ -50,7 +50,7 @@ public class GameSystem : SceneNetworkBehavior
     public GameSystemSceneReference sceneReference;
     public NetworkVariable<int> ScoreBlueTeam;
     public NetworkVariable<int> ScoreRedTeam;
-
+    
     [SerializeField] public SoundPlayer WhiselSoundPlayer;
     public void Init(Room room_)
     {
@@ -196,6 +196,7 @@ public class GameSystem : SceneNetworkBehavior
           
         });
     }
+    public TeamEnum? Winner;
     public async void Client_DisplayerFinalResultBase()
     {
         var AllPlayer = CaculateRank();
@@ -212,7 +213,7 @@ public class GameSystem : SceneNetworkBehavior
             }
             return res;
         }
-        var Winner = winner();
+         Winner = winner();
 
         var PlayerListSorted = this.CaculateRank();
         Player FindMvp()
