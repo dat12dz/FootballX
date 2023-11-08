@@ -112,6 +112,10 @@ public class UInew_ShowFinalResult : MonoBehaviour
         Label lb_Score = MatchResult_infoCard.Q<Label>("lb_Score");
         Label lb_MVP = MatchResult_infoCard.Q<Label>("lb_MVP");
 
+        bool isRedPlayerMVP = false;
+        bool isBluePlayerMVP = false;
+
+
         for (int i = 0; i < allPlayerList.Length; i++)
         {
             lb_PlayerIndex.text = (i + 1).ToString();
@@ -119,15 +123,20 @@ public class UInew_ShowFinalResult : MonoBehaviour
             lb_KS.text = allPlayerList[i].Score.ToString();
             lb_Score.text = allPlayerList[i].Score.ToString();
 
-            if(allPlayerList[i].team.team == TeamEnum.Red)
+            if(allPlayerList[i].team.team == TeamEnum.Red && GameSystem.instance.Winner == TeamEnum.Red)
             {
-                lb_MVP.text = null;
+                lb_MVP.text = "MVP";
+                lb_MVP.style.color = new StyleColor(new Color());
             }
 
-            if (i > 2)
+            if (allPlayerList[i].team.team == TeamEnum.Blue && GameSystem.instance.Winner == TeamEnum.Blue)
             {
-                
+                lb_MVP.text = "MVP";
+                lb_MVP.style.color = new StyleColor(new Color(90f/255, 0, 150f/255));
             }
+
+
+
             pnl_PlayerInfo.Add(MatchResult_infoCard);
         }
     }
