@@ -173,13 +173,20 @@ public class GameSystem : SceneNetworkBehavior
     }
     [ClientRpc] public void DisplayerFinalResultWin_ClientRpc(ClientRpcParams rpcParam = default)
     {
-        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Victory",5);
-        Client_DisplayerFinalResultBase();
+        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Victory",5).ContinueWith(t =>
+        {
+            MainThreadDispatcher.ExecuteInMainThread(() => Client_DisplayerFinalResultBase());
+        }); ;
+        
     }
     [ClientRpc] public void DisplayerFinalResultLoss_ClientRpc(ClientRpcParams rpcParam = default)
     {
-        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Loss", 5);
-        Client_DisplayerFinalResultBase();
+        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Loss", 5).ContinueWith(t =>
+        {
+            MainThreadDispatcher.ExecuteInMainThread(() => Client_DisplayerFinalResultBase());
+
+        }); ;
+       
     }
     [ClientRpc] public void DisplayerFinalResultTie_ClientRpc()
     {
@@ -219,15 +226,14 @@ public class GameSystem : SceneNetworkBehavior
                     if (p.team.team == Winner) return p;
                         
             }
-            else
-            {
+            
                 return PlayerListSorted[0].thisPlayer;
-            }
-            return null;
+         
         }
         var Mvp = FindMvp();
         var Playertxt = await Mvp.thisPlayerModel.PlayMvpAnimation();
         UInew_ShowFinalResult.instance.DisplayMvp(Mvp, Playertxt);
+    //    Player.localPlayer.TogglePoolObj(false);
     }    
 
     public Player[] Client_GetAllPlayerList()

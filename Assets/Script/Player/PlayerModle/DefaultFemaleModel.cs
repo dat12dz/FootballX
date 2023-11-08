@@ -91,7 +91,7 @@ public class DefaultFemaleModel : PlayerModelBase
     {
       if (player)
         player.Playereyes.gameObject.SetActive( false);
-        MVPCam.transform.SetParent(ActiveModel.transform, false);
+        MVPCam.transform.parent.SetParent(ActiveModel.transform, false);
         MVPCam.gameObject.SetActive(true);
         Cup.gameObject.SetActive(true);
         R_hand = animator.GetBoneTransform(HumanBodyBones.RightHand);
@@ -104,6 +104,8 @@ public class DefaultFemaleModel : PlayerModelBase
         Cup.transform.localPosition =new Vector3(0.0266f, -0.0225f, 0.0204f);
         Cup.transform.localRotation = Quaternion.Euler((Vector3.zero));
         await t;
+        PlayerRenderCam.clearFlags = CameraClearFlags.SolidColor;
+        PlayerRenderCam.GetUniversalAdditionalCameraData();
         return TakePicture(PlayerRenderCam);
     }
     [SerializeField] RenderTexture texture;
