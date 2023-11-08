@@ -42,9 +42,9 @@ public class UInew_ShowFinalResult : MonoBehaviour
         await Task.Delay(sec * 1000);
     }
     // Update is called once per frame
-    public void DisplayMvp(Player mvpPlayer,Texture2D PlayerMVPTexture)
+    public void DisplayMvp(Player mvpPlayer,RenderTexture PlayerMVPTexture)
     {
-        Img_PlayerMvpImage.style.backgroundImage = PlayerMVPTexture;
+        Img_PlayerMvpImage.style.backgroundImage =  Background.FromRenderTexture(PlayerMVPTexture);
         MvpDisplayer.style.display = DisplayStyle.Flex;
         if (mvpPlayer.isGoalKeeper)
         {

@@ -56,7 +56,7 @@ public class DefaultMaleModel : PlayerModelBase
         animator.SetFloat(RUNNING_WING_HAND_ANIM, velocity_magnitue);
     }
 
-    public override Task<Texture2D> PlayMvpAnimation()
+    public override Task<RenderTexture> PlayMvpAnimation()
     {
         return null;
     }
