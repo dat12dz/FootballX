@@ -11,6 +11,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
     UIDocument document;
     VisualElement container;
     VisualElement MvpDisplayer;
+    VisualElement Img_PlayerMvpImage;
     VisualElement OveralResult;
     VisualElement ShowAllInfo;
     VisualElement pnl_PlayerInfo;
@@ -27,6 +28,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
         document = GetComponent<UIDocument>();
         var RootvsElement = document.rootVisualElement;
         container = RootvsElement.Q<VisualElement>("container");
+        Img_PlayerMvpImage = RootvsElement.Q<VisualElement>("Img_MvpPlayer");
         MvpDisplayer = RootvsElement.Q<VisualElement>("pnl_MVPDisplayer");
         OveralResult = RootvsElement.Q<VisualElement>("pnl_OveralResult");
         ShowAllInfo = RootvsElement.Q<VisualElement>("pnl_ShowAllInfo");
@@ -39,10 +41,10 @@ public class UInew_ShowFinalResult : MonoBehaviour
         lb_Score = RootvsElement.Q<Label>("lb_Score");
         lb_Change = RootvsElement.Q<Label>("lb_Change");
         lb_ShowKS = RootvsElement.Q<Label>("lb_ShowKS");
+        lb_PlayerName = RootvsElement.Q<Label>("lb_PlayerName");
 
         MatchResult_infoCard = Resources.Load<VisualTreeAsset>("UITemplate/MatchResult_infoCard").CloneTree();
         //lb_PlayerIndex = RootvsElement.Q<Label>("lb_PlayerIndex");
-        //lb_PlayerName = RootvsElement.Q<Label>("lb_PlayerName");
         //lb_KS = RootvsElement.Q<Label>("lb_KS");
         //lb_MVP = RootvsElement.Q<Label>("lb_MVP");
 
@@ -81,10 +83,11 @@ public class UInew_ShowFinalResult : MonoBehaviour
     // Update is called once per frame
     public void DisplayMvp(Player mvpPlayer,RenderTexture PlayerMVPTexture)
     {
+        Img_PlayerMvpImage.style.display = DisplayStyle.Flex;
         Img_PlayerMvpImage.style.backgroundImage =  Background.FromRenderTexture(PlayerMVPTexture);
         MvpDisplayer.style.display = DisplayStyle.Flex;
 
-        //lb_PlayerName.text = mvpPlayer.initialPlayerData.Value.playerName.Value;
+        lb_PlayerName.text = mvpPlayer.initialPlayerData.Value.playerName.ToString();
         lb_Score.text = mvpPlayer.Score.ToString();
 
         if (mvpPlayer.isGoalKeeper)
@@ -109,17 +112,21 @@ public class UInew_ShowFinalResult : MonoBehaviour
         Label lb_Score = MatchResult_infoCard.Q<Label>("lb_Score");
         Label lb_MVP = MatchResult_infoCard.Q<Label>("lb_MVP");
 
-        allPlayerList = allPlayerList.OrderByDescending(p => p.Score).ToArray();
         for (int i = 0; i < allPlayerList.Length; i++)
         {
             lb_PlayerIndex.text = (i + 1).ToString();
-            lb_PlayerName.text = allPlayerList[i].name;
+            lb_PlayerName.text = allPlayerList[i].initialPlayerData.Value.playerName.ToString();
             lb_KS.text = allPlayerList[i].Score.ToString();
             lb_Score.text = allPlayerList[i].Score.ToString();
 
-            if(i > 2)
+            if(allPlayerList[i].team.team == TeamEnum.Red)
             {
                 lb_MVP.text = null;
+            }
+
+            if (i > 2)
+            {
+                
             }
             pnl_PlayerInfo.Add(MatchResult_infoCard);
         }
