@@ -57,6 +57,7 @@ public class MatchAction
     async void EndGame()
     {
         PlayWhiselSound();
+        PauseMatch(5);
         TeamEnum? winner()
         {
             TeamEnum? res = null;
@@ -87,6 +88,7 @@ public class MatchAction
                 if (player.thisPlayer.team.team == Winner)
                     gameSystem.DisplayerFinalResultWin_ClientRpc(ClientRpc);
                 player.thisPlayer.isInGame.Value = false;
+
             }
         }
         if (!NetworkManager.Singleton.IsClient)

@@ -248,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 3438295907075979653}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7134338, z: -0, w: 0.70072263}
-  m_LocalPosition: {x: 0, y: 0.66399956, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -286,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 3451818912601638879}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6639996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1cc889cea046224281d3bfc5ae16707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: -7314348274738732783}
   MouseSen: 90
   HeadObj: {fileID: 1692322850984172057}
 --- !u!1 &4149215685243210841
@@ -456,7 +456,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.9947892, z: 0, w: -0.10195368}
   m_LocalPosition: {x: 73.948296, y: 7.68, z: 14.03}
-  m_LocalScale: {x: 1, y: 0.88, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 82166633414622314}
@@ -579,11 +579,17 @@ MonoBehaviour:
   team:
     team: 0
   isGoalKeeper: 0
+  Score: 0
+  TouchedBallTimes:
+    m_InternalValue: 0
+  GoalTimes:
+    m_InternalValue: 0
+  CatchedBallTimes:
+    m_InternalValue: 0
   Vel: {x: 0, y: 0, z: 0}
   Toggle: {fileID: 1318876011583078747}
   isInGame:
     m_InternalValue: 0
-  Score: 0
   System: {fileID: 0}
   networkTransform_: {fileID: 3403981853347479341}
   isSuppress:

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class DefaultMaleModel : PlayerModelBase
@@ -55,8 +56,9 @@ public class DefaultMaleModel : PlayerModelBase
         animator.SetFloat(RUNNING_WING_HAND_ANIM, velocity_magnitue);
     }
 
-    public override void PlayMvpAnimation()
+    public override Task<Texture2D> PlayMvpAnimation()
     {
+        return null;
     }
     // Start is called before the first frame update
 

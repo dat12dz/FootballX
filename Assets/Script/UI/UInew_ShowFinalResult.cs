@@ -60,9 +60,10 @@ public class UInew_ShowFinalResult : MonoBehaviour
         await Task.Delay(sec * 1000);
         OveralResult.style.display = DisplayStyle.None;
     }
-
-    public void DisplayMvp(Player mvpPlayer)
+    // Update is called once per frame
+    public void DisplayMvp(Player mvpPlayer,Texture2D PlayerMVPTexture)
     {
+        Img_PlayerMvpImage.style.backgroundImage = PlayerMVPTexture;
         MvpDisplayer.style.display = DisplayStyle.Flex;
 
         lb_PlayerName.text = mvpPlayer.initialPlayerData.Value.playerName.Value;

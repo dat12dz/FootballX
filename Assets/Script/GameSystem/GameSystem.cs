@@ -183,10 +183,13 @@ public class GameSystem : SceneNetworkBehavior
     }
     [ClientRpc] public void DisplayerFinalResultTie_ClientRpc()
     {
-        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Tie", 5);
-        Client_DisplayerFinalResultBase();
+        UInew_ShowFinalResult.instance.ShowOverallMatchResult("Tie", 5).ContinueWith(t =>
+        {
+            MainThreadDispatcher.ExecuteInMainThread(() => Client_DisplayerFinalResultBase());
+          
+        });
     }
-    public void Client_DisplayerFinalResultBase()
+    public async void Client_DisplayerFinalResultBase()
     {
         var AllPlayer = CaculateRank();
         TeamEnum? winner()
@@ -207,16 +210,24 @@ public class GameSystem : SceneNetworkBehavior
         var PlayerListSorted = this.CaculateRank();
         Player FindMvp()
         {
+            if (Winner.HasValue)
             for (int i = 0; i < PlayerListSorted.Length; i++)
             {
 
-                Player p = PlayerListSorted[0].thisPlayer;
-                if (p.team.team == Winner) return p;
+                Player p = PlayerListSorted[i].thisPlayer;
+               
+                    if (p.team.team == Winner) return p;
+                        
+            }
+            else
+            {
+                return PlayerListSorted[0].thisPlayer;
             }
             return null;
         }
         var Mvp = FindMvp();
-        UInew_ShowFinalResult.instance.DisplayMvp(Mvp);
+        var Playertxt = await Mvp.thisPlayerModel.PlayMvpAnimation();
+        UInew_ShowFinalResult.instance.DisplayMvp(Mvp, Playertxt);
     }    
 
     public Player[] Client_GetAllPlayerList()
