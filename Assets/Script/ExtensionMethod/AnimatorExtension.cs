@@ -20,9 +20,7 @@ namespace Assets.Script.ExtensionMethod
             {
                 if (clip.name == AnimName) ClipLength = clip.length;
                 break;
-            }
-     
-            
+            }           
             await Task.Delay((int)(ClipLength * 1000));
         }
         public static async Task WaitForFrame(this Animator animator,int Frame)
