@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
 
 
@@ -86,7 +87,7 @@ public class DefaultFemaleModel : PlayerModelBase
     [SerializeField] Transform Cup;
     float testHoldAnim = 1.566667f;
     [ContextMenu("Play MVP Anim")]
-    public override async Task<Texture2D> PlayMvpAnimation()
+    public override async Task<RenderTexture> PlayMvpAnimation()
     {
       if (player)
         player.Playereyes.gameObject.SetActive( false);
@@ -94,7 +95,7 @@ public class DefaultFemaleModel : PlayerModelBase
         MVPCam.gameObject.SetActive(true);
         Cup.gameObject.SetActive(true);
         R_hand = animator.GetBoneTransform(HumanBodyBones.RightHand);
-        animator.GetComponentInChildren<MultiAimConstraint>().weight = 0;
+        animator.GetComponentInChildren<Rig>().weight = 0;
         animator.Play(PLAYER_MVP_ANIM_CLIP, 0);
         var CamAnimator = MVPCam.GetComponent<Animator>();
         var t =  CamAnimator.PlayAndWait("Camera|CameraAction", 0);
@@ -105,36 +106,31 @@ public class DefaultFemaleModel : PlayerModelBase
         await t;
         return TakePicture(PlayerRenderCam);
     }
-    Texture2D TakePicture(Camera cam)
+    [SerializeField] RenderTexture texture;
+    RenderTexture TakePicture(Camera cam)
     {
-        RenderTexture CurrentRT = RenderTexture.active;
+/*        RenderTexture CurrentRT = RenderTexture.active;
          
         RenderTexture rt = new RenderTexture(Screen.width, Screen.height,24,RenderTextureFormat.ARGB32);
-        cam.targetTexture = rt;
-        RenderTexture.active = rt;
-        Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
+        rt.graphicsFormat = UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_UNorm;
+        rt.dimension = TextureDimension.Tex2D;
+        cam.targetTexture = rt;*/
+        cam.targetTexture = texture;
+        /*        RenderTexture.active = rt;
+                Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
 
 
-        cam.Render();
+                cam.Render();
+                screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
 
+                screenShot.Apply();
 
-        Color fillColor = Color.clear;
-        Color[] fillPixels = new Color[screenShot.width * screenShot.height];
-
-
-        screenShot.SetPixels(fillPixels);
-        for (int i = 0; i < fillPixels.Length; i++)
-        {
-            fillPixels[i] = fillColor;
-        }
-        screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-      
-        screenShot.Apply();
+                RenderTexture.active = CurrentRT;
+                cam.targetTexture = null;
+                Destroy(rt);
+                return screenShot;*/
+        return texture;
         
-        RenderTexture.active = CurrentRT;
-        cam.targetTexture = null;
-        Destroy(rt);
-        return screenShot;
     }
 
     [Serializable]

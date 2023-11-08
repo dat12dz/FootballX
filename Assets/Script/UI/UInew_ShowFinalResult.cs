@@ -79,9 +79,9 @@ public class UInew_ShowFinalResult : MonoBehaviour
         OveralResult.style.display = DisplayStyle.None;
     }
     // Update is called once per frame
-    public void DisplayMvp(Player mvpPlayer,Texture2D PlayerMVPTexture)
+    public void DisplayMvp(Player mvpPlayer,RenderTexture PlayerMVPTexture)
     {
-        Img_PlayerMvpImage.style.backgroundImage = PlayerMVPTexture;
+        Img_PlayerMvpImage.style.backgroundImage =  Background.FromRenderTexture(PlayerMVPTexture);
         MvpDisplayer.style.display = DisplayStyle.Flex;
 
         //lb_PlayerName.text = mvpPlayer.initialPlayerData.Value.playerName.Value;
