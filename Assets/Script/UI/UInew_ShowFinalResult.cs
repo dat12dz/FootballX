@@ -9,8 +9,9 @@ public class UInew_ShowFinalResult : MonoBehaviour
 {
     UIDocument document;
     Label lb_OverallResult;
-    VisualElement MvpDisplayer;
+    VisualElement MvpDisplayer, Pnl_OverallResult;
     Button btn_Continue1, btn_Continue2;
+    VisualElement Img_PlayerMvpImage;
     public static UInew_ShowFinalResult instance;
     private void Start()
     {
@@ -19,23 +20,31 @@ public class UInew_ShowFinalResult : MonoBehaviour
         document = GetComponent<UIDocument>();
         var RootvsElement = document.rootVisualElement;
         MvpDisplayer = RootvsElement.Q<VisualElement>("pnl_MVPDisplayer");
+        Pnl_OverallResult = RootvsElement.Q<VisualElement>("pnl_OveralResult");
+        Img_PlayerMvpImage = RootvsElement.Q<VisualElement>("Img_MvpPlayer");
         btn_Continue1 = RootvsElement.Q<Button>("Btn_continue1");
         btn_Continue1.clicked += () =>
         {
             DisplayAllInfomation(gameSystem.Client_GetAllPlayerList());
         };
         lb_OverallResult = RootvsElement.Q<Label>("lb_OverallResult");
+     
     }
-    public async void ShowOverallMatchResult(string text,int sec)
+    public async Task ShowOverallMatchResult(string text,int sec)
     {
-        lb_OverallResult.style.display = DisplayStyle.Flex; 
-        lb_OverallResult.text = text;       
+        MainThreadDispatcher.ExecuteInMainThread( async() =>
+        {
+            Pnl_OverallResult.style.display = DisplayStyle.Flex;
+            lb_OverallResult.text = text;
+            await Task.Delay(sec * 1000);
+            Pnl_OverallResult.style.display = DisplayStyle.None;
+        });
         await Task.Delay(sec * 1000);
-        lb_OverallResult.style.display = DisplayStyle.None;
     }
     // Update is called once per frame
-    public void DisplayMvp(Player mvpPlayer)
+    public void DisplayMvp(Player mvpPlayer,Texture2D PlayerMVPTexture)
     {
+        Img_PlayerMvpImage.style.backgroundImage = PlayerMVPTexture;
         MvpDisplayer.style.display = DisplayStyle.Flex;
         if (mvpPlayer.isGoalKeeper)
         {

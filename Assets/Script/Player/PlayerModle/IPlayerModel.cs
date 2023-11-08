@@ -30,7 +30,7 @@ public abstract class PlayerModelBase : WaitForStart
     public abstract void RedTeamInit();
     public abstract void BlueTeamInit();
 
-    public abstract void PlayMvpAnimation();
+    public abstract Task<Texture2D> PlayMvpAnimation();
     public abstract void WingHandRunAnim(float velocity_magnitue);
 
     [ContextMenu("Play close eyes")]
@@ -106,6 +106,7 @@ public abstract class PlayerModelBase : WaitForStart
           Rotate();
         }
     }
+     
 }
 [Serializable]
 public class SpineRef

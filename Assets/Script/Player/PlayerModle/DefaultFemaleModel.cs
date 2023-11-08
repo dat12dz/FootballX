@@ -4,8 +4,12 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.Animations.Rigging;
+using UnityEngine.Rendering;
 using UnityEngine.XR;
 
 
@@ -22,12 +26,13 @@ public class DefaultFemaleModel : PlayerModelBase
     TeamReference redTeamRef, BlueTeamRef;
     private void Awake()
     {
-  
+      
         idle = new AnimationState(IDLE_ANIM_CLIP,animator);
     }
     protected override void Start()
     {
         base.Start();
+      
     }
     [ContextMenu("PlayIdle")]
     public override void IdleAnim()
@@ -76,24 +81,60 @@ public class DefaultFemaleModel : PlayerModelBase
         base.Update();
     }
     [Header("MVP Animation")]
-   [SerializeField] Camera MVPCam;
-    [SerializeField] Transform R_hand;
+   [SerializeField] Camera MVPCam,PlayerRenderCam;
+    Transform R_hand;
     [SerializeField] Transform Cup;
-    [SerializeField] float testHoldAnim;
+    float testHoldAnim = 1.566667f;
     [ContextMenu("Play MVP Anim")]
-    public override async void PlayMvpAnimation()
+    public override async Task<Texture2D> PlayMvpAnimation()
     {
+      if (player)
+        player.Playereyes.gameObject.SetActive( false);
+        MVPCam.transform.SetParent(ActiveModel.transform, false);
+        MVPCam.gameObject.SetActive(true);
         Cup.gameObject.SetActive(true);
- 
+        R_hand = animator.GetBoneTransform(HumanBodyBones.RightHand);
+        animator.GetComponentInChildren<MultiAimConstraint>().weight = 0;
         animator.Play(PLAYER_MVP_ANIM_CLIP, 0);
         var CamAnimator = MVPCam.GetComponent<Animator>();
-      var t =  CamAnimator.PlayAndWait("Camera|CameraAction", 0);
-        await Cup.DOMoveY(Cup.position.y -10, testHoldAnim).AsyncWaitForCompletion();
-        
+        var t =  CamAnimator.PlayAndWait("Camera|CameraAction", 0);
+        await Cup.DOMoveY(Cup.position.y -10, testHoldAnim).AsyncWaitForCompletion();        
         Cup.SetParent(R_hand, false);
         Cup.transform.localPosition =new Vector3(0.0266f, -0.0225f, 0.0204f);
         Cup.transform.localRotation = Quaternion.Euler((Vector3.zero));
         await t;
+        return TakePicture(PlayerRenderCam);
+    }
+    Texture2D TakePicture(Camera cam)
+    {
+        RenderTexture CurrentRT = RenderTexture.active;
+         
+        RenderTexture rt = new RenderTexture(Screen.width, Screen.height,24,RenderTextureFormat.ARGB32);
+        cam.targetTexture = rt;
+        RenderTexture.active = rt;
+        Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
+
+
+        cam.Render();
+
+
+        Color fillColor = Color.clear;
+        Color[] fillPixels = new Color[screenShot.width * screenShot.height];
+
+
+        screenShot.SetPixels(fillPixels);
+        for (int i = 0; i < fillPixels.Length; i++)
+        {
+            fillPixels[i] = fillColor;
+        }
+        screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+      
+        screenShot.Apply();
+        
+        RenderTexture.active = CurrentRT;
+        cam.targetTexture = null;
+        Destroy(rt);
+        return screenShot;
     }
 
     [Serializable]
