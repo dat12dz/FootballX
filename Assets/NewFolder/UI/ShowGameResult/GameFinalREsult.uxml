@@ -1,8 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="MatchResult_infoCard" src="project://database/Assets/Resources/UITemplate/MatchResult_infoCard.uxml?fileID=9197481963319205126&amp;guid=0f22c809e38af7344aece2f0dddb16dd&amp;type=3#MatchResult_infoCard" />
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
-    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgb(255, 255, 255);">
-        <ui:VisualElement name="pnl_MVPDisplayer" style="display: flex; position: absolute; left: 0; top: 0; right: 0; bottom: 0; justify-content: center;">
+    <ui:VisualElement name="container" style="flex-grow: 1; background-color: rgb(255, 255, 255);">
+        <ui:VisualElement name="pnl_MVPDisplayer" style="display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; justify-content: center;">
             <ui:Label tabindex="-1" text="MVP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="-unity-font: url(&apos;project://database/Assets/NewFolder/Fonts/en_inpin.ttf?fileID=12800000&amp;guid=eb2d226fcfa158c4f96775c076122fd5&amp;type=3#en_inpin&apos;); font-size: 76px; -unity-font-definition: initial; -unity-text-align: upper-center; align-self: center; position: absolute; top: 0;" />
             <ui:VisualElement name="pbl_MvpInfo">
                 <ui:VisualElement style="height: 400px; width: 500px; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); justify-content: center;">
@@ -22,13 +21,10 @@
         <ui:VisualElement name="pnl_OveralResult" style="flex-grow: 1; display: none;">
             <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_OverallResult" style="height: 100%; -unity-text-align: middle-center; -unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Demi.otf?fileID=12800000&amp;guid=387c96c9d0096714cae9f30761986040&amp;type=3#IndustryTest-Demi&apos;); -unity-font-definition: initial; font-size: 140px; color: rgb(255, 54, 0); display: flex;" />
         </ui:VisualElement>
-        <ui:VisualElement name="pnl_ShowAllInfo" style="flex-grow: 1; background-color: rgb(255, 255, 255); flex-direction: column; display: none;">
+        <ui:VisualElement name="pnl_ShowAllInfo" style="flex-grow: 1; background-color: rgb(255, 255, 255); flex-direction: column; display: flex;">
             <ui:Label tabindex="-1" text="MATCH RESULT" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/SimpleToolUIPack/Fonts/en_inpin.ttf?fileID=12800000&amp;guid=f3716bf08e3a86341b1eb892d8cdf7cd&amp;type=3#en_inpin&apos;); -unity-text-align: upper-center; font-size: 26px;" />
-            <ui:VisualElement name="pnl_PlayerInfo" style="flex-grow: 1;">
-                <ui:Instance template="MatchResult_infoCard" name="InfoCard" />
-                <ui:Instance template="MatchResult_infoCard" name="InfoCard" />
-            </ui:VisualElement>
-            <ui:Button text="Continue" parse-escape-sequences="true" display-tooltip-when-elided="true" name="btn_Continue2" style="width: 200px; height: 50px; align-self: center;" />
+            <ui:VisualElement name="pnl_PlayerInfo" style="flex-grow: 1;" />
+            <ui:Button text="Continue" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Btn_continue2" style="width: 200px; height: 50px; align-self: center;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

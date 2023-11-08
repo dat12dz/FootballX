@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class UInew_ShowFinalResult : MonoBehaviour
 {
     UIDocument document;
+    VisualElement container;
     VisualElement MvpDisplayer;
     VisualElement OveralResult;
     VisualElement ShowAllInfo;
@@ -25,6 +26,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
 
         document = GetComponent<UIDocument>();
         var RootvsElement = document.rootVisualElement;
+        container = RootvsElement.Q<VisualElement>("container");
         MvpDisplayer = RootvsElement.Q<VisualElement>("pnl_MVPDisplayer");
         OveralResult = RootvsElement.Q<VisualElement>("pnl_OveralResult");
         ShowAllInfo = RootvsElement.Q<VisualElement>("pnl_ShowAllInfo");
@@ -38,7 +40,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
         lb_Change = RootvsElement.Q<Label>("lb_Change");
         lb_ShowKS = RootvsElement.Q<Label>("lb_ShowKS");
 
-        MatchResult_infoCard = Resources.Load<VisualTreeAsset>("/UITemplate/MatchResult_infoCard").CloneTree();
+        MatchResult_infoCard = Resources.Load<VisualTreeAsset>("UITemplate/MatchResult_infoCard").CloneTree();
         //lb_PlayerIndex = RootvsElement.Q<Label>("lb_PlayerIndex");
         //lb_PlayerName = RootvsElement.Q<Label>("lb_PlayerName");
         //lb_KS = RootvsElement.Q<Label>("lb_KS");
@@ -46,18 +48,34 @@ public class UInew_ShowFinalResult : MonoBehaviour
 
         btn_Continue1.clicked += () =>
         {
+            Debug.Log("continue1 Btn is click");
             MvpDisplayer.style.display = DisplayStyle.None;
             DisplayAllInfomation(gameSystem.Client_GetAllPlayerList());
         };
 
+        btn_Continue2.clicked += () =>
+        {
+            Debug.Log("continue2 Btn is click");
+            ShowAllInfo.style.display = DisplayStyle.None;
+            container.style.display = DisplayStyle.None;
+        };
+
+        //btn_Continue2.clicked += () =>
+        //{
+        //    Debug.Log("continue2 Btn is click");
+        //    ShowAllInfo.style.display = DisplayStyle.None;
+        //    container.style.display = DisplayStyle.None;
+        //};
+
         ResetStyle();
     }
 
-    public async void ShowOverallMatchResult(string text,int sec)
+    public async Task ShowOverallMatchResult(string text,int sec)
     {
+        container.style.display = DisplayStyle.Flex;
         OveralResult.style.display = DisplayStyle.Flex;
         lb_OverallResult.text = text;
-        await Task.Delay(sec * 1000);
+        await Task.Delay(2 * 1000);
         OveralResult.style.display = DisplayStyle.None;
     }
     // Update is called once per frame
@@ -66,7 +84,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
         Img_PlayerMvpImage.style.backgroundImage = PlayerMVPTexture;
         MvpDisplayer.style.display = DisplayStyle.Flex;
 
-        lb_PlayerName.text = mvpPlayer.initialPlayerData.Value.playerName.Value;
+        //lb_PlayerName.text = mvpPlayer.initialPlayerData.Value.playerName.Value;
         lb_Score.text = mvpPlayer.Score.ToString();
 
         if (mvpPlayer.isGoalKeeper)
@@ -78,7 +96,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
         else
         {
             lb_Change.text = "K/T";
-            lb_ShowKS.text = mvpPlayer.TouchedBallTimes.Value.ToString() + "/" + mvpPlayer.GoalTimes.Value.ToString();
+            lb_ShowKS.text =   mvpPlayer.GoalTimes.Value.ToString() + "/" + mvpPlayer.TouchedBallTimes.Value.ToString();
         }
     }
     public void DisplayAllInfomation(Player[] allPlayerList)
@@ -92,9 +110,9 @@ public class UInew_ShowFinalResult : MonoBehaviour
         Label lb_MVP = MatchResult_infoCard.Q<Label>("lb_MVP");
 
         allPlayerList = allPlayerList.OrderByDescending(p => p.Score).ToArray();
-        for (int i = 1; i <= allPlayerList.Length; i++)
+        for (int i = 0; i < allPlayerList.Length; i++)
         {
-            lb_PlayerIndex.text = i.ToString();
+            lb_PlayerIndex.text = (i + 1).ToString();
             lb_PlayerName.text = allPlayerList[i].name;
             lb_KS.text = allPlayerList[i].Score.ToString();
             lb_Score.text = allPlayerList[i].Score.ToString();
@@ -109,6 +127,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
 
     void ResetStyle()
     {
+        container.style.display = DisplayStyle.None;
         MvpDisplayer.style.display = DisplayStyle.None;
         OveralResult.style.display = DisplayStyle.None;
         ShowAllInfo.style.display = DisplayStyle.None;

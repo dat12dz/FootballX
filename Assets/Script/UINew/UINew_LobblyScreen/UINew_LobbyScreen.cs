@@ -19,7 +19,7 @@ public class UINew_LobbyScreen : MonoBehaviour
     private static VisualElement readyIcon;
     void Awake()
     {
-        Debug.LogError("Awake");
+        //Debug.LogError("Awake");
         root = GetComponent<UIDocument>().rootVisualElement;
         container = root.Q<VisualElement>("container");
         background = root.Q<VisualElement>("background");
