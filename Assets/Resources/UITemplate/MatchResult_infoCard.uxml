@@ -4,6 +4,6 @@
         <ui:Label tabindex="-1" text="lb_PlayerName" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_PlayerName" style="height: 35px; width: 20%;" />
         <ui:Label tabindex="-1" text="K/S" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_KS" style="height: 35px; width: 20%; flex-direction: column;" />
         <ui:Label tabindex="-1" text="Score" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Score" style="height: 35px; width: 20%; flex-direction: column;" />
-        <ui:Label tabindex="-1" text="MVP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_MVP" style="height: 35px; width: 20%; flex-direction: column; color: rgb(255, 242, 0);" />
+        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_MVP" style="height: 35px; width: 20%; flex-direction: column; color: rgb(255, 242, 0);" />
     </ui:VisualElement>
 </ui:UXML>

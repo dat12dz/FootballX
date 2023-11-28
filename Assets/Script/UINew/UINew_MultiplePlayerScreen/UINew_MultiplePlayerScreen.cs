@@ -27,6 +27,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
     int maxHostPlayer = 10;
     void Start()
     {
+        //Debug.LogError("Start");
        UnityEngine.Cursor.lockState = CursorLockMode.None;
        root = GetComponent<UIDocument>().rootVisualElement;
         inputName = root.Q<TextField>("input-name");
@@ -122,7 +123,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
         {
             NetworkClient_.StartClient(inputIp.text, inputName.text);
             StartGameInfo.instance.playerData.playerName = inputName.text;
-            UINew_ChangeSceneEffect.ChangeScene(1);
+            //UINew_ChangeSceneEffect.ChangeScene(1);
         }
     }
 

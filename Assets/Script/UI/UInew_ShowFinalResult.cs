@@ -8,14 +8,16 @@ using UnityEngine.UIElements;
 
 public class UInew_ShowFinalResult : MonoBehaviour
 {
+    UINew_MVPScreen uiMvpScreen;
+
     UIDocument document;
     VisualElement container;
     VisualElement MvpDisplayer;
     VisualElement Img_PlayerMvpImage;
+    VisualElement MvpScreen;
     VisualElement OveralResult;
     VisualElement ShowAllInfo;
     VisualElement pnl_PlayerInfo;
-    VisualElement MatchResult_infoCard;
     Button btn_Continue1, btn_Continue2;
     Label lb_OverallResult;
     Label lb_PlayerName, lb_Score, lb_Change, lb_ShowKS;
@@ -27,10 +29,14 @@ public class UInew_ShowFinalResult : MonoBehaviour
 
         document = GetComponent<UIDocument>();
         var RootvsElement = document.rootVisualElement;
+
+        uiMvpScreen = new UINew_MVPScreen(RootvsElement);
+
         container = RootvsElement.Q<VisualElement>("container");
         Img_PlayerMvpImage = RootvsElement.Q<VisualElement>("Img_MvpPlayer");
         MvpDisplayer = RootvsElement.Q<VisualElement>("pnl_MVPDisplayer");
         OveralResult = RootvsElement.Q<VisualElement>("pnl_OveralResult");
+        MvpScreen = UINew_MVPScreen.mvpScreen;
         ShowAllInfo = RootvsElement.Q<VisualElement>("pnl_ShowAllInfo");
         pnl_PlayerInfo = RootvsElement.Q<VisualElement>("pnl_PlayerInfo");
 
@@ -43,7 +49,6 @@ public class UInew_ShowFinalResult : MonoBehaviour
         lb_ShowKS = RootvsElement.Q<Label>("lb_ShowKS");
         lb_PlayerName = RootvsElement.Q<Label>("lb_PlayerName");
 
-        MatchResult_infoCard = Resources.Load<VisualTreeAsset>("UITemplate/MatchResult_infoCard").CloneTree();
         //lb_PlayerIndex = RootvsElement.Q<Label>("lb_PlayerIndex");
         //lb_KS = RootvsElement.Q<Label>("lb_KS");
         //lb_MVP = RootvsElement.Q<Label>("lb_MVP");
@@ -51,6 +56,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
         btn_Continue1.clicked += () =>
         {
             Debug.Log("continue1 Btn is click");
+            uiMvpScreen.ResetStyle();
             MvpDisplayer.style.display = DisplayStyle.None;
             DisplayAllInfomation(gameSystem.Client_GetAllPlayerList());
         };
@@ -60,6 +66,8 @@ public class UInew_ShowFinalResult : MonoBehaviour
             Debug.Log("continue2 Btn is click");
             ShowAllInfo.style.display = DisplayStyle.None;
             container.style.display = DisplayStyle.None;
+
+            GameSystem.instance.ResetScene();
         };
 
         //btn_Continue2.clicked += () =>
@@ -81,11 +89,12 @@ public class UInew_ShowFinalResult : MonoBehaviour
         OveralResult.style.display = DisplayStyle.None;
     }
     // Update is called once per frame
-    public void DisplayMvp(Player mvpPlayer,RenderTexture PlayerMVPTexture)
+    public async void DisplayMvp(Player mvpPlayer,RenderTexture PlayerMVPTexture)
     {
-        Img_PlayerMvpImage.style.display = DisplayStyle.Flex;
-        Img_PlayerMvpImage.style.backgroundImage =  Background.FromRenderTexture(PlayerMVPTexture);
         MvpDisplayer.style.display = DisplayStyle.Flex;
+        Img_PlayerMvpImage.style.backgroundImage =  Background.FromRenderTexture(PlayerMVPTexture);
+        await Task.Delay(1);
+        uiMvpScreen.Show();
 
         lb_PlayerName.text = mvpPlayer.initialPlayerData.Value.playerName.ToString();
         lb_Score.text = mvpPlayer.Score.ToString();
@@ -105,39 +114,75 @@ public class UInew_ShowFinalResult : MonoBehaviour
     public void DisplayAllInfomation(Player[] allPlayerList)
     {
         ShowAllInfo.style.display = DisplayStyle.Flex;
-
-        Label lb_PlayerIndex = MatchResult_infoCard.Q<Label>("lb_PlayerIndex");
-        Label lb_PlayerName = MatchResult_infoCard.Q<Label>("lb_PlayerName");
-        Label lb_KS = MatchResult_infoCard.Q<Label>("lb_KS");
-        Label lb_Score = MatchResult_infoCard.Q<Label>("lb_Score");
-        Label lb_MVP = MatchResult_infoCard.Q<Label>("lb_MVP");
-
         bool isRedPlayerMVP = false;
         bool isBluePlayerMVP = false;
 
+        allPlayerList = allPlayerList.OrderByDescending(p => p.Score).ToArray();
 
         for (int i = 0; i < allPlayerList.Length; i++)
         {
+            VisualElement MatchResult_infoCard = Resources.Load<VisualTreeAsset>("UITemplate/MatchResult_infoCard").CloneTree();
+            Label lb_PlayerIndex = MatchResult_infoCard.Q<Label>("lb_PlayerIndex");
+            Label lb_PlayerName = MatchResult_infoCard.Q<Label>("lb_PlayerName");
+            Label lb_KS = MatchResult_infoCard.Q<Label>("lb_KS");
+            Label lb_Score = MatchResult_infoCard.Q<Label>("lb_Score");
+            Label lb_MVP = MatchResult_infoCard.Q<Label>("lb_MVP");
+
             lb_PlayerIndex.text = (i + 1).ToString();
             lb_PlayerName.text = allPlayerList[i].initialPlayerData.Value.playerName.ToString();
-            lb_KS.text = allPlayerList[i].Score.ToString();
-            lb_Score.text = allPlayerList[i].Score.ToString();
+            lb_KS.text = "K/T: " + allPlayerList[i].GoalTimes.Value.ToString() + "/" + allPlayerList[i].TouchedBallTimes.Value.ToString();
+            lb_Score.text = "Score: " + allPlayerList[i].Score.ToString();
 
-            if(allPlayerList[i].team.team == TeamEnum.Red && GameSystem.instance.Winner == TeamEnum.Red)
+
+            if (GameSystem.instance.Winner == null)
             {
-                lb_MVP.text = "MVP";
-                lb_MVP.style.color = new StyleColor(new Color());
+                lb_MVP.text = null;
+                pnl_PlayerInfo.Add(MatchResult_infoCard);
+                continue;
             }
 
-            if (allPlayerList[i].team.team == TeamEnum.Blue && GameSystem.instance.Winner == TeamEnum.Blue)
+            if (allPlayerList[i].team.team == TeamEnum.Red)
             {
+                if (isRedPlayerMVP == true)
+                {
+                    lb_MVP.text = null;
+                    pnl_PlayerInfo.Add(MatchResult_infoCard);
+                    continue;
+                }
+
+                isRedPlayerMVP = true;
+                if (GameSystem.instance.Winner == TeamEnum.Red)
+                {
+                    lb_MVP.style.color = new StyleColor(new Color(200f / 255, 0, 0)); // redColor
+                }
+                else lb_MVP.style.color = new StyleColor(new Color(90f / 255, 0, 150f / 255)); // violetColor
+
                 lb_MVP.text = "MVP";
-                lb_MVP.style.color = new StyleColor(new Color(90f/255, 0, 150f/255));
+                pnl_PlayerInfo.Add(MatchResult_infoCard);
+                continue;
             }
 
+            if (allPlayerList[i].team.team == TeamEnum.Blue)
+            {
+                if (isBluePlayerMVP == true)
+                {
+                    lb_MVP.text = null;
+                    pnl_PlayerInfo.Add(MatchResult_infoCard);
+                    continue;
+                }
 
+                isBluePlayerMVP = true;
+                if (GameSystem.instance.Winner == TeamEnum.Blue)
+                {
+                    lb_MVP.style.color = new StyleColor(new Color(200f / 255, 0, 0)); // redColor
+                }
+                else lb_MVP.style.color = new StyleColor(new Color(90f / 255, 0, 150f / 255)); // violetColor
+                    
+                lb_MVP.text = "MVP";
+                pnl_PlayerInfo.Add(MatchResult_infoCard);
+                continue;
+            }
 
-            pnl_PlayerInfo.Add(MatchResult_infoCard);
         }
     }
 

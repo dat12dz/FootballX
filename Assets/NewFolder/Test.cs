@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using UnityEngine.UIElements;
 public class Test : MonoBehaviour
 {
     // Start is called before the first frame update
     byte value = 0;
+    UINew_MVPScreen mvp;
     void Start()
     {
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        mvp = new UINew_MVPScreen(root);
         
     }
 
@@ -17,12 +20,12 @@ public class Test : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            UINew_MVPScreen.Show();
+            mvp.Show();
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            UINew_MVPScreen.ResetStyle();
+            mvp.ResetStyle();
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
