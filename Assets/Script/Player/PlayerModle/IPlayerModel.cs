@@ -94,10 +94,7 @@ public abstract class PlayerModelBase : WaitForStart
             footControl.UpdateFootPlacement();
         }
     }
-    void UpdateFootPlacement()
-    {
-       
-    }
+ 
     protected virtual void Update()
     {
         // Nếu đang ở trong game, Ngoài màn hình chọn tướng không tính
@@ -106,7 +103,7 @@ public abstract class PlayerModelBase : WaitForStart
           Rotate();
         }
     }
-     
+    public abstract void ResetAnimation();
 }
 [Serializable]
 public class SpineRef

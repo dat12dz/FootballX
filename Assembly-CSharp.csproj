@@ -64,6 +64,7 @@
     <Compile Include="Assets\PermanentUI.cs" />
     <Compile Include="Assets\NewFolder\Test.cs" />
     <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
+    <Compile Include="Assets\animat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 namespace Assets.Script.ExtensionMethod
 {
@@ -18,8 +18,11 @@ namespace Assets.Script.ExtensionMethod
             float ClipLength = 0;
             foreach (var clip in clips)
             {
-                if (clip.name == AnimName) ClipLength = clip.length;
-                break;
+                if (clip.name == AnimName)
+                {
+                    ClipLength = clip.length;
+                    break;
+                }
             }           
             await Task.Delay((int)(ClipLength * 1000));
         }

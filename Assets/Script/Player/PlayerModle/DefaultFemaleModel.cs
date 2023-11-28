@@ -105,19 +105,19 @@ public class DefaultFemaleModel : PlayerModelBase
         Cup.transform.localRotation = Quaternion.Euler((Vector3.zero));
         await t;
         PlayerRenderCam.clearFlags = CameraClearFlags.SolidColor;
-        PlayerRenderCam.GetUniversalAdditionalCameraData();
+            
         return TakePicture(PlayerRenderCam);
     }
-    [SerializeField] RenderTexture texture;
+    
     RenderTexture TakePicture(Camera cam)
     {
-/*        RenderTexture CurrentRT = RenderTexture.active;
-         
-        RenderTexture rt = new RenderTexture(Screen.width, Screen.height,24,RenderTextureFormat.ARGB32);
+        RenderTexture CurrentRT = RenderTexture.active;
+
+        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32);
         rt.graphicsFormat = UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_UNorm;
         rt.dimension = TextureDimension.Tex2D;
-        cam.targetTexture = rt;*/
-        cam.targetTexture = texture;
+        cam.targetTexture = rt;
+/*        cam.targetTexture = texture;*/
         /*        RenderTexture.active = rt;
                 Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
 
@@ -131,10 +131,16 @@ public class DefaultFemaleModel : PlayerModelBase
                 cam.targetTexture = null;
                 Destroy(rt);
                 return screenShot;*/
-        return texture;
+        return rt;
         
     }
-
+    public override void ResetAnimation()
+    {
+        MVPCam.gameObject.SetActive(false);
+        Cup.SetParent(transform, false);
+        Cup.gameObject.SetActive(false);
+        player.Playereyes.gameObject.SetActive(true);
+    }
     [Serializable]
     class TeamReference
     {

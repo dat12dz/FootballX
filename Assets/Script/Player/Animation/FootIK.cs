@@ -15,6 +15,7 @@ public class FootIK : MonoBehaviour
     [SerializeField] AnimationCurve FootPlaceMentCurve;
     [SerializeField] SoundPlayer SoundPlayer_StepOnGrass;
     Player player;
+   
     void Start()
     {
         groundMask = LayerMask.GetMask("Ground");
@@ -38,6 +39,8 @@ public class FootIK : MonoBehaviour
                     RFoot.footIK.transform.parent = transform;
                 }    
             };
+            LFoot.footIK.transform.parent = null;
+            RFoot.footIK.transform.parent = null;
         }
         
 

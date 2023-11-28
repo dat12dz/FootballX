@@ -222,13 +222,13 @@ public class GameSystem : SceneNetworkBehavior
             for (int i = 0; i < PlayerListSorted.Length; i++)
             {
 
-                Player p = PlayerListSorted[i].thisPlayer;
+                    Player p = PlayerListSorted[i];
                
                     if (p.team.team == Winner) return p;
                         
             }
             
-                return PlayerListSorted[0].thisPlayer;
+                return PlayerListSorted[0];
          
         }
         var Mvp = FindMvp();
@@ -238,7 +238,15 @@ public class GameSystem : SceneNetworkBehavior
     public void ResetScene()
     {
         SceneManager.UnloadSceneAsync(gameObject.scene);
-        Player.localPlayer.TogglePoolObj(false);       
+        Player.localPlayer.TogglePoolObj(false);
+        UINew_LobbyScreenRoomRender.instance.gameObject.SetActive(true);
+      var AllPlayer =  Client_GetAllPlayerList();
+        foreach (var player in AllPlayer)
+        {
+            DontDestroyOnLoad(player.gameObject);
+            player.TogglePoolObj(false);
+        }
+        
     }
     public Player[] Client_GetAllPlayerList()
     {
@@ -251,10 +259,9 @@ public class GameSystem : SceneNetworkBehavior
           ps.Simulate(Time.fixedDeltaTime);
     }
 
-    public PlayerRoomManager[] CaculateRank()
+    public Player[] CaculateRank()
     {
-        PlayerRoomManager[] PlayerSortedRank;
-        PlayerSortedRank = room.playerDict.Values.ToArray();
+        Player[] PlayerSortedRank = Client_GetAllPlayerList(); ;        
         Array.Sort(PlayerSortedRank,new ComparePlayer());
         return PlayerSortedRank; 
     }
@@ -262,15 +269,15 @@ public class GameSystem : SceneNetworkBehavior
     {
         public int Compare(object x, object y)
         {
-            var PlayerX = (PlayerRoomManager)x;
-            var PlayerY = (PlayerRoomManager)y;
-            if (PlayerX.thisPlayer.Score > PlayerY.thisPlayer.Score)
-            {
-                return -1;
-            }
-            if (PlayerX.thisPlayer.Score < PlayerY.thisPlayer.Score)
+            var PlayerX = (Player)x;
+            var PlayerY = (Player)y;
+            if (PlayerX.Score > PlayerY.Score)
             {
                 return 1;
+            }
+            if (PlayerX.Score < PlayerY.Score)
+            {
+                return -1;
             }
             return 0;
         }

@@ -681,8 +681,8 @@ GameObject:
   m_Component:
   - component: {fileID: 640136101173797251}
   - component: {fileID: 1910568893079580749}
-  - component: {fileID: 8783088509646525250}
   - component: {fileID: 8465987498612861887}
+  - component: {fileID: 8783088509646525250}
   m_Layer: 12
   m_Name: Foot
   m_TagString: Untagged
@@ -715,30 +715,17 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1983
+    m_Bits: 1855
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2010698, y: 0.97822315, z: 1.1958003}
-  m_Center: {x: -0.00021916657, y: 0.0108881425, z: 0.036107242}
---- !u!114 &8783088509646525250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5450748266334864239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cbf74fa61bcc5a46a382ff6e9014d1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisPlayer: {fileID: -7314348274738732783}
+  m_Size: {x: 0.71708703, y: 0.97822315, z: 0.5188427}
+  m_Center: {x: 0.022340072, y: 0.0108881295, z: -0.0314112}
 --- !u!54 &8465987498612861887
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -755,7 +742,7 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 1983
@@ -766,6 +753,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8783088509646525250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450748266334864239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbf74fa61bcc5a46a382ff6e9014d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisPlayer: {fileID: -7314348274738732783}
 --- !u!1 &6735907644299804350
 GameObject:
   m_ObjectHideFlags: 0

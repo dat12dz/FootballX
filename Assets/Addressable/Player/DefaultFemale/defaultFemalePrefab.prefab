@@ -386,14 +386,14 @@ MonoBehaviour:
     footIK: {fileID: 4581500798179243808}
     LastFootPlaceMent: {x: 0, y: 0, z: 0}
     currentRate: 0
-    incRateSpeed: 5
+    incRateSpeed: 3
     Amp: 0.4
   RFoot:
     Raycaster: {fileID: 6272467171671946171}
     footIK: {fileID: 5220163656361735462}
     LastFootPlaceMent: {x: 0, y: 0, z: 0}
     currentRate: 0
-    incRateSpeed: 5
+    incRateSpeed: 3
     Amp: 0.4
   FootPlaceMentCurve:
     serializedVersion: 2
@@ -427,7 +427,7 @@ MonoBehaviour:
     - {fileID: 6788210639536206153}
     - {fileID: 948923475068542491}
     - {fileID: 5558076070987391381}
-  Spacing: 7
+  Spacing: 10
   DefaultFootPlacementDistance: 0.2
 --- !u!1 &2027590840665377051
 GameObject:
@@ -1290,7 +1290,6 @@ MonoBehaviour:
   MVPCam: {fileID: 5279656460900898494}
   PlayerRenderCam: {fileID: 8408618671359430302}
   Cup: {fileID: 4792333275860232133}
-  texture: {fileID: 8400000, guid: ea02176d83674fd4c8f9592b9f0cbe7d, type: 2}
 --- !u!1 &5562909467043026535
 GameObject:
   m_ObjectHideFlags: 0
