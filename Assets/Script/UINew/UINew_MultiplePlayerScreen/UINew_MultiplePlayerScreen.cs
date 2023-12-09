@@ -27,6 +27,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
     int maxHostPlayer = 10;
     void Start()
     {
+        //Debug.LogError("Start");
        UnityEngine.Cursor.lockState = CursorLockMode.None;
        root = GetComponent<UIDocument>().rootVisualElement;
         inputName = root.Q<TextField>("input-name");
@@ -55,42 +56,10 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
         };
         
         inputName.value =  StartGameInfo.instance.playerData.playerName.ToString();
-        connectBtn.clicked += () =>
-        {
-            if (inputName.text == string.Empty)
-            {
-                UINew_MessageBox.Show("Player name cannot empty", "Please fill in your player name");
-                return;
-            }
-            if (inputIp.text == string.Empty)
-            {
-                if (netmang.StartServer())
-                    NetworkServer.StartServer();
-            }
-            else
-            {
-                NetworkClient_.StartClient(inputIp.text, inputName.text);
-                StartGameInfo.instance.playerData.playerName = inputName.text;
-            }
-        };
 
-        hostBtn.clicked += () =>
-        {
-            StartGameInfo.instance.playerData.playerName = inputName.text;
-            netmang.ConnectionApprovalCallback = (req, res) =>
-            {
-                if (netmang.ConnectedClients.Count > maxHostPlayer)
-                {
-                    res.Approved = false;
-                    res.Reason = "Server is full";
-                }
-                res.Approved = true;
-                res.CreatePlayerObject = true;
-            };
-            if (netmang.StartHost())
-                //SceneManager.LoadScene(1);
-                UINew_ChangeSceneEffect.ChangeScene(1);
-        };
+        connectBtn.clicked += Btn_ConnectClick;
+
+        hostBtn.clicked += Btn_HostClick;
 
         characterBtn.clicked += () =>
         {
@@ -136,5 +105,44 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
     {
         //SceneManager.LoadScene(0);
         UINew_ChangeSceneEffect.ChangeScene(0);
+    }
+
+    private void Btn_ConnectClick()
+    {
+        if (inputName.text == string.Empty)
+        {
+            UINew_MessageBox.Show("Player name cannot empty", "Please fill in your player name");
+            return;
+        }
+        if (inputIp.text == string.Empty)
+        {
+            if (netmang.StartServer())
+                NetworkServer.StartServer();
+        }
+        else
+        {
+            NetworkClient_.StartClient(inputIp.text, inputName.text);
+            StartGameInfo.instance.playerData.playerName = inputName.text;
+            //UINew_ChangeSceneEffect.ChangeScene(1);
+        }
+    }
+
+    private void Btn_HostClick()
+    {
+        StartGameInfo.instance.playerData.playerName = inputName.text;
+
+        netmang.ConnectionApprovalCallback = (req, res) =>
+        {
+            if (netmang.ConnectedClients.Count > maxHostPlayer)
+            {
+                res.Approved = false;
+                res.Reason = "Server is full";
+            }
+            res.Approved = true;
+            res.CreatePlayerObject = true;
+        };
+        if (netmang.StartHost())
+            //SceneManager.LoadScene(1);
+            UINew_ChangeSceneEffect.ChangeScene(1);
     }
 }

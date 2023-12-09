@@ -1,14 +1,43 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
     <Style src="project://database/Assets/NewFolder/UI/MVPScreen/MVPScreen.uss?fileID=7433441132597879392&amp;guid=01a20f6615c1db642be4c3fa48485a57&amp;type=3#MVPScreen" />
-    <ui:VisualElement name="container" style="flex-grow: 1;">
-        <ui:VisualElement name="mvp-screen-bottom">
-            <ui:VisualElement name="mvp-text-box">
-                <ui:Label tabindex="-1" text="MVP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="mvp" />
-                <ui:Label tabindex="-1" text="Goal/Ball taken taime" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+    <ui:VisualElement name="container" style="justify-content: center; flex-grow: 1;">
+        <ui:VisualElement name="mvp-screen">
+            <ui:VisualElement name="first-bg" />
+            <ui:VisualElement name="second-bg" />
+            <ui:VisualElement name="third-bg" />
+            <ui:VisualElement name="fourth-bg" style="transition-timing-function: ease-out-sine;">
+                <ui:VisualElement name="width-scale" />
             </ui:VisualElement>
-            <ui:Label tabindex="-1" text="PlayerName" parse-escape-sequences="true" display-tooltip-when-elided="true" name="name" />
+            <ui:VisualElement name="fifth-bg">
+                <ui:VisualElement name="fifth-bg-box" />
+            </ui:VisualElement>
+            <ui:VisualElement name="seventh-bg">
+                <ui:VisualElement name="seventh-bg-box" />
+            </ui:VisualElement>
+            <ui:VisualElement name="sixth-bg" style="transition-timing-function: ease-out-sine;">
+                <ui:VisualElement name="sixth-bg-box" />
+            </ui:VisualElement>
+            <ui:VisualElement name="pbl_MvpInfo" style="flex-grow: 1; width: 360px; display: flex; color: rgb(0, 0, 0); justify-content: center; margin-left: 100px;">
+                <ui:Label tabindex="-1" text="MVP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_MVP" style="-unity-font: url(&apos;project://database/Assets/NewFolder/Fonts/en_inpin.ttf?fileID=12800000&amp;guid=eb2d226fcfa158c4f96775c076122fd5&amp;type=3#en_inpin&apos;); font-size: 76px; -unity-font-definition: initial; -unity-text-align: upper-center; transition-duration: 200ms; align-self: flex-start;" />
+                <ui:VisualElement name="pbl_MvpInfo-box" style="justify-content: space-between; height: 200px; transition-duration: 200ms;">
+                    <ui:Label tabindex="-1" text="PlayerName" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_PlayerName" style="font-size: 32px; -unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Bold.otf?fileID=12800000&amp;guid=3ca74ea9d1b2d7547ac4e53cc9aed3fc&amp;type=3#IndustryTest-Bold&apos;); -unity-font-definition: initial; -unity-text-align: upper-center; align-self: flex-start;" />
+                    <ui:VisualElement style="flex-direction: row; justify-content: space-around; background-color: rgba(0, 0, 0, 0.16);">
+                        <ui:VisualElement style="justify-content: space-between; width: 40%; padding-top: 8px; padding-bottom: 8px;">
+                            <ui:Label tabindex="-1" text=" SCORE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb" style="font-size: 20px; -unity-font: url(&apos;project://database/Assets/Plugins/QFSW/Quantum%20Console/Source/Fonts/OfficeCodePro-Light.ttf?fileID=12800000&amp;guid=4b7d48f1a9584dc4a978e5413f2f0cdc&amp;type=3#OfficeCodePro-Light&apos;); -unity-font-definition: initial; -unity-text-align: upper-center;" />
+                            <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Score" style="font-size: 58px; -unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Bold.otf?fileID=12800000&amp;guid=3ca74ea9d1b2d7547ac4e53cc9aed3fc&amp;type=3#IndustryTest-Bold&apos;); -unity-font-definition: initial; -unity-text-align: upper-center; height: 80px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="width: 1px; height: 60px; align-self: center; background-color: rgba(255, 255, 255, 0.59);" />
+                        <ui:VisualElement style="justify-content: space-between; width: 40%; padding-top: 8px; padding-bottom: 8px;">
+                            <ui:Label tabindex="-1" text="K/T" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Change" style="font-size: 20px; -unity-font: url(&apos;project://database/Assets/Plugins/QFSW/Quantum%20Console/Source/Fonts/OfficeCodePro-Light.ttf?fileID=12800000&amp;guid=4b7d48f1a9584dc4a978e5413f2f0cdc&amp;type=3#OfficeCodePro-Light&apos;); -unity-font-definition: initial; -unity-text-align: upper-center;" />
+                            <ui:Label tabindex="-1" text="0 / 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_ShowKS" style="font-size: 58px; -unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Bold.otf?fileID=12800000&amp;guid=3ca74ea9d1b2d7547ac4e53cc9aed3fc&amp;type=3#IndustryTest-Bold&apos;); -unity-font-definition: initial; -unity-text-align: upper-center; height: 80px;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="show-character" />
+        <ui:VisualElement style="width: 1200px; height: 400px; position: absolute; align-self: center;">
+            <ui:Button text="Continue" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Btn_continue1" style="height: 50px; width: 200px; align-self: center; -unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/NewFolder/Fonts/en_inpin.ttf?fileID=12800000&amp;guid=eb2d226fcfa158c4f96775c076122fd5&amp;type=3#en_inpin&apos;); position: absolute; top: 100%; right: 20%; transition-duration: 0.3s;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

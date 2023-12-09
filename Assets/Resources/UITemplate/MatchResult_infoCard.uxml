@@ -1,8 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="infocArd" style="flex-grow: 1; height: 50%; flex-direction: row; justify-content: center; -unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/FOnt/Industry_Test/IndustryTest-Medium.otf?fileID=12800000&amp;guid=120736f144ab50a45bc014b4e568f24f&amp;type=3#IndustryTest-Medium&apos;); font-size: 20px; -unity-text-align: upper-center; background-color: rgba(101, 101, 101, 0.2); align-items: center;">
-        <ui:Label tabindex="-1" text="Index" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_PlayerName" style="height: 35px; width: 20%;" />
+        <ui:Label tabindex="-1" text="Index" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_PlayerIndex" style="height: 35px; width: 20%;" />
         <ui:Label tabindex="-1" text="lb_PlayerName" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_PlayerName" style="height: 35px; width: 20%;" />
         <ui:Label tabindex="-1" text="K/S" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_KS" style="height: 35px; width: 20%; flex-direction: column;" />
-        <ui:Label tabindex="-1" text="MVP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_KS" style="height: 35px; width: 20%; flex-direction: column; color: rgb(255, 242, 0);" />
+        <ui:Label tabindex="-1" text="Score" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_Score" style="height: 35px; width: 20%; flex-direction: column;" />
+        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lb_MVP" style="height: 35px; width: 20%; flex-direction: column; color: rgb(255, 242, 0);" />
     </ui:VisualElement>
 </ui:UXML>
