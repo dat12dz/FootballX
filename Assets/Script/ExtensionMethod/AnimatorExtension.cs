@@ -29,7 +29,6 @@ namespace Assets.Script.ExtensionMethod
         public static async Task WaitForFrame(this Animator animator,int Frame)
         {
             var v = animator.GetCurrentAnimatorStateInfo(0);
- 
         }
     }
 }

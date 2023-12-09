@@ -109,8 +109,7 @@ public class DefaultMaleModel : PlayerModelBase
     [ContextMenu("Reset")]
     public override void ResetAnimation()
     {
-        mvpAnimation.Player_ShowingCam.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Overlay;
-        
+        mvpAnimation.Player_ShowingCam.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Overlay;     
         mvpAnimation.Player_ShowingCam.targetTexture = null;
         mvpAnimation.CleanUp();
     }

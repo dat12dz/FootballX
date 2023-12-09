@@ -22,20 +22,15 @@ class MVPAnimationRef
     public Action OnCleanUp;
     public async Task Play(Animator playerModelAnimator, Camera playereye, bool usingRootMotion = false)
     {
-
         playerModelAnimator.applyRootMotion = usingRootMotion;
         if (playereye)
             playereye.gameObject.SetActive(false);
         Playereye = playereye;
         ModelAnimator = playerModelAnimator;
-        //  MvpAnimationRoot.SetParent( playerModelAnimator.transform,false);
         MvpAnimationRoot.gameObject.SetActive(true);
         var t = playerModelAnimator.PlayAndWait(MvpAnimClip);
         MVPCamera.GetComponent<Animator>().Play(MVpCameraClipAnim);
-
-
         await t;
-        //    CleanUp(playereye);
     }
     public void CleanUp()
     {

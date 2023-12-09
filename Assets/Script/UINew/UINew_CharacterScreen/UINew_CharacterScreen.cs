@@ -1,12 +1,11 @@
 ﻿using Cinemachine;
 using DG.Tweening;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UIElements;
-
 using System.Threading.Tasks;
 using TMPro;
+using uLipSync;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(UIBase))]
 public class UINew_CharacterScreen : MonoBehaviour
@@ -16,7 +15,7 @@ public class UINew_CharacterScreen : MonoBehaviour
     [SerializeField] Transform SpawnPosition;
     [SerializeField] Transform CharShowCase;
     // Camera ảo
-    [SerializeField] CinemachineVirtualCamera camera,BackgroundCamera;
+    [SerializeField] CinemachineVirtualCamera camera, BackgroundCamera;
     // Tham chiếu vào UI khởi đầu (UI có nút host,connect)
     [SerializeField] UINew_MultiplePlayerScreen startScreenHandler;
 
@@ -52,9 +51,13 @@ public class UINew_CharacterScreen : MonoBehaviour
         red, blue
     }
     public TeamColorEnum team;
-
+    bool isStarted;
     void Start()
     {
+        // Check xem đã bắt đầu chưa
+        if (isStarted) { return; }
+        isStarted = true;
+
         SelectedChar = StartGameInfo.instance.playerData.playerChar;
         root = GetComponent<UIDocument>().rootVisualElement;
         container = root.Q<VisualElement>("container");
@@ -89,18 +92,14 @@ public class UINew_CharacterScreen : MonoBehaviour
         };
     }
 
-    private void OnEnable()
-    {
-        Application.targetFrameRate = 60;
-    }
-    private void OnDisable()
-    {
-        Application.targetFrameRate = 0;
-    }
+
+
     public void Display(bool a)
     {
         //characterSelection.gameObject.SetActive(a);
         UINew_CharacterSelection.SetActive(a);
+
+        UINew_MultiplePlayerScreen.instance.backgroundMusic.SetFloat("LowPass", a ? 875 : 7911.00f);
     }
 
     void SpawnAllButton()
@@ -110,7 +109,7 @@ public class UINew_CharacterScreen : MonoBehaviour
             PlayerModelBase modelinfo = allChar.CharArray[i];
             // Nếu nhân vật bằng null -> không tiếp tục
             if (modelinfo == null) continue;
-
+           
             // Sinh nút
             Button b = new Button();
             b.AddToClassList("character");
@@ -141,23 +140,37 @@ public class UINew_CharacterScreen : MonoBehaviour
         // Lấy nhân vật được chọn
         PlayerModelBase selectedPlayerModel = models[index];
         // Ẩn nhân vật cũ
+
         if (oldModel)
             oldModel.gameObject.SetActive(false);
+
         // Hiện nhân vật mới
         selectedPlayerModel.gameObject.SetActive(true);
         oldModel = selectedPlayerModel;
         // Hiển thị màu của team nhân vật
         if (team == TeamColorEnum.blue)
         {
-            selectedPlayerModel.WaitForStart_(() => selectedPlayerModel.BlueTeamInit());
+            selectedPlayerModel.WaitForStart_(() =>
+            {
+                selectedPlayerModel.BlueTeamInit();
+                var lipsync = selectedPlayerModel.GetComponent<uLipSync.uLipSync>();
+                lipsync.onLipSyncUpdate.AddListener(selectedPlayerModel.ActiveModel.GetComponent<uLipSyncBlendShape>().OnLipSyncUpdate);
+
+            });
         }
         else
         {
-            selectedPlayerModel.WaitForStart_(() => selectedPlayerModel.RedTeamInit());
+            selectedPlayerModel.WaitForStart_(() =>
+            {
+                selectedPlayerModel.RedTeamInit();
+                var lipsync = selectedPlayerModel.GetComponent<uLipSync.uLipSync>();
+                lipsync.onLipSyncUpdate.AddListener(selectedPlayerModel.ActiveModel.GetComponent<uLipSyncBlendShape>().OnLipSyncUpdate);
+            });
         }
         // bắt đầu animation cho nhân vật
         if (SelectedChar == index)
         {
+
             PlaySelectedAnimation(selectedPlayerModel);
         }
         else
@@ -168,18 +181,21 @@ public class UINew_CharacterScreen : MonoBehaviour
 
         camera.LookAt = selectedPlayerModel.CameraLookAt;
         ShowPlayerName(selectedPlayerModel.ModelName);
-
+        if (ChangeSelectedChar)
+        {
+            ChangeSelectedChar = false;
+            selectedPlayerModel.PlayPickedSound();
+        }
 
     }
     [Header("background")]
-   [SerializeField]  Material PlayerNamebackgroundMaterial;
+    [SerializeField] Material PlayerNamebackgroundMaterial;
     async void ShowPlayerName(string t)
     {
-        
+       
         PlayerNamebackgroundMaterial.SetInt("_isOff", 0);
         PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 1.005f);
         await Task.Delay(50);
-
         PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 0.995f);
         await Task.Delay(50);
         var TextMeshpro = CharShowCase.GetComponentsInChildren<TextMeshPro>();
@@ -195,12 +211,20 @@ public class UINew_CharacterScreen : MonoBehaviour
         await Task.Delay(50);
         PlayerNamebackgroundMaterial.SetInt("_isOff", 1);
         PlayerNamebackgroundMaterial.SetFloat("_Interpolate", 1);
-
+        
     }
+    bool ChangeSelectedChar;
     public void Btn_SelectCharAction()
     {
-        SelectedChar = CharIndex;
-        ShowChar(CharIndex);
+
+        if (SelectedChar != CharIndex)
+        {
+            
+            ChangeSelectedChar = true;
+            SelectedChar = CharIndex;
+            ShowChar(CharIndex);
+        }
+
     }
     public void Btn_ChangeColorBlue()
     {
@@ -218,7 +242,7 @@ public class UINew_CharacterScreen : MonoBehaviour
         startScreenHandler.gameObject.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
         //Display(false);
         StartGameInfo.instance.playerData.playerChar = SelectedChar;
-      
+        UINew_MultiplePlayerScreen.instance.backgroundMusic.SetFloat("LowPass", 7911.00f);
     }
 
     public void PlaySelectedAnimation(PlayerModelBase model)
@@ -234,5 +258,6 @@ public class UINew_CharacterScreen : MonoBehaviour
         DOTween.To(() => camera.m_Lens.FieldOfView, (x) => camera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(1.6f, 1), 1).SetEase(Ease.InOutQuart);
         DOTween.To(() => BackgroundCamera.m_Lens.FieldOfView, (x) => BackgroundCamera.m_Lens.FieldOfView = x, Camera.FocalLengthToFieldOfView(1.6f, 1), 1).SetEase(Ease.InOutQuart);
         //btn_SelectChar.interactable = true;
+       
     }
 }

@@ -11,12 +11,10 @@ internal class VariableHelper
     public static async Task WaitForVariableNotNullAsync(Func<object> value,int TimeoutInMs = 50000, Action callBack = null)
     {
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        TrackForVariableNotNull(value,() => { 
-             
+        TrackForVariableNotNull(value,() => {             
                 cancellationTokenSource.Cancel();
             if (callBack != null)
                 callBack();
-
         });
         try
         {
@@ -30,7 +28,7 @@ internal class VariableHelper
     public static void  TrackForVariableNotNull(Func<object> value, Action callBack,bool ExecuteImidiate = false)
     {
    
-        ThreadHelper.SafeThreadCall(() =>
+        ThreadHelper.SafeThreadCall((cancl) =>
         {
         
             int i = 0;

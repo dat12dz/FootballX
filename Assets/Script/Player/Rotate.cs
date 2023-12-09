@@ -9,8 +9,9 @@ using UnityEngine.UIElements;
 
 namespace Assets.Utlis
 {
-    internal class Rotate : MonoBehaviour
+    public class Rotate : MonoBehaviour
     {
+        public CameraShake cameraShake;
         [SerializeField] Player player;
         Camera PlayerCam;
         [SerializeField] public float MouseSen;
@@ -27,13 +28,18 @@ namespace Assets.Utlis
         }
         private void Update()
         {
-            if(player.IsLocalPlayer)
+            cameraShake = GetComponent<CameraShake>();
+            if (player.IsLocalPlayer)
             {
                 var xMouse = Input.GetAxis("Mouse X");
                 var yMouse = Input.GetAxis("Mouse Y");
-           
+                
                 if (yMouse != 0 || xMouse != 0)
                 RotateCam(xMouse, yMouse);
+            }
+            else
+            {
+                PlayerCam.enabled = false;
             }
         }
         float YRotate = 0;

@@ -1,15 +1,11 @@
-using Assets.Utlis;
 using Newtonsoft.Json;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "Setting",menuName = "DatDauTechonologies/Setting")]
+[CreateAssetMenu(fileName = "Setting", menuName = "DatDauTechonologies/Setting")]
 public class SettingDAO : MonoBehaviour
 {
     public static SettingDAO Instance;
@@ -21,7 +17,8 @@ public class SettingDAO : MonoBehaviour
     private void Start()
     {
         appdata = Application.persistentDataPath;
-        Application.quitting += () => {
+        Application.quitting += () =>
+        {
             SaveFile();
         };
         LoadFile();
@@ -30,7 +27,7 @@ public class SettingDAO : MonoBehaviour
     [Serializable]
     public class Graphic : ISaveableContent
     {
-        
+
         public int ChosenPreset;
         [JsonIgnore]
         [SerializeField] public RenderPipelineAsset[] GraphicPresetArray;
@@ -54,11 +51,11 @@ public class SettingDAO : MonoBehaviour
         Assets.Utlis.Rotate LocalPlayerRotate;
         public override void ConstantSaver<T>(T temp)
         {
-            
+
         }
         public void SetMouseSen(float val)
         {
-           MouseSen = val;
+            MouseSen = val;
             try
             {
                 if (!LocalPlayerRotate)
@@ -69,7 +66,7 @@ public class SettingDAO : MonoBehaviour
             }
             catch
             {
-                
+
             }
         }
     }
@@ -85,36 +82,36 @@ public class SettingDAO : MonoBehaviour
 
         public override void ConstantSaver<T>(T temp)
         {
-            
+
         }
     }
     public abstract class ISaveableContent
     {
         public ISaveableContent()
         {
-            FileName = "/" +  GetType().Name + ".json";
+            FileName = "/" + GetType().Name + ".json";
 
         }
         public static void Save(ISaveableContent t)
         {
-            var json =  JsonConvert.SerializeObject(t);
+            var json = JsonConvert.SerializeObject(t);
             File.WriteAllText(appdata + t.FileName, json);
         }
         public static void Load<T>(ref T t) where T : ISaveableContent
         {
-              var json=   File.ReadAllText(appdata + t.FileName);
-              var temp = JsonConvert.DeserializeObject<T>(json);
-              t.ConstantSaver(temp);
-              t = temp;
+            var json = File.ReadAllText(appdata + t.FileName);
+            var temp = JsonConvert.DeserializeObject<T>(json);
+            t.ConstantSaver(temp);
+            t = temp;
         }
         [JsonIgnore]
         string FileName;
         public abstract void ConstantSaver<T>(T temp) where T : ISaveableContent;
 
     }
-   public Graphic graphicSetting;
-   public Gameplay gameplaySetting;
-   public Sound SoundSetting;
+    public Graphic graphicSetting;
+    public Gameplay gameplaySetting;
+    public Sound SoundSetting;
 
     public void SaveFile()
     {

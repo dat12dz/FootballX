@@ -13,6 +13,11 @@ public partial class Player
 {
     NetworkVariable<bool> isGrabed= new NetworkVariable<bool>();
     [SerializeField] TextMeshPro NameTag_;
+    [ServerRpc] 
+    void UpdateVollyRuntime_ServerRpc(float curr)
+    {
+        VolleyRuntime = curr;
+    }
     [ServerRpc]
     public void GrabItemOrThrowServerRpc(float ThrowForce = 0)
     {
