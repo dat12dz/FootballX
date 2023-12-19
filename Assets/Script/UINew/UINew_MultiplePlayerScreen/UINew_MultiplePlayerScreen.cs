@@ -6,6 +6,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(UIBase))]
 public class UINew_MultiplePlayerScreen : MonoBehaviour
@@ -21,12 +22,16 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
     [SerializeField] UINew_CharacterScreen charSelectionUI;
     //[SerializeField] TMP_InputField inp_PlayerName, inp_ServerIP;
     //[SerializeField] Button btn_Connect, btn_autoLocalhost, btn_HostBtn, btn_ShowCharSelectionUI;
-    public static StartSceneInfo StartSceneInfoSync;
-
+    public static UINew_MultiplePlayerScreen instance;
     NetworkManager netmang;
     int maxHostPlayer = 10;
+    [Header("Music")]
+    public AudioMixer backgroundMusic;
     void Start()
     {
+        //
+        instance = this;
+        backgroundMusic.SetFloat("LowPass", 7911.00f);
         //Debug.LogError("Start");
        UnityEngine.Cursor.lockState = CursorLockMode.None;
        root = GetComponent<UIDocument>().rootVisualElement;
@@ -47,6 +52,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
 
         settingBtn.clicked += () =>
         {
+           
             UInew_Setting.instance.Show();
         };
 
@@ -63,6 +69,7 @@ public class UINew_MultiplePlayerScreen : MonoBehaviour
 
         characterBtn.clicked += () =>
         {
+            
             charSelectionUI.Display(true);
             //gameObject.SetActive(false);
             root.style.display = DisplayStyle.None;

@@ -12,9 +12,9 @@ class CornerKickCheck : MonoBehaviour
     public TeamEnum OwnerGoalteam;
 
     GameSystem gameSystem;
-    private void Start()
+    private async void Start()
     {
-        gameSystem = SceneHelper.GetGameSystem(gameObject.scene);
+        gameSystem = await SceneHelper.GetGameSystem(gameObject.scene);
     }
     private void OnCollisionEnter(Collision collision)
     {

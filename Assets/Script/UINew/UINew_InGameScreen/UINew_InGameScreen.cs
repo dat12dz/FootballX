@@ -26,7 +26,7 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
 
     [SerializeField]float value;
     
-    void Start()
+    async void Start()
     {
         //instance = this;
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -49,8 +49,8 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
         {
             Destroy(gameObject);
         }
-
-        GameSystem game = SceneHelper.GetGameSystem(gameObject.scene);
+       
+        GameSystem game = await SceneHelper.GetGameSystem(gameObject.scene);
         game.OnTimeChange += ShowTime;
         game.OnScoreChange += ShowScore;
         
@@ -60,10 +60,7 @@ public class UINew_InGameScreen : WaitForInstaceNotNull<UINew_InGameScreen>
             Player.localPlayer.GetComponent<Move>().enabled = false;
             Player.localPlayer.GetComponentInChildren<Assets.Utlis.Rotate>().enabled = false;
             UINew_PauseScreen.Show();
-        };
-
-        
-
+        };     
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         instance = this;
     }

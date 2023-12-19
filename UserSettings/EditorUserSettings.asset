@@ -15,22 +15,29 @@ EditorUserSettings:
       value: 510451540303510f5b5a0f77452159444116412e757e7361792c4437b0b0633b
       flags: 0
     RecentlyUsedSceneGuid-3:
-      value: 0053505150010d58540a5c2641255d4412161d732f2b7269797b4d62b0b4626a
-      flags: 0
-    RecentlyUsedSceneGuid-4:
       value: 020652025551590c5d5c5d7744200f44424f4d2e292e7e362c2f4b64b7b06c6c
       flags: 0
-    RecentlyUsedSceneGuid-5:
+    RecentlyUsedSceneGuid-4:
       value: 5557025f04575a0f0f5d582743760644454f4a7f2d7127312f2d1c37e0b46d3b
       flags: 0
-    RecentlyUsedSceneGuid-6:
+    RecentlyUsedSceneGuid-5:
       value: 00090156005051585e0c5d7613200744434e1d7d29797e66757c4a30e4b5626f
       flags: 0
-    RecentlyUsedSceneGuid-7:
+    RecentlyUsedSceneGuid-6:
       value: 0657065406060d5d0f0c5b2743760e444116192c2d7872327a714c36b0b6606d
       flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 0053505150010d58540a5c2641255d4412161d732f2b7269797b4d62b0b4626a
+      flags: 0
     RecentlyUsedSceneGuid-8:
+<<<<<<< HEAD
+      value: 5004515106500b585b560f74167b59444e4f4a2829707762757a4f37b0e4356a
+=======
+      value: 0652030203065a025e0d5d7a16775c444216497a2a7a72697b2f4962e7e5613a
+      flags: 0
+    RecentlyUsedSceneGuid-9:
       value: 50050c055d545e0a0b5d097246200e4444164f287c7f7564752c4b37e0b1636f
+>>>>>>> parent of 85efde6 (add machine learning and checkvarchange function)
       flags: 0
     RecentlyUsedSceneGuid-9:
       value: 50050c055d545e0a0b5d097246200e4444164f287c7f7564752c4b37e0b1636f

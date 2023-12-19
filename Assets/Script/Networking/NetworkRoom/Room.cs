@@ -144,17 +144,14 @@ public class Room
     {
         UINew_ChangeSceneEffect.Open();
         var LoadGame = SceneManager.LoadScene(2, new LoadSceneParameters(LoadSceneMode.Additive, LocalPhysicsMode.Physics3D));
-        SceneManager.sceneLoaded += (scene, loadmoded) =>
-        {
-
-          
+        SceneManager.sceneLoaded += async (scene, loadmoded) =>
+        {         
             if (scene == LoadGame)
             {
-                UI_RoomRenderPnl.instance.gameObject.SetActive(false);
               
                 try
                 {
-                    GameSystem loadedGameSystem = SceneHelper.GetGameSystem(scene);
+                    GameSystem loadedGameSystem = await SceneHelper.GetGameSystem(scene);
                     loadedGameSystem.Init(this);
              
                 }

@@ -16,15 +16,14 @@ namespace Assets.Script.Networking.NetworkRoom
     {
         NetworkManager netmang;
         GameSystem system;
-        public override void OnNetworkSpawn()
+        public async override void OnNetworkSpawn()
         {
-            netmang = NetworkManager.Singleton;
-           
+            netmang = NetworkManager.Singleton;           
             base.OnNetworkSpawn();
             if (IsServer)
             {
-                system = SceneHelper.GetGameSystem(gameObject.scene);
-                ShowObjecttoScenePlayer();
+                system = await SceneHelper.GetGameSystem(gameObject.scene);
+                 ShowObjecttoScenePlayer();
                 netmang.OnClientConnectedCallback += OnNewPlayerConnect;
             }
         }
@@ -39,7 +38,7 @@ namespace Assets.Script.Networking.NetworkRoom
         }
         void ShowObjecttoScenePlayer()
         {
-            
+                   
             var listPlayer = system.room.playerDict;
             if (listPlayer.Count > 0)
             {

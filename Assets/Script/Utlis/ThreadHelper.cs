@@ -1,20 +1,19 @@
 ﻿using Assets.Utlis;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Unity.Burst;
-using Unity.Collections;
-using Unity.Jobs;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 namespace Assets.Script.Utlis
 {
     //using Debug = UnityEngine.Debug;
     internal class ThreadHelper
     {
-     public static readonly object locker = new object();
-        public static void CreateNewThread(Action a,string name = "")
+        public static readonly object locker = new object();
+        public static void CreateNewThread(Action a, string name = "")
         {
-            Thread thread = new Thread(() => {
+            Thread thread = new Thread(() =>
+            {
                 try
                 {
                     a();
@@ -27,38 +26,53 @@ namespace Assets.Script.Utlis
             thread.Name = name;
             thread.Start();
         }
-        public static void SafeThreadCall(Action a, string name = "")
+        public static void SafeThreadCall(Action<CancellationToken> a, string name = "", bool destroyWScene = true)
         {
+            var CancelToken = new CancellationTokenSource();
+
             if (a != null)
             {
-               Task.Run(() =>
-                {
-              
-                        try
-                        { 
-                            a();
-                        }
-                        catch (Exception e)
-                        {
-                            Logging.Log(e);
-                        }
-                });
+             var t = Task.Run(
+                   () =>
+                   {
+
+                       try
+                       {
+                           a(CancelToken.Token);
+                       }
+                       catch (Exception e)
+                       {
+                           Logging.Log(e);
+                       }
+
+                   });
+                if (destroyWScene)
+                { 
+                    UnityAction<Scene> onSceneLoaded = null;
+                    onSceneLoaded = (s1) =>
+                    {
+                        CancelToken.Cancel();                      
+                        SceneManager.sceneUnloaded -= onSceneLoaded;
+                    };
+                    SceneManager.sceneUnloaded += onSceneLoaded;
+                }
+
             }
         }
         public static async Task WaitForSecond(CancellationTokenSource s, Action a = null, int timeout = 3000)
         {
             try
             {
-               await Task.Delay(timeout, s.Token);
+                await Task.Delay(timeout, s.Token);
             }
             catch
             {
-                
+
             }
-            if (a != null) 
-            a();
+            if (a != null)
+                a();
         }
-        
+
     }
 
 }
