@@ -73,18 +73,22 @@ public class MatchAction
         }
         var Winner = winner();
 
-        
+
         if (!Winner.HasValue)
         {
             gameSystem.DisplayerFinalResultTie_ClientRpc();
+            foreach (PlayerRoomManager player in gameSystem.room.playerDict.Values)
+            {
+                player.thisPlayer.isInGame.Value = false;
+            }
         }
         else
         {
             foreach (PlayerRoomManager player in gameSystem.room.playerDict.Values)
             {
-               var ClientRpc = NetworkkHelper.CreateRpcTo(player.OwnerClientId);
+                var ClientRpc = NetworkkHelper.CreateRpcTo(player.OwnerClientId);
                 if (player.thisPlayer.team.team != Winner)
-                gameSystem.DisplayerFinalResultLoss_ClientRpc(ClientRpc);
+                    gameSystem.DisplayerFinalResultLoss_ClientRpc(ClientRpc);
                 if (player.thisPlayer.team.team == Winner)
                     gameSystem.DisplayerFinalResultWin_ClientRpc(ClientRpc);
                 player.thisPlayer.isInGame.Value = false;
@@ -136,14 +140,16 @@ public class MatchAction
     {
 
         if (!NetworkManager.Singleton.IsServer) return;
-        ThreadHelper.SafeThreadCall(() =>
+        ThreadHelper.SafeThreadCall((cancl) =>
         {
-
+            
             while (true)
             {
                 lock (locker)
                     gameSystem.time.Value += incTimeSpeed;
+                cancl.ThrowIfCancellationRequested();
                 Thread.Sleep(1000);
+               
             }
         });
     }

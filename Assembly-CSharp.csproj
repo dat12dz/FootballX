@@ -495,6 +495,10 @@
       <HintPath>E:\App\Unity\2022.3.12f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.IO.Abstractions">
+      <HintPath>Library\PackageCache\com.unity.ml-agents@2.0.1\Plugins\System.IO.Abstractions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@2.2.1\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
@@ -511,6 +515,10 @@
       <HintPath>Assets\Plugins\Microsoft.NET.StringTools.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Interactive.Async">
+      <HintPath>Library\PackageCache\com.unity.ml-agents@2.0.1\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
@@ -523,8 +531,20 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Google.Protobuf">
+      <HintPath>Library\PackageCache\com.unity.barracuda@3.0.0\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Grpc.Core">
+      <HintPath>Library\PackageCache\com.unity.ml-agents@2.0.1\Plugins\ProtoBuffer\Grpc.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Abstractions.TestingHelpers">
+      <HintPath>Library\PackageCache\com.unity.ml-agents@2.0.1\Plugins\System.IO.Abstractions.TestingHelpers.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
@@ -1061,6 +1081,10 @@
       <Project>{F2AA3B44-4763-1E1F-E867-BE45C82CEC15}</Project>
       <Name>sc.stylizedgrass.runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="uLipSync.Runtime.csproj">
+      <Project>{1669F2EC-6BEB-A390-F514-19054FE9FCCF}</Project>
+      <Name>uLipSync.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Networking.Transport.csproj">
       <Project>{FA86D301-C29C-F8DC-05FE-ACD188E0C7C0}</Project>
       <Name>Unity.Networking.Transport</Name>
@@ -1088,6 +1112,10 @@
     <ProjectReference Include="Unity.Formats.Fbx.Editor.csproj">
       <Project>{B760E487-2CAD-57E3-DCC4-078C4D144577}</Project>
       <Name>Unity.Formats.Fbx.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="RigbodyExtension.csproj">
+      <Project>{C284DE2F-32D6-2392-4E9D-D0A912DC362F}</Project>
+      <Name>RigbodyExtension</Name>
     </ProjectReference>
     <ProjectReference Include="QFSW.QC.QGUI.csproj">
       <Project>{11BC9E56-8DFD-A6CD-0101-B530CBB305CA}</Project>
@@ -1129,6 +1157,14 @@
       <Project>{814BD25E-69F9-DAD5-D63E-458DF0CB58EF}</Project>
       <Name>Unity.Burst</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.ONNX.csproj">
+      <Project>{036F31BB-979F-97F0-B704-0D0FAC8CE493}</Project>
+      <Name>Unity.Barracuda.ONNX</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.MacBLAS.csproj">
+      <Project>{90804E2D-0DDB-723E-2B82-175075B4FABA}</Project>
+      <Name>Unity.Barracuda.MacBLAS</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
       <Project>{1113ABB5-7711-120A-5DFC-86B09BFE8DBE}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
@@ -1140,6 +1176,10 @@
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{E7E34E7A-E3E9-A1A7-880A-8928D152CC5C}</Project>
       <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.csproj">
+      <Project>{D5182E36-2A37-0905-68E1-D66E22577979}</Project>
+      <Name>Unity.Barracuda</Name>
     </ProjectReference>
     <ProjectReference Include="QuickOutline.csproj">
       <Project>{F440AC1C-88C1-6D7F-6E1E-2C59FB7E2AFD}</Project>
@@ -1161,6 +1201,10 @@
       <Project>{9F8B4A94-F80A-8230-E95A-98EEB9595AEC}</Project>
       <Name>Unity.AdaptivePerformance.UI.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="uLipSync.Samples.Common.csproj">
+      <Project>{6EE59528-014C-4F3F-A7F7-8DF3D3F91793}</Project>
+      <Name>uLipSync.Samples.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
       <Project>{1E3B3C8F-4AB7-71DF-BE82-33B2F5DE4877}</Project>
       <Name>Unity.VisualScripting.Flow.Editor</Name>
@@ -1177,10 +1221,6 @@
       <Project>{2A9EAA0D-0AA4-C1CB-845C-59E38B7E7658}</Project>
       <Name>QuixelAss</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.MemoryProfiler.Editor.csproj">
-      <Project>{11341C4B-A9F9-6190-2897-AF26D89E1FF6}</Project>
-      <Name>Unity.MemoryProfiler.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Multiplayer.Tools.Initialization.csproj">
       <Project>{658E63C4-3430-4360-CF39-3E6F3E7F6CD3}</Project>
       <Name>Unity.Multiplayer.Tools.Initialization</Name>
@@ -1189,9 +1229,21 @@
       <Project>{509DC099-CF82-B7C9-F268-4FA5509F50A3}</Project>
       <Name>Unity.InternalAPIEngineBridge.003</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.MemoryProfiler.Editor.csproj">
+      <Project>{11341C4B-A9F9-6190-2897-AF26D89E1FF6}</Project>
+      <Name>Unity.MemoryProfiler.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Subsystem.Registration.csproj">
       <Project>{F61F9C4D-6634-BFF8-CCE6-4064563641E0}</Project>
       <Name>Unity.Subsystem.Registration</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ML-Agents.csproj">
+      <Project>{BC269C8F-EB57-EE4A-BF1A-5E9A519FF1CE}</Project>
+      <Name>Unity.ML-Agents</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ML-Agents.CommunicatorObjects.csproj">
+      <Project>{BDC2C054-4B09-6FCD-627D-2BE2D35DAF1E}</Project>
+      <Name>Unity.ML-Agents.CommunicatorObjects</Name>
     </ProjectReference>
     <ProjectReference Include="Autodesk.Fbx.Editor.csproj">
       <Project>{6B3D5643-9349-34CE-9E27-5826D529A350}</Project>
@@ -1209,9 +1261,17 @@
       <Project>{FD0AA9D7-E7E7-43A1-120B-163DA50224F0}</Project>
       <Name>Unity.Searcher.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.Editor.csproj">
+      <Project>{98A53260-7A26-7550-0EC4-D0831AEF28A9}</Project>
+      <Name>Unity.Barracuda.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Multiplayer.Tools.MetricTypes.csproj">
       <Project>{F71B2D91-A81B-95AB-0656-E22F6590AB4B}</Project>
       <Name>Unity.Multiplayer.Tools.MetricTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="uLipSync.Samples.VRM.Runtime.csproj">
+      <Project>{81CE435D-1934-8350-D0DF-A08AD68FE135}</Project>
+      <Name>uLipSync.Samples.VRM.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{B4363DFD-F45A-0F5F-8C6D-3C7E5659B6F2}</Project>
@@ -1257,9 +1317,9 @@
       <Project>{8CF3AE69-9154-FD8D-3F68-C047EA589A5D}</Project>
       <Name>Unity.AdaptivePerformance.Simulator.Extension</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Multiplayer.Tools.NetworkSolutionInterface.csproj">
-      <Project>{A9E6483B-1845-825C-78E2-8244ED12ED66}</Project>
-      <Name>Unity.Multiplayer.Tools.NetworkSolutionInterface</Name>
+    <ProjectReference Include="Unity.ML-Agents.Editor.csproj">
+      <Project>{063AD329-4EDF-AB2D-83E6-2A9DAD9206D6}</Project>
+      <Name>Unity.ML-Agents.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UniGLTF.csproj">
       <Project>{E826A275-0A53-4FC8-420A-858D16CC6DC0}</Project>
@@ -1273,13 +1333,17 @@
       <Project>{DDCA36F0-4061-D79C-40B0-3F07E641F74F}</Project>
       <Name>Unity.AdaptivePerformance.Simulator.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{33508A88-C190-7BC8-C5EF-017587F1A775}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
+    <ProjectReference Include="Unity.Multiplayer.Tools.NetworkSolutionInterface.csproj">
+      <Project>{A9E6483B-1845-825C-78E2-8244ED12ED66}</Project>
+      <Name>Unity.Multiplayer.Tools.NetworkSolutionInterface</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Formats.Fbx.Runtime.csproj">
       <Project>{C40F212C-CDB5-CB2B-6A94-B44AFFD50803}</Project>
       <Name>Unity.Formats.Fbx.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{33508A88-C190-7BC8-C5EF-017587F1A775}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
       <Project>{F8CA470B-BD55-8846-E157-446F62ACFF05}</Project>
@@ -1333,13 +1397,13 @@
       <Project>{7472AC92-DA9C-DDE2-B32E-D358F8A8DADC}</Project>
       <Name>Unity.Animation.Rigging</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Profiling.Core.csproj">
-      <Project>{F9E43072-C69E-E8D6-D444-37A522DDC50E}</Project>
-      <Name>Unity.Profiling.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Multiplayer.Tools.Common.csproj">
       <Project>{DECB770E-FBC0-BAAB-C39B-7B4C4000EF71}</Project>
       <Name>Unity.Multiplayer.Tools.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Profiling.Core.csproj">
+      <Project>{F9E43072-C69E-E8D6-D444-37A522DDC50E}</Project>
+      <Name>Unity.Profiling.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
       <Project>{A517791D-2F17-72A3-90F9-65E0CAD42404}</Project>
@@ -1357,6 +1421,10 @@
       <Project>{156B2A59-2840-9081-C954-DA52F658597E}</Project>
       <Name>Unity.MemoryProfiler.Editor.MemoryProfilerModule</Name>
     </ProjectReference>
+    <ProjectReference Include="UnityChan.csproj">
+      <Project>{C130B35E-3204-6B31-1902-85BCF142F7C5}</Project>
+      <Name>UnityChan</Name>
+    </ProjectReference>
     <ProjectReference Include="UniHumanoid.csproj">
       <Project>{241F9CD8-6994-0185-A84A-825F4479A996}</Project>
       <Name>UniHumanoid</Name>
@@ -1368,6 +1436,10 @@
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{1F6552BA-B3F2-19AC-3C98-77285C460736}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="uLipSync.Samples.RuntimeSetup.Runtime.csproj">
+      <Project>{0B578F3C-88A3-6E1F-4217-470E043DCD38}</Project>
+      <Name>uLipSync.Samples.RuntimeSetup.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Editor.csproj">
       <Project>{C3F11984-A37C-0246-212F-DF121FD6E384}</Project>
@@ -1384,6 +1456,18 @@
     <ProjectReference Include="Unity.AdaptivePerformance.csproj">
       <Project>{453B2E18-F79B-6A5C-E897-4DDFFCB48D18}</Project>
       <Name>Unity.AdaptivePerformance</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.iOSBLAS.csproj">
+      <Project>{A763958E-67E2-9C16-F465-C5C5B7F87298}</Project>
+      <Name>Unity.Barracuda.iOSBLAS</Name>
+    </ProjectReference>
+    <ProjectReference Include="uLipSync.Samples.VRM.Editor.csproj">
+      <Project>{1CEF4706-555D-A12C-67B2-FB582C4DF3AD}</Project>
+      <Name>uLipSync.Samples.VRM.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="uLipSync.Editor.csproj">
+      <Project>{A76605F9-7F09-4190-45B8-387AC87C9D64}</Project>
+      <Name>uLipSync.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Notifications.iOS.csproj">
       <Project>{CF7F749C-0F12-4D4F-8CBD-D78860B3B90C}</Project>
@@ -1409,6 +1493,10 @@
       <Project>{CC7A5DDD-36A6-406B-B751-9B590E7FB13A}</Project>
       <Name>QFSW.QC.Parsers</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Barracuda.BurstBLAS.csproj">
+      <Project>{AD03244B-B93D-9FD1-BB78-750EB63752BF}</Project>
+      <Name>Unity.Barracuda.BurstBLAS</Name>
+    </ProjectReference>
     <ProjectReference Include="QFSW.QC.Suggestors.csproj">
       <Project>{636121E5-98E6-B087-24D3-7BB28588E3DD}</Project>
       <Name>QFSW.QC.Suggestors</Name>
@@ -1417,6 +1505,10 @@
       <Project>{7E743FF7-353C-2875-39A0-E98C0B8A8E36}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="uLipSync.Samples.Animator.Runtime.csproj">
+      <Project>{BAE262C6-8B8F-AE49-DB8D-CDB0E8F561B4}</Project>
+      <Name>uLipSync.Samples.Animator.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Timeline.csproj">
       <Project>{C6D73384-7B66-2654-25B6-7E803164C446}</Project>
       <Name>Unity.Timeline</Name>
@@ -1424,6 +1516,10 @@
     <ProjectReference Include="OccaSoftware.Crosshairs.Editor.csproj">
       <Project>{ACD73C05-BE88-600B-DBF6-89AF769656E5}</Project>
       <Name>OccaSoftware.Crosshairs.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="uLipSync.Example.RuntimeProfile.Runtime.csproj">
+      <Project>{EBCC5B32-A4F2-DEF7-6341-F63EF87ADD39}</Project>
+      <Name>uLipSync.Example.RuntimeProfile.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
       <Project>{201395BB-05B3-A419-0D06-211C5D7D54C1}</Project>

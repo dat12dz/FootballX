@@ -9,9 +9,9 @@ public class ThrowInCheck : MonoBehaviour
 {
     GameSystem gameSystem;
     LayerMask GroundMask;
-    void Start()
+    async void Start()
     {
-        gameSystem = SceneHelper.GetGameSystem(gameObject.scene);
+        gameSystem = await SceneHelper.GetGameSystem(gameObject.scene);
         GroundMask = LayerMask.GetMask("Ground");
     }
     private void OnCollisionEnter(Collision collision)

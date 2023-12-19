@@ -2,10 +2,6 @@
 	transition: 0.4s;
 }
 
-#numbox_MouseSen Label, #Slider_volume Label, #slider_graphicPreset Label{
-	-unity-font: url(/Assets/FOnt/Industry_Test/IndustryTest-Book.otf);
-}
-
 #numbox_MouseSen TextElement {
 	color: #000;
 }
@@ -16,6 +12,24 @@
 	margin-bottom: 24px;
 	transition: 0.4s;
 	background-color: rgba(0,0,0,0.15);
+}
+
+#tab-name {
+	flex-direction: row;
+}
+
+.panel {
+	display: none;
+}
+
+.child-panel {
+	margin: 8px 0;
+}
+
+.child-panel Label {
+	-unity-font: url(/Assets/FOnt/Industry_Test/IndustryTest-Book.otf);
+	color: #fff;
+	width: 12%;
 }
 
 .setting-btn {

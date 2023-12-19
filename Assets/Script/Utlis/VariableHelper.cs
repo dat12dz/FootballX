@@ -1,22 +1,25 @@
 ﻿using Assets.Script.Utlis;
+using Mono.CSharp;
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Unity.Jobs;
+using UnityEngine;
 
 
 internal class VariableHelper
 {
-  static  int loop = 100000;
-    public static async Task WaitForVariableNotNullAsync(Func<object> value,int TimeoutInMs = 50000, Action callBack = null)
+    static int loop = 100000;
+    public static async Task WaitForVariableNotNullAsync(Func<object> value, int TimeoutInMs = 50000, Action callBack = null)
     {
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        TrackForVariableNotNull(value,() => { 
-             
-                cancellationTokenSource.Cancel();
+        TrackForVariableNotNull(value, () =>
+        {
+            cancellationTokenSource.Cancel();
             if (callBack != null)
                 callBack();
-
         });
         try
         {
@@ -27,23 +30,23 @@ internal class VariableHelper
             //
         }
     }
-    public static void  TrackForVariableNotNull(Func<object> value, Action callBack,bool ExecuteImidiate = false)
+    public static void TrackForVariableNotNull(Func<object> value, Action callBack, bool ExecuteImidiate = false)
     {
-   
-        ThreadHelper.SafeThreadCall(() =>
+
+        ThreadHelper.SafeThreadCall((cancl) =>
         {
-        
+
             int i = 0;
             var Value_ = value();
-/*            if (Value_ is UnityEngine.Object)
-            {
-                HandleUnityObject(Value_ as UnityEngine.Object, callBack);
+            /*            if (Value_ is UnityEngine.Object)
+                        {
+                            HandleUnityObject(Value_ as UnityEngine.Object, callBack);
 
-            }
-            else*/
-            { 
-            if (Value_ != null)
+                        }
+                        else*/
             {
+                if (Value_ != null)
+                {
                     if (ExecuteImidiate)
                     {
                         MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
@@ -52,18 +55,18 @@ internal class VariableHelper
                         });
                     }
                     else
-                MainThreadDispatcher.ExecuteInMainThread(() =>
+                        MainThreadDispatcher.ExecuteInMainThread(() =>
+                        {
+                            callBack();
+                        });
+                    return;
+                }
+
+                while (true)
                 {
-                    callBack();
-                });
-                return;
-            }
-            
-            while (true)
-            {
-                i++;
-                if (Value_ != null || i >= loop)
-                {
+                    i++;
+                    if (Value_ != null || i >= loop)
+                    {
                         if (ExecuteImidiate)
                         {
                             MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
@@ -76,52 +79,53 @@ internal class VariableHelper
                             {
                                 callBack();
                             });
-                        
+
                         break;
+                    }
+                    Thread.Sleep(10);
                 }
-                Thread.Sleep(10);
-            }
             }
         });
     }
-    static async void HandleUnityObject(UnityEngine.Object obj_, Action callBack)
+    class getterNActionOnObjectChange
     {
-        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        int i = 0;
-            MainThreadDispatcher.ExecuteInMainThread(() =>
-            {
-                if (obj_)
-                {
-                    callBack();
+        public object oldVal;
+        public Func<object> getter;
+        public Action<object> OnObjectChange;
+    }
+    static ConcurrentBag<getterNActionOnObjectChange> getterList = new ConcurrentBag<getterNActionOnObjectChange>();
 
-                    cancellationTokenSource.Cancel();
-                }
-            });
-        Task t = Task.Delay(9000, cancellationTokenSource.Token);
-        try
-        {
-            await t;
-        }
-        catch { 
-        
-        }
-        if (!t.IsCanceled)
+    public static Thread CheckVariableChange_Thread = new Thread(() =>
+    {
+
         while (true)
         {
-            i++;
-            if (obj_ || i >= loop)
+
+            for (int i = 0; i < getterList.Count; i++)
             {
-                MainThreadDispatcher.ExecuteInMainThread(() =>
+                var ithGetter = getterList.ElementAt(i);
+                var getter_new_value = ithGetter.getter();
+                if (!getter_new_value.Equals(ithGetter.oldVal))
                 {
-                    callBack();
-                });
-                break;
+                    ithGetter.OnObjectChange(getter_new_value);
+                    ithGetter.oldVal = getter_new_value;
+                }
+
             }
-            Thread.Sleep(10);
+            Thread.Sleep(1000);
         }
+    });
+    /// <summary>
+    /// Kiểm tra mỗi 1 giây xem biến có được thay đổi hay không , nếu bị thay đổi thì thực hiện hàm OnObjectChange với tham số truyền vào là giá trị mới thay đổi
+    /// </summary>
+    /// <param name="getter">hàm để lấy giá trị biến ví dụ () => objectName </param>
+    /// <param name="OnObjectChange">Chương trình sẽ gọi hàm nay khi biến bị thay đổi thành bất kì giá trị khác. Ví dụ : (newValue)=>{ //  
+    /// newValue là giá trị mới của biến sau khi bị thay đổi, hàm được gọi trên luồng khác nên tránh sử dụng Unity Object trong hàm  
+    /// }</param>
+    public static void CheckVariableChange(Func<object> getter, Action<object> OnObjectChange)
+    {
+        getterList.Add(new getterNActionOnObjectChange() { getter = getter, OnObjectChange = OnObjectChange });
     }
-    
-    
+
+
 }
-
-

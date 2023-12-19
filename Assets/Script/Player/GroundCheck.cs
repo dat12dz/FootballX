@@ -14,7 +14,7 @@ using UnityEngine;
         public float GroundCheckRadius;
         [SerializeField] LayerMask GroundMask;
         [SerializeField] float GravityInit = 9.81f;
-        float GravityRuntime;
+        public float GravityRuntime;
         // Create a sphere chheck physic
         Collider[] c = new Collider[1];
        bool CheckisGrounded()
@@ -25,7 +25,8 @@ using UnityEngine;
             }
             
             var res = player.thisPhysicScene.OverlapSphere(GroundCheck.position, GroundCheckRadius,c, GroundMask ,QueryTriggerInteraction.UseGlobal);
-            if (res > 0) GravityRuntime = -2;
+            if (res > 0 && !jump) GravityRuntime = -2;
+            if (jump) jump = false;
            return res > 0;
        }
       

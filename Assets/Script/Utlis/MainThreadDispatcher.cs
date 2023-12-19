@@ -27,7 +27,7 @@ public class MainThreadDispatcher : MonoBehaviour
     private void Awake()
     {
         SceneManager.sceneLoaded += (S, lm) =>
-        {
+        {       
             UINew_ChangeSceneEffect.Close();
         };
         Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.ScriptOnly);

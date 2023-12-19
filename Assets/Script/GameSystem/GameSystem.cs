@@ -11,7 +11,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-
+using QFSW.QC;
 [CheckNullProperties]
 public class GameSystem : SceneNetworkBehavior
 {
@@ -50,7 +50,7 @@ public class GameSystem : SceneNetworkBehavior
     public GameSystemSceneReference sceneReference;
     public NetworkVariable<int> ScoreBlueTeam;
     public NetworkVariable<int> ScoreRedTeam;
-    
+    public Action Initialized;
     [SerializeField] public SoundPlayer WhiselSoundPlayer;
     public void Init(Room room_)
     {
@@ -81,16 +81,18 @@ public class GameSystem : SceneNetworkBehavior
             counter++;
 
         }
-        NetworkObject.Spawn();
+        if (Initialized!=null)
+        Initialized();
+        base.OnNetworkSpawn();
+        MatchAction = new MatchAction(this);
+        sceneReference.Init(this);
+        MatchAction.OnStartMatch();
+
+
     }
     public override void OnNetworkSpawn()
     {
         instance = this;
-        sceneReference.Init(this);
-        base.OnNetworkSpawn();
-        MatchAction = new MatchAction(this);
-        MatchAction.OnStartMatch();
-
     }
     void Start()
     {
@@ -128,15 +130,18 @@ public class GameSystem : SceneNetworkBehavior
 
     }
     [ContextMenu("End half 1")]
+    [Command("EndHalf")]
     void EndHalf()
     {
         time.Value = (int)(EndGameTime / 2);
     }
     [ContextMenu("EndGame")]
+    [Command("EndGame",MonoTargetType.Single)]
     void Engame()
     {
         time.Value = (int)EndGameTime - 1;
     }
+
     private void OnDisable()
     {
         GameSystemList.Remove(GameID);
@@ -163,13 +168,12 @@ public class GameSystem : SceneNetworkBehavior
     { 
         UINew_InGameScreen.WaitForInstace(() =>
         {
-            UINew_InGameScreen.instance.ShowInformation(name.ToString(), des.ToString(), 5);
+            UINew_InGameScreen.instance.ShowInformation(name.ToString(), des.ToString(), time);
         });
     }
     [ClientRpc] public void ChangeClientSaturationClientRpc(int s)
     {
         MatchAction.ChangeScreenStaturation(s);
-
     }
     [ClientRpc] public void DisplayerFinalResultWin_ClientRpc(ClientRpcParams rpcParam = default)
     {
@@ -218,17 +222,21 @@ public class GameSystem : SceneNetworkBehavior
         var PlayerListSorted = this.CaculateRank();
         Player FindMvp()
         {
+            Player Res= null;
             if (Winner.HasValue)
             for (int i = 0; i < PlayerListSorted.Length; i++)
             {
-
-                Player p = PlayerListSorted[i].thisPlayer;
-               
-                    if (p.team.team == Winner) return p;
+                    var IthPlayer = PlayerListSorted[i];
+                    IthPlayer.networkTransform_.ClientAuth.Value = false;
+                    IthPlayer.EyeController.enabled = false;
+                    Player p = PlayerListSorted[i];
+                 
+                    IthPlayer.roomManager.isReady.Value = false;
+                    if (p.team.team == Winner) Res =  p;
                         
             }
-            
-                return PlayerListSorted[0].thisPlayer;
+            if (Res) return  Res;
+                return PlayerListSorted[0];
          
         }
         var Mvp = FindMvp();
@@ -237,8 +245,16 @@ public class GameSystem : SceneNetworkBehavior
     }    
     public void ResetScene()
     {
-        SceneManager.UnloadSceneAsync(gameObject.scene);
-        Player.localPlayer.TogglePoolObj(false);       
+        SceneManager.UnloadSceneAsync("GameScene");
+   
+        UINew_LobbyScreenRoomRender.instance.Show(true);
+        var AllPlayer =  Client_GetAllPlayerList();
+        foreach (var player in AllPlayer)
+        {
+            DontDestroyOnLoad(player.gameObject);
+            player.TogglePoolObj(false);
+        }
+        
     }
     public Player[] Client_GetAllPlayerList()
     {
@@ -251,10 +267,9 @@ public class GameSystem : SceneNetworkBehavior
           ps.Simulate(Time.fixedDeltaTime);
     }
 
-    public PlayerRoomManager[] CaculateRank()
+    public Player[] CaculateRank()
     {
-        PlayerRoomManager[] PlayerSortedRank;
-        PlayerSortedRank = room.playerDict.Values.ToArray();
+        Player[] PlayerSortedRank = Client_GetAllPlayerList(); ;        
         Array.Sort(PlayerSortedRank,new ComparePlayer());
         return PlayerSortedRank; 
     }
@@ -262,15 +277,15 @@ public class GameSystem : SceneNetworkBehavior
     {
         public int Compare(object x, object y)
         {
-            var PlayerX = (PlayerRoomManager)x;
-            var PlayerY = (PlayerRoomManager)y;
-            if (PlayerX.thisPlayer.Score > PlayerY.thisPlayer.Score)
-            {
-                return -1;
-            }
-            if (PlayerX.thisPlayer.Score < PlayerY.thisPlayer.Score)
+            var PlayerX = (Player)x;
+            var PlayerY = (Player)y;
+            if (PlayerX.Score > PlayerY.Score)
             {
                 return 1;
+            }
+            if (PlayerX.Score < PlayerY.Score)
+            {
+                return -1;
             }
             return 0;
         }

@@ -7,14 +7,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using uLipSync;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UniVRM10;
 
-
+[RequireComponent(typeof(VoicelinePlayer))]
 public abstract class PlayerModelBase : WaitForStart
 {
     public GameObject ActiveModel;
+    public uLipSync.uLipSync lipSync;
     public string ModelName;
     [SerializeField] public Animator animator;
     [SerializeField] FootIK footControl;
@@ -24,6 +26,7 @@ public abstract class PlayerModelBase : WaitForStart
     [SerializeField]
     public Transform CameraLookAt;
     public Texture2D Thumbnail;
+  [SerializeField]  VoicelinePlayer voiceline;
     public static int BLENDSHAPE_CLOSE_EYE = 14;
    public abstract void IdleAnim();
     public abstract void SelectedAnim();
@@ -36,6 +39,7 @@ public abstract class PlayerModelBase : WaitForStart
     [ContextMenu("Play close eyes")]
     public virtual void CloseEye()
     {
+        
        var Skin = ActiveModel.GetComponentInChildren<SkinnedMeshRenderer>();
         DOTween.To(() => 0, (value) => Skin.SetBlendShapeWeight(BLENDSHAPE_CLOSE_EYE, value), 100, 2f).WaitForCompletion();
         DOTween.To(() => 100, (value) => Skin.SetBlendShapeWeight(BLENDSHAPE_CLOSE_EYE, value), 0, 2f).Complete();
@@ -44,6 +48,7 @@ public abstract class PlayerModelBase : WaitForStart
     {
        player = transform.root.GetComponent<Player>();
         base.Start();
+        lipSync = GetComponent<uLipSync.uLipSync>();
         if (player == null)
         {
           var rigs =  GetComponentsInChildren<Rig>(true);
@@ -94,10 +99,7 @@ public abstract class PlayerModelBase : WaitForStart
             footControl.UpdateFootPlacement();
         }
     }
-    void UpdateFootPlacement()
-    {
-       
-    }
+ 
     protected virtual void Update()
     {
         // Nếu đang ở trong game, Ngoài màn hình chọn tướng không tính
@@ -106,7 +108,19 @@ public abstract class PlayerModelBase : WaitForStart
           Rotate();
         }
     }
-     
+    public abstract void ResetAnimation();
+    public void PlayPickedSound()
+    {
+        try
+        {
+            if (voiceline) voiceline = GetComponent<VoicelinePlayer>();
+              voiceline.PlayPickSound();
+        }
+        catch
+        {
+
+        }
+    }    
 }
 [Serializable]
 public class SpineRef

@@ -19,7 +19,7 @@ scopes = {
 	"currentGroup.110DEAF1" = "all"
 	"last_search.310DEAF1" = "_CameraDepthAttachment_1920x1009_Depth_MSAA8x t:RenderTexture"
 	"OpenInspectorPreview.310DEAF1" = "0"
-	"currentGroup.310DEAF1" = "asset"
+	"currentGroup.310DEAF1" = "all"
 }
 providers = {
 	packages = {

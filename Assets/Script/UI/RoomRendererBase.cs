@@ -18,5 +18,6 @@ namespace Assets.Script.UI
        public abstract void Btn_ReadyAction();
        public abstract void btn_StartGameAction();
        public abstract void ClearAllRenderer();
+        public abstract void Show(bool show);
     }
 }

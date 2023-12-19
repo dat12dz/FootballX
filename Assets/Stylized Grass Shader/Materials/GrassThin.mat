@@ -26,8 +26,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ADVANCED_LIGHTING
-  m_InvalidKeywords:
-  - _ENVIRONMENTREFLECTIONS_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -40,7 +39,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 92fb759ae491e0b4c9a24fb1347ad9d4, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 1, y: 1.99}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -93,13 +92,13 @@ Material:
     - _AlphaToCoverage: 0
     - _AngleFading: 0
     - _BendFlattenStrength: 1
-    - _BendMode: 0
-    - _BendPushStrength: 1
+    - _BendMode: 1
+    - _BendPushStrength: 0.994
     - _Billboard: 0
     - _Blend: 0
     - _BumpScale: 0
     - _ColorMapHeight: 0.574
-    - _ColorMapStrength: 0.916
+    - _ColorMapStrength: 0.922
     - _Cull: 0
     - _Cutoff: 0.485
     - _Darkening: 0.1
@@ -153,14 +152,14 @@ Material:
     - _BaseColor: {r: 0.7170732, g: 1, b: 0, a: 1}
     - _BendTint: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _EmissionColor: {r: 0.022514014, g: 0.022514014, b: 0.022514014, a: 1}
+    - _EmissionColor: {r: 0.10344725, g: 0.10344725, b: 0.10344725, a: 1}
     - _FadeFar: {r: 64.89293, g: 121.38223, b: 0, a: 0}
     - _FadeNear: {r: 0, g: 2.1967878, b: 0, a: 0}
     - _FadeParams: {r: 50, g: 100, b: 0, a: 0}
-    - _HueVariation: {r: 0.96470594, g: 1, b: 0, a: 0.15}
+    - _HueVariation: {r: 0.9647059, g: 1, b: 0, a: 0.8156863}
     - _LODDebugColor: {r: 1, g: 1, b: 1, a: 1}
     - _NormalParams: {r: 1, g: 1, b: 1, a: 0}
-    - _ScalemapInfluence: {r: 0, g: 1, b: 0, a: 0}
+    - _ScalemapInfluence: {r: 0, g: 0.41, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WindDirection: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

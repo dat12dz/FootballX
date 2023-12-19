@@ -22,9 +22,9 @@ public class UInew_ShowFinalResult : MonoBehaviour
     Label lb_OverallResult;
     Label lb_PlayerName, lb_Score, lb_Change, lb_ShowKS;
     public static UInew_ShowFinalResult instance;
-    private void Start()
+    private async void Start()
     {
-        var gameSystem = SceneHelper.GetGameSystem(gameObject.scene);
+        var gameSystem = await SceneHelper.GetGameSystem(gameObject.scene);
         instance = this;
 
         document = GetComponent<UIDocument>();
@@ -66,7 +66,7 @@ public class UInew_ShowFinalResult : MonoBehaviour
             Debug.Log("continue2 Btn is click");
             ShowAllInfo.style.display = DisplayStyle.None;
             container.style.display = DisplayStyle.None;
-
+            MvpPlayer.thisPlayerModel.ResetAnimation();
             GameSystem.instance.ResetScene();
         };
 
@@ -89,8 +89,10 @@ public class UInew_ShowFinalResult : MonoBehaviour
         OveralResult.style.display = DisplayStyle.None;
     }
     // Update is called once per frame
+    Player MvpPlayer;
     public async void DisplayMvp(Player mvpPlayer,RenderTexture PlayerMVPTexture)
     {
+        MvpPlayer = mvpPlayer;
         MvpDisplayer.style.display = DisplayStyle.Flex;
         Img_PlayerMvpImage.style.backgroundImage =  Background.FromRenderTexture(PlayerMVPTexture);
         await Task.Delay(1);

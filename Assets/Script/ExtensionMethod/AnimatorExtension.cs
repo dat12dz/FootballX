@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
+
 namespace Assets.Script.ExtensionMethod
 {
     static class AnimatorExtension
@@ -17,15 +18,17 @@ namespace Assets.Script.ExtensionMethod
             float ClipLength = 0;
             foreach (var clip in clips)
             {
-                if (clip.name == AnimName) ClipLength = clip.length;
-                break;
+                if (clip.name == AnimName)
+                {
+                    ClipLength = clip.length;
+                    break;
+                }
             }           
             await Task.Delay((int)(ClipLength * 1000));
         }
         public static async Task WaitForFrame(this Animator animator,int Frame)
         {
             var v = animator.GetCurrentAnimatorStateInfo(0);
- 
         }
     }
 }

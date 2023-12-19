@@ -1,15 +1,13 @@
-using Assets.Utlis;
+using Mono.CSharp;
 using Newtonsoft.Json;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
+using UINew;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "Setting",menuName = "DatDauTechonologies/Setting")]
+[CreateAssetMenu(fileName = "Setting", menuName = "DatDauTechonologies/Setting")]
 public class SettingDAO : MonoBehaviour
 {
     public static SettingDAO Instance;
@@ -21,17 +19,20 @@ public class SettingDAO : MonoBehaviour
     private void Start()
     {
         appdata = Application.persistentDataPath;
-        Application.quitting += () => {
+        Application.quitting += () =>
+        {
             SaveFile();
         };
         LoadFile();
     }
 
     [Serializable]
+    [TabName("Graphic")]
     public class Graphic : ISaveableContent
     {
-        
+        [ShowOnSetting("Graphic mode", ShowOnSettingAttribute.SettingBindingType.SliderInt, 0, 3)]
         public int ChosenPreset;
+
         [JsonIgnore]
         [SerializeField] public RenderPipelineAsset[] GraphicPresetArray;
 
@@ -48,17 +49,19 @@ public class SettingDAO : MonoBehaviour
         }
     }
     [Serializable]
+    [TabName("Gameplay")]
     public class Gameplay : ISaveableContent
     {
+        [ShowOnSetting("Mouse Sensitivity", ShowOnSettingAttribute.SettingBindingType.FloatField)]
         public float MouseSen = 90;
         Assets.Utlis.Rotate LocalPlayerRotate;
         public override void ConstantSaver<T>(T temp)
         {
-            
+
         }
         public void SetMouseSen(float val)
         {
-           MouseSen = val;
+            MouseSen = val;
             try
             {
                 if (!LocalPlayerRotate)
@@ -69,13 +72,15 @@ public class SettingDAO : MonoBehaviour
             }
             catch
             {
-                
+
             }
         }
     }
     [Serializable]
+    [TabName("Sound")]
     public class Sound : ISaveableContent
     {
+        [ShowOnSetting("Volume", ShowOnSettingAttribute.SettingBindingType.SliderFloat, minValue:0, maxValue:1)]
         public float volume;
         public void ChangeVolume(float v)
         {
@@ -85,42 +90,44 @@ public class SettingDAO : MonoBehaviour
 
         public override void ConstantSaver<T>(T temp)
         {
-            
+
         }
     }
     public abstract class ISaveableContent
     {
         public ISaveableContent()
         {
-            FileName = "/" +  GetType().Name + ".json";
+            FileName = "/" + GetType().Name + ".json";
 
         }
         public static void Save(ISaveableContent t)
         {
-            var json =  JsonConvert.SerializeObject(t);
+            var json = JsonConvert.SerializeObject(t);
             File.WriteAllText(appdata + t.FileName, json);
         }
         public static void Load<T>(ref T t) where T : ISaveableContent
         {
-              var json=   File.ReadAllText(appdata + t.FileName);
-              var temp = JsonConvert.DeserializeObject<T>(json);
-              t.ConstantSaver(temp);
-              t = temp;
+            var json = File.ReadAllText(appdata + t.FileName);
+            var temp = JsonConvert.DeserializeObject<T>(json);
+            t.ConstantSaver(temp);
+            t = temp;
         }
         [JsonIgnore]
         string FileName;
         public abstract void ConstantSaver<T>(T temp) where T : ISaveableContent;
-
+        
     }
-   public Graphic graphicSetting;
-   public Gameplay gameplaySetting;
-   public Sound SoundSetting;
+    public Graphic graphicSetting;
+    public Gameplay gameplaySetting;
+    public Sound SoundSetting;
 
     public void SaveFile()
     {
         ISaveableContent.Save(graphicSetting);
         ISaveableContent.Save(gameplaySetting);
         ISaveableContent.Save(SoundSetting);
+        var t = typeof(SoundPlayer);
+        
     }
     public void LoadFile()
     {
@@ -128,6 +135,5 @@ public class SettingDAO : MonoBehaviour
         ISaveableContent.Load(ref gameplaySetting);
         ISaveableContent.Load(ref SoundSetting);
     }
-
 }
 
