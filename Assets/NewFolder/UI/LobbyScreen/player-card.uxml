@@ -32,6 +32,7 @@
                     <ui:VisualElement name="ready" />
                     <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="swap-btn" class="reset-btn" />
                 </ui:VisualElement>
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="add-bot-btn" />
             </ui:VisualElement>
             <ui:VisualElement name="player-empty">
                 <ui:VisualElement name="player-empty-bg" />

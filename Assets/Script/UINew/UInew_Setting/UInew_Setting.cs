@@ -154,187 +154,217 @@ public partial class UInew_Setting : MonoBehaviour
             foreach (var f in fields)
             {
                 ShowOnSettingAttribute attr = f.GetCustomAttribute<ShowOnSettingAttribute>();
-
                 
-
-                switch (attr.BindingType)
+                if(attr != null)
                 {
-                    case ShowOnSettingAttribute.SettingBindingType.SliderInt:
-                        {
-                            SliderInt slider = new SliderInt();
-                            slider.label = attr.Name;
-                            slider.lowValue = attr.MinValue;
-                            slider.highValue = attr.MaxValue;
-                            VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
-                            {
-                                MainThreadDispatcher.ExecuteInMainThread(() =>
+                    switch (attr.BindingType)
+                    {
+                        case ShowOnSettingAttribute.SettingBindingType.SliderInt:{
+                                SliderInt slider = new SliderInt();
+                                slider.label = attr.Name;
+                                slider.lowValue = attr.MinValue;
+                                slider.highValue = attr.MaxValue;
+                                VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
                                 {
-                                    slider.value = (int)f.GetValue(ui);
-                                    Debug.Log(obj.ToString());
+                                    MainThreadDispatcher.ExecuteInMainThread(() =>
+                                    {
+                                        slider.value = (int)f.GetValue(ui);
+                                    });
                                 });
-                            });
-                            slider.RegisterCallback<ChangeEvent<int>>((evt) =>
-                            {
-                                try
+                                slider.RegisterCallback<ChangeEvent<int>>((evt) =>
                                 {
-                                    f.SetValue(ui,evt.newValue);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Debug.LogException(ex);
-                                    Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
-                                }
-                            });
-                            slider.AddToClassList("child-panel");
-                            panel.Add(slider);
-                            break;
-                        }
+                                    try
+                                    {
+                                        f.SetValue(ui,evt.newValue);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Debug.LogException(ex);
+                                        Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
+                                    }
+                                });
+                                slider.AddToClassList("child-panel");
+                                panel.Add(slider);
+                                break;
+                            }
 
-                    case ShowOnSettingAttribute.SettingBindingType.SliderFloat:
-                        {
-                            Slider slider = new Slider();
-                            slider.label = attr.Name;
-                            slider.lowValue = attr.MinValue;
-                            slider.highValue = attr.MaxValue;
-                            VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
+                        case ShowOnSettingAttribute.SettingBindingType.SliderFloat:
                             {
-                                MainThreadDispatcher.ExecuteInMainThread(() =>
+                                Slider slider = new Slider();
+                                slider.label = attr.Name;
+                                slider.lowValue = attr.MinValue;
+                                slider.highValue = attr.MaxValue;
+                                VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
                                 {
-                                    slider.value = (float)f.GetValue(ui);
-                                    Debug.Log(obj.ToString());
+                                    MainThreadDispatcher.ExecuteInMainThread(() =>
+                                    {
+                                        slider.value = (float)f.GetValue(ui);
+                                    });
                                 });
-                            });
-                            slider.RegisterCallback<ChangeEvent<float>>((evt) =>
-                            {
-                                try
+                                slider.RegisterCallback<ChangeEvent<float>>((evt) =>
                                 {
-                                    f.SetValue(ui, evt.newValue);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Debug.LogException(ex);
-                                    Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
-                                }
-                            });
-                            slider.AddToClassList("child-panel");
-                            panel.Add(slider);
-                            break;
-                        }
+                                    try
+                                    {
+                                        f.SetValue(ui, evt.newValue);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Debug.LogException(ex);
+                                        Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
+                                    }
+                                });
+                                slider.AddToClassList("child-panel");
+                                panel.Add(slider);
+                                break;
+                            }
 
-                    case ShowOnSettingAttribute.SettingBindingType.TextField:
-                        {
-                            TextField textField = new TextField();
-                            textField.label = attr.Name;
-                            VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
+                        case ShowOnSettingAttribute.SettingBindingType.TextField:
                             {
-                                MainThreadDispatcher.ExecuteInMainThread(() =>
+                                TextField textField = new TextField();
+                                textField.label = attr.Name;
+                                VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
                                 {
-                                    textField.value = (string)f.GetValue(ui);
-                                    Debug.Log(obj.ToString());
+                                    MainThreadDispatcher.ExecuteInMainThread(() =>
+                                    {
+                                        textField.value = (string)f.GetValue(ui);
+                                    });
                                 });
-                            });
-                            textField.AddToClassList("child-panel");
-                            textField.RegisterCallback<ChangeEvent<string>>((evt) =>
-                            {
-                                try
+                                textField.AddToClassList("child-panel");
+                                textField.RegisterCallback<ChangeEvent<string>>((evt) =>
                                 {
-                                    f.SetValue(ui, evt.newValue);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Debug.LogException(ex);
-                                    Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
-                                }
-                            });
-                            panel.Add(textField);
-                            break;
-                        }
+                                    try
+                                    {
+                                        f.SetValue(ui, evt.newValue);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Debug.LogException(ex);
+                                        Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
+                                    }
+                                });
+                                panel.Add(textField);
+                                break;
+                            }
 
-                    case ShowOnSettingAttribute.SettingBindingType.IntegerField:
-                        {
-                            IntegerField intField = new IntegerField();
-                            intField.label = attr.Name;
-                            VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
+                        case ShowOnSettingAttribute.SettingBindingType.IntegerField:
                             {
-                                MainThreadDispatcher.ExecuteInMainThread(() =>
+                                IntegerField intField = new IntegerField();
+                                intField.label = attr.Name;
+                                VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
                                 {
-                                    intField.value = (int)f.GetValue(ui);
-                                    Debug.Log(obj.ToString());
+                                    MainThreadDispatcher.ExecuteInMainThread(() =>
+                                    {
+                                        intField.value = (int)f.GetValue(ui);
+                                    });
                                 });
-                            });
-                            intField.AddToClassList("child-panel");
-                            intField.RegisterCallback<ChangeEvent<int>>((evt) =>
-                            {
-                                try
+                                intField.AddToClassList("child-panel");
+                                intField.RegisterCallback<ChangeEvent<int>>((evt) =>
                                 {
-                                    f.SetValue(ui, evt.newValue);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Debug.LogException(ex);
-                                    Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
-                                }
-                            });
-                            panel.Add(intField);
-                            break;
-                        }
+                                    try
+                                    {
+                                        f.SetValue(ui, evt.newValue);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Debug.LogException(ex);
+                                        Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
+                                    }
+                                });
+                                panel.Add(intField);
+                                break;
+                            }
 
-                    case ShowOnSettingAttribute.SettingBindingType.FloatField:
-                        {
-                            FloatField floatField = new FloatField();
-                            floatField.label = attr.Name;
-                            VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
+                        case ShowOnSettingAttribute.SettingBindingType.FloatField:
                             {
-                                MainThreadDispatcher.ExecuteInMainThread(() =>
+                                FloatField floatField = new FloatField();
+                                floatField.label = attr.Name;
+                                VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
                                 {
-                                    floatField.value = (float)f.GetValue(ui);                                    
-                                    Debug.Log(obj.ToString());
+                                    MainThreadDispatcher.ExecuteInMainThread(() =>
+                                    {
+                                        floatField.value = (float)f.GetValue(ui);
+                                    });
                                 });
-                            });
-                            floatField.AddToClassList("child-panel");
-                            floatField.RegisterCallback<ChangeEvent<float>>((evt) =>
-                            {
-                                try
+                                floatField.AddToClassList("child-panel");
+                                floatField.RegisterCallback<ChangeEvent<float>>((evt) =>
                                 {
-                                    f.SetValue(ui, evt.newValue);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Debug.LogException(ex);
-                                    Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
-                                }
-                            });
-                            panel.Add(floatField);
-                            break;
-                        }
-                    case ShowOnSettingAttribute.SettingBindingType.Toggle:
-                        {
-                            Toggle toggleField = new Toggle();
-                            toggleField.label = attr.Name;
-                            VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
-                            {
-                                MainThreadDispatcher.ExecuteInMainThread(() =>
-                                {
-                                    toggleField.value = (bool)f.GetValue(ui);                                    
-                                    Debug.Log(obj.ToString());
+                                    try
+                                    {
+                                        f.SetValue(ui, evt.newValue);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Debug.LogException(ex);
+                                        Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
+                                    }
                                 });
-                            });
-                            toggleField.AddToClassList("child-panel");
-                            toggleField.RegisterCallback<ChangeEvent<bool>>((evt) =>
+                                panel.Add(floatField);
+                                break;
+                            }
+
+                        case ShowOnSettingAttribute.SettingBindingType.Toggle:
                             {
-                                try
+                                Toggle toggleField = new Toggle();
+                                toggleField.label = attr.Name;
+                                VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
                                 {
-                                    f.SetValue(ui, evt.newValue);
-                                }
-                                catch (Exception ex)
+                                    MainThreadDispatcher.ExecuteInMainThread(() =>
+                                    {
+                                        toggleField.value = (bool)f.GetValue(ui);                                                
+                                    });
+                                });
+                                toggleField.AddToClassList("child-panel");
+                                toggleField.RegisterCallback<ChangeEvent<bool>>((evt) =>
                                 {
-                                    Debug.LogException(ex);
-                                    Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
-                                }
-                            });
-                            panel.Add(toggleField);
-                            break;
-                        }
+                                    try
+                                    {
+                                        f.SetValue(ui, evt.newValue);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Debug.LogException(ex);
+                                        Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
+                                    }
+                                });
+                                panel.Add(toggleField);
+                                break;
+                            }
+
+                        case ShowOnSettingAttribute.SettingBindingType.DropdownField:
+                            {
+
+                                DropdownField dropdownField = new DropdownField();
+                                dropdownField.label = attr.Name;
+                                dropdownField.choices = attr.Section.ToList();
+                                dropdownField.AddToClassList("child-panel");
+                                VariableHelper.CheckVariableChange(() => f.GetValue(ui), (obj) =>
+                                {
+                                    MainThreadDispatcher.ExecuteInMainThread(() =>
+                                    {
+                                        dropdownField.index = (int)f.GetValue(ui);
+                                    });
+                                });                                
+
+                                dropdownField.RegisterValueChangedCallback((evt) =>
+                                {
+                                    try
+                                    {
+                                        f.SetValue(ui, dropdownField.index);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Debug.LogException(ex);
+                                        Debug.LogError("\n Kiểu dữ liệu không hợp lệ");
+                                    }
+                                });
+                                panel.Add(dropdownField);
+                                break;
+                            }
+                        default:
+                            {
+                                throw new NotImplementedException();
+                            }
+                    }
                 }
             }
         }
@@ -343,5 +373,5 @@ public partial class UInew_Setting : MonoBehaviour
 
         }
         settingPanel.Add(panel);
-    }        
+    }    
 }

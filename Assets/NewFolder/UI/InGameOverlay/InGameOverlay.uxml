@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewFolder/UI/Common.uss?fileID=7433441132597879392&amp;guid=e9ae13a45f836d443b81ef2b07b16420&amp;type=3#Common" />
+    <Style src="project://database/Assets/NewFolder/UI/InGameOverlay/InGameOverlay.uss?fileID=7433441132597879392&amp;guid=9cd4088c8db92bc499bb0c71b60d0824&amp;type=3#InGameOverlay" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:VisualElement name="in-game-overlay">
+            <ui:VisualElement name="label-bar">
+                <ui:Label tabindex="-1" text="Name" parse-escape-sequences="true" display-tooltip-when-elided="true" name="name-label" />
+                <ui:Label tabindex="-1" text="Goal" parse-escape-sequences="true" display-tooltip-when-elided="true" name="goal-label" />
+                <ui:Label tabindex="-1" text="Touch ball" parse-escape-sequences="true" display-tooltip-when-elided="true" name="touch-ball-label" />
+            </ui:VisualElement>
+            <ui:VisualElement name="blue-team" />
+            <ui:VisualElement style="padding-top: 8px; padding-bottom: 8px;" />
+            <ui:VisualElement name="red-team" />
+            <ui:VisualElement style="height: 10%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
