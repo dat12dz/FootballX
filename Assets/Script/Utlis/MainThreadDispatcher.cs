@@ -24,7 +24,7 @@ public class MainThreadDispatcher : MonoBehaviour
     {
         return Thread.CurrentThread.Name == MAIN_THREAD_NAME;
     }
-   [SerializeField] int e = 0;
+
     private void Awake()
     {
         SceneManager.sceneLoaded += (S, lm) =>
@@ -49,13 +49,7 @@ public class MainThreadDispatcher : MonoBehaviour
 
         VariableHelper.CheckVariableChange_Thread.Start();
         Application.targetFrameRate = 60;
-        VariableHelper.CheckVariableChange(() => e, (newValue) =>
-        {
-            MainThreadDispatcher.ExecuteInMainThreadImidiately(() =>
-            {
-                Debug.Log(e);
-            });
-        });
+  
         Application.targetFrameRate = 60; 
     }
 

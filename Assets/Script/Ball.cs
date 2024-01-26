@@ -34,14 +34,10 @@ public class Ball : Grabable
     public override void OnNetworkSpawn()//
     {
         base.OnNetworkSpawn();
-        if (IsClient && !IsHost)
-            gameObject.SetActive(true);
-        Debug.Log(gameObject.name);
-        
     }
     void Start()
     {
-        if (!IsSpawned) gameObject.SetActive(false);
+        
         if (IsClient)
             instance = this;
         rb = GetComponent<Rigidbody>();
@@ -66,7 +62,7 @@ public class Ball : Grabable
     protected override void Update()
     {
         base.Update();
-        rb.CalculateMovement(0, Player.localPlayer.FinalShootForce);
+        //rb.CalculateMovement(0, Player.localPlayer.FinalShootForce);
     }
 
     public override bool Grab(Transform graber_, bool isPlayerAction)

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - StoneWall
+  - player
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - CharSelction_Background
   - Player
   - GoalkeeperZone
-  - 
+  - TrainingWall
   - 
   - 
   - 

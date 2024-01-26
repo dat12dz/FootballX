@@ -33,8 +33,9 @@ public partial class Move : NetworkBehaviour
         player = GetComponent<Player>();
         unstandableZone_mask = LayerMask.GetMask("UnstanableZone");
     }
-    public void MovePlayerSpeed()
+    public void MovePlayer_ManuallySpeed(Vector3 v)
     {
+       transform.position +=  v * RuntimeSpeed * Time.deltaTime;
         
     }
     public void TeleportXZ(float x, float z)

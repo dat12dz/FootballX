@@ -423,6 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
   player: {fileID: -7314348274738732783}
+  PlayerCam: {fileID: 7921253545775277628}
   MouseSen: 90
   HeadObj: {fileID: 1692322850984172057}
 --- !u!114 &2890030147529055981

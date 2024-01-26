@@ -1,6 +1,7 @@
 ﻿using Assets.Utlis;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.MLAgents;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class PlayerFoot : MonoBehaviour
     LayerMask ballMask;
   [SerializeField]  Player thisPlayer;
     Ball ball = Ball.instance;
-    
+    Agent learningAgents;
     void Start()
     {
         ballMask = LayerMask.NameToLayer("Ball");
@@ -18,10 +19,13 @@ public class PlayerFoot : MonoBehaviour
         {
             Logging.LogError("Không thể tìm thấy người chơi");
         }
+       learningAgents = thisPlayer.GetComponent<Agent>();
     }
     private void OnCollisionEnter(Collision collision)
     {
         Ball ball;
+     
+
         if (NetworkManager.Singleton.IsClient)
         {
             ball = Ball.instance;
@@ -33,6 +37,10 @@ public class PlayerFoot : MonoBehaviour
         {
                 if (thisPlayer.Vel.sqrMagnitude > 0)
             thisPlayer.Shootball(ball);
+                if (learningAgents)
+                {
+                    learningAgents.AddReward(1);
+                }
         }
      ;
     }

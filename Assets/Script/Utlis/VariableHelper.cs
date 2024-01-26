@@ -11,15 +11,16 @@ using UnityEngine;
 
 internal class VariableHelper
 {
-    static int loop = 100000;
-    public static async Task WaitForVariableNotNullAsync(Func<object> value, int TimeoutInMs = 50000, Action callBack = null)
+  static  int loop = 100000;
+    public static async Task WaitForVariableNotNullAsync(Func<object> value,int TimeoutInMs = 50000, Action callBack = null)
     {
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        TrackForVariableNotNull(value, () =>
-        {
-            cancellationTokenSource.Cancel();
+        TrackForVariableNotNull(value,() => { 
+             
+                cancellationTokenSource.Cancel();
             if (callBack != null)
                 callBack();
+
         });
         try
         {
@@ -30,7 +31,7 @@ internal class VariableHelper
             //
         }
     }
-    public static void TrackForVariableNotNull(Func<object> value, Action callBack, bool ExecuteImidiate = false)
+    public static void  TrackForVariableNotNull(Func<object> value, Action callBack,bool ExecuteImidiate = false)
     {
 
         ThreadHelper.SafeThreadCall((cancl) =>
