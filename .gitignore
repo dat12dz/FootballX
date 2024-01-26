@@ -96,3 +96,5 @@ UserSettings/Layouts/CurrentMaximizeLayout.dwlt
 /Assets/Scenes/RoomScene/LightingData.asset
 /Assets/Scenes/RoomScene/LightingData.asset.meta
 /UserSettings/EditorUserSettings.asset
+/venv
+/results/ppo
