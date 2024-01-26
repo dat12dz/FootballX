@@ -264,6 +264,20 @@
     background-image: url(/Assets/NewFolder/Icons/swap.svg);
 }
 
+#add-bot-btn {
+    position: absolute;
+    top: 106%;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin-right: 8px;
+    border-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+    background-image: url(/Assets/NewFolder/Icons/AddBot.svg));
+    -unity-background-image-tint-color: black;
+}
+
 /* player-empty */
 #player-empty {
     display: none;

@@ -52,8 +52,17 @@ public class SettingDAO : MonoBehaviour
     [TabName("Gameplay")]
     public class Gameplay : ISaveableContent
     {
+        public enum LanguageEnum
+        {
+            English,
+            Vietnamese,
+            Chinese
+        }
+
         [ShowOnSetting("Mouse Sensitivity", ShowOnSettingAttribute.SettingBindingType.FloatField)]
         public float MouseSen = 90;
+        [ShowOnSetting("Language", ShowOnSettingAttribute.SettingBindingType.DropdownField, new string[] { "English", "Vietnamese", "Chinese" })]
+        public LanguageEnum Language;
         Assets.Utlis.Rotate LocalPlayerRotate;
         public override void ConstantSaver<T>(T temp)
         {
@@ -80,7 +89,7 @@ public class SettingDAO : MonoBehaviour
     [TabName("Sound")]
     public class Sound : ISaveableContent
     {
-        [ShowOnSetting("Volume", ShowOnSettingAttribute.SettingBindingType.SliderFloat, minValue:0, maxValue:1)]
+        [ShowOnSetting("Volume", ShowOnSettingAttribute.SettingBindingType.SliderFloat, minValue: 0, maxValue: 1)]
         public float volume;
         public void ChangeVolume(float v)
         {
@@ -115,7 +124,7 @@ public class SettingDAO : MonoBehaviour
         [JsonIgnore]
         string FileName;
         public abstract void ConstantSaver<T>(T temp) where T : ISaveableContent;
-        
+
     }
     public Graphic graphicSetting;
     public Gameplay gameplaySetting;
@@ -127,7 +136,7 @@ public class SettingDAO : MonoBehaviour
         ISaveableContent.Save(gameplaySetting);
         ISaveableContent.Save(SoundSetting);
         var t = typeof(SoundPlayer);
-        
+
     }
     public void LoadFile()
     {

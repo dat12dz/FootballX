@@ -1,0 +1,99 @@
+:root {
+	--red-color: rgba(230, 0, 0, 0.4);
+	--blue-color: rgba(0, 162, 232, 0.4);
+
+	--goal-col: 10%;
+	--touch-ball-col: 10%;
+	--name-col: 40%;
+}
+
+#container {
+	align-items: center;
+	justify-content: center;
+}
+
+#in-game-overlay {
+	width: 80%;
+	height: 400px;
+	color: #fff;
+	background-color: rgba(0,0,0,1);
+	border-radius: 12px;
+}
+
+#label-bar {
+	height: 10%;
+	flex-direction: row;
+	
+}
+
+#name-label {
+	width: var(--name-col);
+	-unity-text-align: middle-center;
+}
+
+#goal-label {
+	width: var(--goal-col);
+	-unity-text-align: middle-center;
+}
+
+#touch-ball-label {
+	width: var(--touch-ball-col);
+	-unity-text-align: middle-center;
+}
+
+#red-team, #blue-team {
+	/* padding: 12px 0; */
+}
+
+#red-team {
+	height: 40%;
+	background-color: var(--red-color);
+	/* border-bottom-right-radius: 12px;
+	border-bottom-left-radius: 12px; */
+}
+
+#blue-team {
+	height: 40%;
+	background-color: var(--blue-color);
+}
+
+
+/* Template */
+#player-info {
+	height: 20%;
+}
+
+#player-info-box {
+	flex-direction: row;
+	padding: 0 12px;
+	height: 100%;
+}
+
+#player-name {
+	width: var(--name-col);
+	-unity-text-align: middle-left;
+	-unity-font: url(/Assets/FOnt/Industry_Test/IndustryTest-Light.otf);
+}
+
+#player-goal, #player-touch-ball {
+	background-color: rgba(255, 255, 255, 0.06);
+	-unity-font: url(/Assets/FOnt/Industry_Test/IndustryTest-Light.otf);
+}
+
+#player-goal {
+	width: var(--goal-col);
+	-unity-text-align: middle-center;
+}
+
+#player-touch-ball {
+	width: var(--touch-ball-col);
+	-unity-text-align: middle-center;
+}
+
+.red-team {
+	/* background-color: var(--red-color); */
+}
+
+.blue-team {
+	/* background-color: var(--blue-color); */
+}

@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/NewFolder/UI/InGameOverlay/InGameOverlay.uss?fileID=7433441132597879392&amp;guid=9cd4088c8db92bc499bb0c71b60d0824&amp;type=3#InGameOverlay" />
+    <ui:VisualElement name="player-info-box">
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="player-name" />
+        <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="player-goal" />
+        <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="player-touch-ball" />
+    </ui:VisualElement>
+</ui:UXML>
